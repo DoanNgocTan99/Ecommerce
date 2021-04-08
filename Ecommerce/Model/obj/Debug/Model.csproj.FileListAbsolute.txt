@@ -26,3 +26,17 @@ D:\Document Try\Ecommerce Shop\Ecommerce\Ecommerce\Model\obj\Debug\Model.dll
 D:\Document Try\Ecommerce Shop\Ecommerce\Ecommerce\Model\obj\Debug\Model.pdb
 D:\Document Try\Ecommerce Shop\Ecommerce\Ecommerce\Model\obj\Debug\Model.Migrations.init.resources
 D:\Document Try\Ecommerce Shop\Ecommerce\Ecommerce\Model\obj\Debug\Model.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\bin\Debug\Model.dll.config
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\bin\Debug\Model.dll
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\bin\Debug\Model.pdb
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\obj\Debug\Model.dll
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\obj\Debug\Model.pdb
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\obj\Debug\Model.Migrations.firstCreateDB.resources
+C:\Users\Administrator\Documents\GitHub\Ecommerce\Ecommerce\Model\obj\Debug\Model.csproj.GenerateResource.cache
