@@ -14,6 +14,10 @@ namespace Model.DAO
         {
             db = new EcommerceContext();
         }
+        public List<User> getAll()
+        {
+            return db.Users.ToList();
+        }
 
         
     }

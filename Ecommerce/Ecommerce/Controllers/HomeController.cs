@@ -10,6 +10,7 @@ namespace Ecommerce.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -26,5 +27,6 @@ namespace Ecommerce.Controllers
 
             return View();
         }
+
     }
 }
