@@ -8,9 +8,9 @@ namespace Ecommerce.Areas.Seller.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Moi nhap user name")]
+        [Required(ErrorMessage = "Mời Bạn Nhập Vào Tài Khoản")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Moi nhap Password")]
+        [Required(ErrorMessage = "Mời Bạn Nhập Vào Mật Khẩu")]
         public string PassWord { get; set; }
         public bool RememberMe { get; set; }
     }

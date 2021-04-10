@@ -41,7 +41,7 @@ namespace Model.EF
         [StringLength(250)]
         public string Phone { get; set; }
 
-        public bool? Gender { get; set; }
+        public bool Gender { get; set; }
 
         public DateTime? DOB { get; set; }
 
@@ -49,7 +49,7 @@ namespace Model.EF
         [StringLength(250)]
         public string Address { get; set; }
 
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         [Required]
         [StringLength(250)]

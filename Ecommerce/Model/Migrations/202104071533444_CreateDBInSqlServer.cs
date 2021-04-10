@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstCreateDBEcommerce : DbMigration
+    public partial class CreateDBInSqlServer : DbMigration
     {
         public override void Up()
         {

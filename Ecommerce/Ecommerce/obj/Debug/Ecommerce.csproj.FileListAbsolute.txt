@@ -81,3 +81,10 @@ F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\obj\Debug\Ecommerce.csproj.CoreCom
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\obj\Debug\Ecommerce.csproj.CopyComplete
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\obj\Debug\Ecommerce.dll
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\obj\Debug\Ecommerce.pdb
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\bin\Model.dll
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\bin\Model.pdb
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\bin\Model.dll.config
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\bin\PagedList.dll
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\bin\PagedList.Mvc.dll
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\bin\PagedList.xml
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Ecommerce\bin\PagedList.Mvc.xml
