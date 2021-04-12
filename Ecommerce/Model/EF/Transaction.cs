@@ -6,8 +6,8 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Transactionn")]
-    public partial class Transactionn
+    [Table("Transaction")]
+    public partial class Transaction
     {
         [Key]
         public long Id { get; set; }
@@ -37,15 +37,17 @@ namespace Model.EF
         public DateTime? CreatedDate { get; set; }
 
         public long IdUser { get; set; }
+        [ForeignKey("IdUser")]
+        public virtual User User { get; set; }
 
         public long IdProduct { get; set; }
-
-        public long IdShop { get; set; }
-
+        [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
 
+        public long IdShop { get; set; }
+        [ForeignKey("IdShop")]
         public virtual Shop Shop { get; set; }
 
-        public virtual User User { get; set; }
+
     }
 }

@@ -9,10 +9,10 @@ namespace Model.EF
     [Table("Order")]
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            OrderDetail = new HashSet<OrderDetail>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
         [Key]
@@ -39,14 +39,16 @@ namespace Model.EF
         public DateTime? CreatedDate { get; set; }
 
         public long IdShop { get; set; }
-
-        public long IdUser { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
-
+        [ForeignKey("IdShop")]
         public virtual Shop Shop { get; set; }
 
+        public long IdUser { get; set; }
+        [ForeignKey("IdUser")]
         public virtual User User { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        
     }
 }

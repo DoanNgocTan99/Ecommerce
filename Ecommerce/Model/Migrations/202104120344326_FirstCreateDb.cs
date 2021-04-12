@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDBInSqlServer : DbMigration
+    public partial class FirstCreateDb : DbMigration
     {
         public override void Up()
         {
@@ -28,7 +28,7 @@
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        Path = c.String(nullable: false, maxLength: 250),
+                        Path = c.String(nullable: false, maxLength: 250, unicode: false),
                         IdProduct = c.Long(),
                         IdCategory = c.Long(),
                         IdUser = c.Long(),
@@ -36,17 +36,14 @@
                         ModifiedBy = c.String(nullable: false, maxLength: 250),
                         ModifiedDate = c.DateTime(),
                         CreatedDate = c.DateTime(),
-                        Category_Id = c.Long(),
-                        Product_Id = c.Long(),
-                        User_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Category", t => t.Category_Id)
-                .ForeignKey("dbo.Product", t => t.Product_Id)
-                .ForeignKey("dbo.User", t => t.User_Id)
-                .Index(t => t.Category_Id)
-                .Index(t => t.Product_Id)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.Product", t => t.IdProduct)
+                .ForeignKey("dbo.User", t => t.IdUser)
+                .ForeignKey("dbo.Category", t => t.IdCategory)
+                .Index(t => t.IdProduct)
+                .Index(t => t.IdCategory)
+                .Index(t => t.IdUser);
             
             CreateTable(
                 "dbo.Product",
@@ -58,31 +55,29 @@
                         Brand = c.String(nullable: false, maxLength: 250),
                         Material = c.String(nullable: false, maxLength: 250),
                         Origin = c.String(nullable: false, maxLength: 250),
-                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        DelPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Price = c.Decimal(nullable: false, precision: 2, scale: 0),
+                        DelPrice = c.Decimal(nullable: false, precision: 2, scale: 0),
                         WarrantyDate = c.DateTime(),
-                        Stock = c.Int(),
-                        Discount = c.Int(),
-                        Views = c.Int(),
-                        Rate = c.Int(),
-                        IsActive = c.Boolean(),
+                        Stock = c.Int(nullable: false),
+                        Discount = c.Int(nullable: false),
+                        Views = c.Int(nullable: false),
+                        Rate = c.Int(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
                         CreatedBy = c.String(nullable: false, maxLength: 250),
                         ModifiedBy = c.String(nullable: false, maxLength: 250),
                         ModifiedDate = c.DateTime(),
                         CreatedDate = c.DateTime(),
                         IdCategory = c.Long(nullable: false),
                         IdShop = c.Long(nullable: false),
-                        Category_Id = c.Long(),
-                        Shop_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Category", t => t.Category_Id)
-                .ForeignKey("dbo.Shop", t => t.Shop_Id)
-                .Index(t => t.Category_Id)
-                .Index(t => t.Shop_Id);
+                .ForeignKey("dbo.Shop", t => t.IdShop, cascadeDelete: true)
+                .ForeignKey("dbo.Category", t => t.IdCategory, cascadeDelete: true)
+                .Index(t => t.IdCategory)
+                .Index(t => t.IdShop);
             
             CreateTable(
-                "dbo.OrderDetails",
+                "dbo.OrderDetail",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -96,30 +91,25 @@
                         ModifiedBy = c.String(nullable: false, maxLength: 250),
                         ModifiedDate = c.DateTime(),
                         CreatedDate = c.DateTime(),
-                        Order_Id = c.Long(),
-                        Shop_Id = c.Long(),
-                        User_Id = c.Long(),
-                        Payment_Id = c.Long(),
-                        Product_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Order", t => t.Order_Id)
-                .ForeignKey("dbo.Shop", t => t.Shop_Id)
-                .ForeignKey("dbo.User", t => t.User_Id)
-                .ForeignKey("dbo.Payment", t => t.Payment_Id)
-                .ForeignKey("dbo.Product", t => t.Product_Id)
-                .Index(t => t.Order_Id)
-                .Index(t => t.Shop_Id)
-                .Index(t => t.User_Id)
-                .Index(t => t.Payment_Id)
-                .Index(t => t.Product_Id);
+                .ForeignKey("dbo.Order", t => t.IdOrder)
+                .ForeignKey("dbo.Shop", t => t.IdShop)
+                .ForeignKey("dbo.User", t => t.IdUser)
+                .ForeignKey("dbo.Payment", t => t.IdPayment)
+                .ForeignKey("dbo.Product", t => t.IdProduct)
+                .Index(t => t.IdOrder)
+                .Index(t => t.IdProduct)
+                .Index(t => t.IdShop)
+                .Index(t => t.IdPayment)
+                .Index(t => t.IdUser);
             
             CreateTable(
                 "dbo.Order",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
-                        Total = c.Decimal(precision: 18, scale: 2),
+                        Total = c.Decimal(precision: 2, scale: 0),
                         IsDelivery = c.Boolean(),
                         OrderCol = c.String(nullable: false, maxLength: 250),
                         CreatedBy = c.String(nullable: false, maxLength: 250),
@@ -128,14 +118,12 @@
                         CreatedDate = c.DateTime(),
                         IdShop = c.Long(nullable: false),
                         IdUser = c.Long(nullable: false),
-                        Shop_Id = c.Long(),
-                        User_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Shop", t => t.Shop_Id)
-                .ForeignKey("dbo.User", t => t.User_Id)
-                .Index(t => t.Shop_Id)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.Shop", t => t.IdShop)
+                .ForeignKey("dbo.User", t => t.IdUser)
+                .Index(t => t.IdShop)
+                .Index(t => t.IdUser);
             
             CreateTable(
                 "dbo.Shop",
@@ -154,7 +142,7 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.ProductAdvertisings",
+                "dbo.ProductAdvertising",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -166,20 +154,17 @@
                         ModifiedBy = c.String(nullable: false, maxLength: 250),
                         ModifiedDate = c.DateTime(),
                         MreatedDate = c.DateTime(),
-                        Image_Id = c.Long(),
-                        Product_Id = c.Long(),
-                        Shop_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Image", t => t.Image_Id)
-                .ForeignKey("dbo.Product", t => t.Product_Id)
-                .ForeignKey("dbo.Shop", t => t.Shop_Id)
-                .Index(t => t.Image_Id)
-                .Index(t => t.Product_Id)
-                .Index(t => t.Shop_Id);
+                .ForeignKey("dbo.Shop", t => t.IdShop)
+                .ForeignKey("dbo.Product", t => t.IdProduct)
+                .ForeignKey("dbo.Image", t => t.IdImage)
+                .Index(t => t.IdProduct)
+                .Index(t => t.IdShop)
+                .Index(t => t.IdImage);
             
             CreateTable(
-                "dbo.Transactionn",
+                "dbo.Transaction",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -193,17 +178,14 @@
                         IdUser = c.Long(nullable: false),
                         IdProduct = c.Long(nullable: false),
                         IdShop = c.Long(nullable: false),
-                        Product_Id = c.Long(),
-                        Shop_Id = c.Long(),
-                        User_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Product", t => t.Product_Id)
-                .ForeignKey("dbo.Shop", t => t.Shop_Id)
-                .ForeignKey("dbo.User", t => t.User_Id)
-                .Index(t => t.Product_Id)
-                .Index(t => t.Shop_Id)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.User", t => t.IdUser, cascadeDelete: true)
+                .ForeignKey("dbo.Shop", t => t.IdShop)
+                .ForeignKey("dbo.Product", t => t.IdProduct)
+                .Index(t => t.IdUser)
+                .Index(t => t.IdProduct)
+                .Index(t => t.IdShop);
             
             CreateTable(
                 "dbo.User",
@@ -215,24 +197,22 @@
                         Password = c.String(nullable: false, maxLength: 250),
                         Email = c.String(nullable: false, maxLength: 250),
                         Phone = c.String(nullable: false, maxLength: 250),
-                        Gender = c.Boolean(),
+                        Gender = c.Boolean(nullable: false),
                         DOB = c.DateTime(),
                         Address = c.String(nullable: false, maxLength: 250),
-                        IsActive = c.Boolean(),
+                        IsActive = c.Boolean(nullable: false),
                         CreatedBy = c.String(nullable: false, maxLength: 250),
                         ModifiedBy = c.String(nullable: false, maxLength: 250),
                         ModifiedDate = c.DateTime(),
                         CreatedDate = c.DateTime(),
                         IdRole = c.Long(nullable: false),
                         IdShop = c.Long(nullable: false),
-                        Role_Id = c.Long(),
-                        Shop_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Role", t => t.Role_Id)
-                .ForeignKey("dbo.Shop", t => t.Shop_Id)
-                .Index(t => t.Role_Id)
-                .Index(t => t.Shop_Id);
+                .ForeignKey("dbo.Role", t => t.IdRole, cascadeDelete: true)
+                .ForeignKey("dbo.Shop", t => t.IdShop, cascadeDelete: true)
+                .Index(t => t.IdRole)
+                .Index(t => t.IdShop);
             
             CreateTable(
                 "dbo.Role",
@@ -267,54 +247,54 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.OrderDetails", "Product_Id", "dbo.Product");
-            DropForeignKey("dbo.OrderDetails", "Payment_Id", "dbo.Payment");
-            DropForeignKey("dbo.Transactionn", "User_Id", "dbo.User");
-            DropForeignKey("dbo.User", "Shop_Id", "dbo.Shop");
-            DropForeignKey("dbo.User", "Role_Id", "dbo.Role");
-            DropForeignKey("dbo.Order", "User_Id", "dbo.User");
-            DropForeignKey("dbo.OrderDetails", "User_Id", "dbo.User");
-            DropForeignKey("dbo.Image", "User_Id", "dbo.User");
-            DropForeignKey("dbo.Transactionn", "Shop_Id", "dbo.Shop");
-            DropForeignKey("dbo.Transactionn", "Product_Id", "dbo.Product");
-            DropForeignKey("dbo.ProductAdvertisings", "Shop_Id", "dbo.Shop");
-            DropForeignKey("dbo.ProductAdvertisings", "Product_Id", "dbo.Product");
-            DropForeignKey("dbo.ProductAdvertisings", "Image_Id", "dbo.Image");
-            DropForeignKey("dbo.Product", "Shop_Id", "dbo.Shop");
-            DropForeignKey("dbo.OrderDetails", "Shop_Id", "dbo.Shop");
-            DropForeignKey("dbo.Order", "Shop_Id", "dbo.Shop");
-            DropForeignKey("dbo.OrderDetails", "Order_Id", "dbo.Order");
-            DropForeignKey("dbo.Image", "Product_Id", "dbo.Product");
-            DropForeignKey("dbo.Product", "Category_Id", "dbo.Category");
-            DropForeignKey("dbo.Image", "Category_Id", "dbo.Category");
-            DropIndex("dbo.User", new[] { "Shop_Id" });
-            DropIndex("dbo.User", new[] { "Role_Id" });
-            DropIndex("dbo.Transactionn", new[] { "User_Id" });
-            DropIndex("dbo.Transactionn", new[] { "Shop_Id" });
-            DropIndex("dbo.Transactionn", new[] { "Product_Id" });
-            DropIndex("dbo.ProductAdvertisings", new[] { "Shop_Id" });
-            DropIndex("dbo.ProductAdvertisings", new[] { "Product_Id" });
-            DropIndex("dbo.ProductAdvertisings", new[] { "Image_Id" });
-            DropIndex("dbo.Order", new[] { "User_Id" });
-            DropIndex("dbo.Order", new[] { "Shop_Id" });
-            DropIndex("dbo.OrderDetails", new[] { "Product_Id" });
-            DropIndex("dbo.OrderDetails", new[] { "Payment_Id" });
-            DropIndex("dbo.OrderDetails", new[] { "User_Id" });
-            DropIndex("dbo.OrderDetails", new[] { "Shop_Id" });
-            DropIndex("dbo.OrderDetails", new[] { "Order_Id" });
-            DropIndex("dbo.Product", new[] { "Shop_Id" });
-            DropIndex("dbo.Product", new[] { "Category_Id" });
-            DropIndex("dbo.Image", new[] { "User_Id" });
-            DropIndex("dbo.Image", new[] { "Product_Id" });
-            DropIndex("dbo.Image", new[] { "Category_Id" });
+            DropForeignKey("dbo.Product", "IdCategory", "dbo.Category");
+            DropForeignKey("dbo.Image", "IdCategory", "dbo.Category");
+            DropForeignKey("dbo.ProductAdvertising", "IdImage", "dbo.Image");
+            DropForeignKey("dbo.Transaction", "IdProduct", "dbo.Product");
+            DropForeignKey("dbo.ProductAdvertising", "IdProduct", "dbo.Product");
+            DropForeignKey("dbo.OrderDetail", "IdProduct", "dbo.Product");
+            DropForeignKey("dbo.OrderDetail", "IdPayment", "dbo.Payment");
+            DropForeignKey("dbo.User", "IdShop", "dbo.Shop");
+            DropForeignKey("dbo.Transaction", "IdShop", "dbo.Shop");
+            DropForeignKey("dbo.Transaction", "IdUser", "dbo.User");
+            DropForeignKey("dbo.User", "IdRole", "dbo.Role");
+            DropForeignKey("dbo.Order", "IdUser", "dbo.User");
+            DropForeignKey("dbo.OrderDetail", "IdUser", "dbo.User");
+            DropForeignKey("dbo.Image", "IdUser", "dbo.User");
+            DropForeignKey("dbo.Product", "IdShop", "dbo.Shop");
+            DropForeignKey("dbo.ProductAdvertising", "IdShop", "dbo.Shop");
+            DropForeignKey("dbo.Order", "IdShop", "dbo.Shop");
+            DropForeignKey("dbo.OrderDetail", "IdShop", "dbo.Shop");
+            DropForeignKey("dbo.OrderDetail", "IdOrder", "dbo.Order");
+            DropForeignKey("dbo.Image", "IdProduct", "dbo.Product");
+            DropIndex("dbo.User", new[] { "IdShop" });
+            DropIndex("dbo.User", new[] { "IdRole" });
+            DropIndex("dbo.Transaction", new[] { "IdShop" });
+            DropIndex("dbo.Transaction", new[] { "IdProduct" });
+            DropIndex("dbo.Transaction", new[] { "IdUser" });
+            DropIndex("dbo.ProductAdvertising", new[] { "IdImage" });
+            DropIndex("dbo.ProductAdvertising", new[] { "IdShop" });
+            DropIndex("dbo.ProductAdvertising", new[] { "IdProduct" });
+            DropIndex("dbo.Order", new[] { "IdUser" });
+            DropIndex("dbo.Order", new[] { "IdShop" });
+            DropIndex("dbo.OrderDetail", new[] { "IdUser" });
+            DropIndex("dbo.OrderDetail", new[] { "IdPayment" });
+            DropIndex("dbo.OrderDetail", new[] { "IdShop" });
+            DropIndex("dbo.OrderDetail", new[] { "IdProduct" });
+            DropIndex("dbo.OrderDetail", new[] { "IdOrder" });
+            DropIndex("dbo.Product", new[] { "IdShop" });
+            DropIndex("dbo.Product", new[] { "IdCategory" });
+            DropIndex("dbo.Image", new[] { "IdUser" });
+            DropIndex("dbo.Image", new[] { "IdCategory" });
+            DropIndex("dbo.Image", new[] { "IdProduct" });
             DropTable("dbo.Payment");
             DropTable("dbo.Role");
             DropTable("dbo.User");
-            DropTable("dbo.Transactionn");
-            DropTable("dbo.ProductAdvertisings");
+            DropTable("dbo.Transaction");
+            DropTable("dbo.ProductAdvertising");
             DropTable("dbo.Shop");
             DropTable("dbo.Order");
-            DropTable("dbo.OrderDetails");
+            DropTable("dbo.OrderDetail");
             DropTable("dbo.Product");
             DropTable("dbo.Image");
             DropTable("dbo.Category");

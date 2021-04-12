@@ -7,13 +7,13 @@ namespace Model.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class DelUserGenderNotNull : IMigrationMetadata
+    public sealed partial class FirstCreateDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DelUserGenderNotNull));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstCreateDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104081701339_DelUserGenderNotNull"; }
+            get { return "202104120344326_FirstCreateDb"; }
         }
         
         string IMigrationMetadata.Source

@@ -9,13 +9,13 @@ namespace Model.EF
     [Table("Product")]
     public partial class Product
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
             Images = new HashSet<Image>();
-            OrderDetail = new HashSet<OrderDetail>();
-            ProductAdvertising = new HashSet<ProductAdvertising>();
-            Transactionns = new HashSet<Transactionn>();
+            OrderDetails = new HashSet<OrderDetail>();
+            ProductAdvertisings = new HashSet<ProductAdvertising>();
+            Transactions = new HashSet<Transaction>();
         }
 
         [Key]
@@ -47,15 +47,15 @@ namespace Model.EF
 
         public DateTime? WarrantyDate { get; set; }
 
-        public int? Stock { get; set; }
+        public int Stock { get; set; }
 
-        public int? Discount { get; set; }
+        public int Discount { get; set; }
 
-        public int? Views { get; set; }
+        public int Views { get; set; }
 
-        public int? Rate { get; set; }
+        public int Rate { get; set; }
 
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         [Required]
         [StringLength(250)]
@@ -70,23 +70,24 @@ namespace Model.EF
         public DateTime? CreatedDate { get; set; }
 
         public long IdCategory { get; set; }
-
-        public long IdShop { get; set; }
-
+        [ForeignKey("IdCategory")]
         public virtual Category Category { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Image> Images { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
-
+        public long IdShop { get; set; }
+        [ForeignKey("IdShop")]
         public virtual Shop Shop { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductAdvertising> ProductAdvertising { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transactionn> Transactionns { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductAdvertising> ProductAdvertisings { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

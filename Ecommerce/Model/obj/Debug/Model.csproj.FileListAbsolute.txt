@@ -10,11 +10,9 @@ F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.csproj.CoreCompileInpu
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.csproj.CopyComplete
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.dll
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.pdb
-F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.Migrations.CreateDBInSqlServer.resources
-F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.csproj.GenerateResource.cache
-F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.Migrations.DelUserIsActiveNotNull.resources
-F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.Migrations.DelUserGenderNotNull.resources
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.dll
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.Mvc.dll
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.xml
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.Mvc.xml
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.Migrations.FirstCreateDb.resources
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.csproj.GenerateResource.cache
