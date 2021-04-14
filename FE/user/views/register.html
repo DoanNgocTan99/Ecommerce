@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Register</title>
+<link
+href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+<link rel="stylesheet"
+href="../assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../assets/css/register.css" />
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+    src="../assets/js/bootstrap.min.js" /></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4 login-section-wrapper">
+				<div class="login-wrapper my-auto">
+                    <img src="../assets/images/logo-login-big.png" alt="logo" class="logo">
+				
+					<form action="login" method="post">
+						<div class="form-group">
+							<label for="email">Email</label> <input id="email" class="form-control" type="text" name="email" placeholder="Email*" value="" autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="username">Username</label> <input id="username" class="form-control" type="text" name="username" placeholder="Username*" value="" autocomplete="off" required>
+						</div>
+						<div class="form-group ">
+							<label for="password">Password</label> <input id="password" class="form-control" type="password" name="password" placeholder="Password*" value=""autocomplete="off" required>
+						</div>
+						<div class="form-group">
+							<label for="confirm_password">Confirm Password</label> <input id="confirm_password" class="form-control" onkeyup="checkPass()" type="password" name="confirm_password" placeholder="Confirm Password*" value=""autocomplete="off" required  >
+						
+						</div>
+						<span id='message'></span>
+						<button name="register" id="register" class="btn btn-block login-btn"
+							type="submit">Register</button>	
+					</form>
+					
+					<a href="#!" class="have-account">Do you have an account?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function checkPass() {
+			if (document.getElementById('password').value == document
+					.getElementById('confirm_password').value) {
+				document.getElementById('message').style.color = 'green';
+				document.getElementById('message').innerHTML = 'matching';
+			} else {
+				document.getElementById('message').style.color = 'red';
+				document.getElementById('message').innerHTML = 'not matching';
+			}
+		}
+	</script>
+</body>
+</html>
