@@ -5,17 +5,24 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+    [Table("ProductAdvertising")]
     public partial class ProductAdvertising
     {
         [Key]
         public long Id { get; set; }
 
         public long IdProduct { get; set; }
+        [ForeignKey("IdProduct")]
+        public virtual Product Product { get; set; }
+
 
         public long IdShop { get; set; }
+        [ForeignKey("IdShop")]
+        public virtual Shop Shop { get; set; }
 
         public long IdImage { get; set; }
+        [ForeignKey("IdImage")]
+        public virtual Image Image { get; set; }
 
         [Column(TypeName = "text")]
         public string Content { get; set; }
@@ -32,10 +39,7 @@ namespace Model.EF
 
         public DateTime? MreatedDate { get; set; }
 
-        public virtual Image Image { get; set; }
 
-        public virtual Product Product { get; set; }
 
-        public virtual Shop Shop { get; set; }
     }
 }
