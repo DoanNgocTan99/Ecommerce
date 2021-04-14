@@ -886,9 +886,13 @@ button.search_btn {
 ====================*/
 
 #aa-slider {
+  padding-top: 1%;
+  padding-left: 9%;
   float: left;
   display: inline;
   width: 100%;
+  padding-right: 9%;
+
 }
 #aa-slider .aa-slider-area {
   display: inline;
