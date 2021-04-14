@@ -133,6 +133,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Seller\Controllers\BaseController.cs" />
     <Compile Include="Areas\Seller\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Seller\Controllers\HomeController.cs" />
@@ -3205,6 +3210,8 @@
     <Content Include="Areas\Seller\Views\Category\Index.cshtml" />
     <Content Include="Areas\Seller\Views\Category\Create.cshtml" />
     <Content Include="Areas\Seller\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3235,6 +3242,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Login\" />
     <Folder Include="Areas\Seller\Data\" />
     <Folder Include="Areas\Seller\Views\Base\" />
     <Folder Include="Areas\Seller\Views\Shop\" />
