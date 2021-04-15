@@ -31,7 +31,7 @@ namespace Model.DAO
         }
         public int Login(string username, string password)
         {
-            var result = db.Users.SingleOrDefault(x => x.UserName == username);
+            var result = db.Users.FirstOrDefault(x => x.UserName == username);
             if (result == null)
             {
                 return 0;
@@ -59,7 +59,7 @@ namespace Model.DAO
         }
         public User GetByUserName(string userName)
         {
-            return db.Users.SingleOrDefault(x => x.UserName == userName);
+            return db.Users.FirstOrDefault(x => x.UserName == userName);
         }
         public long Insert(User entity)
         {

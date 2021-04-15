@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -21,12 +21,15 @@ namespace Model.EF
 
         [Required]
         [StringLength(250)]
+        [Display(Name = "Tên Doanh Mục")]
         public string Name { get; set; }
 
         [Required]
         [StringLength(250)]
+        [Display(Name = "Mô Tả")]
         public string Description { get; set; }
 
+        [Display(Name = "Trạng Thái")]
         public bool IsActive { get; set; }
 
         [Required]

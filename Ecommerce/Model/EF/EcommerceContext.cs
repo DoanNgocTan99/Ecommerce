@@ -45,7 +45,9 @@ namespace Model.EF
                 .WithRequired(e => e.Image)
                 .HasForeignKey(e => e.IdImage)
                 .WillCascadeOnDelete(false);
-
+            modelBuilder.Entity<Image>().Property(p => p.IdCategory).IsOptional();
+            modelBuilder.Entity<Image>().Property(p => p.IdProduct).IsOptional();
+            modelBuilder.Entity<Image>().Property(p => p.IdUser).IsOptional();
             modelBuilder.Entity<Order>()
                 .Property(e => e.Total)
                 .HasPrecision(2, 0);

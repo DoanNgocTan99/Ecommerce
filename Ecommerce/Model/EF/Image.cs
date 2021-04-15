@@ -22,15 +22,15 @@ namespace Model.EF
         [StringLength(250)]
         public string Path { get; set; }
 
-        public long? IdProduct { get; set; }
+        public long IdProduct { get; set; }
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
 
-        public long? IdCategory { get; set; }
+        public long IdCategory { get; set; }
         [ForeignKey("IdProduct")]
         public virtual Category Category { get; set; }
 
-        public long? IdUser { get; set; }
+        public long IdUser { get; set; }
         [ForeignKey("IdUser")]
         public virtual User User { get; set; }
 
