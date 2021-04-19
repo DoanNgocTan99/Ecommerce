@@ -9,7 +9,6 @@ namespace Model.EF
     [Table("User")]
     public partial class User
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
             Images = new HashSet<Image>();
@@ -59,9 +58,9 @@ namespace Model.EF
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public long IdRole { get; set; }
         [ForeignKey("IdRole")]

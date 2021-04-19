@@ -71,9 +71,20 @@ namespace Model.DAO
                 return false;
             }
         }
+        public List<Category> ListAll()
+        {
+            return db.Categories.ToList();
+        }
         //public ProductCategory ViewDetail(long id)
         //{
         //    return db.ProductCategories.Find(id);
         //}
+        public bool ChangeStatus(long id)
+        {
+            var category = db.Categories.Find(id);
+            category.IsActive = !category.IsActive;
+            db.SaveChanges();
+            return category.IsActive;
+        }
     }
 }

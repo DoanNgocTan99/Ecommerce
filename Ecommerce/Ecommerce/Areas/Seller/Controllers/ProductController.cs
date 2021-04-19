@@ -8,74 +8,81 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Areas.Seller.Controllers
 {
-    public class CategoryController : BaseController
+    public class ProductController : BaseController
     {
-        // GET: Seller/Category
+        // GET: Seller/Products
+        
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
-            var dao = new CategoryDAO();
+            var dao = new ProductDAO();
             var model = dao.ListAllPaging(searchString, page, pageSize);
-
+            ViewBag.SearchString = searchString;
             return View(model);
         }
         [HttpGet]
         public ActionResult Create()
         {
+            SetViewBag();
             return View();
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(Category category)
+        public ActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var dao = new CategoryDAO();
+                var dao = new ProductDAO();
 
 
-                long id = dao.Insert(category);
+                long id = dao.Insert(product);
                 if (id > 0)
                 {
-                    SetAlert("Thêm mới doanh mục thành công!!", "success");
-                    return RedirectToAction("Index", "Category");
+                    SetAlert("Thêm mới sản phẩm thành công!!", "success");
+                    return RedirectToAction("Index", "Product");
+
                 }
                 else
                 {
 
-                    ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                    ModelState.AddModelError("", "Thêm sản phẩm không thành công");
                 }
 
             }
+            SetViewBag();
             return View("Index");
         }
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var user = new CategoryDAO().ViewDetail(id);
-            return View(user);
+            var product = new ProductDAO().ViewDetail(id);
+            SetViewBag(product.IdCategory, product.IdShop);
+            return View(product);
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Category category)
+        public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {
-                var dao = new CategoryDAO();
+                var dao = new ProductDAO();
 
 
-                var result = dao.Update(category);
+                var result = dao.Update(product);
                 if (result)
                 {
-                    SetAlert("Cập nhập doanh mục thành công!!", "success");
+                    SetAlert("Cập nhập sản phẩm thành công!!", "success");
 
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Product");
+
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                    ModelState.AddModelError("", "Cập nhập sản phẩm không thành công");
                 }
 
             }
+            SetViewBag(product.IdCategory, product.IdShop);
             return View("Index");
         }
         public ActionResult Delete(int Id)
@@ -84,24 +91,24 @@ namespace Ecommerce.Areas.Seller.Controllers
 
             return RedirectToAction("Index");
         }
+
         public JsonResult ChangeStatus(long id)
         {
-            var result = new CategoryDAO().ChangeStatus(id);
+            var result = new ProductDAO().ChangeStatus(id);
             return Json(new
             {
                 status = result
+               
             });
         }
-        public void SetViewBag(long? selectIdCategory = null, long? selectIdProduct = null, long? selectIdUser = null)
+        public void SetViewBag(long? selectIdCategory = null, long? selectIdShop = null)
         {
             var dao_Category = new CategoryDAO();
             ViewBag.IdCategory = new SelectList(dao_Category.ListAll(), "Id", "Name", selectIdCategory);
 
-            var dao_User = new UserDAO();
-            ViewBag.IdUser = new SelectList(dao_User.ListAll(), "Id", "Name", selectIdUser);
+            var dao_Shop = new ShopDAO();
+            ViewBag.IdShop = new SelectList(dao_Shop.ListAll(), "Id", "Name", selectIdShop);
 
-            var dao_Product = new ProductDAO();
-            ViewBag.IdProduct = new SelectList(dao_Product.ListAll(), "Id", "Name", selectIdProduct);
         }
     }
 }
