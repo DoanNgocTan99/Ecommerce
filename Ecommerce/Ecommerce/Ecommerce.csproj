@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Seller\Controllers\AdminController.cs" />
     <Compile Include="Areas\Seller\Controllers\BaseController.cs" />
     <Compile Include="Areas\Seller\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Seller\Controllers\HomeController.cs" />
@@ -3244,6 +3245,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Seller\Data\" />
+    <Folder Include="Areas\Seller\Views\Admin\" />
     <Folder Include="Areas\Seller\Views\Base\" />
     <Folder Include="Areas\Seller\Views\Shop\" />
     <Folder Include="Assets\Admin\" />

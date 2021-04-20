@@ -11,7 +11,7 @@ namespace Ecommerce.Areas.Seller.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Seller/Login
+        // GET: Seller/Loginq
         public ActionResult Index()
         {
             return View();
