@@ -2639,6 +2639,8 @@ a.aa-product-img img {
 
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs {
     text-align: center;
+    padding-left: 450px;
+    position: relative;
 }
 
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs li {
