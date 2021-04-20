@@ -14,5 +14,5 @@ F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.dll
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.Mvc.dll
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.xml
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\bin\Debug\PagedList.Mvc.xml
-F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.Migrations.FirstCreateDb.resources
+F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.Migrations.CreateDB.resources
 F:\Workspace\ASP.NET\DOAN\Ecommerce\Model\obj\Debug\Model.csproj.GenerateResource.cache
