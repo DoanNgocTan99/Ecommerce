@@ -22,17 +22,17 @@ namespace Model.EF
         [StringLength(250)]
         public string Nam { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Type { get; set; }
 
         public bool Allow { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 

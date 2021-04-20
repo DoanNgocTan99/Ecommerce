@@ -37,15 +37,15 @@ namespace Model.EF
 
 
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Messagee { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 

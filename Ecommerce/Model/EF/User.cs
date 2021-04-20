@@ -32,11 +32,11 @@ namespace Model.EF
         [StringLength(250)]
         public string Password { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Email { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Phone { get; set; }
 
@@ -44,17 +44,17 @@ namespace Model.EF
 
         public DateTime? DOB { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Address { get; set; }
 
         public bool IsActive { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 

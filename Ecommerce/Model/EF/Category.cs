@@ -32,23 +32,23 @@
         [Display(Name = "Trạng Thái")]
         public bool IsActive { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string CategoryCol { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         [Display(Name = "Người tạo")]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         [Display(Name = "Người chỉnh sửa")]
         public string ModifiedBy { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }

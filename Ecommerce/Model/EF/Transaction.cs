@@ -12,23 +12,23 @@ namespace Model.EF
         [Key]
         public long Id { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Address { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Amount { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string Status { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 

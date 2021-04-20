@@ -26,11 +26,11 @@ namespace Model.EF
         [StringLength(250)]
         public string Description { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 

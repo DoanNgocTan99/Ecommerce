@@ -27,11 +27,11 @@ namespace Model.EF
         [Column(TypeName = "text")]
         public string Content { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 

@@ -38,12 +38,12 @@
         public virtual User User { get; set; }
 
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         [Display(Name = "Người tạo")]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         [Display(Name = "Người chỉnh sửa")]
         public string ModifiedBy { get; set; }

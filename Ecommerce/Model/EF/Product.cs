@@ -31,29 +31,36 @@
         [Display(Name = "Mô tả")]
         public string Description { get; set; }
 
+        [Display(Name="Thương hiệu")]
         [Required]
         [StringLength(250)]
         public string Brand { get; set; }
 
-        [Required]
+        [Display(Name = "Chất liệu")]
+        //[Required]
         [StringLength(250)]
         public string Material { get; set; }
 
+        [Display(Name = "Nơi Sản Xuất")]
         [Required]
         [StringLength(250)]
         public string Origin { get; set; }
 
         [Display(Name = "Giá")]
         public decimal Price { get; set; }
+
         [Display(Name = "Giá giảm")]
         public decimal DelPrice { get; set; }
 
+
         public DateTime WarrantyDate { get; set; }
+
 
         public int Stock { get; set; }
 
         [Display(Name = "Giá giảm của SHOP")]
         public int Discount { get; set; }
+        [Display(Name = "Lượt xem")]
 
         public int Views { get; set; }
 
@@ -62,12 +69,12 @@
         [Display(Name = "Trạng thái")]
         public bool IsActive { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         [Display(Name = "Người tạo")]
         public string CreatedBy { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(250)]
         [Display(Name = "Người chỉnh sửa")]
         public string ModifiedBy { get; set; }
