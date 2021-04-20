@@ -188,6 +188,7 @@
 }
 
 .owl-carousel .owl-item {
+    height: 340px;
     position: relative;
     min-height: 1px;
     float: left;

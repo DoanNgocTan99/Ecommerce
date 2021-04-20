@@ -1383,6 +1383,11 @@ input.search_input {
     border-color: transparent;
 }
 
+.col-xl-3.col-lg-4.col-md-4.col-12 {
+    height: 350px;
+    width: 100%;
+}
+
 
 /* Header Sticky */
 
@@ -2139,7 +2144,9 @@ input.search_input {
 }
 
 .single-product .product-img a img {
+    height: 70%;
     width: 100%;
+    object-fit: cover;
 }
 
 .single-product .product-img a img.hover-img {
