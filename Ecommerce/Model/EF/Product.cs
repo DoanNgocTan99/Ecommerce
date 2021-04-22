@@ -13,9 +13,8 @@
         public Product()
         {
             Images = new HashSet<Image>();
-            OrderDetails = new HashSet<OrderDetail>();
             ProductAdvertisings = new HashSet<ProductAdvertising>();
-            Transactions = new HashSet<Transaction>();
+            Orders = new HashSet<Order>();
         }
 
         [Key]
@@ -23,7 +22,7 @@
 
         [Required]
         [StringLength(250)]
-        [Display(Name="Tên sản phẩm")]
+        [Display(Name = "Tên sản phẩm")]
         public string Name { get; set; }
 
         [Required]
@@ -31,7 +30,7 @@
         [Display(Name = "Mô tả")]
         public string Description { get; set; }
 
-        [Display(Name="Thương hiệu")]
+        [Display(Name = "Thương hiệu")]
         [Required]
         [StringLength(250)]
         public string Brand { get; set; }
@@ -94,16 +93,10 @@
         public virtual Shop Shop { get; set; }
 
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<ProductAdvertising> ProductAdvertisings { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

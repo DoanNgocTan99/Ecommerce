@@ -9,10 +9,9 @@ namespace Model.EF
     [Table("Payment")]
     public partial class Payment
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Payment()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            Orders = new HashSet<Order>();
         }
 
         [Key]
@@ -20,7 +19,7 @@ namespace Model.EF
 
         [Required]
         [StringLength(250)]
-        public string Nam { get; set; }
+        public string Name { get; set; }
 
         //[Required]
         [StringLength(250)]
@@ -40,7 +39,6 @@ namespace Model.EF
 
         public DateTime CreatedDate { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

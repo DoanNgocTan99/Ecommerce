@@ -10,16 +10,12 @@
     [Table("Image")]
     public partial class Image
     {
-        public Image()
-        {
-            ProductAdvertisings = new HashSet<ProductAdvertising>();
-        }
         [Key]
         public long Id { get; set; }
 
         [Required]
-        [StringLength(250)]
-        [Display(Name ="Đường Dẫn")]
+        [StringLength(500)]
+        [Display(Name = "Đường Dẫn")]
         public string Path { get; set; }
 
         [Display(Name = "Loại Sản Phẩm")]
@@ -37,13 +33,16 @@
         [ForeignKey("IdUser")]
         public virtual User User { get; set; }
 
+        [Display(Name = "Người tạo")]
+        public long IdShop { get; set; }
+        [ForeignKey("IdShop")]
+        public virtual Shop Shop { get; set; }
 
-        //[Required]
+
         [StringLength(250)]
         [Display(Name = "Người tạo")]
         public string CreatedBy { get; set; }
 
-        //[Required]
         [StringLength(250)]
         [Display(Name = "Người chỉnh sửa")]
         public string ModifiedBy { get; set; }
@@ -52,8 +51,6 @@
 
         public DateTime CreatedDate { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductAdvertising> ProductAdvertisings { get; set; }
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
     }

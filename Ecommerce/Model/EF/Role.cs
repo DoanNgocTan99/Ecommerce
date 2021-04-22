@@ -9,7 +9,6 @@ namespace Model.EF
     [Table("Role")]
     public partial class Role
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
             Users = new HashSet<User>();
@@ -22,15 +21,9 @@ namespace Model.EF
         [StringLength(250)]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(250)]
-        public string Description { get; set; }
-
-        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
@@ -38,7 +31,6 @@ namespace Model.EF
 
         public DateTime CreatedDate { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Model.EF;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,11 +31,24 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dao = new CategoryDAO();
 
+                var dao = new CategoryDAO();
+                //return file name
+                string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                //return type file
+                string extension = Path.GetExtension(category.ImageFile.FileName);
+
+                //return file name 
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                //category.Path = "~/Image/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+                category.ImageFile.SaveAs(fileName);
 
                 long id = dao.Insert(category);
-                if (id > 0)
+
+                var ImageDao = new ImageDAO();
+                bool check = ImageDao.Insert(id, fileName);
+                if (check)
                 {
                     SetAlert("Thêm mới doanh mục thành công!!", "success");
                     return RedirectToAction("Index", "Category");

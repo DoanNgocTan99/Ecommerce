@@ -14,7 +14,6 @@ namespace Model.EF
 
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -23,6 +22,7 @@ namespace Model.EF
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<DeliveryStatus> DeliveryStatuses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -40,60 +40,33 @@ namespace Model.EF
                 .Property(e => e.Path)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Image>()
-                .HasMany(e => e.ProductAdvertisings)
-                .WithRequired(e => e.Image)
-                .HasForeignKey(e => e.IdImage)
-                .WillCascadeOnDelete(false);
             modelBuilder.Entity<Image>().Property(p => p.IdCategory).IsOptional();
             modelBuilder.Entity<Image>().Property(p => p.IdProduct).IsOptional();
             modelBuilder.Entity<Image>().Property(p => p.IdUser).IsOptional();
-            modelBuilder.Entity<Order>()
-                .Property(e => e.Total)
-                .HasPrecision(2, 0);
-
-            modelBuilder.Entity<Order>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.Order)
-                .HasForeignKey(e => e.IdOrder)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Payment>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.Payment)
-                .HasForeignKey(e => e.IdPayment)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Image>().Property(p => p.IdShop).IsOptional();
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Price)
                 .HasPrecision(2, 0);
 
+
             modelBuilder.Entity<Product>()
                 .Property(e => e.DelPrice)
                 .HasPrecision(2, 0);
-
+            //modelBuilder.Entity<Product>()
+            //    .HasRequired(e => e.IdShop)
+            //    .WithMany()
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.Images)
                 .WithOptional(e => e.Product)
                 .HasForeignKey(e => e.IdProduct);
 
             modelBuilder.Entity<Product>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.Product)
-                .HasForeignKey(e => e.IdProduct)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
                 .HasMany(e => e.ProductAdvertisings)
                 .WithRequired(e => e.Product)
                 .HasForeignKey(e => e.IdProduct)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.Transactions)
-                .WithRequired(e => e.Product)
-                .HasForeignKey(e => e.IdProduct)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProductAdvertising>()
                 .Property(e => e.Content)
@@ -103,12 +76,6 @@ namespace Model.EF
                 .HasMany(e => e.Users)
                 .WithRequired(e => e.Role)
                 .HasForeignKey(e => e.IdRole);
-
-            modelBuilder.Entity<Shop>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.Shop)
-                .HasForeignKey(e => e.IdShop)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Shop>()
                 .HasMany(e => e.Orders)
@@ -122,21 +89,19 @@ namespace Model.EF
                 .HasForeignKey(e => e.IdShop);
 
             modelBuilder.Entity<Shop>()
-                .HasMany(e => e.ProductAdvertisings)
-                .WithRequired(e => e.Shop)
-                .HasForeignKey(e => e.IdShop)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Shop>()
-                .HasMany(e => e.Transactions)
-                .WithRequired(e => e.Shop)
-                .HasForeignKey(e => e.IdShop)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Shop>()
                 .HasMany(e => e.Users)
                 .WithRequired(e => e.Shop)
                 .HasForeignKey(e => e.IdShop);
+
+            modelBuilder.Entity<Shop>()
+                .HasMany(e => e.Images)
+                .WithRequired(e => e.Shop)
+                .HasForeignKey(e => e.IdShop);
+
+            modelBuilder.Entity<Transaction>()
+                            .HasMany(e => e.Orders)
+                            .WithRequired(e => e.Transaction)
+                            .HasForeignKey(e => e.IdTransaction);
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Images)
@@ -144,21 +109,17 @@ namespace Model.EF
                 .HasForeignKey(e => e.IdUser);
 
             modelBuilder.Entity<User>()
-                .HasMany(e => e.OrderDetails)
-                .WithRequired(e => e.User)
-                .HasForeignKey(e => e.IdUser)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.Orders)
-                .WithRequired(e => e.User)
-                .HasForeignKey(e => e.IdUser)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<User>()
                 .HasMany(e => e.Transactions)
                 .WithRequired(e => e.User)
                 .HasForeignKey(e => e.IdUser);
+
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Images)
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.IdUser);
+
+            //modelBuilder.Entity<User>().Property(p => p.IdShop).IsOptional();
         }
     }
 }

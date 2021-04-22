@@ -9,24 +9,29 @@ namespace Model.EF
     [Table("Order")]
     public partial class Order
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            OrderDetails = new HashSet<OrderDetail>();
-        }
+
 
         [Key]
         public long Id { get; set; }
 
-        public decimal? Total { get; set; }
+        public long IdTransaction { get; set; }
+        [ForeignKey("IdTransaction")]
+        public virtual Transaction Transaction { get; set; }
 
-        public bool? IsDelivery { get; set; }
+        public long IdProduct { get; set; }
+        [ForeignKey("IdProduct")]
+        public virtual Product Product { get; set; }
+        public long IdShop { get; set; }
+        [ForeignKey("IdShop")]
+        public virtual Shop Shop { get; set; }
 
-        [Required]
+        public long IdPayment { get; set; }
+        [ForeignKey("IdPayment")]
+        public virtual Payment Payment { get; set; }
+
         [StringLength(250)]
-        public string OrderCol { get; set; }
+        public string Message { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
@@ -34,21 +39,11 @@ namespace Model.EF
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-        public long IdShop { get; set; }
-        [ForeignKey("IdShop")]
-        public virtual Shop Shop { get; set; }
 
-        public long IdUser { get; set; }
-        [ForeignKey("IdUser")]
-        public virtual User User { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-
-        
     }
 }

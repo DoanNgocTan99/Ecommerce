@@ -16,22 +16,12 @@ namespace Model.EF
         public virtual Product Product { get; set; }
 
 
-        public long IdShop { get; set; }
-        [ForeignKey("IdShop")]
-        public virtual Shop Shop { get; set; }
-
-        public long IdImage { get; set; }
-        [ForeignKey("IdImage")]
-        public virtual Image Image { get; set; }
-
         [Column(TypeName = "text")]
         public string Content { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 

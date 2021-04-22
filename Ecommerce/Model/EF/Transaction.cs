@@ -9,45 +9,40 @@ namespace Model.EF
     [Table("Transaction")]
     public partial class Transaction
     {
+        public Transaction()
+        {
+            Orders = new HashSet<Order>();
+        }
         [Key]
         public long Id { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string Address { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string Amount { get; set; }
 
-        //[Required]
         [StringLength(250)]
-        public string Status { get; set; }
+        public string CheckoutStatus { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public long IdUser { get; set; }
         [ForeignKey("IdUser")]
         public virtual User User { get; set; }
 
-        public long IdProduct { get; set; }
-        [ForeignKey("IdProduct")]
-        public virtual Product Product { get; set; }
-
-        public long IdShop { get; set; }
-        [ForeignKey("IdShop")]
-        public virtual Shop Shop { get; set; }
-
+        public long IdDeliveryStatus { get; set; }
+        [ForeignKey("IdDeliveryStatus")]
+        public virtual DeliveryStatus DeliveryStatus { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
     }
 }

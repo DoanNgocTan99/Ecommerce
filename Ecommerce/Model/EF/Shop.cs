@@ -9,15 +9,12 @@ namespace Model.EF
     [Table("Shop")]
     public partial class Shop
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Shop()
         {
-            OrderDetails = new HashSet<OrderDetail>();
             Orders = new HashSet<Order>();
             Products = new HashSet<Product>();
-            ProductAdvertisings = new HashSet<ProductAdvertising>();
-            Transactions = new HashSet<Transaction>();
             Users = new HashSet<User>();
+            Images = new HashSet<Image>();
         }
 
         [Key]
@@ -39,11 +36,9 @@ namespace Model.EF
         [StringLength(250)]
         public string Phone { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string CreatedBy { get; set; }
 
-        //[Required]
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
@@ -51,22 +46,10 @@ namespace Model.EF
 
         public DateTime CreatedDate { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
-
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductAdvertising> ProductAdvertisings { get; set; }
-
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
-
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

@@ -34,14 +34,45 @@ namespace Model.DAO
 
         }
 
-        public long Insert(Image image)
+        //public long Insert(Image image)
+        //{
+        //    try
+        //    {
+
+        //        db.Images.Add(image);
+        //        db.SaveChanges();
+        //        return image.Id;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+        public bool Insert(long idCategory, string path)
         {
             try
             {
+                var image = new Image();
 
-                db.Images.Add(image);
+                image.IdCategory = idCategory;
+                image.Path = path;
+                image.CreatedDate = DateTime.Now;
+                image.ModifiedDate = DateTime.Now;
+
+                long id = db.Images.Add(image).Id;
+
+                //db.Images.Add(new Image
+                //{
+                //    IdCategory = idCategory,
+                //    ModifiedDate = DateTime.Now,
+                //    CreatedDate = DateTime.Now,
+
+                //    Path = path
+                //});
                 db.SaveChanges();
-                return image.Id;
+                //db.SaveChangesAsync();
+
+                return true;
             }
             catch (Exception ex)
             {
