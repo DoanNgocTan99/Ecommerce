@@ -645,7 +645,7 @@ Version:1.0
 }
 
 .header .shopping-list li .remove:hover {
-    background: #222;
+    background: #ec2424;
     color: #fff !important;
     border-color: transparent;
 }
@@ -787,6 +787,11 @@ button.search_btn {
     right: 66px;
     height: 35px;
     background-color: #ea680e;
+}
+
+button.search_btn:hover {
+    color: #fff;
+    background-color: #343a40;
 }
 
 input.search_input {
@@ -1865,9 +1870,12 @@ input.search_input {
 ========================================*/
 
 .small-banner {
-    height: 40%;
     padding: 30px 0;
     padding-bottom: 0;
+}
+
+.col-lg-4.col-md-4.col-12 {
+    height: 400px;
 }
 
 .small-banner .single-banner {
@@ -1876,7 +1884,7 @@ input.search_input {
 }
 
 .small-banner .single-banner img {
-    height: 40%;
+    height: 80%;
     width: 100%;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -2092,8 +2100,55 @@ input.search_input {
 }
 
 .product-area .nav-tabs .nav-item {
-    margin-bottom: -1px;
     display: inline-block;
+}
+
+img.category-img {
+    /* object-fit: cover; */
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+a.action {
+    color: black;
+}
+
+button.btn-info {
+    width: 100px;
+    height: 30px;
+}
+
+button.btn-info:hover {
+    background-color: #F7941D;
+}
+
+h1.checkout-form-title-ordered {
+    margin-top: 100px;
+    font-size: 30px;
+    padding: 5px 0;
+    background: #333;
+    text-align: center;
+    color: #fcac4a;
+    margin-bottom: 30px;
+}
+
+h2.checkout-form-title-ordered {
+    font-size: 30px;
+    padding: 5px 0;
+    background: #333;
+    text-align: center;
+    color: #f1a951;
+}
+
+h2.checkout-form-title {
+    margin-bottom: 20px;
+    padding: 5px 0;
+    color: wheat;
+    background: #F7941D;
+    text-align: center;
+    color: white;
 }
 
 .product-area .nav-tabs li a {
@@ -3835,6 +3890,12 @@ input.search_input {
     color: #fff;
 }
 
+img.icon-user {
+    border-radius: 43px;
+    width: 50px;
+    height: 40px;
+}
+
 
 /*======================================
    End Shopping Cart CSS
@@ -3848,12 +3909,16 @@ input.search_input {
 .shop.checkout {
     padding: 0;
     background: #fff;
-    padding-top: 20px;
     padding-bottom: 50px;
 }
 
+.aa-catg-nav li {
+    padding: 10px;
+}
+
 .shop.checkout .checkout-form {
-    margin-top: 30px;
+    margin-top: 10px;
+    padding: 1px 20px;
 }
 
 .shop.checkout .checkout-form h2 {

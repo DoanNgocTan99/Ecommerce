@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -122,12 +122,7 @@
     <script src="../assets/js2/map-script.js"></script>
 </head>
 
-<body class="js">
-
-
-
-
-    <!-- Header -->
+<body>
     <header class="header shop">
         <!-- Topbar -->
         <div class="topbar">
@@ -148,7 +143,7 @@
                         <!-- Top Right -->
                         <div class="right-content">
                             <ul class="list-main">
-                                <li><i class="fa fa-user-circle"></i> <a href="edituser.html">Tài khoản</a></li>
+                                <li><i class="fa fa-user-circle"></i> <a href="#">Tài khoản</a></li>
                                 <li><i class="fa fa-power-off"></i><a href="login.html#">Đăng nhập</a></li>
                                 <li><i class="fa fa-sign-in-alt"></i><a href="logout.html#">Đăng xuất</a></li>
                             </ul>
@@ -208,7 +203,7 @@
                                         <span>Total</span>
                                         <span class="total-amount">$134.00</span>
                                     </div>
-                                    <a href="checkout.html" class="btn animate">Checkout</a>
+                                    <a href="checkout.html" class="btn animate">Thanh toán</a>
                                 </div>
                             </div>
                             <!--/ End Shopping Item -->
@@ -257,9 +252,6 @@
             </div>
         </div>
     </header>
-    <!--/ End Header -->
-
-    <!-- Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
             <div class="row">
@@ -267,275 +259,76 @@
                     <div class="bread-inner">
                         <ul class="bread-list">
                             <li><a href="index.html">Trang chủ<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="blog-single.html">Liên hệ</a></li>
+                            <li class="active"><a href="blog-single.html">Chính sách bảo mật</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Breadcrumbs -->
-
-    <!-- Start Contact -->
-    <section id="contact-us" class="contact-us section">
+    <section id="aa-product-category">
         <div class="container">
-            <div class="contact-head">
-                <div class="row">
-                    <div class="col-lg-8 col-12">
-                        <div class="form-main">
-                            <div class="title">
-                                <h4>Get in touch</h4>
-                                <h3>Write us a message</h3>
-                            </div>
-                            <form class="form" method="post" action="mail/mail.php">
-                                <div class="row">
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-group">
-                                            <label>Your Name<span>*</span></label>
-                                            <input name="name" type="text" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-group">
-                                            <label>Your Subjects<span>*</span></label>
-                                            <input name="subject" type="text" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-group">
-                                            <label>Your Email<span>*</span></label>
-                                            <input name="email" type="email" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-12">
-                                        <div class="form-group">
-                                            <label>Your Phone<span>*</span></label>
-                                            <input name="company_name" type="text" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group message">
-                                            <label>your message<span>*</span></label>
-                                            <textarea name="message" placeholder=""></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group button">
-                                            <button type="submit" class="btn ">Send Message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-12">
-                        <div class="single-head">
-                            <div class="single-info">
-                                <i class="fa fa-phone"></i>
-                                <h4 class="title">Call us Now:</h4>
-                                <ul>
-                                    <li>+123 456-789-1120</li>
-                                    <li>+522 672-452-1120</li>
-                                </ul>
-                            </div>
-                            <div class="single-info">
-                                <i class="fa fa-envelope-open"></i>
-                                <h4 class="title">Email:</h4>
-                                <ul>
-                                    <li><a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></li>
-                                    <li><a href="mailto:info@yourwebsite.com">support@yourwebsite.com</a></li>
-                                </ul>
-                            </div>
-                            <div class="single-info">
-                                <i class="fa fa-location-arrow"></i>
-                                <h4 class="title">Our Address:</h4>
-                                <ul>
-                                    <li>KA-62/1, Travel Agency, 45 Grand Central Terminal, New York.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--/ End Contact -->
-
-    <!-- Map Section -->
-    <div class="map-section">
-        <div class="aa-contact-address">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-contact-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.839791917708!2d108.14772551482983!3d16.073801288878066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314218d68dff9545%3A0x714561e9f3a7292c!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBCw6FjaCBLaG9hIC0gxJDhuqFpIGjhu41jIMSQw6AgTuG6tW5n!5e0!3m2!1svi!2s!4v1617719302019!5m2!1svi!2s"
-                            width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/ End Map Section -->
-
-    <!-- Start Shop Newsletter  -->
-    <section class="shop-newsletter section">
-        <div class="container">
-            <div class="inner-top">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2 col-12">
-                        <!-- Start Newsletter Inner -->
-                        <div class="inner">
-                            <h4>Newsletter</h4>
-                            <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
-                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-                                <input name="EMAIL" placeholder="Your email address" required="" type="email">
-                                <button class="btn">Subscribe</button>
-                            </form>
-                        </div>
-                        <!-- End Newsletter Inner -->
-                    </div>
+                <div>
+                    <h1 style="text-align: center; color: red;">Chính Sách Bảo Mật</h1>
+                    <strong>Cám ơn quý khách đã truy cập vào website electronicshop.vn</strong><br><br>
+                    <p>Chúng tôi tôn trọng và cam kết sẽ bảo mật những thông tin mang tính riêng tư của bạn. Xin vui lòng đọc bản Chính sách bảo mật dưới đây để hiểu hơn những cam kết mà chúng tôi thực hiện nhằm tôn trọng và bảo vệ quyền lợi của người truy
+                        cập.
+                    </p>
+                    <p>Chính sách bảo mật sẽ giải thích cách chúng tôi tiếp nhận, sử dụng và (trong trường hợp nào đó) tiết lộ thông tin cá nhân của bạn. Chính sách cũng sẽ giải thích các bước chúng tôi thực hiện để bảo mật thông tin cá nhân của khách hàng.
+                        Cuối cùng, Chính sách bảo mật sẽ giải thích quyền lựa chọn của quý khách về việc thu thập, sử dụng và tiết lộ thông tin cá nhân của mình.</p>
+                    <p>Bảo vệ dữ liệu cá nhân và gây dựng được niềm tin cho quý khách là vấn đề rất quan trọng với chúng tôi. Vì vậy, chúng tôi sẽ dùng tên và các thông tin khác liên quan đến quý khách tuân thủ theo nội dung của Chính sách bảo mật. Chúng
+                        tôi chỉ thu thập những thông tin cần thiết liên quan đến giao dịch mua bán.</p>
+                    <p>Chúng tôi sẽ giữ thông tin của khách hàng trong thời gian luật pháp quy định hoặc cho mục đích nào đó. Quý khách có thể truy cập vào website và trình duyệt mà không cần phải cung cấp chi tiết cá nhân. Lúc đó, bạn đang ẩn danh và chúng
+                        tôi không thể biết bạn là ai nếu bạn không đăng nhập vào tài khoản của mình.</p>
+                    <strong>1. Thu thập thông tin cá nhân</strong>
+                    <p>
+                        Chúng tôi sẽ thu thập nhiều thông tin khác nhau của quý khách khi bạn muốn đặt hàng trên website electronicshop.vn<br><br> Chúng tôi thu thập, lưu trữ và xử lý thông tin của bạn cho quá trình mua hàng và cho những thông báo sau
+                        này, và để cung cấp dịch vụ. Chúng tôi không giới hạn thông tin cá nhân: danh hiệu, tên, giới tính, ngày sinh, email, địa chỉ, địa chỉ giao hàng, số điện thoại, fax, chi tiết thanh toán, chi tiết thanh toán bằng thẻ hoặc chi tiết
+                        tài khoản ngân hàng.<br><br> Chúng tôi sẽ dùng thông tin quý khách đã cung cấp để xử lý đơn đặt hàng, cung cấp các dịch vụ và thông tin yêu cầu thông qua website và theo yêu cầu của bạn. Hơn nữa, chúng tôi sẽ sử dụng các thông
+                        tin đó để quản lý tài khoản của bạn; xác minh và thực hiện giao dịch trực tuyến, kiểm toán việc tải dữ liệu từ web; cải thiện bố cục và nội dung trang web và điều chỉnh cho phù hợp với người dùng; nhận diện khách vào web, nghiên
+                        cứu nhân khẩu học, gửi thông tin bao gồm thông tin sản phẩm và dịch vụ, nếu bạn không có dấu hiệu từ chối. Nếu quý khách không muốn nhận bất cứ thông tin tiếp thị của chúng tôi thì có thể từ chối bất cứ lúc nào.<br><br> Chúng tôi
+                        có thể chuyển tên và địa chỉ cho bên thứ ba để họ giao hàng cho bạn (ví dụ cho bên chuyển phát nhanh hoặc nhà cung cấp).<br><br> Các khoản thanh toán trực tuyến sẽ được xử lý bởi các cổng thanh toán đảm bảo và hệ thống ngân hàng.
+                        Quý khách chỉ đưa cho chúng tôi hoặc website những thông tin chính xác, không gây nhầm lẫn và phải thông báo cho chúng tôi nếu có thay đổi.<br><br> Chi tiết đơn đặt hàng của bạn được chúng tôi lưu giữ nhưng vì lí do bảo mật nên
+                        chúng tôi không công khai trực tiếp được. Tuy nhiên, quý khách có thể tiếp cận thông tin bằng cách đăng nhập tài khoản trên web. Tại đây, bạn sẽ thấy chi tiết đơn đặt hàng của mình, những sản phẩm đã nhận và những sản phẩm đã gửi
+                        và chi tiết email, ngân hàng và bản tin mà bạn đặt theo dõi dài hạn. Quý khách cam kết bảo mật dữ liệu cá nhân và không được phép tiết lộ cho bên thứ ba. Chúng tôi không chịu bất kỳ trách nhiệm nào cho việc dùng sai mật khẩu nếu
+                        đây không phải lỗi của chúng tôi.
+                    </p>
+                    <strong><i>Điều lệ khác về thông tin cá nhân</i></strong>
+                    <p>Chúng tôi có thể dùng thông tin cá nhân của bạn để nghiên cứu thị trường. Chi tiết sẽ được ẩn và chỉ được dùng để thống kê. Quý khách có thể từ chối không tham gia bất cứ lúc nào. Bất kỳ câu trả lời cho khảo sát hoặc thăm dò dư luận
+                        mà chúng tôi cần bạn làm sẽ không được chuyển cho bên thứ ba. Việc cần thiết duy nhất là tiết lộ email của bạn nếu bạn muốn tham gia. Câu trả lời sẽ được lưu tách riêng với email của bạn.<br><br> Bạn sẽ nhận được thông tin về chúng
+                        tôi, về website, các website khác, sản phẩm, doanh số bán hàng, bản tin, bất cứ những gì liên quan đến các công ty nằm trong nhóm hoặc các đối tác kinh doanh. Nếu quý khách không muốn nhận những thông tin này, vui lòng nhấn vào
+                        link từ chối trong bất kỳ email chúng tôi gửi cho bạn. Trong vòng 7 ngày nhận chỉ dẫn của bạn, chúng tôi sẽ ngừng gửi thông tin. Nếu thấy không rõ, chúng tôi sẽ liên lạc với bạn.<br><br> Chúng tôi sẽ tiếp tục giấu tên dữ liệu người
+                        dùng trên website và sử dụng cho nhiều mục đích khác nhau, bao gồm việc xác định vị trí của người dùng và cách sử dụng các khía cạnh nhất định của website hoặc đường link chứa trong email tới người dùng và cung cấp dữ liệu ẩn danh
+                        đó cho bên thứ 3 là nhà xuất bản. Tuy nhiên, dữ liệu này không có khả năng xác định cá nhân.</p>
+                    <strong>2. Sử dụng Cookie</strong>
+                    <p>
+                        Cookie là tập tin văn bản nhỏ có thể nhận dạng tên truy cập duy nhất từ máy tính của bạn đến máy chủ của chúng tôi khi bạn truy cập vào các trang nhất định trên website và sẽ được lưu bởi trình duyệt internet lên ổ cứng máy tính của bạn. Cookie được dùng
+                        để nhận dạng địa chỉ IP, lưu lại thời gian. Chúng tôi dùng cookie để tiện cho quý khách vào web (ví dụ: ghi nhớ tên truy cập khi bạn muốn vào thay đổi lại giỏ mua hàng mà không cần phải nhập lại địa chỉ email của mình) và không
+                        đòi hỏi bất kỳ thông tin nào về bạn (ví dụ: mục tiêu quảng cáo). Trình duyệt của bạn có thể được thiết lập không sử dụng cookie nhưng điều này sẽ hạn chế quyền sử dụng của bạn trên web. Xin vui lòng chấp nhận cam kết của chúng
+                        tôi là cookie không bao gồm bất cứ chi tiết cá nhân riêng tư nào và an toàn với virus. Muốn biết thêm về cookie, vui lòng truy cập web http://www.allaboutcookies.org hoặc để tìm hiểu cách loại bỏ cookie khỏi trình duyệt, vui lòng
+                        vào http://www.allaboutcookies.org/manage-cookies/index.html.<br><br> Trình duyệt này sử dụng Google Analytics, một dịch vụ phân tích web được cung cấp bởi Google, Inc. (“Google”). Google Analytics dùng
+                        cookie, là những tập tin văn bản đặt trong máy tính để giúp website phân tích người dùng vào web như thế nào. Thông tin được tổng hợp từ cookie sẽ được truyền tới và lưu bởi Google trên các máy chủ tại Hoa Kỳ. Google sẽ dùng thông
+                        tin này để đánh giá cách dùng web của bạn, lập báo cáo về các hoạt động trên web cho các nhà khai thác web và cung cấp các dịch vụ khác liên quan đến các hoạt động internet và cách dùng internet. Google cũng có thể chuyển giao
+                        thông tin này cho bên thứ ba theo yêu cầu của pháp luật hoặc các bên thứ ba xử lý thông tin trên danh nghĩa của Google. Google sẽ không kết hợp địa chỉ IP của bạn với bất kỳ dữ liệu nào khác mà Google đang giữ. Quý khách có thể
+                        từ chối dùng cookie bằng cách chọn các thiết lập thích hợp trên trình duyệt của mình, tuy nhiên lưu ý rằng điều này sẽ ngăn bạn sử dụng triệt để chức năng của website. Bằng cách sử dụng trang web này, bạn đã đồng ý cho Google xử
+                        lý dữ liệu về bạn theo cách thức và các mục đích nêu trên.
+                    </p>
+                    <strong>3. Bảo mật</strong>
+                    <p>Chúng tôi có biện pháp thích hợp về kỹ thuật và an ninh để ngăn chặn truy cập trái phép hoặc trái pháp luật hoặc mất mát hoặc tiêu hủy hoặc thiệt hại cho thông tin của bạn. Khi thu thập dữ liệu trên web, chúng tôi thu thập chi tiết
+                        cá nhân của bạn trên máy chủ an toàn. Chúng tôi dùng tường lửa cho máy chủ. Khi thu thập chi tiết các thẻ thanh toán điện tử, chúng tôi dùng mã hóa bằng Secure Socket Layer (SSL). Khi chúng tôi không thể bảo đảm an ninh 100%, SSL
+                        sẽ gây khó khăn cho hacker muốn giải mã thông tin của quý khách. Bạn không nên gửi đầy đủ chi tiết của thẻ tín dụng hay thẻ ghi nợ khi chưa được mã hóa cho chúng tôi. Chúng tôi duy trì các biện pháp bảo vệ vật lý và điện tử trong
+                        mối liên kết với thu thập, lưu trữ và tiết lộ thông tin của bạn. Các thủ tục an toàn của chúng tôi nghĩa là chúng tôi có thể đôi khi yêu cầu giấy tờ chứng minh trước khi tiết lộ thông tin cá nhân cho bạn.<br><br> Chúng tôi khuyên
+                        quý khách rằng quý khách không nên đưa thông tin chi tiết về việc thanh toán với bất kỳ ai bằng e-mail, chúng tôi không chịu trách nhiệm về những mất mát quý khách có thể gánh chịu trong việc trao đổi thông tin của quý khách qua
+                        internet hoặc email.<br><br> Quý khách tuyệt đối không sử dụng bất kỳ chương trình, công cụ hay hình thức nào khác để can thiệp vào hệ thống hay làm thay đổi cấu trúc dữ liệu. Nghiêm cấm việc phát tán, truyền bá hay cổ vũ cho bất
+                        kỳ hoạt động nào nhằm can thiệp, phá hoại hay xâm nhập vào dữ liệu của hệ thống website. Mọi vi phạm sẽ bị tước bỏ mọi quyền lợi cũng như sẽ bị truy tố trước pháp luật nếu cần thiết.<br><br> Mọi thông tin giao dịch sẽ được bảo
+                        mật nhưng trong trường hợp cơ quan pháp luật yêu cầu, chúng tôi sẽ buộc phải cung cấp những thông tin này cho các cơ quan pháp luật.<br><br> Các điều kiện, điều khoản và nội dung của trang web này được điều chỉnh bởi luật pháp
+                        Việt Nam và tòa án Việt Nam có thẩm quyền xem xét.<br><br>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Shop Newsletter -->
-
-    <!-- Start Footer Area -->
-    <footer class="footer">
-        <!-- Footer Top -->
-        <div class="footer-top section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer about">
-                            <div class="logo">
-                                <a href="index.html"><img src="images/logo2.png" alt="#"></a>
-                            </div>
-                            <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-                            <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer links">
-                            <h4>Information</h4>
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Faq</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Help</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer links">
-                            <h4>Customer Service</h4>
-                            <ul>
-                                <li><a href="#">Payment Methods</a></li>
-                                <li><a href="#">Money-back</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer social">
-                            <h4>Get In Tuch</h4>
-                            <!-- Single Widget -->
-                            <div class="contact">
-                                <ul>
-                                    <li>NO. 342 - London Oxford Street.</li>
-                                    <li>012 United Kingdom.</li>
-                                    <li>info@eshop.com</li>
-                                    <li>+032 3456 7890</li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                            <ul>
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-flickr"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Footer Top -->
-        <div class="copyright">
-            <div class="container">
-                <div class="inner">
-                    <div class="row">
-                        <div class="col-lg-6 col-12">
-                            <div class="left">
-                                <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> - All Rights Reserved.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-12">
-                            <div class="right">
-                                <img src="images/payments.png" alt="#">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- /End Footer Area -->
-
-
-
-    <!-- Jquery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Popper JS -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Color JS -->
-    <script src="js/colors.js"></script>
-    <!-- Slicknav JS -->
-    <script src="js/slicknav.min.js"></script>
-    <!-- Owl Carousel JS -->
-    <script src="js/owl-carousel.js"></script>
-    <!-- Magnific Popup JS -->
-    <script src="js/magnific-popup.js"></script>
-    <!-- Fancybox JS -->
-    <script src="js/facnybox.min.js"></script>
-    <!-- Waypoints JS -->
-    <script src="js/waypoints.min.js"></script>
-    <!-- Jquery Counterup JS -->
-    <script src="js/jquery-counterup.min.js"></script>
-    <!-- Countdown JS -->
-    <script src="js/finalcountdown.min.js"></script>
-    <!-- Nice Select JS -->
-    <script src="js/nicesellect.js"></script>
-    <!-- Ytplayer JS -->
-    <script src="js/ytplayer.min.js"></script>
-    <!-- Flex Slider JS -->
-    <script src="js/flex-slider.js"></script>
-    <!-- ScrollUp JS -->
-    <script src="js/scrollup.js"></script>
-    <!-- Onepage Nav JS -->
-    <script src="js/onepage-nav.min.js"></script>
-    <!-- Easing JS -->
-    <script src="js/easing.js"></script>
-    <!-- Google Map JS -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM"></script>
-    <script src="js/gmap.min.js"></script>
-    <script src="js/map-script.js"></script>
-    <!-- Active JS -->
-    <script src="js/active.js"></script>
 </body>
 
 </html>

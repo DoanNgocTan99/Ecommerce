@@ -1093,6 +1093,7 @@ button.search_btn {
 }
 
 #aa-promo .aa-promo-area {
+    margin-bottom: 70px;
     display: inline;
     float: left;
     padding: 30px 0;
@@ -3901,6 +3902,15 @@ a.aa-product-img img {
     display: inline;
     float: left;
     width: 100%;
+}
+
+aside.aa-sidebar {
+    text-align: center;
+    padding-top: 10px;
+}
+
+ul.aa-catg-nav {
+    margin: 20px;
 }
 
 #aa-contact .aa-contact-area .aa-contact-address .aa-contact-address-left .comments-form {

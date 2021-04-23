@@ -263,7 +263,6 @@
                                 <img class="icon-user" src="../assets/images/Avatar/thangngo.png " alt="avatar " />
 
                             </div>
-
                             <ul class="aa-catg-nav ">
                                 <li>
                                     <a href="edituser.html "> <img src="../assets/images/user.png " alt="avatar " />Quản lí tài khoản</a>
@@ -275,92 +274,129 @@
                         </div>
                     </aside>
                 </div>
-                <section class="shop checkout section ">
-                    <div class="container ">
-                        <div class="row ">
-                            <div class="col-lg-8 col-12 ">
-                                <div class="checkout-form ">
-                                    <h2 class="checkout-form-title">Thông tin tài khoản</h2>
-                                    <!-- Form -->
-                                    <form class="form " method="post " action="# ">
-                                        <div class="row ">
-                                            <div class="col-lg-6 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label for="idUser ">Id<span>*</span></label>
-                                                    <input type="text " name="idUser " id="idUser " placeholder=" " required="required " readonly="readonly ">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label for="email ">Email<span>*</span></label>
-                                                    <input type="email " name="email " id="email " placeholder=" " required="required ">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label for="username ">Username<span>*</span></label>
-                                                    <input type="text " name="text " placeholder=" " required="required " readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label class="phone ">Phone Number<span>*</span></label>
-                                                    <input type="type " name="phone " id="phone " placeholder=" " required="required ">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label for="gender ">Giới tính<span>*</span></label><br />
-                                                    <select name="gender " id="gender ">
-                                              <option value="0 ">Nam</option>
-                                              <option value="1 ">Nữ</option>
-                                           </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label for="DOB ">Ngày sinh<span>*</span></label>
-                                                    <input type="date " name="DOB " id="DOB " placeholder=" ">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label for="address ">Địa chỉ<span>*</span></label>
-                                                    <input type="text " name="address " id="address " placeholder=" " required="required ">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12 ">
-                                                <div class="form-group ">
-                                                    <label for="password ">Mật khẩu<span>*</span></label>
-                                                    <input type="password " name="password " placeholder=" " required="required ">
-                                                    <a href="# "><i class="fas fa-key ">Thay đổi mật khẩu</i></a>
-                                                </div>
+                <div class="shopping-cart section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Shopping Summery -->
+                                <table class="table shopping-summery">
+                                    <thead>
+                                        <tr class="main-hading">
+                                            <th>#</th>
+                                            <th class="text-center">Trạng thái</th>
+                                            <th class="text-center">Tổng tiền</th>
+                                            <th class="text-center">Phương thức thanh toán</th>
+                                            <th class="text-center">Thanh toán</th>
+                                            <th class="text-center">Ngày tạo</th>
+                                            <th class="text-center">
+                                                <i class="fas fa-info-circle">Chi tiết</i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="image" data-title="No">
+                                            </td>
+                                            <td class="product-des" data-title="Trạng thái">
+                                                <p class="product-name"><a href="#">Women Dress</a></p>
+                                                <p class="product-des">
+                                                    Maboriosam in a tonto
+                                                </p>
+                                            </td>
+                                            <td class="total-amount" data-title="Price">
+                                                <span>$110.00 </span>
+                                            </td>
+                                            <td class="product-des" data-title="Phương thức">
+                                                <span>abc</span>
+                                            </td>
+                                            <td class="qty" data-title="Thanh toán">
+                                                <!-- Input Order -->
+                                                <span>Chưa thanh toán</span>
+                                                <!--/ End Input Order -->
+                                            </td>
 
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-12 ">
-                                <div class="order-details ">
-                                    <div class="single-widget ">
-                                        <div class="content ">
-                                            <img src="../assets/images/Avatar/thangngo.png " alt="avatar " />
-                                        </div>
-                                        <div class="form-group ">
-                                            <label for="avatar ">Đổi ảnh đại diện</label>
-                                            <input type="file" class="button " id="avatar " accept=".jpg,.jpeg,.png " />
+                                            <td class="product-des">
+                                                <span>03/03/2019</span>
+                                            </td>
+                                            <td class="action" data-title="Chi tiết">
+                                                <a href="#" title="Xem chi tiết"><i class="ti-info-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="image" data-title="No">
 
-                                        </div>
-                                    </div>
-                                </div>
+                                            </td>
+                                            <td class="product-des" data-title="Description">
+                                                <p class="product-name"><a href="#">Women Dress</a></p>
+                                                <p class="product-des">
+                                                    Maboriosam in a tonto
+                                                </p>
+                                            </td>
+                                            <td class="total-amount" data-title="Price">
+                                                <span>$110.00 </span>
+                                            </td>
+                                            <td class="product-des" data-title="Phương thức">
+                                                <span>abc</span>
+                                            </td>
+
+                                            <td class="qty" data-title="Thanh toán">
+                                                <!-- Input Order -->
+                                                <span>Chưa thanh toán</span>
+                                                <!--/ End Input Order -->
+                                            </td>
+                                            <td class="product-des">
+                                                <span>03/03/2019</span>
+                                            </td>
+
+                                            <td class="action" data-title="Chi tiết">
+                                                <a href="#" title="Xem chi tiết"><i class="ti-info-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="image" data-title="No">
+
+                                            </td>
+                                            <td class="product-des" data-title="Description">
+                                                <p class="product-name"><a href="#">Women Dress</a></p>
+                                                <p class="product-des">
+                                                    Maboriosam in a tonto
+                                                </p>
+                                            </td>
+                                            <td class="total-amount" data-title="Price">
+                                                <span>$110.00 </span>
+                                            </td>
+                                            <td class="product-des" data-title="Phương thức">
+                                                <span>abc</span>
+                                            </td>
+                                            <td class="qty" data-title="Thanh toán">
+                                                <!-- Input Order -->
+                                                <span>Chưa thanh toán</span>
+                                                <!--/ End Input Order -->
+                                            </td>
+                                            <td class="product-des">
+                                                <span>03/03/2019</span>
+                                            </td>
+
+                                            <td class="action" data-title="Chi tiết">
+                                                <a href="#" title="Xem chi tiết"><i class="ti-info-alt"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!--/ End Shopping Summery -->
                             </div>
                         </div>
+
                     </div>
-                    <!--/ End Button Widget -->
+
+                </div>
             </div>
-            </section>
+            <!--/ End Total Amount -->
         </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
     </div>
 
