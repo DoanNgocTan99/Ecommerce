@@ -34,51 +34,47 @@ namespace Model.DAO
 
         }
 
-        //public long Insert(Image image)
-        //{
-        //    try
-        //    {
-
-        //        db.Images.Add(image);
-        //        db.SaveChanges();
-        //        return image.Id;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-        public bool Insert(long idCategory, string path)
+        public long Insert(Image image)
         {
             try
             {
-                var image = new Image();
-
-                image.IdCategory = idCategory;
-                image.Path = path;
-                image.CreatedDate = DateTime.Now;
-                image.ModifiedDate = DateTime.Now;
-
-                long id = db.Images.Add(image).Id;
-
-                //db.Images.Add(new Image
-                //{
-                //    IdCategory = idCategory,
-                //    ModifiedDate = DateTime.Now,
-                //    CreatedDate = DateTime.Now,
-
-                //    Path = path
-                //});
+                db.Images.Add(image);
                 db.SaveChanges();
-                //db.SaveChangesAsync();
-
-                return true;
+                return image.Id;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+        //public bool Insert(long idCategory, string path)
+        //{
+        //    try
+        //    {
+        //        //var image = new Image();
+
+        //        //image.IdCategory = idCategory;
+        //        //image.Path = path;
+        //        //image.CreatedDate = DateTime.Now;
+        //        //image.ModifiedDate = DateTime.Now;
+
+        //        //long id = db.Images.Add(image).Id;
+
+        //        db.Images.Add(new Image
+        //        {
+        //            IdCategory = idCategory,
+        //            Path = path
+        //        });
+                
+        //        db.SaveChanges();
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
         //public Image ViewDetail(int Id)
         //{
         //    return db.Images.Find(Id);
@@ -120,11 +116,11 @@ namespace Model.DAO
                 var image = db.Images.Find(entity.Id);
 
                 image.Path = entity.Path;
-                image.IdProduct = entity.IdProduct;
-                image.IdCategory = entity.IdCategory;
-                image.IdUser = entity.IdUser;
-                image.CreatedBy = entity.CreatedBy;
-                image.ModifiedBy = entity.ModifiedBy;
+                //image.IdProduct = entity.IdProduct;
+                //image.IdCategory = entity.IdCategory;
+                //image.IdUser = entity.IdUser;
+                //image.CreatedBy = entity.CreatedBy;
+                //image.ModifiedBy = entity.ModifiedBy;
                 db.SaveChanges();
                 return true;
             }

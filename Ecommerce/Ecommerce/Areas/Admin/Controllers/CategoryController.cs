@@ -1,4 +1,5 @@
-﻿using Model.DAO;
+﻿using Ecommerce.Areas.Seller.Controllers;
+using Model.DAO;
 using Model.EF;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Ecommerce.Areas.Seller.Controllers
+namespace Ecommerce.Areas.Admin.Controllers
 {
     public class CategoryController : BaseController
     {
@@ -31,33 +32,47 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                var dao = new CategoryDAO();
-                //return file name
-                string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
-                //return type file
-                string extension = Path.GetExtension(category.ImageFile.FileName);
-
-                //return file name 
-                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                //category.Path = "~/Image/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
-                category.ImageFile.SaveAs(fileName);
-
-                long id = dao.Insert(category);
-
-                var ImageDao = new ImageDAO();
-                bool check = ImageDao.Insert(id, fileName);
-                if (check)
+                try
                 {
-                    SetAlert("Thêm mới doanh mục thành công!!", "success");
-                    return RedirectToAction("Index", "Category");
-                }
-                else
-                {
+                    var dao = new CategoryDAO();
+                    //return file name
+                    string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                    //return type file
+                    string extension = Path.GetExtension(category.ImageFile.FileName);
 
-                    ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                    //return file name 
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    //category.Path = "~/Image/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
+                    category.ImageFile.SaveAs(fileName);
+
+                    long id = dao.Insert(category);
+
+                    var ImageDao = new ImageDAO();
+
+                    Image image = new Image();
+                    image.IdCategory = id;
+                    image.Path = fileName;
+
+                    long ID = ImageDao.Insert(image);
+                    //bool check = ImageDao.Insert(id, fileName);
+                    if (ID > 0)
+                    {
+                        SetAlert("Thêm mới doanh mục thành công!!", "success");
+                        return RedirectToAction("Index", "Category");
+                    }
+                    else
+                    {
+
+                        ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                    }
+
                 }
+                catch (Exception ex)
+                {
+                    return View("Index");
+                }
+
 
             }
             return View("Index");
@@ -75,10 +90,26 @@ namespace Ecommerce.Areas.Seller.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new CategoryDAO();
+                //return file name
+                string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                //return type file
+                string extension = Path.GetExtension(category.ImageFile.FileName);
 
-
+                //return file name 
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                //category.Path = "~/Image/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
+                category.ImageFile.SaveAs(fileName);
                 var result = dao.Update(category);
-                if (result)
+
+                var ImageDao = new ImageDAO();
+
+                Image image = new Image();
+                image.IdCategory = category.Id;
+                image.Path = fileName;
+
+                bool ID = ImageDao.Update(image);
+                if (ID )
                 {
                     SetAlert("Cập nhập doanh mục thành công!!", "success");
 

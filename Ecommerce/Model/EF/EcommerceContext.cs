@@ -26,36 +26,39 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+            //table Category
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Images)
                 .WithOptional(e => e.Category)
                 .HasForeignKey(e => e.IdCategory);
+            modelBuilder.Entity<Image>().Property(p => p.IdCategory).IsOptional();
 
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Products)
                 .WithRequired(e => e.Category)
                 .HasForeignKey(e => e.IdCategory);
 
+
+            //Table Image
             modelBuilder.Entity<Image>()
                 .Property(e => e.Path)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Image>().Property(p => p.IdCategory).IsOptional();
-            modelBuilder.Entity<Image>().Property(p => p.IdProduct).IsOptional();
             modelBuilder.Entity<Image>().Property(p => p.IdUser).IsOptional();
             modelBuilder.Entity<Image>().Property(p => p.IdShop).IsOptional();
+            modelBuilder.Entity<Image>().Property(p => p.IdProduct).IsOptional();
+            modelBuilder.Entity<Image>().Property(p => p.IdCategory).IsOptional();
 
+
+            //Table Product
             modelBuilder.Entity<Product>()
                 .Property(e => e.Price)
                 .HasPrecision(2, 0);
 
-
             modelBuilder.Entity<Product>()
                 .Property(e => e.DelPrice)
                 .HasPrecision(2, 0);
-            //modelBuilder.Entity<Product>()
-            //    .HasRequired(e => e.IdShop)
-            //    .WithMany()
+
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.Images)
                 .WithOptional(e => e.Product)
@@ -64,19 +67,30 @@ namespace Model.EF
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.ProductAdvertisings)
                 .WithRequired(e => e.Product)
-                .HasForeignKey(e => e.IdProduct)
-                .WillCascadeOnDelete(false);
+                .HasForeignKey(e => e.IdProduct);
+            //.WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Orders)
+                .WithRequired(e => e.Product)
+                .HasForeignKey(e => e.IdProduct);
 
 
+
+            //Table ProductAdvertisings
             modelBuilder.Entity<ProductAdvertising>()
                 .Property(e => e.Content)
                 .IsUnicode(false);
 
+
+            //Table Role
             modelBuilder.Entity<Role>()
                 .HasMany(e => e.Users)
                 .WithRequired(e => e.Role)
                 .HasForeignKey(e => e.IdRole);
 
+
+            //Table SHOP
             modelBuilder.Entity<Shop>()
                 .HasMany(e => e.Orders)
                 .WithRequired(e => e.Shop)
@@ -88,21 +102,24 @@ namespace Model.EF
                 .WithRequired(e => e.Shop)
                 .HasForeignKey(e => e.IdShop);
 
-            modelBuilder.Entity<Shop>()
-                .HasMany(e => e.Users)
-                .WithRequired(e => e.Shop)
-                .HasForeignKey(e => e.IdShop);
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Shops)
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.IdUser);
 
             modelBuilder.Entity<Shop>()
                 .HasMany(e => e.Images)
                 .WithRequired(e => e.Shop)
                 .HasForeignKey(e => e.IdShop);
 
+            //Transaction
             modelBuilder.Entity<Transaction>()
-                            .HasMany(e => e.Orders)
-                            .WithRequired(e => e.Transaction)
-                            .HasForeignKey(e => e.IdTransaction);
+                .HasMany(e => e.Orders)
+                .WithRequired(e => e.Transaction)
+                .HasForeignKey(e => e.IdTransaction);
 
+
+            //USER
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Images)
                 .WithOptional(e => e.User)
@@ -112,14 +129,8 @@ namespace Model.EF
                 .HasMany(e => e.Transactions)
                 .WithRequired(e => e.User)
                 .HasForeignKey(e => e.IdUser);
+            //modelBuilder.Entity<U ser>().Property(p => p.IdShop).IsOptional();
 
-
-            modelBuilder.Entity<User>()
-                .HasMany(e => e.Images)
-                .WithRequired(e => e.User)
-                .HasForeignKey(e => e.IdUser);
-
-            //modelBuilder.Entity<User>().Property(p => p.IdShop).IsOptional();
         }
     }
 }

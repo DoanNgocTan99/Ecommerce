@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -10,7 +11,6 @@
     [Table("Category")]
     public partial class Category
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
             Images = new HashSet<Image>();
@@ -31,6 +31,7 @@
         public string Description { get; set; }
 
         [Display(Name = "Trạng Thái")]
+        [DefaultValue("true")]
         public bool IsActive { get; set; }
 
 
@@ -42,9 +43,10 @@
         [Display(Name = "Người chỉnh sửa")]
         public string ModifiedBy { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
+
 
         public virtual ICollection<Image> Images { get; set; }
 

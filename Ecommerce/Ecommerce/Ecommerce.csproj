@@ -132,9 +132,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Seller\Controllers\AdminController.cs" />
     <Compile Include="Areas\Seller\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Seller\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Seller\Controllers\HomeController.cs" />
     <Compile Include="Areas\Seller\Controllers\ImageController.cs" />
     <Compile Include="Areas\Seller\Controllers\LoginController.cs" />
@@ -3199,21 +3200,23 @@
     <Content Include="Assets\Shop\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\Shop\vendor\jquery\jquery.min.map" />
     <Content Include="Assets\Shop\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Areas\Seller\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Seller\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Seller\Views\Login\Index.cshtml" />
-    <Content Include="Areas\Seller\Views\Shared\_Navigation.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
     <Content Include="Areas\Seller\Views\Home\Index.cshtml" />
     <Content Include="Areas\Seller\Views\User\Index.cshtml" />
-    <Content Include="Areas\Seller\Views\Category\Index.cshtml" />
-    <Content Include="Areas\Seller\Views\Category\Create.cshtml" />
-    <Content Include="Areas\Seller\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Seller\Views\Product\Index.cshtml" />
     <Content Include="Areas\Seller\Views\Product\Create.cshtml" />
     <Content Include="Areas\Seller\Views\Image\Create.cshtml" />
     <Content Include="Areas\Seller\Views\Image\Index.cshtml" />
     <Content Include="Areas\Seller\Views\Image\Edit.cshtml" />
     <Content Include="Areas\Seller\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Seller\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Seller\Views\Shared\_Navigation.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3244,6 +3247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Seller\Data\" />
     <Folder Include="Areas\Seller\Views\Admin\" />
     <Folder Include="Areas\Seller\Views\Base\" />

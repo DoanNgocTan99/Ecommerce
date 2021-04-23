@@ -13,7 +13,7 @@ namespace Model.EF
         {
             Orders = new HashSet<Order>();
             Products = new HashSet<Product>();
-            Users = new HashSet<User>();
+            //Users = new HashSet<User>();
             Images = new HashSet<Image>();
         }
 
@@ -46,10 +46,15 @@ namespace Model.EF
 
         public DateTime CreatedDate { get; set; }
 
+        [Required]
+        public long? IdUser { get; set; }
+        [ForeignKey("IdUser")]
+        public virtual User User { get; set; }
+
         public virtual ICollection<Order> Orders { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        //public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Image> Images { get; set; }
     }
 }

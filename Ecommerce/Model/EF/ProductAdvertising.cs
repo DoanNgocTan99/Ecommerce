@@ -11,7 +11,7 @@ namespace Model.EF
         [Key]
         public long Id { get; set; }
 
-        public long IdProduct { get; set; }
+        public long? IdProduct { get; set; }
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
 

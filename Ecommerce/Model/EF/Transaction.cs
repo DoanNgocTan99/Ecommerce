@@ -35,7 +35,7 @@ namespace Model.EF
 
         public DateTime CreatedDate { get; set; }
 
-        public long IdUser { get; set; }
+        public long? IdUser { get; set; }
         [ForeignKey("IdUser")]
         public virtual User User { get; set; }
 

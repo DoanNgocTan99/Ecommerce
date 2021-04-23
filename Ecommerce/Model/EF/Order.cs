@@ -18,14 +18,14 @@ namespace Model.EF
         [ForeignKey("IdTransaction")]
         public virtual Transaction Transaction { get; set; }
 
-        public long IdProduct { get; set; }
+        public long? IdProduct { get; set; }
         [ForeignKey("IdProduct")]
         public virtual Product Product { get; set; }
-        public long IdShop { get; set; }
+        public long? IdShop { get; set; }
         [ForeignKey("IdShop")]
         public virtual Shop Shop { get; set; }
 
-        public long IdPayment { get; set; }
+        public long? IdPayment { get; set; }
         [ForeignKey("IdPayment")]
         public virtual Payment Payment { get; set; }
 

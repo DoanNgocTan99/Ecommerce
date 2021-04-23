@@ -56,17 +56,13 @@ namespace Model.EF
 
         public DateTime CreatedDate { get; set; }
 
-        public long IdRole { get; set; }
+        public long? IdRole { get; set; }
         [ForeignKey("IdRole")]
         public virtual Role Role { get; set; }
-
-
-        public long IdShop { get; set; }
-        [ForeignKey("IdShop")]
-        public virtual Shop Shop { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
 
         public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Shop> Shops { get; set; }
     }
 }

@@ -88,7 +88,7 @@
         public virtual Category Category { get; set; }
 
         [Display(Name = "Thuộc SHOP")]
-        public long IdShop { get; set; }
+        public long? IdShop { get; set; }
         [ForeignKey("IdShop")]
         public virtual Shop Shop { get; set; }
 
