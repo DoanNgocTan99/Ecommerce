@@ -76,9 +76,9 @@
     <Compile Include="EF\Shop.cs" />
     <Compile Include="EF\Transaction.cs" />
     <Compile Include="EF\User.cs" />
-    <Compile Include="Migrations\202104200355563_CreateDB.cs" />
-    <Compile Include="Migrations\202104200355563_CreateDB.Designer.cs">
-      <DependentUpon>202104200355563_CreateDB.cs</DependentUpon>
+    <Compile Include="Migrations\202104200425560_CreateDB.cs" />
+    <Compile Include="Migrations\202104200425560_CreateDB.Designer.cs">
+      <DependentUpon>202104200425560_CreateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,8 +91,8 @@
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202104200355563_CreateDB.resx">
-      <DependentUpon>202104200355563_CreateDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104200425560_CreateDB.resx">
+      <DependentUpon>202104200425560_CreateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
