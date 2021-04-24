@@ -7222,13 +7222,12 @@ a.bg-dark:hover {
 
 .mt-4,
 .my-4 {
-    margin-top: 1.5rem!important
+    box-shadow: 0 2px 1px rgb(0 0 0 / 10%);
+    margin: 3rem!important;
 }
 
 .mr-4,
-.mx-4 {
-    margin-right: 1.5rem!important
-}
+.mx-4 {}
 
 .mb-4,
 .my-4 {
@@ -7246,7 +7245,9 @@ a.bg-dark:hover {
 
 .mt-5,
 .my-5 {
-    margin-top: 3rem!important
+    box-shadow: 0 2px 1px rgb(0 0 0 / 10%);
+    margin: 4rem!important;
+    padding-bottom: 40px;
 }
 
 .mr-5,
