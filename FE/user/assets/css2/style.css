@@ -1900,14 +1900,17 @@ input.search_input {
 }
 
 .small-banner .single-banner h3 {
+    box-shadow: 1px 1px 49px 9px;
+    border-radius: 16px;
+    background: #f6931d;
     font-size: 22px;
     font-weight: 700;
     text-transform: capitalize;
-    color: #333;
+    color: #fff;
 }
 
 .small-banner .single-banner h3 span {
-    color: #F7941D;
+    color: black;
 }
 
 .small-banner .single-banner p {
@@ -2127,12 +2130,22 @@ button.btn-info:hover {
 img.icon-shop {
     width: 200px;
     height: auto;
+    float: left;
     border-radius: 60px;
 }
 
+.clr {
+    clear: both
+}
+
 .shop-name {
-    margin: -100px 0px 0px 145px;
+    padding-top: 30px;
+    margin: 0px 0px 10px 2px;
     position: relative;
+}
+
+aside.aa-sidebar-shop2 {
+    margin: 50px 0px 10px 50px;
 }
 
 aside.aa-sidebar-shop {
@@ -2241,12 +2254,14 @@ h2.checkout-form-title {
 }
 
 .single-product .product-img a img.hover-img {
+    height: 110%;
+    width: 110%;
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
     opacity: 0;
-    transition: opacity 0.5s ease, transform 2s cubic-bezier(0, 0, 0.44, 1.18), -webkit-transform 2s cubic-bezier(0, 0, 0.44, 1.18);
+    transition: opacity 0.7s ease, transform 2s cubic-bezier(0, 0, 0.44, 1.18), -webkit-transform 2s cubic-bezier(0, 0, 0.44, 1.18);
 }
 
 .single-product .product-img a span.price-dec {
@@ -3932,6 +3947,12 @@ img.icon-user {
     height: 60px;
 }
 
+.aa-promo-area-shop {
+    display: inline;
+    float: left;
+    width: 100%
+}
+
 
 /*======================================
    End Shopping Cart CSS
@@ -3953,6 +3974,7 @@ img.icon-user {
 }
 
 .shop.checkout .checkout-form {
+    box-shadow: 1px 1px 20px 1px rgb(0 0 0 / 10%);
     margin-top: 10px;
     padding: 1px 20px;
 }

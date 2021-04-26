@@ -1207,6 +1207,9 @@ button.search_btn {
 }
 
 #aa-promo .aa-promo-area .aa-promo-banner .aa-prom-content h4 {
+    background: #8e942e;
+    color: black;
+    border-radius: 38px;
     color: #fff;
     font-size: 30px;
     font-weight: bold;
@@ -1541,6 +1544,45 @@ a.aa-product-img img {
 
 #quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container .simpleLens-big-image-container .simpleLens-lens-image {
     width: 100%;
+    display: block;
+}
+
+
+/* #quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container .simpleLens-big-image-container:hover .simpleLens-lens-image {
+    width: 100%;
+    cursor: pointer;
+    opacity: 0.3;
+} */
+
+#quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container {
+    position: relative;
+}
+
+
+/* .simpleLens-big-image-container:hover .simpleLens-lens-image {
+    width: 100%;
+    cursor: pointer;
+    opacity: 0.3;
+} */
+
+.simpleLens-big-image-container .simpleLens-big-image-dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.simpleLens-big-image-container:hover .simpleLens-big-image-dropdown {
+    cursor: zoom-in;
+    height: 120%;
+    width: 120%;
+    transform: translate(-10%, -20%);
+    opacity: 1;
+}
+
+.simpleLens-big-image-container:hover .simpleLens-lens-image {
+    cursor: zoom-in;
+    opacity: 0.3;
 }
 
 #quick-view-modal .modal-content .aa-product-view-slider .simpleLens-thumbnails-container {
