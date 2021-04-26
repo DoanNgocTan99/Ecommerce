@@ -1,4 +1,5 @@
-﻿using Model.EF;
+﻿using Model.DAO;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Areas.Seller.Controllers
 {
-    public class RegisterController : Controller
+    public class RegisterController : BaseController
     {
         // GET: Seller/Register
         public ActionResult Index()
@@ -31,11 +32,11 @@ namespace Ecommerce.Areas.Seller.Controllers
                 {
 
                     string fileName = Path.GetFileNameWithoutExtension(user.ImageFile.FileName);
-                    string extension = Path.GetExtension(image.ImageFile.FileName);
+                    string extension = Path.GetExtension(user.ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    image.Path = "~/Image/" + fileName;
+                    //image.Path = "~/Image/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
-                    image.ImageFile.SaveAs(fileName);
+                    user.ImageFile.SaveAs(fileName);
 
 
                     var dao = new ImageDAO();
@@ -54,7 +55,6 @@ namespace Ecommerce.Areas.Seller.Controllers
                     //ModelState.Clear();
                 }
 
-                SetViewBag();
                 return View("Index");
             }
             catch (Exception ex)
