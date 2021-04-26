@@ -1,99 +1,68 @@
 ﻿
-
 @{
     Layout = null;
 }
 @model Ecommerce.Areas.Seller.Models.LoginModel
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Đăng nhập</title>
-
-    <link href="~/Assets/Shop/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
           rel="stylesheet">
-
-    <link href="~/Assets/Shop/css/sb-admin-2.css" rel="stylesheet">
-
+    <link rel="stylesheet"
+          href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="~/Assets/User/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Assets/User/css/loginNew.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="~/Assets/User/js/bootstrap.min.js"></script>
 </head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 login-section-wrapper">
+                <div class="login-wrapper my-auto">
+                    <img src="~/Assets/User/images/logo-login-big.png" alt="logo" class="logo">
 
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back</h1>
-                                    </div>
-                                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-                                    {
-                                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                                        <div class="form-group">
-                                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @autofocus = "autofocus" })
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.PasswordFor(model => model.PassWord, new { @class = "form-control" })
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label>
-                                                    @Html.CheckBoxFor(model => model.RememberMe)    Ghi nhớ đăng nhập
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Đăng nhập
-                                        </button>
-                                    }
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Tạo tài khoản</a>
-                                    </div>
-                                </div>
+                    <form action="login" method="post">
+                        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @autofocus = "autofocus" })
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="form-group mb-4">
+                                @Html.PasswordFor(model => model.PassWord, new { @class = "form-control" })
+                            </div>
+                            <div class="form-group form-check">
+                                <label>
+                                    @Html.CheckBoxFor(model => model.RememberMe)    Ghi nhớ đăng nhập
+                                </label>
+                            </div>
+                            <button name="login" id="login" class="btn btn-block login-btn"
+                                    type="submit">
+                                Login
+                            </button>
+                        }
+                    </form>
 
+                    <a href="#!" class="forgot-password-link">Forgot password?</a>
+                    <p class="login-wrapper-footer-text">
+                        Don't have an account? <a href="register" class="text-reset">
+                            Register
+                            here
+                        </a>
+                    </p>
+                </div>
             </div>
 
         </div>
-
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="~/Assets/Shop/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Assets/Shop/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="~/Assets/Shop/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="~/Assets/Shop/js/sb-admin-2.min.js"></script>
-
 </body>
-
 </html>
-
