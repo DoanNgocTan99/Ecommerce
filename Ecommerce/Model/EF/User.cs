@@ -40,7 +40,7 @@ namespace Model.EF
 
         public bool Gender { get; set; }
 
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
 
         [StringLength(250)]
         public string Address { get; set; }
@@ -54,9 +54,9 @@ namespace Model.EF
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
 
 

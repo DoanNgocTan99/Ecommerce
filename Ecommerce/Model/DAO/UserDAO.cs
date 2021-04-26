@@ -123,9 +123,17 @@ namespace Model.DAO
         }
         public long Insert(User entity)
         {
-            db.Users.Add(entity);
-            db.SaveChanges();
-            return entity.Id;
+            try
+            {
+                db.Users.Add(entity);
+                db.SaveChanges();
+                return entity.Id;
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public IEnumerable<User> ListAll()
         {
