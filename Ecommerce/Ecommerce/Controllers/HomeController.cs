@@ -26,5 +26,11 @@ namespace Ecommerce.Controllers
 
             return View();
         }
+        public ActionResult Security()
+        {
+            ViewBag.Message = "Your security page.";
+
+            return View();
+        }
     }
 }

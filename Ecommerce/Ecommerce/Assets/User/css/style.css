@@ -2201,6 +2201,7 @@ a.aa-product-img img {
 }
 
 #aa-product-category {
+background-color: white;
     display: inline;
     float: left;
     width: 100%;

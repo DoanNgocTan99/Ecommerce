@@ -211,7 +211,9 @@ dfn {
 
 b,
 strong {
-    font-weight: bolder
+    font-family: emoji;
+    font-weight: bolder;
+    font-size: 21px;
 }
 
 small {
