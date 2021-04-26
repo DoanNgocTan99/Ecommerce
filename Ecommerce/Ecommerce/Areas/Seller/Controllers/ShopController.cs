@@ -16,8 +16,8 @@ namespace Ecommerce.Areas.Seller.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var user = new ShopDAO().ViewDetail(id);
-            return View(user);
+            var shop = new ShopDAO().ViewDetail(id);
+            return View(shop);
         }
         [HttpPost]
         [ValidateInput(false)]

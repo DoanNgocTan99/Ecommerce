@@ -207,12 +207,12 @@ namespace Model.Migrations
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.DeliveryStatus", t => t.IdDeliveryStatus, cascadeDelete: true)
-                .ForeignKey("dbo.User", t => t.IdUser, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.IdUser)
                 .Index(t => t.IdUser)
                 .Index(t => t.IdDeliveryStatus);
 
             CreateTable(
-                "dbo.DeliveryStatus",
+                "dbo.DeliveryStatus",                   
                 c => new
                 {
                     id = c.Long(nullable: false, identity: true),

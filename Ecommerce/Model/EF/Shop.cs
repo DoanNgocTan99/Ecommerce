@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -21,20 +21,30 @@ namespace Model.EF
         [Key]
         public long Id { get; set; }
 
+
+        
         [Required]
         [StringLength(250)]
+        [Display(Name = "Tên Shop")]
         public string Name { get; set; }
+
 
         [Required]
         [StringLength(250)]
+        [Display(Name = "Mô tả")]
+
         public string Description { get; set; }
 
         [Required]
         [StringLength(250)]
+        [Display(Name = "Địa chỉ")]
+
         public string Address { get; set; }
 
         [Required]
         [StringLength(250)]
+        [Display(Name = "Số điện thoại")]
+
         public string Phone { get; set; }
 
         [StringLength(250)]
