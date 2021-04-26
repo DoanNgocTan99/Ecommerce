@@ -47,38 +47,7 @@ namespace Model.DAO
                 throw ex;
             }
         }
-        //public bool Insert(long idCategory, string path)
-        //{
-        //    try
-        //    {
-        //        //var image = new Image();
-
-        //        //image.IdCategory = idCategory;
-        //        //image.Path = path;
-        //        //image.CreatedDate = DateTime.Now;
-        //        //image.ModifiedDate = DateTime.Now;
-
-        //        //long id = db.Images.Add(image).Id;
-
-        //        db.Images.Add(new Image
-        //        {
-        //            IdCategory = idCategory,
-        //            Path = path
-        //        });
-                
-        //        db.SaveChanges();
-
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-        //public Image ViewDetail(int Id)
-        //{
-        //    return db.Images.Find(Id);
-        //}
+       
         public bool Delete(int Id)
         {
             try
@@ -113,14 +82,9 @@ namespace Model.DAO
         {
             try
             {
-                var image = db.Images.Find(entity.Id);
+                var image = db.Images.Where(p => p.IdCategory == entity.IdCategory).FirstOrDefault();
 
                 image.Path = entity.Path;
-                //image.IdProduct = entity.IdProduct;
-                //image.IdCategory = entity.IdCategory;
-                //image.IdUser = entity.IdUser;
-                //image.CreatedBy = entity.CreatedBy;
-                //image.ModifiedBy = entity.ModifiedBy;
                 db.SaveChanges();
                 return true;
             }

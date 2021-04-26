@@ -8,6 +8,8 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Areas.Seller.Controllers
 {
+    [Authorize]
+
     public class ProductController : BaseController
     {
         // GET: Seller/Products
@@ -106,8 +108,8 @@ namespace Ecommerce.Areas.Seller.Controllers
             var dao_Category = new CategoryDAO();
             ViewBag.IdCategory = new SelectList(dao_Category.ListAll(), "Id", "Name", selectIdCategory);
 
-            var dao_Shop = new ShopDAO();
-            ViewBag.IdShop = new SelectList(dao_Shop.ListAll(), "Id", "Name", selectIdShop);
+            //var dao_Shop = new ShopDAO();
+            //ViewBag.IdShop = new SelectList(dao_Shop.ListAll(), "Id", "Name", selectIdShop);
 
         }
     }

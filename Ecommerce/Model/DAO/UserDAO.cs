@@ -57,6 +57,66 @@ namespace Model.DAO
             }
 
         }
+        public int Login(string username, string password, bool isLogin = false)
+        {
+            var result = db.Users.SingleOrDefault(x => x.UserName == username);
+            if (result == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (isLogin == true)
+                {
+                    if (result.IdRole == 1 || result.IdRole == 2)
+                    {
+
+                        if (result.IsActive == false)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            if (result.Password == password)
+                            {
+                                return 1;
+                            }
+                            else
+                            {
+
+                                return -2;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return -3;
+                    }
+                }
+                else
+                {
+
+                    if (result.IsActive == false)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        if (result.Password == password)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+
+                            return -2;
+                        }
+                    }
+                }
+
+            }
+
+        }
         public User GetByUserName(string userName)
         {
             return db.Users.FirstOrDefault(x => x.UserName == userName);
@@ -67,7 +127,7 @@ namespace Model.DAO
             db.SaveChanges();
             return entity.Id;
         }
-        public  IEnumerable<User> ListAll()
+        public IEnumerable<User> ListAll()
         {
             IEnumerable<User> model = db.Users;
             return model.ToList();

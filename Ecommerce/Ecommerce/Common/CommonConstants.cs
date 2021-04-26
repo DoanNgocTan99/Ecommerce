@@ -8,5 +8,8 @@ namespace Ecommerce.Common
     public static class CommonConstants
     {
         public static string USER_SESSION = "USER_SESSION";
+        public static long ROLE_ADMIN = 1;
+        public static long ROLE_USER = 2;
+
     }
 }

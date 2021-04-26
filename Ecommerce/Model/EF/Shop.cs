@@ -5,6 +5,7 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Shop")]
     public partial class Shop
@@ -56,5 +57,7 @@ namespace Model.EF
         public virtual ICollection<Product> Products { get; set; }
         //public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Image> Images { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

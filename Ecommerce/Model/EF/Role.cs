@@ -32,5 +32,6 @@ namespace Model.EF
         public DateTime CreatedDate { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
+        
     }
 }

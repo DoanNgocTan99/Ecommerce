@@ -1,9 +1,12 @@
-﻿using Model.EF;
+﻿using MailChimp.Net.Models;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+
 
 namespace Model.DAO
 {
@@ -14,21 +17,56 @@ namespace Model.DAO
         {
             db = new EcommerceContext();
         }
-        public List<Shop> ListAll()
+        //public List<Shop> ListAll()
+        //{
+        //    try
+        //    {
+
+        //        return db.Shops.ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+        //public Image ViewDetail(int Id)
+        //{
+        //    return db.Images.Find(Id);
+        //}
+        public Shop ViewDetail(int Id)
         {
             try
             {
+                return db.Shops.Find(Id);
 
-                return db.Shops.ToList();
-            }
-            catch (Exception ex)
+            }catch(Exception ex)
             {
                 throw ex;
             }
         }
-        public Image ViewDetail(int Id)
+        public bool Update(Shop entity)
         {
-            return db.Images.Find(Id);
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+            try
+            {
+                var shop = db.Shops.Find(entity.Id);
+
+                shop.Name = entity.Name;
+                shop.Description = entity.Description;
+                shop.Address = entity.Address;
+                shop.Phone = entity.Phone;
+                shop.IdUser = session.UserID;
+                shop.ModifiedBy = session.UserName;
+
+                shop.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }

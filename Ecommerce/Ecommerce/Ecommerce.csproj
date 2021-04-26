@@ -146,6 +146,7 @@
     <Compile Include="Areas\Seller\SellerAreaRegistration.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3217,6 +3218,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Seller\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Seller\Views\Shared\_Navigation.cshtml" />
+    <Content Include="Areas\Seller\Views\Shop\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3251,7 +3253,6 @@
     <Folder Include="Areas\Seller\Data\" />
     <Folder Include="Areas\Seller\Views\Admin\" />
     <Folder Include="Areas\Seller\Views\Base\" />
-    <Folder Include="Areas\Seller\Views\Shop\" />
     <Folder Include="Assets\Admin\" />
     <Folder Include="Assets\User\" />
     <Folder Include="Image\" />

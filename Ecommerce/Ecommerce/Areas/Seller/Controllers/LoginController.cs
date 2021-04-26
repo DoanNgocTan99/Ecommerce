@@ -28,7 +28,9 @@ namespace Ecommerce.Areas.Seller.Controllers
                     var UserSession = new UserLogin();
                     UserSession.UserName = user.UserName;
                     UserSession.UserID = user.Id;
+                    UserSession.Name = user.Name;
                     Session.Add(CommonConstants.USER_SESSION, UserSession);
+                    //Session[""] = 
                     return RedirectToAction("Index", "Home");
                 }
                 else if( result == 0)
@@ -42,6 +44,11 @@ namespace Ecommerce.Areas.Seller.Controllers
                 else if (result == -2)
                 {
                     ModelState.AddModelError("", "Sai Mật Khẩu Rồi :< Hic_hic");
+                }
+                else if(result == -3)
+                {
+                    ModelState.AddModelError("", "Tài khoản của bạn không có quyền đăng nhập:< Hic_hic");
+
                 }
             }
             return View("Index");

@@ -13,6 +13,7 @@ namespace Model.EF
         {
             Images = new HashSet<Image>();
             Transactions = new HashSet<Transaction>();
+            Reviews = new HashSet<Review>();
         }
 
         [Key]
@@ -56,6 +57,8 @@ namespace Model.EF
 
         public DateTime CreatedDate { get; set; }
 
+
+
         public long? IdRole { get; set; }
         [ForeignKey("IdRole")]
         public virtual Role Role { get; set; }
@@ -64,5 +67,6 @@ namespace Model.EF
 
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<Shop> Shops { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

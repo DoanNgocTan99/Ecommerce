@@ -15,6 +15,7 @@
             Images = new HashSet<Image>();
             ProductAdvertisings = new HashSet<ProductAdvertising>();
             Orders = new HashSet<Order>();
+            Reviews = new HashSet<Review>();
         }
 
         [Key]
@@ -97,6 +98,7 @@
 
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<ProductAdvertising> ProductAdvertisings { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
 
     }
 }
