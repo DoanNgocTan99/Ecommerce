@@ -65,10 +65,10 @@
     <Compile Include="DAO\ShopDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="EF\Category.cs" />
+    <Compile Include="EF\DeliveryStatus.cs" />
     <Compile Include="EF\Image.cs" />
     <Compile Include="EF\EcommerceContext.cs" />
     <Compile Include="EF\Order.cs" />
-    <Compile Include="EF\OrderDetail.cs" />
     <Compile Include="EF\Payment.cs" />
     <Compile Include="EF\Product.cs" />
     <Compile Include="EF\ProductAdvertising.cs" />
@@ -76,9 +76,15 @@
     <Compile Include="EF\Shop.cs" />
     <Compile Include="EF\Transaction.cs" />
     <Compile Include="EF\User.cs" />
+<<<<<<< HEAD
     <Compile Include="Migrations\202104200425560_CreateDB.cs" />
     <Compile Include="Migrations\202104200425560_CreateDB.Designer.cs">
       <DependentUpon>202104200425560_CreateDB.cs</DependentUpon>
+=======
+    <Compile Include="Migrations\202104230505011_CreateDatabase.cs" />
+    <Compile Include="Migrations\202104230505011_CreateDatabase.Designer.cs">
+      <DependentUpon>202104230505011_CreateDatabase.cs</DependentUpon>
+>>>>>>> 561ecfe1c531a341a5ab3deb865cc8ef1b8ba277
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,8 +97,13 @@
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\202104200425560_CreateDB.resx">
       <DependentUpon>202104200425560_CreateDB.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\202104230505011_CreateDatabase.resx">
+      <DependentUpon>202104230505011_CreateDatabase.cs</DependentUpon>
+>>>>>>> 561ecfe1c531a341a5ab3deb865cc8ef1b8ba277
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -27,9 +27,16 @@ namespace Model.DAO
         }
         public long Insert(Category entity)
         {
-            db.Categories.Add(entity);
-            db.SaveChanges();
-            return entity.Id;
+            try
+            {
+                db.Categories.Add(entity);
+                db.SaveChanges();
+                return entity.Id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public Category ViewDetail(int Id)
         {
@@ -43,10 +50,7 @@ namespace Model.DAO
 
                 user.Name = entity.Name;
                 user.Description = entity.Description;
-                user.CategoryCol = entity.CategoryCol;
-                user.IsActive = entity.IsActive;
-                user.CreatedBy = entity.CreatedBy;
-                user.ModifiedBy = entity.ModifiedBy;
+                user.IsActive = true;
                 user.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;

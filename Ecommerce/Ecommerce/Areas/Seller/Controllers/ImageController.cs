@@ -53,17 +53,17 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                     var dao = new ImageDAO();
 
-                    long id = dao.Insert(image);
-                    if (id > 0)
-                    {
-                        SetAlert("Thêm mới ảnh thành công!!", "success");
-                        return RedirectToAction("Index", "Image");
-                    }
-                    else
-                    {
+                    //long id = dao.Insert(image);
+                    //if (id > 0)
+                    //{
+                    //    SetAlert("Thêm mới ảnh thành công!!", "success");
+                    //    return RedirectToAction("Index", "Image");
+                    //}
+                    //else
+                    //{
 
-                        ModelState.AddModelError("", "Thêm ảnh không thành công");
-                    }
+                    //    ModelState.AddModelError("", "Thêm ảnh không thành công");
+                    //}
                     //ModelState.Clear();
                 }
 
