@@ -9,7 +9,8 @@ namespace Ecommerce.Common
 
     public class UserLogin
     {
-        public long UserID { get; set; }
+        public long Id { get; set; }
+        public long? IdRole { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -21,5 +22,6 @@ namespace Ecommerce.Common
         public DateTime DOB { get; set; }
 
         public string Address { get; set; }
+        public long IdShop { get; set; }
     }
 }

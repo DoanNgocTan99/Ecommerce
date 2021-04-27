@@ -17,27 +17,42 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
-                //if(model == null)
-                //{
-                //    return View("Index");
-                //}
+
                 var dao = new UserDAO();
+                //var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.PassWord),true);
                 var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.PassWord));
+
                 if (result == 1)
                 {
                     var user = dao.GetByUserName(model.UserName);
                     var UserSession = new UserLogin();
                     UserSession.UserName = user.UserName;
-                    UserSession.UserID = user.Id;
+                    UserSession.IdRole = user.IdRole;
                     UserSession.Name = user.Name;
+                    UserSession.Id = user.Id;
+                    //UserSession.IdShop = user.Is
+                    var listCredentials = dao.GetListCredential(model.UserName);
+                    Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
                     Session.Add(CommonConstants.USER_SESSION, UserSession);
-                    return RedirectToAction("Index", "Home");
+                    if (UserSession.IdRole == 1)
+                    {
+                         return new ViewResult
+                        {
+                            ViewName = "~/Areas/Admin/Views/Home/Index.cshtml"
+                        };
+                    }
+                    else if (UserSession.IdRole == 2)
+                    {
+
+                        return RedirectToAction("Index", "Home");
+
+                    }
                 }
                 else if (result == 0)
                 {
@@ -78,16 +93,32 @@ namespace Ecommerce.Areas.Seller.Controllers
                 if (ModelState.IsValid)
                 {
                     var dao = new UserDAO();
+                    var entity = dao.SearchByUser(user);
+                    if (entity)
+                    {
+                        ModelState.AddModelError("", "Người dùng đã tồn tại");
+                        return View("Index");
+
+                    }
+                    if (!string.IsNullOrEmpty(user.Password))
+                    {
+                        var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
+                        user.Password = encryptedMd5Pas;
+
+                    }
                     var check = dao.Insert(user);
-                    if (check > 1 )
+                    if (check > 1)
                     {
                         //SetAlert("Cập nhập người dùng thành công!!", "success");
+                        ModelState.AddModelError("", "Cập nhập Người dùng thành công");
+                        return View("Index");
 
-                        return RedirectToAction("Index", "Login");
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Cập nhập Người dùng không thành công");
+                        ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :> ");
+                        return View("Index");
+
                     }
 
 

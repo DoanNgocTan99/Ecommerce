@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Areas.Seller.Controllers;
+using Ecommerce.Common;
 using Model.DAO;
 using Model.EF;
 using System;
@@ -13,6 +14,7 @@ namespace Ecommerce.Areas.Admin.Controllers
     public class CategoryController : BaseController
     {
         // GET: Seller/Category
+        [HasCredential(RoleID = "ADMIN")]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var dao = new CategoryDAO();
@@ -21,12 +23,14 @@ namespace Ecommerce.Areas.Admin.Controllers
             return View(model);
         }
         [HttpGet]
+        [HasCredential(RoleID = "ADMIN")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "ADMIN")]
         [ValidateInput(false)]
         public ActionResult Create(Category category)
         {
@@ -78,12 +82,14 @@ namespace Ecommerce.Areas.Admin.Controllers
             return View("Index");
         }
         [HttpGet]
+        [HasCredential(RoleID = "ADMIN")]
         public ActionResult Edit(int id)
         {
             var user = new CategoryDAO().ViewDetail(id);
             return View(user);
         }
         [HttpPost]
+        [HasCredential(RoleID = "ADMIN")]
         [ValidateInput(false)]
         public ActionResult Edit(Category category)
         {
@@ -109,7 +115,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 image.Path = fileName;
 
                 bool ID = ImageDao.Update(image);
-                if (ID )
+                if (ID)
                 {
                     SetAlert("Cập nhập doanh mục thành công!!", "success");
 
@@ -123,12 +129,14 @@ namespace Ecommerce.Areas.Admin.Controllers
             }
             return View("Index");
         }
+        [HasCredential(RoleID = "ADMIN")]
         public ActionResult Delete(int Id)
         {
             new CategoryDAO().Delete(Id);
 
             return RedirectToAction("Index");
         }
+        [HasCredential(RoleID = "ADMIN")]
         public JsonResult ChangeStatus(long id)
         {
             var result = new CategoryDAO().ChangeStatus(id);
@@ -137,6 +145,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 status = result
             });
         }
+        [HasCredential(RoleID = "ADMIN")]
         public void SetViewBag(long? selectIdCategory = null, long? selectIdProduct = null, long? selectIdUser = null)
         {
             var dao_Category = new CategoryDAO();

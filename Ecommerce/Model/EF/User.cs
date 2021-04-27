@@ -2,6 +2,7 @@ namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -15,6 +16,9 @@ namespace Model.EF
             Images = new HashSet<Image>();
             Transactions = new HashSet<Transaction>();
             Reviews = new HashSet<Review>();
+            IsActive = true;
+            IdRole = 2;
+            
         }
 
         [Key]
@@ -38,14 +42,15 @@ namespace Model.EF
         [StringLength(250)]
         public string Phone { get; set; }
 
-        public bool Gender { get; set; }
+        public bool? Gender { get; set; }
 
         public DateTime? DOB { get; set; }
 
         [StringLength(250)]
         public string Address { get; set; }
 
-        public bool IsActive { get; set; }
+        [DefaultValue("True")]
+        public bool? IsActive { get; set; }
 
         [StringLength(250)]
         public string CreatedBy { get; set; }

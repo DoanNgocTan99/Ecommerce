@@ -1,4 +1,5 @@
-﻿using Model.EF;
+﻿using Ecommerce.Common;
+using Model.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -68,9 +69,8 @@ namespace Model.DAO
             {
                 if (isLogin == true)
                 {
-                    if (result.IdRole == 1 || result.IdRole == 2)
+                    if (result.IdRole == CommonConstants.ROLE_ADMIN || result.IdRole == CommonConstants.ROLE_USER)
                     {
-
                         if (result.IsActive == false)
                         {
                             return -1;
@@ -130,7 +130,7 @@ namespace Model.DAO
                 return entity.Id;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -140,6 +140,43 @@ namespace Model.DAO
             IEnumerable<User> model = db.Users;
             return model.ToList();
         }
+        public bool SearchByUser(User user)
+        {
+            try
+            {
+                var entity = db.Users.Where(p => p.UserName == user.UserName).Count();
+                if (entity > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public List<string> GetListCredential(string UserName)
+        {
+            var user = db.Users.Single(x => x.UserName == UserName);
+            
+            var data = (from a in db.Users
+                        join b in db.Roles on a.IdRole equals b.Id
+                        
+                        where b.Id == user.IdRole
+                        select new
+                        {
+                            IdRole = a.IdRole,
 
+                            Name = b.Name
+                        }).AsEnumerable().Select(x => new Role()
+                        {
+                            Id = x.IdRole,
+                            Name= x.Name
+                        });
+
+            return data.Select(x => x.Name).ToList();
+
+        }
     }
 }

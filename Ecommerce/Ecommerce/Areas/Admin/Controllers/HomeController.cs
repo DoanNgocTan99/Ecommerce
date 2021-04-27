@@ -1,20 +1,14 @@
-﻿using Ecommerce.Areas.Seller.Models;
-using Ecommerce.Common;
-using Model.DAO;
-using Model.EF;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Ecommerce.Areas.Seller.Controllers
+namespace Ecommerce.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Seller/Home
-        [HttpGet]
-        [HasCredential(RoleID = "USER")]
+        // GET: Admin/Home
         public ActionResult Index()
         {
             if (Session != null)
@@ -26,7 +20,5 @@ namespace Ecommerce.Areas.Seller.Controllers
                 return RedirectToAction("Login");
             }
         }
-
-        
     }
 }

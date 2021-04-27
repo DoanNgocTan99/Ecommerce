@@ -15,6 +15,7 @@
         {
             Images = new HashSet<Image>();
             Products = new HashSet<Product>();
+            IsActive = true;
         }
 
         [Key]

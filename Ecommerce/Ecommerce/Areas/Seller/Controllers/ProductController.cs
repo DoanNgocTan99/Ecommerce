@@ -1,4 +1,5 @@
-﻿using Model.DAO;
+﻿using Ecommerce.Common;
+using Model.DAO;
 using Model.EF;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,12 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Areas.Seller.Controllers
 {
-    [Authorize]
+    //[Authorize]
 
     public class ProductController : BaseController
     {
         // GET: Seller/Products
-        
+        [HasCredential(RoleID  = "USER")]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var dao = new ProductDAO();
@@ -22,6 +23,8 @@ namespace Ecommerce.Areas.Seller.Controllers
             return View(model);
         }
         [HttpGet]
+        [HasCredential(RoleID = "USER")]
+
         public ActionResult Create()
         {
             SetViewBag();
@@ -29,6 +32,8 @@ namespace Ecommerce.Areas.Seller.Controllers
         }
 
         [HttpPost]
+        [HasCredential(RoleID = "USER")]
+
         [ValidateInput(false)]
         public ActionResult Create(Product product)
         {
@@ -55,6 +60,8 @@ namespace Ecommerce.Areas.Seller.Controllers
             return View("Index");
         }
         [HttpGet]
+        [HasCredential(RoleID = "USER")]
+
         public ActionResult Edit(int id)
         {
             var product = new ProductDAO().ViewDetail(id);
@@ -62,6 +69,8 @@ namespace Ecommerce.Areas.Seller.Controllers
             return View(product);
         }
         [HttpPost]
+        [HasCredential(RoleID = "USER")]
+
         [ValidateInput(false)]
         public ActionResult Edit(Product product)
         {
@@ -87,12 +96,17 @@ namespace Ecommerce.Areas.Seller.Controllers
             SetViewBag(product.IdCategory, product.IdShop);
             return View("Index");
         }
+
+        [HasCredential(RoleID = "USER")]
+
         public ActionResult Delete(int Id)
         {
             new CategoryDAO().Delete(Id);
 
             return RedirectToAction("Index");
         }
+
+        [HasCredential(RoleID = "USER")]
 
         public JsonResult ChangeStatus(long id)
         {
@@ -103,6 +117,8 @@ namespace Ecommerce.Areas.Seller.Controllers
                
             });
         }
+        [HasCredential(RoleID = "USER")]
+
         public void SetViewBag(long? selectIdCategory = null, long? selectIdShop = null)
         {
             var dao_Category = new CategoryDAO();

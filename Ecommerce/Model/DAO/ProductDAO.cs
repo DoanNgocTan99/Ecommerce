@@ -1,10 +1,12 @@
-﻿using Model.EF;
+﻿using Ecommerce.Common;
+using Model.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Model.DAO
 {
@@ -29,7 +31,9 @@ namespace Model.DAO
         {
             try
             {
-
+                //var product = new Product();
+                //var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+                
                 db.Products.Add(entity);
                 db.SaveChanges();
                 return entity.Id;

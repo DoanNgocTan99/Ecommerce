@@ -55,7 +55,7 @@ namespace Model.DAO
                 shop.Description = entity.Description;
                 shop.Address = entity.Address;
                 shop.Phone = entity.Phone;
-                shop.IdUser = session.UserID;
+                shop.IdUser = session.Id;
                 shop.ModifiedBy = session.UserName;
 
                 shop.ModifiedDate = DateTime.Now;
