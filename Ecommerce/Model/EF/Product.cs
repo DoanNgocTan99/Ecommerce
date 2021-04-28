@@ -1,10 +1,11 @@
-﻿namespace Model.EF
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
+namespace Model.EF
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Product")]
     public partial class Product
@@ -16,6 +17,7 @@
             ProductAdvertisings = new HashSet<ProductAdvertising>();
             Orders = new HashSet<Order>();
             Reviews = new HashSet<Review>();
+            IsActive = true;
         }
 
         [Key]

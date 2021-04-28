@@ -1,4 +1,4 @@
-﻿using MailChimp.Net.Models;
+﻿
 using Model.EF;
 using System;
 using System.Collections.Generic;
