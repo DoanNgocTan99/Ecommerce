@@ -106,17 +106,21 @@ namespace Ecommerce.Areas.Seller.Controllers
                         user.Password = encryptedMd5Pas;
 
                     }
-                    var check = dao.Insert(user);
-                    if (check > 1)
+                    var Id = dao.Insert(user);
+
+                    var shop = new ShopDAO();
+
+                    var IdShop = shop.InsertByRegister(Id);
+
+                    if (IdShop != 0)
                     {
-                        //SetAlert("Cập nhập người dùng thành công!!", "success");
-                        ModelState.AddModelError("", "Cập nhập Người dùng thành công");
+                        ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :>");
                         return View("Index");
 
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :> ");
+                        ModelState.AddModelError("", "Xin lỗi!!! Bạn cần kiểm tra lại thông tin");
                         return View("Index");
 
                     }

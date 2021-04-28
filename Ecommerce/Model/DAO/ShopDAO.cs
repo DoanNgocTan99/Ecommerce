@@ -33,13 +33,30 @@ namespace Model.DAO
         //{
         //    return db.Images.Find(Id);
         //}
+        public long InsertByRegister(long IdUser)
+        {
+            try
+            {
+                var Shop = new Shop();
+                Shop.IdUser = IdUser;
+                var id = db.Shops.Add(Shop).Id;
+                db.SaveChanges();
+                return id;
+                //return db.Shops.Add(Shop).Id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public Shop ViewDetail(int Id)
         {
             try
             {
                 return db.Shops.Find(Id);
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }

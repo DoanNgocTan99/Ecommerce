@@ -149,7 +149,6 @@
   <ItemGroup>
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\ImageDAO.cs" />
-    <Compile Include="DAO\KiemTraQuyenAttribute.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\ShopDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
