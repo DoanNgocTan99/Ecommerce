@@ -2253,6 +2253,10 @@ h2.checkout-form-title {
     object-fit: cover;
 }
 
+.single-product .product-img a:hover img.default-img {
+    opacity: 0;
+}
+
 .single-product .product-img a img.hover-img {
     height: 110%;
     width: 110%;
@@ -2280,6 +2284,7 @@ h2.checkout-form-title {
     border-radius: 30px;
     height: 26px;
     line-height: 25px;
+    z-index: 100;
 }
 
 .single-product .product-img a span.new {
@@ -2298,6 +2303,7 @@ h2.checkout-form-title {
     border-radius: 30px;
     height: 26px;
     line-height: 24px;
+    z-index: 100;
 }
 
 .single-product .product-img a span.out-of-stock {
@@ -2316,6 +2322,7 @@ h2.checkout-form-title {
     border-radius: 30px;
     height: 26px;
     line-height: 24px;
+    z-index: 100;
 }
 
 .single-product .product-img .product-action {

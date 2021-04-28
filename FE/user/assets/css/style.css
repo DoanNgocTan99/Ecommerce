@@ -1567,15 +1567,15 @@ a.aa-product-img img {
 
 .simpleLens-big-image-container .simpleLens-big-image-dropdown {
     position: absolute;
+    /* height: 130%; */
+    width: 120%;
     top: 0;
     left: 0;
-    opacity: 0;
+    opacity: 1;
 }
 
 .simpleLens-big-image-container:hover .simpleLens-big-image-dropdown {
     cursor: zoom-in;
-    height: 120%;
-    width: 120%;
     transform: translate(-10%, -20%);
     opacity: 1;
 }
@@ -2201,6 +2201,7 @@ a.aa-product-img img {
 }
 
 #aa-product-category {
+    background: white;
     display: inline;
     float: left;
     width: 100%;
@@ -2587,7 +2588,6 @@ a.aa-product-img img {
 
 #aa-product-details .aa-product-details-area .aa-product-details-content {
     margin: 0 auto;
-    width: 80%;
 }
 
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-slider {
