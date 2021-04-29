@@ -1094,11 +1094,11 @@ button.search_btn {
 }
 
 #aa-promo .aa-promo-area {
-    box-shadow: 1px 1px 20px 1px rgb(0 0 0 / 10%);
+    /* box-shadow: 1px 1px 20px 1px rgb(0 0 0 / 10%); */
     margin-bottom: 70px;
     display: inline;
     float: left;
-    padding: 30px 10px;
+    padding: 30px 0px;
     width: 100%;
 }
 
@@ -2702,6 +2702,10 @@ a.aa-product-img img {
     border-top: 1px solid #ccc;
 }
 
+#aa-product-details .aa-product-details-area .aa-product-details-bottom .tab-content {
+    margin-bottom: 100px;
+}
+
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs {
     text-align: center;
     padding-left: 450px;
@@ -2742,6 +2746,7 @@ a.aa-product-img img {
 }
 
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area {
+    margin-bottom: 100px;
     display: inline;
     float: left;
     padding: 20px 0;
