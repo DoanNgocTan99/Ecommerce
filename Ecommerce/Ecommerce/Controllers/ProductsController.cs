@@ -46,9 +46,7 @@ namespace Ecommerce.Controllers
             }
             ViewBag.category = db.Categories.SingleOrDefault(x => x.Id == product.IdCategory);
 
-            //list sản phẩm giảm giá
-            //List<Product> sanPhamGiamGia = db.Products.Where(x => x.IdCategory == product.IdCategory && x.Discount > 0 == true).OrderBy(x => Guid.NewGuid()).Take(4).ToList();
-            //ViewBag.sanPhamGiamGia = sanPhamGiamGia;
+
 
             return View(product);
         }
