@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Model.EF
+@model Model.EF.Product
+@{
+    Category category = @ViewBag.category;
+    Product product = @ViewBag.product;
+    //List<Product> sanPhamGiamGia = ViewBag.sanPhamGiamGia;
+    //Image image = @ViewBag.image;
+
+}
+@{
+    long categoryid = 1;
+    if (category.Id != 0)
+    {
+        categoryid = category.Id;
+    }
+}
+<section>
+    <input id="productid" type="hidden" value="@Model.Id" />
+</section>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bread-inner">
+                    <ul class="bread-list">
+                        <li><a href="/Home/Index">Trang chủ<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="/products/productlist/@categoryid">@category.Name<i class="ti-arrow-right"></i></a></li>
+                        <li class="active">@product.Name</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / catg header banner section -->
+<!-- product category -->
+<section id="aa-product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-product-details-area">
+                    <div class="aa-product-details-content">
+                        <div class="row">
+                            <!-- Modal view slider -->
+
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <div class="aa-product-view-slider">
+                                    <div id="demo-1" class="simpleLens-gallery-container">
+                                        <div class="simpleLens-container">
+                                            <div class="simpleLens-big-image-container">
+                                                <a data-lens-image="${pageContext.request.contextPath}/view/client/assets/images/products/img-test/${detail_product.image_link}" class="simpleLens-lens-image">
+                                                    <img src="@Html.Action("getImage","image", new { id = Model.Id})" class="simpleLens-big-image">
+                                                </a>
+                                                <img src="@Html.Action("getImage","image", new { id = Model.Id})" class="simpleLens-big-image-dropdown">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal view content -->
+
+                            <div class="col-md-7 col-sm-7 col-xs-12">
+                                <div class="aa-product-view-content">
+                                    <h3>@product.Name</h3>
+                                    <div class="aa-price-block">
+                                        <c:choose>
+                                            <c:when test="@Model.Discount == 0">
+                                                <span class="aa-product-price">@product.Price VNĐ</span><span class="aa-product-price"></span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:forEach items="${productlist1}" var="product1">
+                                                    <c:if test="${product1.id == detail_product.id}">
+                                                        <span class="aa-product-price"><strong>@product.Price VNĐ</strong></span>
+                                                        <span class="aa-product-price"><del>@product.DelPrice VNĐ</del></span>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                        <p class="aa-product-avilability">
+                                            Tình trạng: <span>
+                                                <c:choose>
+                                                    <c:when test="${detail_product.status == 1}">
+                                                        <c:out value="Còn hàng" />
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:out value="Hết hàng" />
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <p>${detail_product.description}</p>
+                                    <div class="aa-prod-quantity">
+
+                                        <p class="aa-prod-category">
+                                            <c:forEach items="${name_cate_of_product}" var="name_cate">
+                                                <strong>Danh mục:</strong> <a href="product.jsp">@Model.Category.Name</a>
+                                            </c:forEach>
+                                        </p>
+                                    </div>
+                                    <div class="aa-prod-view-bottom">
+                                        <a class="btn" href="${pageContext.request.contextPath}/view/client/add-cart?product-id=${detail_product.id}">Thêm vào giỏ hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="aa-product-details-bottom">
+                        <ul class="nav nav-tabs aa-products-tab" id="myTab2">
+                            <li class="active"><a href="#description" data-toggle="tab" class="">Mô tả</a></li>
+                            <li><a href="#review" data-toggle="tab">Đánh giá</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="description">
+                                <p>@product.Description</p>
+                            </div>
+                            <div class="tab-pane fade " id="review">
+                                <div class="aa-product-review-area">
+                                    <ul class="aa-review-nav">
+                                        <c:forEach items="${reviewbyid}" var="review">
+                                            <li>
+                                                <div class="media">
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading"><strong>${review.name}</strong> - <span>${review.created}</span></h4>
+                                                        <div class="aa-product-rating">
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                        </div>
+                                                        <p>${review.content}</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                    <h4>Thêm đánh giá</h4>
+
+                                    <!-- review form -->
+                                    <form action="${pageContext.request.contextPath}/view/client/review?id=${detail_product.id}" method="post" class="aa-review-form">
+                                        <div class="form-group">
+                                            <label for="name">Tên</label>
+                                            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" placeholder="example@gmail.com" name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message">Đánh giá của bạn</label>
+                                            <textarea class="form-control" rows="3" id="content" name="content"></textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-default aa-review-submit">Gửi</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Related product -->
+                    <div class="aa-product-related-item">
+                        <div class="product-area most-popular section">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="section-title">
+                                            <h2>Sản phẩm liên quan</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="owl-carousel popular-slider">
+                                            <!-- Start Single Product -->
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="product-details.html">
+                                                        <img class="default-img" src="../assets/images/products/loa/Loa Bluetooth SOUNDMAX 5.1 B60, 105 Watt.png" alt="#">
+                                                        <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                        <span class="out-of-stock">Hot</span>
+                                                    </a>
+                                                    <div class="button-head">
+                                                        <div class="product-action">
+                                                            <a title="Quick View" href="shop.html"><i class="ti-eye"></i><span>Quick Shop</span></a>
+                                                            <a title="Wishlist" href="shop.html"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                            <a title="Add to cart" href="#">Add to cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+                                                    <div class="product-price">
+                                                        <span class="old">$60.00</span>
+                                                        <span>$50.00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Product -->
+                                            <!-- Start Single Product -->
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="product-details.html">
+                                                        <img class="default-img" src="../assets/images/products/banphim/banphima4techblloodyb188.png" alt="#">
+                                                        <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                        <span class="out-of-stock">Hot</span>
+                                                        <span class="out-of-stock">New</span>
+                                                    </a>
+                                                    <div class="button-head">
+                                                        <div class="product-action">
+                                                            <a title="Quick View" href="shop.html"><i class="ti-eye"></i><span>Quick Shop</span></a>
+                                                            <a title="Wishlist" href="shop.html"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                            <a title="Add to cart" href="#">Add to cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="product-details.html">Women Hot Collection</a></h3>
+                                                    <div class="product-price">
+                                                        <span>$50.00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Product -->
+                                            <!-- Start Single Product -->
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="product-details.html">
+                                                        <img class="default-img" src="../assets/images/products/tainghe/Tai nghe bluetooth Samsung ITFIT A08C" alt="#">
+                                                        <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                        <span class="out-of-stock">Hot</span>
+                                                    </a>
+                                                    <div class="button-head">
+                                                        <div class="product-action">
+                                                            <a title="Quick View" href="shop.html"><i class="ti-eye"></i><span>Quick Shop</span></a>
+                                                            <a title="Wishlist" href="shop.html"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                            <a title="Add to cart" href="#">Add to cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="product-details.html">Awesome Pink Show</a></h3>
+                                                    <div class="product-price">
+                                                        <span>$50.00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Product -->
+                                            <!-- Start Single Product -->
+                                            <div class="single-product">
+                                                <div class="product-img">
+                                                    <a href="product-details.html">
+                                                        <img class="default-img" src="../assets/images/products/tainghe/Tai nghe (Earphones) Mi True Wireless Earphones Lite (BHR4090GL).png" alt="#">
+                                                        <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                        <span class="out-of-stock">Hot</span>
+                                                    </a>
+                                                    <div class="button-head">
+                                                        <div class="product-action">
+                                                            <a title="Quick View" href="shop.html"><i class="ti-eye"></i><span>Quick Shop</span></a>
+                                                            <a title="Wishlist" href="shop.html"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                            <a title="Add to cart" href="#">Add to cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+                                                    <div class="product-price">
+                                                        <span>$50.00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Product -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / product category -->
+<!--  end content-->
+<!--  footer-->
+<!-- end footer-->

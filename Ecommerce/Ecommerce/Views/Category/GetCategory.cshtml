@@ -1,0 +1,21 @@
+﻿@model  List<Model.EF.Category>
+@{
+    long categoryid = 1;
+    if (ViewBag.categoryid != null)
+    {
+        categoryid = ViewBag.categoryid;
+    }
+}
+@foreach (var item in Model)
+{
+    <!-- Tab Nav -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            @{
+                categoryid = item.Id;
+            }
+            <a class="nav-link active" data-toggle="tab" href="#@item.Id" role="tab">@*<img class="category-img" src="@item.ImageFile.FileName" alt="category" />*@@item.Name</a>
+        </li>
+    </ul>
+    <!--/ End Tab Nav -->
+}
