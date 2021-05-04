@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "ProductSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList.Mvc;
+@using Model.EF;
+@model PagedList.IPagedList<Model.EF.Product>
+
+@{
+    Category category = ViewBag.category;
+    //List<Product> sanPhamGiamGia = ViewBag.sanPhamGiamGia;
+    Image image = ViewBag.image;
+}
+@{
+    int categoryid = 1;
+    if (ViewBag.categoryid != null)
+    {
+        categoryid = ViewBag.categoryid;
+    }
+}
+<div class="product-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Danh sách sản phẩm </h2>
+                    <p>Kết quả tìm kiếm cho từ khóa: <strong>${param.s}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+                <div class="product-info">
+                    <div class="nav-main">
+                        <!-- Tab Nav -->
+                        @Html.Action("GetCategory", "Category")
+                        @*<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>*@
+                        <!--/ End Tab Nav -->
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Start Single Tab -->
+                        <div class="tab-pane fade show active" id=@categoryid role="tabpanel">
+                            <div class="tab-single">
+                                <div class="row">
+                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = categoryid })
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ End Single Tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

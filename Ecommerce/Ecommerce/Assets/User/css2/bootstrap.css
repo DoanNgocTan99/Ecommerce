@@ -211,9 +211,7 @@ dfn {
 
 b,
 strong {
-    font-family: emoji;
-    font-weight: bolder;
-    font-size: 21px;
+    font-weight: bolder
 }
 
 small {
@@ -322,7 +320,8 @@ th {
 
 label {
     display: inline-block;
-    margin-bottom: .5rem
+    margin-bottom: .5rem;
+    font-family: auto;
 }
 
 button {

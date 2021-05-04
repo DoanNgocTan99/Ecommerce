@@ -33,6 +33,27 @@ namespace Ecommerce.Controllers
             return View(products.ToPagedList(pageNumber, pageSize));
 
         }
+        public ActionResult ProductSearch(int? page, int? pagenumber, int? category, List<Product> listProducts)
+        {
+            //phan trang pagedlist
+            if (page == null) page = 1;
+            int pageSize = pagenumber == null ? 9 : 10000;
+            //int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            List<Product> products = new List<Product>();
+            if (listProducts != null)
+            {
+                products = listProducts.ToList();
+                ViewBag.products = products;
+            }
+            else
+            {
+                products = db.Products.OrderBy(x => x.Name).ToList();
+                ViewBag.products = products;
+            }
+            return View(products.ToPagedList(pageNumber, pageSize));
+
+        }
 
         // trang xem chi tiet
         public ActionResult XemChiTiet(int id)
