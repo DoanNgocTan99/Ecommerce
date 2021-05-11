@@ -23,5 +23,6 @@ namespace Ecommerce.Controllers
             List<Category> cats = db.Categories.ToList();
             return PartialView("GetCategory", cats);
         }
+        
     }
 }

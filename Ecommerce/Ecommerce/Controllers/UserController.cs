@@ -54,7 +54,7 @@ namespace Ecommerce.Controllers
         {
             if (manualfile != null)
             {
-                string path = Server.MapPath("~/Assets/User/images/UploadFile");
+                string path = Server.MapPath("../Assets/User/images/UploadFile");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
@@ -82,7 +82,7 @@ namespace Ecommerce.Controllers
                 db.Images.Add(f);
                 db.SaveChanges();
             }
-            return RedirectToAction("Edit");
+            return RedirectToAction("Index","Home");
         }
 
         [HttpPost]

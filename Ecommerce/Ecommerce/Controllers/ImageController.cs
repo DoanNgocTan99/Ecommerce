@@ -13,7 +13,7 @@ namespace Ecommerce.Controllers
         public string getImage(int id)
         {
             Image image = new Image();
-            image = db.Images.Where(x => x.IdUser == id).FirstOrDefault();
+            image = db.Images.Where(x => x.IdProduct == id).FirstOrDefault();
             if (image != null)
             {
                 return image.Path;

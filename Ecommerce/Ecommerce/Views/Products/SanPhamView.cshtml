@@ -2,18 +2,19 @@
 @using Model.EF;
 @model PagedList.IPagedList<Model.EF.Product>
 @{
+    Product productid = ViewBag.productid;
     Image image = ViewBag.image;
 }
 @if (Model != null)
 {
     foreach (var item in Model)
     {
-        <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-12" data-id="@item.Id">
             <div class="single-product">
                 <div class="product-img">
-                    <a href="product-details.html">
-                        <img class="default-img" src="@Html.Action("getImage", "image", new { id = item.Id })" alt="#">
-                        <img class="hover-img" src="@Html.Action("getImage", "image", new { id = item.Id })" alt="#">
+                    <a href="/products/xemchitiet/@item.Id">
+                        <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id  })" alt="#">
+                        <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
                     </a>
                     <div class="button-head">
                         <div class="product-action">

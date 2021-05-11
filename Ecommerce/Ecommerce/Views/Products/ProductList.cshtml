@@ -10,12 +10,13 @@
     Category category = ViewBag.category;
     //List<Product> sanPhamGiamGia = ViewBag.sanPhamGiamGia;
     Image image = ViewBag.image;
+
 }
 @{
     int categoryid = 1;
-    if (ViewBag.categoryid != null)
+    if (ViewBag.categoryId != null)
     {
-        categoryid = ViewBag.categoryid;
+        categoryid = @ViewBag.categoryId;
     }
 }
 <div class="product-area section">
@@ -28,29 +29,38 @@
             </div>
         </div>
         <div class="row">
-
             <div class="col-12">
                 <div class="product-info">
                     <div class="nav-main">
                         <!-- Tab Nav -->
-                        @Html.Action("GetCategory", "Category")
-                        @*<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>*@
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            @Html.Action("GetCategory", "Category")
+                        </ul>
                         <!--/ End Tab Nav -->
                     </div>
                     <div class="tab-content" id="myTabContent">
                         <!-- Start Single Tab -->
-                        <div class="tab-pane fade show active" id=@categoryid role="tabpanel">
+                        @Html.Action("SendCategoryId", "Products", new { Id = categoryid })
+                        @*<div class="tab-pane fade show active" id="1" role="tabpanel">
                             <div class="tab-single">
                                 <div class="row">
-                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = categoryid })
+                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 1 })
                                 </div>
                             </div>
                         </div>
-                        <!--/ End Single Tab -->
+                        <div class="tab-pane fade show active" id="3" role="tabpanel">
+                            <div class="tab-single">
+                                <div class="row">
+                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 3 })
+                                </div>
+                            </div>
+                        </div>*@
                     </div>
+                    <!--/ End Single Tab -->
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
