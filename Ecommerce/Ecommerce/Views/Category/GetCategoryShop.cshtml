@@ -1,6 +1,6 @@
 ﻿@model  List<Model.EF.Category>
 @{
-    long categoryid = 1;
+    long categoryid = Model[0].Id;
     if (ViewBag.categoryid != null)
     {
         categoryid = ViewBag.categoryid;

@@ -75,7 +75,9 @@ Version:1.0
     cursor: pointer;
     box-shadow: -4px 0px 5px #00000036;
 }
-
+.aa-product-related-item {
+    margin-top: 100px;
+}
 .color-plate h4 {
     display: block;
     font-size: 15px;
