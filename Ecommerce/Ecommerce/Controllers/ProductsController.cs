@@ -35,6 +35,31 @@ namespace Ecommerce.Controllers
             return View(products.ToPagedList(pageNumber, pageSize));
 
         }
+        public ActionResult ProductListOfShop(int? page, int? pagenumber, int? category, List<Product> listProducts, int? category_id, long shop_id)
+        {
+            //phan trang pagedlist
+            if (page == null) page = 1;
+            int pageSize = pagenumber == null ? 9 : 10000;
+            //int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            List<Product> products = new List<Product>();
+            ViewBag.categoryId = category_id;
+            ViewBag.shopId = shop_id;
+            if (listProducts != null)
+            {
+                products = listProducts.ToList();
+                ViewBag.products = products;
+            }
+            else
+            {
+                products = db.Products.Where(x => x.IdShop == shop_id).ToList();
+                ViewBag.products = products;
+            }
+
+            return View(products.ToPagedList(pageNumber, pageSize));
+
+        }
+
         public ActionResult ProductSearch(int? page, int? pagenumber, int? category, List<Product> listProducts)
         {
             //phan trang pagedlist
@@ -89,6 +114,27 @@ namespace Ecommerce.Controllers
             else
             {
                 products = db.Products.Where(x => x.IdCategory == categoryid).OrderByDescending(x => x.CreatedDate).ToList();
+                ViewBag.products = products;
+            }
+
+            return PartialView(products.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult SanPhamViewShop(int? categoryid, int? shopid, List<Product> listProducts, int? page, int? pagenumber)
+        {
+            //phan trang pagedlist
+            if (page == null) page = 1;
+            int pageSize = pagenumber == null ? 9 : 10000;
+            //int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            List<Product> products = new List<Product>();
+            if (listProducts != null)
+            {
+                products = listProducts.ToList();
+                ViewBag.products = products;
+            }
+            else
+            {
+                products = db.Products.Where(x => x.IdCategory == categoryid && x.IdShop == shopid).OrderByDescending(x => x.CreatedDate).ToList();
                 ViewBag.products = products;
             }
 
@@ -186,6 +232,12 @@ namespace Ecommerce.Controllers
             List<Product> sanPhams = db.Products.Where(x => x.Name.ToLower().Contains(key.ToLower())).OrderBy(x => x.CreatedDate).ToList();
 
             return View(sanPhams);
+        }
+        public PartialViewResult SendCategoryIdShop(int Id)
+        {
+            ViewBag.categoryId = Id;
+            List<Category> cats = db.Categories.ToList();
+            return PartialView("SendCategoryId", cats);
         }
         public PartialViewResult SendCategoryId(int Id)
         {
