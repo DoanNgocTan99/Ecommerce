@@ -35,7 +35,7 @@ namespace Ecommerce.Controllers
             return View(products.ToPagedList(pageNumber, pageSize));
 
         }
-        public ActionResult ProductListOfShop(int? page, int? pagenumber, int? category, List<Product> listProducts, int? category_id, long shop_id)
+        public ActionResult ProductListOfShop(int? page, int? pagenumber, int? category, List<Product> listProducts, long? category_id, long shop_id)
         {
             //phan trang pagedlist
             if (page == null) page = 1;
@@ -119,7 +119,7 @@ namespace Ecommerce.Controllers
 
             return PartialView(products.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult SanPhamViewShop(int? categoryid, int? shopid, List<Product> listProducts, int? page, int? pagenumber)
+        public ActionResult SanPhamViewShop(long? categoryid, long? shopid, List<Product> listProducts, int? page, int? pagenumber)
         {
             //phan trang pagedlist
             if (page == null) page = 1;
@@ -233,12 +233,21 @@ namespace Ecommerce.Controllers
 
             return View(sanPhams);
         }
-        public PartialViewResult SendCategoryIdShop(int Id, int shopid)
+        public PartialViewResult SendCategoryIdShop(long Id, long shopid)
         {
             ViewBag.categoryId = Id;
             ViewBag.shopId = shopid;
-            List<Category> cats = db.Categories.ToList();
-            return PartialView("SendCategoryIdShop", cats);
+            List<long> temp = (from a in db.Products
+                               join b in db.Categories on a.IdCategory equals b.Id
+                               where a.IdShop == shopid
+                               select a.IdCategory).Distinct().ToList();
+            List<Category> categoryList = new List<Category>();
+            foreach (long item in temp)
+            {
+                Category category = db.Categories.Where(x => x.Id == item).FirstOrDefault();
+                categoryList.Add(category);
+            }
+            return PartialView("SendCategoryIdShop", categoryList);
         }
         public PartialViewResult SendCategoryId(int Id)
         {

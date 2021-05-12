@@ -36,7 +36,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                 //category.Path = "~/Image/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
                 shop.ImageFile.SaveAs(fileName);
-                var result = dao.Update(shop);
+                //var result = dao.Update(shop);
 
                 var ImageDao = new ImageDAO();
 
