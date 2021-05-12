@@ -1,0 +1,94 @@
+﻿@model Model.EF.User
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet"
+          href="~/Assets/User/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Assets/User/css/register.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="~/Assets/User/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 login-section-wrapper">
+                <div class="login-wrapper my-auto">
+                    <img src="~/Assets/User/images/logo-login-big.png" alt="logo" class="logo">
+                    @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+                    {
+                        @*@Html.AntiForgeryToken()*@
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                            
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Name*", @autocomplete = "off" } )
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                
+                            </div>
+
+                            <div class="form-group">
+                                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control",@placeholder = "Username*", @autocomplete = "off" } )
+                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.TextBoxFor(model => model.Password, new {@class = "form-control", @placeholder = "Password*", @autocomplete = "off" } )
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.TextBoxFor(model => model.Email, new {  @class = "form-control", @placeholder = "Email*", @autocomplete = "off" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                    <input type="submit" value="Register" class="btn btn-block login-btn" />
+                            </div>
+                   
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+
+
+                    <a href="#!" class="have-account">Do you have an account?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function checkPass() {
+            if (document.getElementById('password').value == document
+                .getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'not matching';
+            }
+        }
+    </script>
+</body>
+
+</html>
+@*<h2>TẠO TÀI KHOẢN NGƯỜI DÙNG</h2>*@

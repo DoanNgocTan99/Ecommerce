@@ -17,8 +17,9 @@ namespace Model.EF
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductAdvertising> ProductAdvertisings { get; set; }
+        public virtual DbSet<Programme> Programmes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -64,10 +65,10 @@ namespace Model.EF
                 .WithOptional(e => e.Product)
                 .HasForeignKey(e => e.IdProduct);
 
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.ProductAdvertisings)
-                .WithRequired(e => e.Product)
-                .HasForeignKey(e => e.IdProduct);
+            modelBuilder.Entity<Programme>()
+                .HasMany(e => e.Products)
+                .WithRequired(e => e.Programme)
+                .HasForeignKey(e => e.IdProgramme);
             //.WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
@@ -77,10 +78,7 @@ namespace Model.EF
 
 
 
-            //Table ProductAdvertisings
-            modelBuilder.Entity<ProductAdvertising>()
-                .Property(e => e.Content)
-                .IsUnicode(false);
+
 
 
             //Table Role

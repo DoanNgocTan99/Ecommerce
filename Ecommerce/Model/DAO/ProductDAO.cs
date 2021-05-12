@@ -1,10 +1,12 @@
-﻿using Model.EF;
+﻿using Ecommerce.Common;
+using Model.EF;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Model.DAO
 {
@@ -17,10 +19,22 @@ namespace Model.DAO
         }
         public IEnumerable<Product> ListAllPaging(string searchString, int page, int pageSize)
         {
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
             IQueryable<Product> model = db.Products;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
+                model = model.Where(x => x.Name.Contains(searchString) && x.IdShop == session.IdShop|| x.Name.Contains(searchString) && x.IdShop == session.IdShop);
+            }
+            return model.Where(x => x.IdShop ==session.IdShop).OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+
+        }
+        public IEnumerable<Product> ListAllPagingByAdmin(string searchString, int page, int pageSize)
+        {
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+            IQueryable<Product> model = db.Products;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString)|| x.Name.Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
 
@@ -29,6 +43,22 @@ namespace Model.DAO
         {
             try
             {
+                UserDAO user = new UserDAO();
+                //var product = new Product();
+                //var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+                //long id = session.Id;
+
+                var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+
+                var id = user.GetIdShopByIdUser(session.Id);
+                entity.IdShop = id;
+                entity.CreatedDate = DateTime.Now;
+
+
+                //demo
+                var dao_ca = new CategoryDAO();
+                var IDDD = dao_ca.GetListNamByIdShop(id);
+
 
                 db.Products.Add(entity);
                 db.SaveChanges();
@@ -47,7 +77,9 @@ namespace Model.DAO
         {
             try
             {
+                var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
                 var product = db.Products.Find(entity.Id);
+
                 product.Name = entity.Name;
                 product.Description = entity.Description;
                 product.Brand = entity.Brand;
@@ -55,19 +87,18 @@ namespace Model.DAO
                 product.Origin = entity.Origin;
                 product.Price = entity.Price;
                 product.DelPrice = entity.DelPrice;
-                product.WarrantyDate = DateTime.Now;
+                product.WarrantyDate = entity.WarrantyDate;
                 product.Stock = entity.Stock;
                 product.Discount = entity.Discount;
-                product.Views = entity.Views;
                 product.Rate = entity.Rate;
-                product.IsActive = entity.IsActive;
-                product.ModifiedBy = entity.ModifiedBy;
-                product.CreatedBy = entity.CreatedBy;
+                product.ModifiedBy = session.UserName;
+                product.CreatedBy = session.UserName;
                 product.IdCategory = entity.IdCategory;
+                product.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
@@ -97,6 +128,20 @@ namespace Model.DAO
             product.IsActive = !product.IsActive;
             db.SaveChanges();
             return product.IsActive;
+        }
+        public bool ChangeStatusFalseSale(long id)
+        {
+            var product = db.Products.Find(id);
+            product.FlaseSale = !product.FlaseSale;
+            db.SaveChanges();
+            return product.FlaseSale;
+        }
+        public bool ChangeStatusAdvertisement(long id)
+        {
+            var product = db.Products.Find(id);
+            product.Advertisement = !product.Advertisement;
+            db.SaveChanges();
+            return product.Advertisement;
         }
     }
 }
