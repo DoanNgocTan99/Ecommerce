@@ -174,9 +174,9 @@
                     <!--/ End Logo -->
                     <!-- Search Form -->
                     <div class="search-bar-box">
-                        <form action="${pageContext.request.contextPath}/view/client/product/search" method="GET" class="form-search">
+                        <form action="/search/search" method="GET" class="form-search">
                             <input class="search_input" type="text" name="" placeholder="Tìm kiếm sản phẩm~.">
-                            <button href="#" class="search_btn" type="submit"><span class="fas fa-search"></span></button>
+                            <button href="/search/search" class="search_btn" type="submit"><span class="fas fa-search"></span></button>
                         </form>
                     </div>
                     <div class="right-bar">
@@ -186,35 +186,15 @@
                             <a href="cart.html" class="single-icon">
                                 <span class="fas fa-cart-arrow-down"></span>
                                 <span class="aa-cart-title">GIỎ HÀNG</span>
-                                <span class="total-count">2</span>
+                                <span class="total-count"></span>
                             </a>
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
-                                    <span>2 Sản phẩm</span>
-                                    <a href="cart">Xem giỏ hàng</a>
+                                    <span> Sản phẩm</span>
+                                    <a href="/cart/cart">Xem giỏ hàng</a>
                                 </div>
-                                <ul class="shopping-list">
-                                    <li>
-                                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="product-details.html"><img src="~/Assets/User/images/products/dongho/Huawei Watch GT2 46mm dây da.png" alt="#"></a>
-                                        <h4><a href="product-details.html">Woman Ring</a></h4>
-                                        <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="product-details.html"><img src="~/Assets/User/images/products/laptop/Laptop Apple MacBook Air M1 2020.png" alt="#"></a>
-                                        <h4><a href="product-details.html">Woman Necklace</a></h4>
-                                        <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                    </li>
-                                </ul>
-                                <div class="bottom">
-                                    <div class="total">
-                                        <span>Total</span>
-                                        <span class="total-amount">$134.00</span>
-                                    </div>
-                                    <a href="checkout.html" class="btn animate">Thanh toán</a>
-                                </div>
+                                @Html.Action("Cart_partial", "Cart")
                             </div>
                             <!--/ End Shopping Item -->
                         </div>

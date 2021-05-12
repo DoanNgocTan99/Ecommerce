@@ -190,9 +190,9 @@
                     <!--/ End Logo -->
                     <!-- Search Form -->
                     <div class="search-bar-box">
-                        <form action="${pageContext.request.contextPath}/view/client/product/search" method="GET" class="form-search">
+                        <form action="/search/search" method="GET" class="form-search">
                             <input class="search_input" type="text" name="" placeholder="Tìm kiếm sản phẩm~.">
-                            <button href="#" class="search_btn" type="submit"><span class="fas fa-search"></span></button>
+                            <button href="/search/search" class="search_btn" type="submit"><span class="fas fa-search"></span></button>
                         </form>
                     </div>
                     <div class="right-bar">
@@ -205,7 +205,13 @@
                                 <span class="total-count"></span>
                             </a>
                             <!-- Shopping Item -->
-                            @Html.Action("Cart_partial","Cart")
+                            <div class="shopping-item">
+                                <div class="dropdown-cart-header">
+                                    <span> Sản phẩm</span>
+                                    <a href="/cart/cart">Xem giỏ hàng</a>
+                                </div>
+                                @Html.Action("Cart_partial","Cart")
+                            </div>
                             <!--/ End Shopping Item -->
                         </div>
                     </div>
@@ -398,21 +404,21 @@
                 <div class="col-12">
                     <div class="product-info">
                         <div class="nav-main">-->
-                            <!-- Tab Nav -->
-                            <!--<ul class="nav nav-tabs" id="myTab" role="tablist">
-                                Html.Action("GetCategory", "Category")
-                            </ul>-->
-                            <!--/ End Tab Nav -->
-                        <!--</div>
-                        <div class="tab-content" id="myTabContent">-->
-                            <!-- Start Single Tab -->
-                            <!--<div class="tab-pane fade show active" id="man" role="tabpanel">
-                                <div class="tab-single">
-                                    Html.Action("SendCategoryId", "Products", new { Id = categoryid, })
-                                </div>
-                            </div>-->
-                            <!--/ End Single Tab -->
-                        <!--</div>
+            <!-- Tab Nav -->
+            <!--<ul class="nav nav-tabs" id="myTab" role="tablist">
+                Html.Action("GetCategory", "Category")
+            </ul>-->
+            <!--/ End Tab Nav -->
+            <!--</div>
+            <div class="tab-content" id="myTabContent">-->
+            <!-- Start Single Tab -->
+            <!--<div class="tab-pane fade show active" id="man" role="tabpanel">
+                <div class="tab-single">
+                    Html.Action("SendCategoryId", "Products", new { Id = categoryid, })
+                </div>
+            </div>-->
+            <!--/ End Single Tab -->
+            <!--</div>
                     </div>
                 </div>
             </div>-->
@@ -487,38 +493,38 @@
                 <div class="row">
                     @*<div class="col-12">
                         <div class="owl-carousel popular-slider">*@
-                            <!-- Start Single Product -->
-                            @*<div class="single-product">
-                                    <div class="product-img">
-                                        <a href="product-details.html">
-                                            <img class="default-img" src="~/Assets/User/images/products/loa/Loa Bluetooth SOUNDMAX 5.1 B60, 105 Watt.png" alt="#">
-                                            <img class="hover-img" src="~/Assets/User/images/products/loa/Loa Bluetooth SOUNDMAX 5.1 B60, 105 Watt.png" alt="#">
-                                            <span class="new">New</span>
-                                        </a>
-                                        <div class="button-head">
-                                            <div class="product-action">
-                                                <a title="Quick View" href="shop.html"><i class="ti-eye"></i><span>Quick Shop</span></a>
-                                                <a title="Wishlist" href="shop.html"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                            </div>
-                                            <div class="product-action-2">
-                                                <a title="Add to cart" href="#">Add to cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-        k                                <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
-                                <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
-                                        <div class="product-price">
-                                            <span class="old">$60.00</span>
-                                            <span>$50.00</span>
-                                        </div>
-                                    </div>
-                                </div>*@
-                            @Html.Action("SanPhamView", "Products", new { take = 6, categoryid = item.IdCategory })
-                            <!-- End Single Product -->
-                        </div>
-                    @*</div>
-                </div>*@
+                    <!-- Start Single Product -->
+                    @*<div class="single-product">
+                                                    <div class="product-img">
+                                                        <a href="product-details.html">
+                                                            <img class="default-img" src="~/Assets/User/images/products/loa/Loa Bluetooth SOUNDMAX 5.1 B60, 105 Watt.png" alt="#">
+                                                            <img class="hover-img" src="~/Assets/User/images/products/loa/Loa Bluetooth SOUNDMAX 5.1 B60, 105 Watt.png" alt="#">
+                                                            <span class="new">New</span>
+                                                        </a>
+                                                        <div class="button-head">
+                                                            <div class="product-action">
+                                                                <a title="Quick View" href="shop.html"><i class="ti-eye"></i><span>Quick Shop</span></a>
+                                                                <a title="Wishlist" href="shop.html"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                            </div>
+                                                            <div class="product-action-2">
+                                                                <a title="Add to cart" href="#">Add to cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content">
+                        k                                <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+                                                <h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+                                                        <div class="product-price">
+                                                            <span class="old">$60.00</span>
+                                                            <span>$50.00</span>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+                    @Html.Action("SanPhamView", "Products", new { take = 6, categoryid = item.IdCategory })
+                    <!-- End Single Product -->
+                </div>
+                @*</div>
+                    </div>*@
             }
         </div>
     </div>

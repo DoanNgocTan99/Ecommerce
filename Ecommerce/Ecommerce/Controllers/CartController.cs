@@ -27,7 +27,7 @@ namespace Ecommerce.Controllers
             {
                 ViewBag.cart = status; //thông báo mua hàng thành công
             }
-
+            ViewBag.total = Total();
             return View(lstCart);
         }
         public List<CartItem> GetCart()
@@ -45,7 +45,7 @@ namespace Ecommerce.Controllers
         {
             if (Session["Cart"] == null)
             {
-                return 0;
+                return 2;
             }
             List<CartItem> lstCart = GetCart();
             return lstCart.Count();

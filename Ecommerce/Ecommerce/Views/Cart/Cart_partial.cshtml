@@ -1,23 +1,19 @@
-﻿<div class="shopping-item">
-    <div class="dropdown-cart-header">
-        <span>@Model.count()</span>
-        <a href="cart">Xem giỏ hàng</a>
-    </div>
-    <ul class="shopping-list">
-        @foreach (var item in Model) {
+﻿
+<ul class="shopping-list">
+    @foreach (var item in Model)
+    {
         <li>
             <a href="/cart/deletecart/@item._IdProduct" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
             <a class="cart-img" href="/products/xemchitiet/@item._IdProduct"><img src="@item._Image" alt="#"></a>
             <h4><a href="/products/xemchitiet/@item._IdProduct">@item._ProductName</a></h4>
             <p class="quantity">@item._Amount x - <span class="amount">@item._Total</span></p>
         </li>
-        }
-    </ul>
-    <div class="bottom">
-        <div class="total">
-            <span>Total</span>
-            <span class="total-amount">@Html.Action("total", "cart")</span>
-        </div>
-        <a href="checkout.html" class="btn animate">Thanh toán</a>
+    }
+</ul>
+<div class="bottom">
+    <div class="total">
+        <span>Total</span>
+        <span class="total-amount">@Html.Action("Total", "Cart")</span>
     </div>
+    <a href="checkout.html" class="btn animate">Thanh toán</a>
 </div>

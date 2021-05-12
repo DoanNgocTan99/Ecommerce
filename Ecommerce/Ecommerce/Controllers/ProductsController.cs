@@ -35,30 +35,6 @@ namespace Ecommerce.Controllers
             return View(products.ToPagedList(pageNumber, pageSize));
 
         }
-        public ActionResult ProductListOfShop(int? page, int? pagenumber, int? category, List<Product> listProducts, int? category_id, long shop_id)
-        {
-            //phan trang pagedlist
-            if (page == null) page = 1;
-            int pageSize = pagenumber == null ? 9 : 10000;
-            //int pageSize = 9;
-            int pageNumber = (page ?? 1);
-            List<Product> products = new List<Product>();
-            ViewBag.categoryId = category_id;
-            ViewBag.shopId = shop_id;
-            if (listProducts != null)
-            {
-                products = listProducts.ToList();
-                ViewBag.products = products;
-            }
-            else
-            {
-                products = db.Products.Where(x => x.IdShop == shop_id).ToList();
-                ViewBag.products = products;
-            }
-
-            return View(products.ToPagedList(pageNumber, pageSize));
-
-        }
 
         public ActionResult ProductSearch(int? page, int? pagenumber, int? category, List<Product> listProducts)
         {
