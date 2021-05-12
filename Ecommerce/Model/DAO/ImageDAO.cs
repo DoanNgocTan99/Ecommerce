@@ -136,6 +136,31 @@ namespace Model.DAO
             }
 
         }
+        public bool UpdateByIdUser(Image entity)
+        {
+            try
+            {
+                var image = db.Images.Where(p => p.IdUser == entity.IdUser).FirstOrDefault();
+                if (image == null)
+                {
+                    db.Images.Add(entity);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+
+                    image.Path = entity.Path;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
         public Image GetImageById(long id)
         {
             return db.Images.Where(x => x.IdProduct == id ).FirstOrDefault();

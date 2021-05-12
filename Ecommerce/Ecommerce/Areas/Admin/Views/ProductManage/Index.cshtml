@@ -39,16 +39,16 @@
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                            <tr>
-                                <th>Tên Sản Phẩm</th>
-                                <th>Mô tả</th>
-                                <th>Nhãn hiệu</th>
-                                <th>Nguồn gốc</th>
-                                <th>Giá cả</th>
-                                <th>Thời gian bảo hành</th>
-                                <th>Lượt truy cập</th>
-                                <th>Tham gia Flase Sale</th>
-                                <th>Thao tác</th>
+                            <tr >
+                                <th class="table-success">Tên Sản Phẩm</th>
+                                <th class="table-success">Mô tả</th>
+                                <th class="table-success">Nhãn hiệu</th>
+                                <th class="table-success">Nguồn gốc</th>
+                                <th class="table-success">Giá cả</th>
+                                <th class="table-success">Thời gian bảo hành</th>
+                                <th class="table-success">Lượt truy cập</th>
+                                <th class="table-success">Tham gia Flase Sale</th>
+                                <th class="table-success">Thao tác</th>
                             </tr>
                         <tbody>
                             @foreach (var item in Model.Where(x => x.IdProgramme == 1))
@@ -62,7 +62,7 @@
                                     <td>@item.WarrantyDate</td>
                                     <td>@item.Views</td>
                                     <td>
-                                        <a href="#" class="btn-active" data-id="@item.Id">@(item.FlaseSale ? "Kích hoạt" : "Khoá")</a>
+                                        <a href="#" class="btn-flasesale" data-id="@item.Id">@(item.FlaseSale ? "Kích hoạt" : "Khoá")</a>
                                     </td>
                                     <td>
                                         @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
@@ -76,22 +76,22 @@
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model.Where(x => x.IdProgramme == 1).ToList(), page => Url.Action("ShowProductInFlaseSale", new { page, @searchString = @ViewBag.SearchString }))
+                    @*@Html.PagedListPager(Model.Where(x => x.IdProgramme == 1).ToList() as PagedList.IPagedList , page => Url.Action("ShowProductInFlaseSale", new { page, @searchString = @ViewBag.SearchString }))*@
                 </div>
                 <h5>SẢN PHẨM QUẢNG CÁO</h5>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Tên Sản Phẩm</th>
-                                <th>Mô tả</th>
-                                <th>Nhãn hiệu</th>
-                                <th>Nguồn gốc</th>
-                                <th>Giá cả</th>
-                                <th>Thời gian bảo hành</th>
-                                <th>Lượt truy cập</th>
-                                <th>Đăng quảng cáo</th>
-                                <th>Thao tác</th>
+                                <th class="table-success">Tên Sản Phẩm</th>
+                                <th class="table-success">Mô tả</th>
+                                <th class="table-success">Nhãn hiệu</th>
+                                <th class="table-success">Nguồn gốc</th>
+                                <th class="table-success">Giá cả</th>
+                                <th class="table-success">Thời gian bảo hành</th>
+                                <th class="table-success">Lượt truy cập</thclass="table-success">
+                                <th class="table-success">Đăng quảng cáo</thclass="table-success">
+                                <th class="table-success">Thao tác</th>
                             </tr>
                         <tbody>
                             @foreach (var item in Model.Where(x => x.IdProgramme == 2))
@@ -105,7 +105,7 @@
                                     <td>@item.WarrantyDate</td>
                                     <td>@item.Views</td>
                                     <td>
-                                        <a href="#" class="btn-active" data-id="@item.Id">@(item.Advertisement ? "Kích hoạt" : "Khoá")</a>
+                                        <a href="#" class="btn-advertisement" data-id="@item.Id">@(item.Advertisement ? "Kích hoạt" : "Khoá")</a>
                                     </td>
                                     <td>
                                         @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
@@ -119,21 +119,22 @@
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model.Where(x => x.IdProgramme == 2), page => Url.Action("ShowProductInAdvertisement", new { page, @searchString = @ViewBag.SearchString }))
+                    @*@Html.PagedListPager(Model.Where(x => x.IdProgramme == 2) as PagedList.IPagedList, page => Url.Action("ShowProductInAdvertisement", new { page, @searchString = @ViewBag.SearchString }))*@
                 </div>
+                <h5>SẢN PHẨM QUẢNG CÁO</h5>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Tên Sản Phẩm</th>
-                                <th>Mô tả</th>
-                                <th>Nhãn hiệu</th>
-                                <th>Nguồn gốc</th>
-                                <th>Giá cả</th>
-                                <th>Thời gian bảo hành</th>
-                                <th>Lượt truy cập</th>
-                                <th>Trạng thái</th>
-                                <th>Thao tác</th>
+                                <th class="table-success">Tên Sản Phẩm</th>
+                                <th class="table-success">Mô tả</th>
+                                <th class="table-success">Nhãn hiệu</th>
+                                <th class="table-success">Nguồn gốc</th>
+                                <th class="table-success">Giá cả</th>
+                                <th class="table-success">Thời gian bảo hành</th>
+                                <th class="table-success">Lượt truy cập</th>
+                                <th class="table-success">Trạng thái</th>
+                                <th class="table-success">Thao tác</th>
                             </tr>
                         <tbody>
                             @foreach (var item in Model)
@@ -161,6 +162,7 @@
                             }
                         </tbody>
                     </table>
+
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
                 </div>
 

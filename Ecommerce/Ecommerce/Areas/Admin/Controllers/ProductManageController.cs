@@ -35,12 +35,14 @@ namespace Ecommerce.Areas.Admin.Controllers
             ViewBag.SearchString = searchString;
             return View(model);
         }
+        [HasCredential(RoleID = "ADMIN")]
         public ActionResult Delete(int Id)
         {
             new ProductDAO().Delete(Id);
 
             return RedirectToAction("Index");
         }
+
 
         [HasCredential(RoleID = "ADMIN")]
         public JsonResult ChangeStatus(long id)

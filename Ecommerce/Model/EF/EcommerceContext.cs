@@ -19,6 +19,7 @@ namespace Model.EF
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Programme> Programmes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }

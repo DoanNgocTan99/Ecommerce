@@ -39,38 +39,55 @@ namespace Ecommerce.Areas.Admin.Controllers
                 try
                 {
                     var dao = new CategoryDAO();
-
-                    //return file name 
-                    string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
-                    //return type file 
-                    string extension = Path.GetExtension(category.ImageFile.FileName);
-
-                    //return file name 
-                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    //category.Path = "~/Image/" + fileName;
-                    fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
-                    category.ImageFile.SaveAs(fileName);
-
-                    long id = dao.Insert(category);
-
-                    var ImageDao = new ImageDAO();
-
-                    Image image = new Image();
-                    image.IdCategory = id;
-                    image.Path = fileName;
-
-                    long ID = ImageDao.Insert(image);
-                    //bool check = ImageDao.Insert(id, fileName);
-                    if (ID > 0)
+                    if (category.ImageFile != null)
                     {
-                        SetAlert("Thêm mới doanh mục thành công!!", "success");
-                        return RedirectToAction("Index", "Category");
+                        //return file name 
+                        string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                        //return type file 
+                        string extension = Path.GetExtension(category.ImageFile.FileName);
+
+                        //return file name 
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        //category.Path = "~/Image/" + fileName;
+                        fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
+                        category.ImageFile.SaveAs(fileName);
+
+                        long id = dao.Insert(category);
+
+                        var ImageDao = new ImageDAO();
+
+                        Image image = new Image();
+                        image.IdCategory = id;
+                        image.Path = fileName;
+
+                        long ID = ImageDao.Insert(image);
+                        //bool check = ImageDao.Insert(id, fileName);
+                        if (ID > 0)
+                        {
+                            SetAlert("Thêm mới doanh mục thành công!!", "success");
+                            return RedirectToAction("Index", "Category");
+                        }
+                        else
+                        {
+
+                            ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                        }
                     }
                     else
                     {
+                        long id = dao.Insert(category);
+                        if (id > 0)
+                        {
+                            SetAlert("Thêm mới doanh mục thành công!!", "success");
+                            return RedirectToAction("Index", "Category");
+                        }
+                        else
+                        {
 
-                        ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                            ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                        }
                     }
+
 
                 }
                 catch (Exception ex)

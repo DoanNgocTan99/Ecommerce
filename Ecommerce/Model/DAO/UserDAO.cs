@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Model.DAO
 {
@@ -15,6 +16,32 @@ namespace Model.DAO
         public UserDAO()
         {
             db = new EcommerceContext();
+        }
+        public bool Update(User entity)
+        {
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+            try
+            {
+                var user = db.Users.Find(entity.Id);
+
+                user.Name = entity.Name;
+                user.UserName = entity.UserName;
+                user.Password = entity.Password;
+                user.Email = entity.Email;
+                user.Phone = entity.Phone;
+                user.Gender = entity.Gender;
+                user.DOB = entity.DOB;
+                user.Address = entity.Address;
+                user.ModifiedBy = session.Name;
+                user.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
         public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)
         {
@@ -199,6 +226,18 @@ namespace Model.DAO
             return data.Select(x => x.Id).FirstOrDefault();
 
 
+        }
+        public User ViewDetail(int Id)
+        {
+            try
+            {
+                return db.Users.Find(Id);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                     Session.Add(CommonConstants.USER_SESSION, UserSession);
                     if (UserSession.IdRole == 1)
                     {
-                         return new ViewResult
+                        return new ViewResult
                         {
                             ViewName = "~/Areas/Admin/Views/Home/Index.cshtml"
                         };
@@ -116,13 +116,13 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                     if (IdShop != 0)
                     {
-                        ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :>");
+                        ModelState.AddModelError("", "Xin lỗi!!! Bạn cần kiểm tra lại thông tin");
                         return View("Index");
 
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Xin lỗi!!! Bạn cần kiểm tra lại thông tin");
+                        ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :>");
                         return View("Index");
 
                     }
@@ -141,8 +141,7 @@ namespace Ecommerce.Areas.Seller.Controllers
         public ActionResult Logout()
         {
             Session.Clear();//remove session
-            //return View("Index");
-            
+
             return new ViewResult
             {
                 ViewName = "~/Areas/Seller/Views/Login/Index.cshtml"

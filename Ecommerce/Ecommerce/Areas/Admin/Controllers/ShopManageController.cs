@@ -2,6 +2,7 @@
 using Model.DAO;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,9 +22,43 @@ namespace Ecommerce.Areas.Admin.Controllers
             return View(model);
         }
         [HasCredential(RoleID = "ADMIN")]
+        [HttpGet]
+        public ActionResult GetListProduct(long id, string searchString, int page = 1, int pageSize = 5)
+        {
+            var dao = new ShopDAO();
+            var model = dao.ListProductByIdShopPaging(id,searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+            var modelCategory = dao.ListCategoryByIdShopPaging(id);
+            ViewBag.ListCategory = model;
+            dynamic MyModel = new ExpandoObject();
+            MyModel.Category = modelCategory;
+            MyModel.Product = model;
+            MyModel.ListCategory = model;
+            return View(MyModel);
+        }
+        [HasCredential(RoleID = "ADMIN")]
+        [HttpGet]
+        public ActionResult GetListCategory(long id)
+        {
+            var dao = new ShopDAO();
+            var model = dao.ListCategoryByIdShopPaging(id);
+            ViewBag.ListCategory = model;
+            dynamic MyModel = new ExpandoObject();
+            MyModel.Category = model;
+            return View(model);
+            //return View("Index");
+        }
+        [HasCredential(RoleID = "ADMIN")]
         public ActionResult Delete(int Id)
         {
             new ShopDAO().Delete(Id);
+
+            return RedirectToAction("Index");
+        }
+        [HasCredential(RoleID = "ADMIN")]
+        public ActionResult DeleteProduct(int Id)
+        {
+            new ProductDAO().Delete(Id);
 
             return RedirectToAction("Index");
         }
@@ -50,5 +85,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             //ViewBag.IdShop = new SelectList(dao_Shop.ListAll(), "Id", "Name", selectIdShop);
 
         }
+        
+
     }
 }

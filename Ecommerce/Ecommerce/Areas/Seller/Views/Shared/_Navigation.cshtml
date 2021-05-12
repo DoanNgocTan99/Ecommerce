@@ -1,4 +1,9 @@
-﻿<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+﻿@{
+    Layout = null;
+    var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+
+}
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <li>
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Seller/Home/Index">
@@ -57,8 +62,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Danh mục quản lý</h6>
-                <a class="collapse-item" href="#!">Hồ sơ Shop</a>
-                <a class="collapse-item" href="#!">Đánh giá Shop</a>
+                <a class="collapse-item" href="/Seller/Shop/Edit/@session.IdShop">Hồ sơ Shop</a>
+                <a class="collapse-item" href="/Seller/Review/Index">Đánh giá Shop</a>
             </div>
         </div>
     </li>

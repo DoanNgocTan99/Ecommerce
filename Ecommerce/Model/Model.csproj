@@ -151,6 +151,7 @@
     <Compile Include="DAO\ImageDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\ProgrammeDAO.cs" />
+    <Compile Include="DAO\ReviewDAO.cs" />
     <Compile Include="DAO\ShopDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="EF\Category.cs" />

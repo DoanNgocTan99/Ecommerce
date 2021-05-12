@@ -236,7 +236,7 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>*@
-                                <a class="dropdown-item" href="/Seller/Shop/Edit/@session.Id">
+                                <a class="dropdown-item" href="/Seller/Shop/Edit/@session.IdShop">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Chỉnh sửa trang cá nhân
                                 </a>
@@ -309,7 +309,7 @@
                 <div class="modal-body">Chọn "Đăng xuất" bên dưới nếu bạn chắc chắn muốn rời đi.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="@Url.Action("Logout","Login")">Logout</a>
+                    <a class="btn btn-primary" href="@Url.Action("Logout","Login")">Đăng xuất</a>
                 </div>
             </div>
         </div>

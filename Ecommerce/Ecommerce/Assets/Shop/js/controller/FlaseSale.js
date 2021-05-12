@@ -3,22 +3,22 @@
         user.registerEvents();
     },
     registerEvents: function () {
-        $('.btn-circle').off('click').on('click', function (e) {
+        $('.btn-flasesale').off('click').on('click', function (e) {
             e.preventDefault();
             var btn = $(this);
             var id = btn.data('id');
             $.ajax({
-                url: "/Areas/Admin/ProductManage/JoinFlaseSale",
+                url: "/Admin/ProductManage/JoinFlaseSale",
                 data: { id: id },
                 dataType: "json",
                 type: "POST",
                 success: function (response) {
                     console.log(response);
                     if (response.status == true) {
-                        btn.text('Khoá');
+                        btn.text('Kích hoạt');
                     }
                     else {
-                        btn.text('Kích hoạt');
+                        btn.text('Khoá');
                     }
                 }
             });

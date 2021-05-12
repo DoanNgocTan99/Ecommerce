@@ -136,14 +136,17 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShopManageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Seller\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Seller\Controllers\HomeController.cs" />
     <Compile Include="Areas\Seller\Controllers\ImageController.cs" />
     <Compile Include="Areas\Seller\Controllers\LoginController.cs" />
     <Compile Include="Areas\Seller\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Seller\Controllers\ReviewController.cs" />
     <Compile Include="Areas\Seller\Controllers\ShopController.cs" />
     <Compile Include="Areas\Seller\Controllers\UserController.cs" />
+    <Compile Include="Areas\Seller\Models\LinkProgramAndProduct.cs" />
     <Compile Include="Areas\Seller\Models\LoginModel.cs" />
     <Compile Include="Areas\Seller\SellerAreaRegistration.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -6667,6 +6670,9 @@
     <Content Include="Assets\Admin\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\Admin\Views\ProductManage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ShopManage\Index.cshtml" />
+    <Content Include="Areas\Seller\Views\Review\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopManage\GetListProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

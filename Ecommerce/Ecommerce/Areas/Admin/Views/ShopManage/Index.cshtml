@@ -56,8 +56,8 @@
                                             <a href="#" class="btn-active" data-id="@item.Id">@(item.IsActive ? "Kích hoạt" : "Khoá")</a>
                                         </td>*@
                                     <td>
-                                        @*<a href="/Seller/Product/Edit/@item.Id">Sửa</a>*@
-                                        @*  *@|
+                                        <a href="/Admin/ShopManage/GetListProduct/@item.Id">Chi tiết</a>
+                                          |
                                         @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
                                   {
                                       Confirm = "Bạn có muốn xoá bản ghi này?",

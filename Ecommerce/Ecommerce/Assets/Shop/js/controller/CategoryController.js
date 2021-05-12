@@ -6,7 +6,7 @@
         $('.btn-active').off('click').on('click', function (e) {
             e.preventDefault();
             var btn = $(this);
-            var id = btn.data('Id');
+            var id = btn.data('id');
             $.ajax({
                 url: "/Admin/Category/ChangeStatus",
                 data: { id: id },

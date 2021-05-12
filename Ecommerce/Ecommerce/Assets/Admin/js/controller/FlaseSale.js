@@ -3,7 +3,7 @@
         user.registerEvents();
     },
     registerEvents: function () {
-        $('.btn-circle').off('click').on('click', function (e) {
+        $('.btn-flasesale').off('click').on('click', function (e) {
             e.preventDefault();
             var btn = $(this);
             var id = btn.data('id');

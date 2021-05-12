@@ -28,22 +28,68 @@ namespace Model.DAO
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
 
         }
-        //public List<Shop> ListAll()
-        //{
-        //    try
-        //    {
+        public IEnumerable<Product> ListProductByIdShopPaging(long idShop, string searchString, int page, int pageSize)
+        {
+            IQueryable<Product> model = db.Products;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.IdShop == idShop && x.Name.Contains(searchString));
 
-        //        return db.Shops.ToList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-        //public Image ViewDetail(int Id)
+            }
+            return model.Where(x => x.IdShop == idShop).OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
+
+        //public IEnumerable<Product> ListCategoryByIdShopPaging(long idShop, string searchString, int page, int pageSize)
         //{
-        //    return db.Images.Find(Id);
+        //    IQueryable<Product> model = db.Products;
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        model = model.Where(x => x.IdShop == idShop && x.Name.Contains(searchString));
+
+        //    }
+        //    return model.Where(x => x.IdShop == idShop).OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         //}
+        //public IEnumerable<Category> ListCategoryByIdShopPaging(long id)
+        //{
+        //    //var user = db.Users.Single(x => x.UserName == UserName);
+        //    //var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+        //    var data = (from a in db.Products
+        //                join b in db.Categories 
+        //                on a.IdCategory equals b.Id
+        //                join c in db.Shops
+        //                on a.IdShop equals c.Id
+
+        //                where a.IdShop == id
+        //                select new
+        //                {
+        //                    Name = b.Name
+        //                }).AsEnumerable().Select(x => new Category()
+        //                {
+        //                    Name = x.Name
+        //                });
+
+        //    return data.OrderByDescending(x => x.CreatedDate).Distinct();
+        //}
+        public List<String> ListCategoryByIdShopPaging(long id)
+        {
+            //var user = db.Users.Single(x => x.UserName == UserName);
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+            var data = (from a in db.Products
+                        join b in db.Categories on a.IdCategory equals b.Id
+
+                        where a.IdShop == id
+                        select new
+                        {
+                            Id = a.IdShop,
+                            Name = b.Name
+                        }).AsEnumerable().Select(x => new Category()
+                        {
+
+                            Name = x.Name
+                        });
+
+            return data.Select(x => x.Name).Distinct().ToList();
+        }
         public long InsertByRegister(long IdUser)
         {
             try
