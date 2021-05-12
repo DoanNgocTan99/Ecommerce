@@ -30,9 +30,11 @@ namespace Ecommerce.Common
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
+
             filterContext.Result = new ViewResult
             {
-                ViewName = "~/Areas/Seller/Views/Shared/Error.cshtml"
+                //ViewName = "~/Areas/Seller/Views/Shared/Error.cshtml"
+                ViewName = "~/Areas/Seller/Views/Login/Index.cshtml"
             };
         }
         private List<string> GetCredentialByLoggedInUser(string userName)

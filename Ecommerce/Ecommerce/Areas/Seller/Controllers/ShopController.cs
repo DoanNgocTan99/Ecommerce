@@ -23,7 +23,7 @@ namespace Ecommerce.Areas.Seller.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Shop shop)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var dao = new ShopDAO();
                 //return file name
@@ -34,10 +34,16 @@ namespace Ecommerce.Areas.Seller.Controllers
                 //return file name 
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 //category.Path = "~/Image/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
+                fileName = Path.Combine(Server.MapPath("~/Image/Shop"), fileName);
                 shop.ImageFile.SaveAs(fileName);
-                var result = dao.Update(shop);
 
+                var result = dao.Update(shop);
+                if (!result)
+                {
+                    SetAlert("Shop không tồn tại!!", "success");
+
+                    return RedirectToAction("Index", "Home");
+                }
                 var ImageDao = new ImageDAO();
 
                 Image image = new Image();
@@ -45,12 +51,12 @@ namespace Ecommerce.Areas.Seller.Controllers
                 image.Path = fileName;
 
 
-                bool ID = ImageDao.Update(image);
+                bool ID = ImageDao.UpdateByIdShop(image);
                 if (ID)
                 {
                     SetAlert("Cập nhập thông tin chi tiết  thành công!!", "success");
 
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

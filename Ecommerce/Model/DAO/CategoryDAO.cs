@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Model.DAO
 {
@@ -65,14 +66,14 @@ namespace Model.DAO
         {
             try
             {
-                var user = db.Categories.Find(Id);
-                db.Categories.Remove(user);
+                var category = db.Categories.Find(Id);
+                db.Categories.Remove(category);
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                throw ex;
             }
         }
         public List<Category> ListAll()
@@ -89,6 +90,26 @@ namespace Model.DAO
             category.IsActive = !category.IsActive;
             db.SaveChanges();
             return category.IsActive;
+        }
+        public List<String> GetListNamByIdShop(long id)
+        {
+            //var user = db.Users.Single(x => x.UserName == UserName);
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+            var data = (from a in db.Products
+                        join b in db.Categories on a.IdCategory equals b.Id
+
+                        where a.IdShop == id
+                        select new
+                        {
+                            Id = a.IdShop,
+                            Name = b.Name
+                        }).AsEnumerable().Select(x => new Category()
+                        {
+
+                            Name = x.Name
+                        });
+
+            return data.Select(x => x.Name).Distinct().ToList();
         }
     }
 }

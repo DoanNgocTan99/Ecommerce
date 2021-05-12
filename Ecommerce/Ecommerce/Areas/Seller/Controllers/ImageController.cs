@@ -98,7 +98,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                 var dao = new ImageDAO();
 
 
-                var result = dao.Update(image);
+                var result = dao.UpdateByIdShop(image);
                 if (result)
                 {
                     SetAlert("Cập nhập người dùng thành công!!", "success");
@@ -130,6 +130,14 @@ namespace Ecommerce.Areas.Seller.Controllers
             new ImageDAO().Delete(Id);
 
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Show(long id)
+        {
+            var dao = new ImageDAO();
+            //var imageData = dao.GetPathById(id);
+            var imagePath = dao.GetPathById(id);
+            return View(imagePath);
         }
     }
 }

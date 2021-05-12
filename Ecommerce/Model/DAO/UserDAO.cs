@@ -159,10 +159,10 @@ namespace Model.DAO
         public List<string> GetListCredential(string UserName)
         {
             var user = db.Users.Single(x => x.UserName == UserName);
-            
+
             var data = (from a in db.Users
                         join b in db.Roles on a.IdRole equals b.Id
-                        
+
                         where b.Id == user.IdRole
                         select new
                         {
@@ -172,10 +172,32 @@ namespace Model.DAO
                         }).AsEnumerable().Select(x => new Role()
                         {
                             Id = x.IdRole,
-                            Name= x.Name
+                            Name = x.Name
                         });
 
             return data.Select(x => x.Name).ToList();
+
+        }
+        public long GetIdShopByIdUser(long IdUser)
+        {
+            var user = db.Users.Single(x => x.Id == IdUser);
+
+            var data = (from a in db.Users
+                        join b in db.Shops on a.Id equals b.IdUser
+
+                        where b.IdUser == user.Id
+                        select new
+                        {
+                            Id = b.Id
+
+                        }).AsEnumerable().Select(x => new Shop()
+                        {
+                            Id = x.Id
+                        });
+
+
+            return data.Select(x => x.Id).FirstOrDefault();
+
 
         }
     }

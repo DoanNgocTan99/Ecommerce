@@ -1,5 +1,6 @@
 ﻿
 using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,16 @@ namespace Model.DAO
         public ShopDAO()
         {
             db = new EcommerceContext();
+        }
+        public IEnumerable<Shop> ListAllPaging(string searchString, int page, int pageSize)
+        {
+            IQueryable<Shop> model = db.Shops;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+
         }
         //public List<Shop> ListAll()
         //{
@@ -39,10 +50,14 @@ namespace Model.DAO
             {
                 var Shop = new Shop();
                 Shop.IdUser = IdUser;
+
                 var id = db.Shops.Add(Shop).Id;
+                var Name = Shop.Name;
+                var Description = Shop.Description;
+                var Date = Shop.CreatedDate;
+
                 db.SaveChanges();
                 return id;
-                //return db.Shops.Add(Shop).Id;
             }
             catch (Exception ex)
             {
@@ -55,6 +70,20 @@ namespace Model.DAO
             {
                 return db.Shops.Find(Id);
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public bool Delete(int Id)
+        {
+            try
+            {
+                var shop = db.Shops.Find(Id);
+                db.Shops.Remove(shop);
+                db.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {

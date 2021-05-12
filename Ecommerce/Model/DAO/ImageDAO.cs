@@ -38,6 +38,7 @@ namespace Model.DAO
         {
             try
             {
+
                 db.Images.Add(image);
                 db.SaveChanges();
                 return image.Id;
@@ -47,7 +48,7 @@ namespace Model.DAO
                 throw ex;
             }
         }
-       
+
         public bool Delete(int Id)
         {
             try
@@ -78,7 +79,7 @@ namespace Model.DAO
         {
             return db.Images.Find(Id);
         }
-        public bool Update(Image entity)
+        public bool UpdateByIdCategory(Image entity)
         {
             try
             {
@@ -88,11 +89,61 @@ namespace Model.DAO
                 db.SaveChanges();
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
                 return false;
             }
 
+        }
+        public bool UpdateByIdProduct(Image entity)
+        {
+            try
+            {
+                var image = db.Images.Where(p => p.IdProduct == entity.IdProduct).FirstOrDefault();
+
+                image.Path = entity.Path;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+        public bool UpdateByIdShop(Image entity)
+        {
+            try
+            {
+                var image = db.Images.Where(p => p.IdShop == entity.IdShop).FirstOrDefault();
+                if (image == null)
+                {
+                    db.Images.Add(entity);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+
+                    image.Path = entity.Path;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+        public Image GetImageById(long id)
+        {
+            return db.Images.Where(x => x.IdProduct == id ).FirstOrDefault();
+        }
+        public string GetPathById(long id)
+        {
+            var image = db.Images.Where(x => x.IdProduct == id).FirstOrDefault();
+            return image.Path;
         }
     }
 }

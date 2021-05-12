@@ -39,9 +39,10 @@ namespace Ecommerce.Areas.Admin.Controllers
                 try
                 {
                     var dao = new CategoryDAO();
-                    //return file name
+
+                    //return file name 
                     string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
-                    //return type file
+                    //return type file 
                     string extension = Path.GetExtension(category.ImageFile.FileName);
 
                     //return file name 
@@ -96,35 +97,54 @@ namespace Ecommerce.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new CategoryDAO();
-                //return file name
-                string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
-                //return type file
-                string extension = Path.GetExtension(category.ImageFile.FileName);
-
-                //return file name 
-                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                //category.Path = "~/Image/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
-                category.ImageFile.SaveAs(fileName);
-                var result = dao.Update(category);
-
-                var ImageDao = new ImageDAO();
-
-                Image image = new Image();
-                image.IdCategory = category.Id;
-                image.Path = fileName;
-
-                bool ID = ImageDao.Update(image);
-                if (ID)
+                if (category.ImageFile != null)
                 {
-                    SetAlert("Cập nhập doanh mục thành công!!", "success");
+                    //return file name
+                    string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
+                    //return type file
+                    string extension = Path.GetExtension(category.ImageFile.FileName);
 
-                    return RedirectToAction("Index", "Category");
+                    //return file name 
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    //category.Path = "~/Image/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
+                    category.ImageFile.SaveAs(fileName);
+
+                    var result = dao.Update(category);
+
+                    var ImageDao = new ImageDAO();
+
+                    Image image = new Image();
+                    image.IdCategory = category.Id;
+                    image.Path = fileName;
+
+                    bool ID = ImageDao.UpdateByIdCategory(image);
+                    if (ID)
+                    {
+                        SetAlert("Cập nhập doanh mục thành công!!", "success");
+
+                        return RedirectToAction("Index", "Category");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                    var result = dao.Update(category);
+                    if (result)
+                    {
+                        SetAlert("Cập nhập doanh mục thành công!!", "success");
+
+                        return RedirectToAction("Index", "Category");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                    }
                 }
+
 
             }
             return View("Index");
@@ -132,10 +152,21 @@ namespace Ecommerce.Areas.Admin.Controllers
         [HasCredential(RoleID = "ADMIN")]
         public ActionResult Delete(int Id)
         {
-            new CategoryDAO().Delete(Id);
-
-            return RedirectToAction("Index");
+            var dao = new CategoryDAO();
+            var check = dao.Delete(Id);
+            if (check)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return new ViewResult
+                {
+                    ViewName = "~/Areas/Seller/Views/Login/Index.cshtml"
+                };
+            }
         }
+        [HttpPost]
         [HasCredential(RoleID = "ADMIN")]
         public JsonResult ChangeStatus(long id)
         {

@@ -7,7 +7,7 @@
 
 <h2>Chỉnh sửa trang cá nhân</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Shop", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 

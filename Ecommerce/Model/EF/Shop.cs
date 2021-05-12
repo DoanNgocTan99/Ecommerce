@@ -15,7 +15,6 @@ namespace Model.EF
         {
             Orders = new HashSet<Order>();
             Products = new HashSet<Product>();
-            //Users = new HashSet<User>();
             Images = new HashSet<Image>();
         }
 
@@ -24,25 +23,21 @@ namespace Model.EF
 
 
         
-        [Required]
         [StringLength(250)]
         [Display(Name = "Tên Shop")]
         public string Name { get; set; }
 
 
-        [Required]
         [StringLength(250)]
         [Display(Name = "Mô tả")]
 
         public string Description { get; set; }
 
-        [Required]
         [StringLength(250)]
         [Display(Name = "Địa chỉ")]
 
         public string Address { get; set; }
 
-        [Required]
         [StringLength(250)]
         [Display(Name = "Số điện thoại")]
 

@@ -36,6 +36,8 @@ namespace Ecommerce.Areas.Seller.Controllers
                     UserSession.IdRole = user.IdRole;
                     UserSession.Name = user.Name;
                     UserSession.Id = user.Id;
+                    //UserSession.IdShop = user.
+                    UserSession.IdShop = dao.GetIdShopByIdUser(user.Id);
                     //UserSession.IdShop = user.Is
                     var listCredentials = dao.GetListCredential(model.UserName);
                     Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
@@ -134,11 +136,18 @@ namespace Ecommerce.Areas.Seller.Controllers
             {
                 throw ex;
             }
+
         }
         public ActionResult Logout()
         {
             Session.Clear();//remove session
-            return View("Index");
+            //return View("Index");
+            
+            return new ViewResult
+            {
+                ViewName = "~/Areas/Seller/Views/Login/Index.cshtml"
+            };
+
         }
     }
 }

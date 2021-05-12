@@ -1,14 +1,14 @@
-﻿var user = {
+﻿var category = {
     init: function () {
-        user.registerEvents();
+        category.registerEvents();
     },
     registerEvents: function () {
         $('.btn-active').off('click').on('click', function (e) {
             e.preventDefault();
             var btn = $(this);
-            var id = btn.data('id');
+            var id = btn.data('Id');
             $.ajax({
-                url: "/Seller/Category/ChangeStatus",
+                url: "/Admin/Category/ChangeStatus",
                 data: { id: id },
                 dataType: "json",
                 type: "POST",
@@ -25,4 +25,4 @@
         });
     }
 }
-user.init();
+category.init();
