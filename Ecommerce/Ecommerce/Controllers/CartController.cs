@@ -18,7 +18,6 @@ namespace Ecommerce.Controllers
         }
         public ActionResult cart(string status = "")
         {
-
             List<CartItem> lstCart = GetCart();
             if (lstCart.Count() == 0)
             {
@@ -94,6 +93,79 @@ namespace Ecommerce.Controllers
                 lstCart.Remove(_cart);
                 return RedirectToAction("cart", "cart");
             }
+        }
+        public decimal Total()
+        {
+            decimal _Total = 0;
+            List<CartItem> lstCart = Session["Cart"] as List<CartItem>;
+            if (lstCart != null)
+            {
+                _Total = lstCart.Sum(n => n._Total);
+            }
+            return _Total;
+        }
+        public ActionResult UpdateAmount(int id, int type)
+        {
+            Product product = db.Products.SingleOrDefault(n => n.Id == id);
+            List<CartItem> lstCart = GetCart();
+            CartItem _cart = lstCart.Find(n => n._IdProduct == id);
+            if (_cart == null)
+            {
+                _cart = new CartItem(id);
+                lstCart.Add(_cart);
+                return RedirectToAction("cart", "cart");
+            }
+            else
+            {
+                if (type == 1)
+                {
+                    _cart._Amount++;
+                }
+                if (_cart._Amount > 0 && type == 2)
+                {
+                    _cart._Amount--;
+                }
+                return RedirectToAction("cart", "cart");
+            }
+        }
+        [HttpPost]
+        public ActionResult Transaction()
+        {
+            if ((Session["IdUser"] == null) || (Session["IdUser"].ToString() == ""))
+            {
+                return RedirectToAction("login", "login", new { alert = "Bạn cần đăng nhập khi đặt hàng !" });
+            }
+            if (Session["Cart"] == null)
+            {
+                RedirectToAction("cart", "cart");
+            }
+            Transaction trans = new Transaction();
+            List<CartItem> cart = GetCart();
+            //User user = (User)Session["IdUser"];
+            trans.IdUser = (int)Session["IdUser"];
+            trans.Amount = Convert.ToInt32(Total());
+            trans.CheckoutStatus = "Chua thanh toan";
+            trans.CreatedBy = (string)Session["Name"];
+            trans.CreatedDate = DateTime.Now;
+            db.Transactions.Add(trans);
+            db.SaveChanges();
+            foreach (var item in cart)
+            {
+                Order order = new Order();
+                order.IdTransaction = trans.Id;
+                order.IdProduct = item._IdProduct;
+                order.IdShop = item._IdShop;
+                order.CreatedDate = DateTime.Now;
+                order.ModifiedDate = DateTime.Now;
+                db.Orders.Add(order);
+            }
+            db.SaveChanges();
+            Session["cart"] = null;
+            return RedirectToAction("cart", "cart", new { status = "Đặt hàng thành công!!!" });
+        }
+        public ActionResult Checkout()
+        {
+            return View();
         }
     }
 }

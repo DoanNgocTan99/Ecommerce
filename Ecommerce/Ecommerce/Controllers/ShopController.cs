@@ -19,6 +19,7 @@ namespace Ecommerce.Controllers
             Shop shop = new Shop();
             shop = db.Shops.SingleOrDefault(x => x.Id == id);
             ViewBag.shop = shop;
+            ViewBag.shopId = id;
             if (shop == null)
             {
                 return View("ThongBaoLoi");

@@ -12,12 +12,14 @@ namespace Ecommerce.Models
         public int _IdProduct { get; set; }
         public string _ProductName { get; set; }
         public string _Image { get; set; }
-        // public string _MauSac { get; set; }
         public decimal? _Price { get; set; }
+        public decimal? _DelPrice { get; set; }
+        public int _Discount { get; set; }
         public int _Amount { get; set; }
+        public long? _IdShop { get; set; }
         public decimal _Total
         {
-            get { return _Amount * _Price.GetValueOrDefault(0); }
+            get { return _Amount * _DelPrice.GetValueOrDefault(0); }
         }
         public CartItem(int __idproduct)
         {
@@ -27,8 +29,10 @@ namespace Ecommerce.Models
             Image img = new Image();
             img = db.Images.Where(x => x.IdProduct == __idproduct).FirstOrDefault();
             _Image = img.Path;
-            _Price = sp.DelPrice;
+            _DelPrice = sp.DelPrice;
             _Amount = 1;
+            _IdShop = sp.IdShop;
+            _Discount = sp.Discount;
         }
     }
 }

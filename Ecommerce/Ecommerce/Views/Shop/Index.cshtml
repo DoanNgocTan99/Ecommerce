@@ -6,10 +6,21 @@
     var productList = @ViewBag.productList;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@{
+    int categoryid = 1;
+    if (ViewBag.categoryId != null)
+    {
+        categoryid = @ViewBag.categoryId;
+    }
+    int shopid = 3;
+    if (ViewBag.shopId != null)
+    {
+        shopid = ViewBag.shopId;
+    }
+}
 
 <section>
-    <input id="shopid" type="hidden" value="@Model.Id />
+    <input id="shopid" type="hidden" value="@Model.Id   />
 </section>
 
 <div class="content-wrapper">
@@ -114,11 +125,54 @@
                 </div>
             </section>
         </div>
-        @Html.Action("ProductListOfShops", "Products", new { shopId = @Model.Id})
-
-       
+        <div class="product-area section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Danh sách sản phẩm</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-info">
+                            <div class="nav-main">
+                                <!-- Tab Nav -->
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    @Html.Action("GetCategoryShop", "Category")
+                                </ul>
+                                <!--/ End Tab Nav -->
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                                <!-- Start Single Tab -->
+                                @Html.Action("SendCategoryIdShop", "Products", new { Id = categoryid, shopid = shopid })
+                                @*<div class="tab-pane fade show active" id="1" role="tabpanel">
+                                        <div class="tab-single">
+                                            <div class="row">
+                                                @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 1 })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade show active" id="3" role="tabpanel">
+                                        <div class="tab-single">
+                                            <div class="row">
+                                                @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 3 })
+                                            </div>
+                                        </div>sstop
+                                    </div>*@
+                            </div>
+                            <!--/ End Single Tab -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 </div>
+        </div>
 <script>
     function checkPass() {
         if (document.getElementById('password').value == document

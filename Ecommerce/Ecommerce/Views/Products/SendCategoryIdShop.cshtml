@@ -6,7 +6,12 @@
     {
         categoryid = ViewBag.categoryId;
     }
-   
+    int shopid = 3;
+    if (ViewBag.shopId != null)
+    {
+        shopid = ViewBag.shopId;
+    }
+
 }
 
 @foreach (var item in Model)
@@ -15,7 +20,7 @@
     {
         <div class="tab-pane fade show active" id="@item.Id" role="tabpanel">
             <div class="row">
-                @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = item.Id })
+                @Html.Action("SanPhamViewShop", "Products", new { take = 8, categoryid = item.Id, shopid =  shopid})
             </div>
         </div>
     }
@@ -23,7 +28,7 @@
     {
         <div class="tab-pane" id="@item.Id" role="tabpanel">
             <div class="row">
-                @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = item.Id })
+                @Html.Action("SanPhamViewShop", "Products", new { take = 8, categoryid = item.Id, shopid = shopid })
             </div>
         </div>
     }

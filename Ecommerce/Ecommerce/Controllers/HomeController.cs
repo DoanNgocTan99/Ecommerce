@@ -32,6 +32,7 @@ namespace Ecommerce.Controllers
             //list sản phẩm mới
             List<Product> newproduct = db.Products.Where(x => x.IdCategory == 5 == true).OrderBy(x => Guid.NewGuid()).Take(6).ToList();
             ViewBag.newproduct = newproduct;
+
             return View();
 
         }

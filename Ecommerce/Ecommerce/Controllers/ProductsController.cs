@@ -233,11 +233,12 @@ namespace Ecommerce.Controllers
 
             return View(sanPhams);
         }
-        public PartialViewResult SendCategoryIdShop(int Id)
+        public PartialViewResult SendCategoryIdShop(int Id, int shopid)
         {
             ViewBag.categoryId = Id;
+            ViewBag.shopId = shopid;
             List<Category> cats = db.Categories.ToList();
-            return PartialView("SendCategoryId", cats);
+            return PartialView("SendCategoryIdShop", cats);
         }
         public PartialViewResult SendCategoryId(int Id)
         {
