@@ -83,6 +83,7 @@ namespace Ecommerce.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index","Home");
+
         }
 
         [HttpPost]
@@ -102,6 +103,7 @@ namespace Ecommerce.Controllers
                 c.Phone = Phone;
                 db.SaveChanges();
             }
+
             return RedirectToAction("Edit","User", new { id = Id}); 
         }
 
@@ -119,7 +121,6 @@ namespace Ecommerce.Controllers
             return View(user);
         }
 
-      
         [HttpPost]
         public ActionResult Password(int Id, string Password, string btnUpdate)
         {
@@ -130,7 +131,9 @@ namespace Ecommerce.Controllers
                 c.Password = pass;
                 db.SaveChanges();
             }
+
             return RedirectToAction("Edit","User", new { id = Id}); 
+
         }
     }
 }

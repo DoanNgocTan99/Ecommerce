@@ -1,0 +1,173 @@
+﻿
+@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Title{
+    Admin - Quản lí sản phẩm
+}
+@section header{
+    QUẢN LÍ SẢN PHẨM
+}
+@section jsFooter{
+    <script src="~/Assets/Shop/js/controller/Advertisement.js"></script>
+    <script src="~/Assets/Shop/js/controller/ProductController.js"></script>
+    <script src="~/Assets/Shop/js/controller/FlaseSale.js"></script>
+}
+<div class="row">
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "ProductManage", FormMethod.Get))
+                {
+                    <div class="row form-group">
+                        <div class="col-md-4 form-group">
+                            <input type="text" value="@ViewBag.SearchString" class="form-control bg-light border-0 small" placeholder="Search for..." name="searchString" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <button class="btn btn-success" type="submit">
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
+                }
+                <hr />
+                <h5>SẢN PHẨM FLASE SALE</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr >
+                                <th class="table-success">Tên Sản Phẩm</th>
+                                <th class="table-success">Mô tả</th>
+                                <th class="table-success">Nhãn hiệu</th>
+                                <th class="table-success">Nguồn gốc</th>
+                                <th class="table-success">Giá cả</th>
+                                <th class="table-success">Thời gian bảo hành</th>
+                                <th class="table-success">Lượt truy cập</th>
+                                <th class="table-success">Tham gia Flase Sale</th>
+                                <th class="table-success">Thao tác</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model.Where(x => x.IdProgramme == 1))
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Brand</td>
+                                    <td>@item.Origin</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.WarrantyDate</td>
+                                    <td>@item.Views</td>
+                                    <td>
+                                        <a href="#" class="btn-flasesale" data-id="@item.Id">@(item.FlaseSale ? "Kích hoạt" : "Khoá")</a>
+                                    </td>
+                                    <td>
+                                        @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
+                                  {
+                                      Confirm = "Bạn có muốn xoá bản ghi này?",
+                                      OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                      HttpMethod = "Delete"
+                                  })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @*@Html.PagedListPager(Model.Where(x => x.IdProgramme == 1).ToList() as PagedList.IPagedList , page => Url.Action("ShowProductInFlaseSale", new { page, @searchString = @ViewBag.SearchString }))*@
+                </div>
+                <h5>SẢN PHẨM QUẢNG CÁO</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="table-success">Tên Sản Phẩm</th>
+                                <th class="table-success">Mô tả</th>
+                                <th class="table-success">Nhãn hiệu</th>
+                                <th class="table-success">Nguồn gốc</th>
+                                <th class="table-success">Giá cả</th>
+                                <th class="table-success">Thời gian bảo hành</th>
+                                <th class="table-success">Lượt truy cập</thclass="table-success">
+                                <th class="table-success">Đăng quảng cáo</thclass="table-success">
+                                <th class="table-success">Thao tác</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model.Where(x => x.IdProgramme == 2))
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Brand</td>
+                                    <td>@item.Origin</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.WarrantyDate</td>
+                                    <td>@item.Views</td>
+                                    <td>
+                                        <a href="#" class="btn-advertisement" data-id="@item.Id">@(item.Advertisement ? "Kích hoạt" : "Khoá")</a>
+                                    </td>
+                                    <td>
+                                        @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
+                                  {
+                                      Confirm = "Bạn có muốn xoá bản ghi này?",
+                                      OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                      HttpMethod = "Delete"
+                                  })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @*@Html.PagedListPager(Model.Where(x => x.IdProgramme == 2) as PagedList.IPagedList, page => Url.Action("ShowProductInAdvertisement", new { page, @searchString = @ViewBag.SearchString }))*@
+                </div>
+                <h5>TÂT CẢ SẢN PHẨM</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="table-success">Tên Sản Phẩm</th>
+                                <th class="table-success">Mô tả</th>
+                                <th class="table-success">Nhãn hiệu</th>
+                                <th class="table-success">Nguồn gốc</th>
+                                <th class="table-success">Giá cả</th>
+                                <th class="table-success">Thời gian bảo hành</th>
+                                <th class="table-success">Lượt truy cập</th>
+                                <th class="table-success">Trạng thái</th>
+                                <th class="table-success">Thao tác</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Brand</td>
+                                    <td>@item.Origin</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.WarrantyDate</td>
+                                    <td>@item.Views</td>
+                                    <td>
+                                        <a href="#" class="btn-active" data-id="@item.Id">@(item.IsActive ? "Kích hoạt" : "Khoá")</a>
+                                    </td>
+                                    <td>
+                                        @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
+                                  {
+                                      Confirm = "Bạn có muốn xoá bản ghi này?",
+                                      OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                      HttpMethod = "Delete"
+                                  })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

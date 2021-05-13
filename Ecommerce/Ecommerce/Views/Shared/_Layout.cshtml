@@ -150,10 +150,11 @@
                                 }
                                 else
                                 {
-                        <ul class="list-main">
-                            <li><i class="fa fa-power-off"></i><a href="/Login/Index">Đăng nhập</a></li>
-                            <li><i class="fas fa-user-plus"></i><a href="/Login/register">Đăng Ký</a></li>
-                        </ul>
+
+                                    <ul class="list-main">
+                                        <li><i class="fa fa-power-off"></i><a href="/Login/Index">Đăng nhập</a></li>
+                                        <li><i class="fas fa-user-plus"></i><a href="/Login/register">Đăng Ký</a></li>
+                                    </ul>
 
                                 }
                             }
@@ -174,28 +175,28 @@
                     <!--/ End Logo -->
                     <!-- Search Form -->
                     <div class="search-bar-box">
-                        <form action="/search/search" method="GET" class="form-search">
-                            <input class="search_input" type="text" name="" placeholder="Tìm kiếm sản phẩm~.">
-                            <button href="/search/search" class="search_btn" type="submit"><span class="fas fa-search"></span></button>
+                        <form action="/products/search" method="GET" class="form-search">
+                            <input class="search_input" id="search-keyword" name="key" type="search" placeholder="Tìm kiếm sản phẩm...">
+                            <button href="/products/search" class="search_btn" type="submit"><span class="fas fa-search"></span></button>
                         </form>
                     </div>
                     <div class="right-bar">
                         <!-- Search Form -->
 
                         <div class="sinlge-bar shopping">
-                            <a href="cart.html" class="single-icon">
+                            <a href="/cart/cart" class="single-icon">
                                 <span class="fas fa-cart-arrow-down"></span>
                                 <span class="aa-cart-title">GIỎ HÀNG</span>
-                                <span class="total-count"></span>
+                                <span class="total-count">@Html.Action("cart_partial", "cart")</span>
                             </a>
                             <!-- Shopping Item -->
-                            <div class="shopping-item">
-                                <div class="dropdown-cart-header">
-                                    <span> Sản phẩm</span>
-                                    <a href="/cart/cart">Xem giỏ hàng</a>
-                                </div>
-                                @Html.Action("Cart_partial", "Cart")
-                            </div>
+                            @*<div class="shopping-item">
+                                    <div class="dropdown-cart-header">
+                                        <span>@Html.Action("cart_partial", "cart")  Sản phẩm</span>
+                                        <a href="/cart/cart">Xem giỏ hàng</a>
+                                    </div>
+                                    @Html.Action("LoadCart","Cart")
+                                </div>*@
                             <!--/ End Shopping Item -->
                         </div>
                     </div>

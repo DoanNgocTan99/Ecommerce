@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+}
+
+@model PagedList.IPagedList<Ecommerce.Areas.Seller.Models.LinkProgramAndProduct>
+@using PagedList.Mvc;
+
+
+@section Title{
+    Shop
+}
+@section header{
+    Quản Lý Người Dùng
+}
+@*@section jsFooter{
+        <script src="~/Assets/Shop/js/controller/ProductController.js"></script>
+    }*@
+<div class="row">
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Review", FormMethod.Get))
+                {
+                    <div class="row form-group">
+                        <div class="col-md-4 form-group">
+                            <input type="text" value="@ViewBag.SearchString" class="form-control bg-light border-0 small" placeholder="Search for..." name="searchString" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <button class="btn btn-success" type="submit">
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
+                }
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Mô tả</th>
+                                <th>Người bình luận</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.NameProduct</td>
+                                    <td>@item.Content</td>
+                                    <td>@item.NameUser</td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>
+
+

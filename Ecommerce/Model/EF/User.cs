@@ -1,10 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+using System.Web;
 namespace Model.EF
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+
 
     [Table("User")]
     public partial class User
@@ -14,6 +17,9 @@ namespace Model.EF
             Images = new HashSet<Image>();
             Transactions = new HashSet<Transaction>();
             Reviews = new HashSet<Review>();
+            IsActive = true;
+            IdRole = 2;
+            
         }
 
         [Key]
@@ -37,13 +43,14 @@ namespace Model.EF
         [StringLength(250)]
         public string Phone { get; set; }
 
-        public bool Gender { get; set; }
+        public bool? Gender { get; set; }
 
-        public DateTime DOB { get; set; }
+        public DateTime? DOB { get; set; }
 
         [StringLength(250)]
         public string Address { get; set; }
 
+        [DefaultValue("True")]
         public bool IsActive { get; set; }
 
         [StringLength(250)]
@@ -53,9 +60,9 @@ namespace Model.EF
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
 
 
@@ -68,5 +75,7 @@ namespace Model.EF
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual ICollection<Shop> Shops { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

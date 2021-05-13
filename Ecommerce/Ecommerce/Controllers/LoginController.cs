@@ -27,7 +27,7 @@ namespace Ecommerce.Controllers
                     var user = dao.GetByUserName(model.UserName);
                     var UserSession = new UserLogin();
                     UserSession.UserName = user.UserName;
-                    UserSession.UserID = user.Id;
+                    UserSession.Id = user.Id;
                     UserSession.Name = user.Name;
                     Session.Add(CommonConstants.USER_SESSION, UserSession);
                     Response.Cookies["IdUser"].Value = user.Id.ToString();
@@ -53,7 +53,7 @@ namespace Ecommerce.Controllers
                     ModelState.AddModelError("", "Tài khoản của bạn không có quyền đăng nhập:< Hic_hic");
 
                 }
-                
+
             }
             return View("Index");
         }

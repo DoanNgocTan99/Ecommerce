@@ -19,9 +19,6 @@
                         <li class="active"><a href="/cart/cart">Giỏ hàng</a></li>
                     </ul>
                 </div>
-                <div class="col-md-12 mb-0">
-                    <strong style="color:red; margin-top:10px;">@ViewBag.cart</strong>
-                </div>
             </div>
         </div>
     </div>
@@ -31,6 +28,10 @@
 <section id="cart-view">
     <div class="container">
         <div class="row">
+            <div class="col-md-12" style="margin-top:40px">
+                <strong style="color:red; margin-top:10px; margin-left:400px">@ViewBag.cart</strong><br />
+            </div>
+
             <div class="col-md-12">
                 <div class="cart-view-area">
                     <div class="cart-view-table">
@@ -86,11 +87,12 @@
                                         <td colspan="7" class="aa-cart-view-bottom">
                                             @if (Session["Name"] != null)
                                             {
-                                                <a href="" class="aa-cart-view-btn">Thanh toán</a>
+                                                <a href="/payment/index/@Session["IdUser"]" class="aa-cart-view-btn">Thanh toán</a>
                                             }
                                             else
                                             {
-                                                <a href="" class="aa-cart-view-btn">Thanh toán</a>
+                                                <a href="/login/login" class="aa-cart-view-btn">Thanh toán</a>
+
                                             }
                                         </td>
                                     </tr>

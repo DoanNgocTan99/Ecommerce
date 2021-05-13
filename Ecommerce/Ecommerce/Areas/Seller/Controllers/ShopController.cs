@@ -1,4 +1,5 @@
-﻿using Model.DAO;
+﻿using Ecommerce.Common;
+using Model.DAO;
 using Model.EF;
 using System;
 using System.Collections.Generic;
@@ -14,22 +15,27 @@ namespace Ecommerce.Areas.Seller.Controllers
         // GET: Seller/Shop
         
         [HttpGet]
+        [HasCredential(RoleID = "USER")]
         public ActionResult Edit(int id)
         {
-            var user = new ShopDAO().ViewDetail(id);
-            return View(user);
+            var shop = new ShopDAO().ViewDetail(id);
+            return View(shop);
         }
         [HttpPost]
+        [HasCredential(RoleID = "USER")]
         [ValidateInput(false)]
         public ActionResult Edit(Shop shop)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var dao = new ShopDAO();
-                //return file name
-                string fileName = Path.GetFileNameWithoutExtension(shop.ImageFile.FileName);
-                //return type file
-                string extension = Path.GetExtension(shop.ImageFile.FileName);
+                if(shop.ImageFile != null)
+                {
+                    //return file name
+                    string fileName = Path.GetFileNameWithoutExtension(shop.ImageFile.FileName);
+                    //return type file
+                    string extension = Path.GetExtension(shop.ImageFile.FileName);
+
 
                 //return file name 
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -38,27 +44,51 @@ namespace Ecommerce.Areas.Seller.Controllers
                 shop.ImageFile.SaveAs(fileName);
                 //var result = dao.Update(shop);
 
-                var ImageDao = new ImageDAO();
+                    var result = dao.Update(shop);
+                    if (!result)
+                    {
+                        SetAlert("Shop không tồn tại!!", "success");
 
-                Image image = new Image();
-                image.IdShop = shop.Id;
-                image.Path = fileName;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    var ImageDao = new ImageDAO();
+
+                    Image image = new Image();
+                    image.IdShop = shop.Id;
+                    image.Path = fileName;
 
 
-                bool ID = ImageDao.Update(image);
-                if (ID)
-                {
-                    SetAlert("Cập nhập thông tin chi tiết  thành công!!", "success");
+                    bool ID = ImageDao.UpdateByIdShop(image);
+                    if (ID)
+                    {
+                        SetAlert("Cập nhập thông tin chi tiết  thành công!!", "success");
 
-                    return RedirectToAction("Index", "Category");
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                    var result = dao.Update(shop);
+                    if (result)
+                    {
+                        SetAlert("Cập nhập thông tin chi tiết  thành công!!", "success");
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                    }
                 }
+                
 
             }
             return View("Index");
         }
+        
     }
 }

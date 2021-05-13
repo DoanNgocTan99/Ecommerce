@@ -41,11 +41,23 @@ namespace Ecommerce.Controllers
             return lstCart;
         }
 
+        public ActionResult LoadCart(List<CartItem> lstCart)
+        {
+            List<CartItem> cart = new List<CartItem>();
+            if (lstCart == null)
+            {
+                cart = lstCart.ToList();
+                ViewBag.cart = cart;
+            }
+            return PartialView();
+        }
         public int Cart_partial()
         {
             if (Session["Cart"] == null)
             {
-                return 2;
+
+                return 0;
+
             }
             List<CartItem> lstCart = GetCart();
             return lstCart.Count();
@@ -143,7 +155,8 @@ namespace Ecommerce.Controllers
             List<CartItem> cart = GetCart();
             //User user = (User)Session["IdUser"];
             trans.IdUser = (int)Session["IdUser"];
-            trans.Amount = Convert.ToString(Total());
+            trans.Amount = Convert.ToInt32(Total());
+
             trans.CheckoutStatus = "Chua thanh toan";
             trans.CreatedBy = (string)Session["Name"];
             trans.CreatedDate = DateTime.Now;

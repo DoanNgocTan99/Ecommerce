@@ -26,17 +26,15 @@ namespace Ecommerce.Controllers
         public PartialViewResult GetCategoryShop(int id)
         {
             List<long> temp = (from a in db.Products
-                                       join b in db.Categories on a.IdCategory equals b.Id
-                                       where a.IdShop == id
-                                       select a.IdCategory).Distinct().ToList();
+                               join b in db.Categories on a.IdCategory equals b.Id
+                               where a.IdShop == id
+                               select a.IdCategory).Distinct().ToList();
             List<Category> categoryList = new List<Category>();
-            foreach(long item in temp)
+            foreach (long item in temp)
             {
                 Category category = db.Categories.Where(x => x.Id == item).FirstOrDefault();
                 categoryList.Add(category);
             }
-
-                                   //.AsEnumerable().Select(x => new Category() { Id = x.idCategory }).ToList();
 
             return PartialView("GetCategoryShop", categoryList);
         }
