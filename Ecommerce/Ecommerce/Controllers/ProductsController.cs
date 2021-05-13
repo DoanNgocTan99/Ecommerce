@@ -95,6 +95,27 @@ namespace Ecommerce.Controllers
 
             return PartialView(products.ToPagedList(pageNumber, pageSize));
         }
+        public ActionResult SanPhamViewDel(int? categoryid, List<Product> listProducts, int? page, int? pagenumber)
+        {
+            //phan trang pagedlist
+            if (page == null) page = 1;
+            int pageSize = pagenumber == null ? 9 : 10000;
+            //int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            List<Product> products = new List<Product>();
+            if (listProducts != null)
+            {
+                products = listProducts.ToList();
+                ViewBag.products = products;
+            }
+            else
+            {
+                products = db.Products.Where(x => x.IdCategory == categoryid && x.Discount >10).OrderByDescending(x => x.CreatedDate).ToList();
+                ViewBag.products = products;
+            }
+
+            return PartialView(products.ToPagedList(pageNumber, pageSize));
+        }
         public ActionResult SanPhamViewShop(long? categoryid, long? shopid, List<Product> listProducts, int? page, int? pagenumber)
         {
             //phan trang pagedlist
@@ -230,6 +251,12 @@ namespace Ecommerce.Controllers
             ViewBag.categoryId = Id;
             List<Category> cats = db.Categories.ToList();
             return PartialView("SendCategoryId", cats);
+        }
+        public PartialViewResult SendCategoryIdDel(int Id)
+        {
+            ViewBag.categoryId = Id;
+            List<Category> cats = db.Categories.ToList();
+            return PartialView("SendCategoryIdDel", cats);
         }
     }
 }
