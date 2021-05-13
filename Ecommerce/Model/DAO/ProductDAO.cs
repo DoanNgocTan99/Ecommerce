@@ -143,5 +143,12 @@ namespace Model.DAO
             db.SaveChanges();
             return product.Advertisement;
         }
+        public bool DeleteProductByIdCategory(long idcategory)
+        {
+            var data = db.Products.Where(x => x.IdCategory == idcategory).ToList();
+            db.Products.RemoveRange(data);
+            db.SaveChanges();
+            return true;
+        }
     }
 }

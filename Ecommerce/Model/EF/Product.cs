@@ -52,10 +52,10 @@ namespace Model.EF
         public string Origin { get; set; }
 
         [Display(Name = "Giá")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [Display(Name = "Giá giảm")]
-        public decimal? DelPrice { get; set; }
+        public int? DelPrice { get; set; }
 
 
         public DateTime WarrantyDate { get; set; }

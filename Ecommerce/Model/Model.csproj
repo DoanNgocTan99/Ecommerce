@@ -149,9 +149,11 @@
   <ItemGroup>
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\ImageDAO.cs" />
+    <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\ProgrammeDAO.cs" />
     <Compile Include="DAO\ReviewDAO.cs" />
+    <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DAO\ShopDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="EF\Category.cs" />
@@ -183,6 +185,14 @@
     <Compile Include="Migrations\202105111737395_EditTableProduct.Designer.cs">
       <DependentUpon>202105111737395_EditTableProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105130047577_UpdateTableUser.cs" />
+    <Compile Include="Migrations\202105130047577_UpdateTableUser.Designer.cs">
+      <DependentUpon>202105130047577_UpdateTableUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105130846579_ChangerPrice.cs" />
+    <Compile Include="Migrations\202105130846579_ChangerPrice.Designer.cs">
+      <DependentUpon>202105130846579_ChangerPrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -208,6 +218,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105111737395_EditTableProduct.resx">
       <DependentUpon>202105111737395_EditTableProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105130047577_UpdateTableUser.resx">
+      <DependentUpon>202105130047577_UpdateTableUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105130846579_ChangerPrice.resx">
+      <DependentUpon>202105130846579_ChangerPrice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,6 +43,41 @@ namespace Model.DAO
             }
 
         }
+        public bool UpdateByAdmin(User entity)
+        {
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+            try
+            {
+                var user = db.Users.Find(entity.Id);
+                user.IdRole = entity.IdRole;
+                user.ModifiedBy = session.Name;
+                user.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        public bool Delete(int Id)
+        {
+            try
+            {
+                var dao = new ShopDAO().DeleteListShopByIdUser(Id);
+
+                var user = db.Users.Find(Id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                return false;
+            }
+        }
         public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)
         {
             IQueryable<User> model = db.Users;
@@ -238,6 +273,13 @@ namespace Model.DAO
             {
                 throw ex;
             }
+        }
+        public bool ChangeStatus(long id)
+        {
+            var user = db.Users.Find(id);
+            user.IsActive = !user.IsActive;
+            db.SaveChanges();
+            return user.IsActive;
         }
     }
 }

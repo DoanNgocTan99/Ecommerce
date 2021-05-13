@@ -190,7 +190,7 @@ namespace Ecommerce.Areas.Seller.Controllers
             ViewBag.IdCategory = new SelectList(dao_Category.ListAll(), "Id", "Name", selectIdCategory);
             var dao_Programme = new ProgrammeDAO();
             ViewBag.IdProgramme = new SelectList(dao_Programme.ListAll(), "Id", "Name", selectIdProgramme);
-
+            
             //var dao_Shop = new ShopDAO();
             //ViewBag.IdShop = new SelectList(dao_Shop.ListAll(), "Id", "Name", selectIdShop);
 

@@ -52,13 +52,13 @@ namespace Model.EF
 
 
             //Table Product
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Price)
-                .HasPrecision(2, 0);
+            //modelBuilder.Entity<Product>()
+            //    .Property(e => e.Price)
+            //    .HasPrecision(2, 0);
 
-            modelBuilder.Entity<Product>()
-                .Property(e => e.DelPrice)
-                .HasPrecision(2, 0);
+            //modelBuilder.Entity<Product>()
+            //    .Property(e => e.DelPrice)
+            //    .HasPrecision(2,);
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.Images)
@@ -126,7 +126,7 @@ namespace Model.EF
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Transactions)
                 .WithRequired(e => e.User)
-                .HasForeignKey(e => e.IdUser);
+                .HasForeignKey(e => e.IdUser).WillCascadeOnDelete(true);
             //modelBuilder.Entity<U ser>().Property(p => p.IdShop).IsOptional();
 
         }
