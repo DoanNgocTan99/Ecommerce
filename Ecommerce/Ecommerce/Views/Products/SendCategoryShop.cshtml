@@ -1,0 +1,37 @@
+﻿@model  List<Model.EF.Category>
+
+@{
+    int categoryid = 1;
+    if (ViewBag.categoryId != null)
+    {
+        categoryid = ViewBag.categoryId;
+    }
+    int shopid = 1;
+    if (ViewBag.shopId != null)
+    {
+        shopid = ViewBag.shopId;
+    }
+
+}
+
+@foreach (var item in Model)
+{
+    if (item.Id == categoryid)
+    {
+        <div class="tab-pane fade show active" id="@item.Id" role="tabpanel">
+            <div class="row">
+                @Html.Action("SanPhamViewShop", "Products", new { take = 8, categoryid = item.Id })
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="tab-pane" id="@item.Id" role="tabpanel">
+            <div class="row">
+                @Html.Action("SanPhamViewShop", "Products", new { take = 8, categoryid = item.Id })
+            </div>
+        </div>
+    }
+
+}
+

@@ -19,5 +19,9 @@ namespace Ecommerce.Areas.Seller.Controllers
             ViewBag.SearchString = searchString;
             return View(model);
         }
+        public ActionResult ViewDetail()
+        {
+            return View();
+        }
     }
 }

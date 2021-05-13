@@ -40,6 +40,22 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>Người mua</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model.Distinct().ToList())
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.NameUser</td>
+                                    <td><a href="/Seller/Order/ViewDetail/@item.Id">Chi tiết</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
                                 <th>Tên Sản Phẩm</th>
                                 <th>Người mua</th>
                                 <th>Số lượng</th>
@@ -48,6 +64,7 @@
                                 <th>Địa chỉ nhận hàng</th>
                                 <th>Trạng thái giao hàng</th>
                                 <th>Tổng tiền</th>
+                                <th>Chi tiết</th>
                             </tr>
                         <tbody>
                             @foreach (var item in Model)
@@ -61,7 +78,7 @@
                                     <td>@item.Address</td>
                                     <td>@item.NamePayment</td>
                                     <td>@item.Price</td>
-                                  
+                                    <td><a href="/Seller/Product/Edit/@item.Id">Sửa</a></td>
                                 </tr>
                             }
                         </tbody>

@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "ViewDetail";
+    Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+}
+
+@model PagedList.IPagedList<Ecommerce.Areas.Seller.Models.MyOrder>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+@section Title{
+    Shop
+}
+@section header{
+    Quản Lý Đơn Hàng
+}
+@section jsFooter{
+    <script src="~/Assets/Shop/js/controller/ProductController.js"></script>
+}
+<div class="row">
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Order", FormMethod.Get))
+                {
+                    <div class="row form-group">
+                        <div class="col-md-4 form-group">
+                            <input type="text" value="@ViewBag.SearchString" class="form-control bg-light border-0 small" placeholder="Search for..." name="searchString" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <button class="btn btn-success" type="submit">
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
+                }
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Người mua</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model.Distinct().ToList())
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.NameUser</td>
+                                    <td><a href="/Seller/Order/ViewDetail/@item.Id">Chi tiết</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Người mua</th>
+                                <th>Số lượng</th>
+                                <th>Lời nhắn</th>
+                                <th>Trạng thái thanh toán</th>
+                                <th>Địa chỉ nhận hàng</th>
+                                <th>Trạng thái giao hàng</th>
+                                <th>Tổng tiền</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.NameProduct</td>
+                                    <td>@item.NameUser</td>
+                                    <td>@item.Amount</td>
+                                    <td>@item.Message</td>
+                                    <td>@item.CheckoutStatus</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.NamePayment</td>
+                                    <td>@item.Price</td>
+                                    <td><a href="/Seller/Product/Edit/@item.Id">Sửa</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

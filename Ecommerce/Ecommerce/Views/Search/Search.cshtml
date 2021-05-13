@@ -1,0 +1,31 @@
+﻿
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Model.EF.Product>
+
+<div class="product-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Danh sách sản phẩm</h2>
+                </div>
+                <div class="report_text" style="padding:30px 0 30px 0;">
+                    <h2 style="font-size:150%">Tìm thấy <strong>@Model.Count()</strong> kết quả:</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="product-info">
+                    @Html.Action("SanPhamView", "Products", new { listProducts = Model })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
