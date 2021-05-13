@@ -59,7 +59,8 @@ namespace Model.DAO
                              CheckoutStatus = b.CheckoutStatus,
                              Address = b.Address,
                              DeliveryStatus = c.Status,
-                             NamePayment = f.Name
+                             NamePayment = f.Name,
+                             Price = d.Price
                          }).AsEnumerable().Select(x => new MyOrder()
                          {
                              Id = x.Id,
@@ -71,6 +72,7 @@ namespace Model.DAO
                              CheckoutStatus = x.CheckoutStatus,
                              DeliveryStatus = x.DeliveryStatus,
                              NamePayment = x.NamePayment,
+                             Price = x.Price
                          });
             if (!string.IsNullOrEmpty(searchString))
             {

@@ -10,7 +10,7 @@ namespace Ecommerce.Areas.Seller.Models
         public long Id { get; set; }
         public string NameProduct { get; set; }
         public string NameUser { get; set; }
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
         public string Message { get; set; }
         public string CheckoutStatus { get; set; }
         public string Address { get; set; }

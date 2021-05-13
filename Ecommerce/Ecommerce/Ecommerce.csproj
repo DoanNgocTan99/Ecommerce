@@ -156,10 +156,21 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -6681,6 +6692,7 @@
     <Content Include="Areas\Admin\Views\UserManage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\UserManage\Create.cshtml" />
     <Content Include="Areas\Admin\Views\UserManage\Edit.cshtml" />
+    <Content Include="Areas\Seller\Views\Order\ViewDetail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -6708,6 +6720,26 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cart\cart.cshtml" />
+    <Content Include="Views\Cart\LoadCart.cshtml" />
+    <Content Include="Views\Category\GetCategory.cshtml" />
+    <Content Include="Views\Category\GetCategoryShop.cshtml" />
+    <Content Include="Views\Home\Security.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Products\ProductList.cshtml" />
+    <Content Include="Views\Products\ProductSearch.cshtml" />
+    <Content Include="Views\Products\SanPhamView.cshtml" />
+    <Content Include="Views\Products\SanPhamViewShop.cshtml" />
+    <Content Include="Views\Products\SendCategoryId.cshtml" />
+    <Content Include="Views\Products\SendCategoryIdShop.cshtml" />
+    <Content Include="Views\Products\SendCategoryShop.cshtml" />
+    <Content Include="Views\Products\TatCaSanPham.cshtml" />
+    <Content Include="Views\Products\XemChiTiet.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Shared\_Layout_Home.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -6716,7 +6748,8 @@
     <Folder Include="Areas\Seller\Views\Base\" />
     <Folder Include="Areas\Seller\Views\Programme\" />
     <Folder Include="Image\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Image\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

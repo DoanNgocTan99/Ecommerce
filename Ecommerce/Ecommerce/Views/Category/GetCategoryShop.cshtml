@@ -1,0 +1,41 @@
+﻿
+@model  List<Model.EF.Category>
+@{
+    long categoryid = Model[0].Id;
+    if (ViewBag.categoryid != null)
+    {
+        categoryid = ViewBag.categoryid;
+    }
+}
+
+
+@foreach (var item in Model)
+{
+    if (item.Id == categoryid)
+    {
+        <li class="nav-item">
+            @{
+                categoryid = item.Id;
+            }
+            <a class="nav-link active" data-toggle="tab" href="#@item.Id" role="tab"><img class="category-img" src="@Html.Action("getImgCat","image", new { id = item.Id })" alt="category" />@item.Name</a>
+
+            @*@Html.ActionLink(item.Name, "ProductList", "Products", new { @class = "nav-link", category_id = item.Id }, null)*@
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            @{
+                categoryid = item.Id;
+            }
+            <a class="nav-link" data-toggle="tab" href="#@item.Id" role="tab"><img class="category-img" src="@Html.Action("getImgCat","image", new { id = item.Id })" alt="category" />@item.Name</a>
+
+            @*@Html.ActionLink(item.Name, "ProductList", "Products", new { @class = "nav-link", category_id = item.Id }, null)*@
+        </li>
+    }
+
+
+}
+
+
+<!--/ End Tab Nav -->

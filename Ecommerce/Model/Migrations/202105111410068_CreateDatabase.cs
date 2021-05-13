@@ -59,6 +59,8 @@ namespace Model.Migrations
                     Origin = c.String(nullable: true, maxLength: 250),
                     Price = c.Decimal(nullable: false, precision: 2, scale: 0),
                     DelPrice = c.Decimal(nullable: true, precision: 2, scale: 0),
+                    //Price = c.Int(nullable: false),
+                    //DelPrice = c.Int(nullable:true),
                     WarrantyDate = c.DateTime(nullable: true),
                     Stock = c.Int(nullable: true),
                     Discount = c.Int(nullable: true),
