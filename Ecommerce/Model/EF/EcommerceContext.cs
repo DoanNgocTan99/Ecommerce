@@ -56,7 +56,7 @@ namespace Model.EF
             //    .HasPrecision(2, 0);
             modelBuilder.Entity<Transaction>()
                 .Property(e => e.Amount)
-                .HasPrecision(2, 0);
+                .HasPrecision(20, 0);
             //modelBuilder.Entity<Product>()
             //    .Property(e => e.DelPrice)
             //    .HasPrecision(2,);

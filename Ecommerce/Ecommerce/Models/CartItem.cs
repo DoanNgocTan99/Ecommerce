@@ -14,7 +14,7 @@ namespace Ecommerce.Models
         public string _Image { get; set; }
         public decimal? _Price { get; set; }
         public decimal? _DelPrice { get; set; }
-        public int _Discount { get; set; }
+        public int? _Discount { get; set; }
         public int _Amount { get; set; }
         public long? _IdShop { get; set; }
         public decimal _Total

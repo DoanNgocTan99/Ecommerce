@@ -152,7 +152,7 @@ namespace Ecommerce.Controllers
             List<CartItem> cart = GetCart();
             //User user = (User)Session["IdUser"];
             trans.IdUser = (int)Session["IdUser"];
-            trans.Amount = Convert.ToInt32(Total());
+            trans.Amount = Total();
             trans.CheckoutStatus = "Chua thanh toan";
             trans.CreatedBy = (string)Session["Name"];
             trans.CreatedDate = DateTime.Now;

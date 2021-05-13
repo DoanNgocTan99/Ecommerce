@@ -64,7 +64,7 @@ namespace Model.EF
         public int? Stock { get; set; }
 
         [Display(Name = "Giá giảm của SHOP")]
-        public int Discount { get; set; }
+        public int? Discount { get; set; }
         [Display(Name = "Lượt xem")]
 
         public int? Views { get; set; }
