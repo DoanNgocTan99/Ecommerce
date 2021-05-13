@@ -1,0 +1,167 @@
+﻿@using Model.EF
+@model Model.EF.User
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    EcommerceContext db = new EcommerceContext();
+    int id = int.Parse(Request.Cookies["IdUser"].Value);
+    var acc = from e in db.Users
+              where e.Id == id
+              select e;
+}
+
+
+<!-- Start Checkout -->
+<section class="shop checkout section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <div class="checkout-form">
+                    <h2>Make Your Checkout Here</h2>
+                    <p>Please register in order to checkout more quickly</p>
+                    <!-- Form -->
+                    @using (Html.BeginForm("UpdateInfo", "Payment", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form class="form " method="post" action="# ">
+                            <div class="row ">
+                                <div class="col-lg-12 col-md-6 col-12 ">
+                                    <div class="form-group ">
+                                        <label for="DOB ">Họ và Tên<span>*</span></label>
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", id = "DOB", @style = "width: 100%;height: 45px;line - height: 50px;padding: 0 20px;border - radius: 3px; border - radius: 0px;color: #333 !important;border: none;background: #F6F7FB;" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12 ">
+                                    <div class="form-group ">
+                                        <label for="username ">Username<span>*</span></label>
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", id = "username", @style = "width: 100%;height: 45px;line - height: 50px;padding: 0 20px;border - radius: 3px; border - radius: 0px;color: #333 !important;border: none;background: #F6F7FB;" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Id)
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12 ">
+                                    <div class="form-group ">
+                                        <label for="email ">Email<span>*</span></label>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "email", @style = "width: 100%;height: 45px;line - height: 50px;padding: 0 20px;border - radius: 3px; border - radius: 0px;color: #333 !important;border: none;background: #F6F7FB;" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12 ">
+                                    <div class="form-group ">
+                                        <label for="address ">Địa chỉ<span>*</span></label>
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", id = "address", @style = "width: 100%;height: 45px;line - height: 50px;padding: 0 20px;border - radius: 3px; border - radius: 0px;color: #333 !important;border: none;background: #F6F7FB;" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12 ">
+                                    <div class="form-group ">
+                                        <label class="phone ">Phone Number<span>*</span></label>
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", id = "phone", @style = "width: 100%;height: 45px;line - height: 50px;padding: 0 20px;border - radius: 3px; border - radius: 0px;color: #333 !important;border: none;background: #F6F7FB;" } })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12 ">
+                                    <div class="form-group ">
+                                        <label for="gender ">Giới tính<span>*</span></label><br />
+                                        <label> @Html.RadioButtonFor(model => model.Gender, true, new { htmlAttributes = new { @checked = true, @class = "form-control", @style = "padding: 0 20px" } }) Nam</label>
+                                        <label>@Html.RadioButtonFor(model => model.Gender, false, new { htmlAttributes = new { @checked = false, @class = "form-control" } }) Nữ</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12 ">
+                                    <div class="form-group ">
+                                        <label for="DOB ">Ngày sinh<span>*</span></label>
+                                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", id = "DOB", @style = "width: 100%;height: 45px;line - height: 50px;padding: 0 20px;border - radius: 3px; border - radius: 0px;color: #333 !important;border: none;background: #F6F7FB;" } })
+                                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!--<div class="col-lg-12 col-md-6 col-12n">
+                                    <div class="content">
+                                        <div class="button">-->
+                                @*<a href="#" class="btn">proceed to checkout</a>*@
+                                <!--<input type="submit" name="btnUpdate" class="btn" value="Checkout" />
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <!--<div class="col-lg-6 col-md-6 col-12 ">
+                                <div class="form-group ">-->
+                                @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                @*@Html.HiddenFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", id = "password", placeholder = "", @style = "width: 100%;height: 45px;line - height: 50px;padding: 0 20px;border - radius: 3px; border - radius: 0px;color: #333 !important;border: none;background: #F6F7FB;" } })*@
+                                <!--<a href="/User/ChangePassword/@Model.Id"><i class="fas fa-key ">Thay đổi mật khẩu</i></a>
+                                    </div>
+                                </div>-->
+                                @*<div class="col-lg-12 col-md-6 col-12 ">
+                                        <div class="content">
+                                            <div class="button">
+                                                <input type="submit" name="btnUpdate" class="btn" value="Save" />
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+
+                        </form>
+                    }
+                    <!--/ End Form -->
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="order-details">
+                    <!-- Order Widget -->
+                    <div class="single-widget">
+                        <h2>CART TOTALS</h2>
+                        <div class="content">
+                            <ul>
+                                <li>Sub Total<span>@Html.Action("total", "cart")</span></li>
+                                <li>(+) Shipping<span>30,000 VNĐ</span></li>
+                                <li class="last">Total<span></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--/ End Order Widget -->
+                    <!-- Order Widget -->
+                    <div class="single-widget">
+                        <h2>Payments</h2>
+                        <div class="content">
+                            <div class="checkbox">
+                                <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label>
+                                <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Cash On Delivery</label>
+                                <label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox"> PayPal</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Order Widget -->
+                    <!-- Payment Method Widget -->
+                    <div class="single-widget payement">
+                        <div class="content">
+                            <img src="../assets/images/payment-method.png" alt="#">
+                        </div>
+                    </div>
+                    <!--/ End Payment Method Widget onclick="location.href='/home/index';" -->
+                    <!-- Button Widget -->
+                    <div class="single-widget get-button">
+                        <div class="content">
+                            <div class="button">
+                                <a href="#" class="btn">proceed to checkout</a>
+                                @*<input
+                                               onclick={@Html.Action("UpdateInfo", "Payment", new { Name = @Model.Name, btnUpdate = "Checkout" })}
+                                               type="submit"
+                                               name="btnUpdate"
+                                               class="btn"
+                                               value="Checkout" />
+                                    </div>*@
+
+                            </div>
+                        </div>
+                        <!--/ End Button Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!--/ End Checkout -->
