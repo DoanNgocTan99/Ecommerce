@@ -94,3 +94,5 @@ F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.csproj.GenerateRes
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTableProgramme.resources
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTableProgrammes.resources
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTableProduct.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.UpdateTableUser.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.ChangerPrice.resources

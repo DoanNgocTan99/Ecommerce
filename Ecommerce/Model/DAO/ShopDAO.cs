@@ -98,9 +98,7 @@ namespace Model.DAO
                 Shop.IdUser = IdUser;
 
                 var id = db.Shops.Add(Shop).Id;
-                var Name = Shop.Name;
-                var Description = Shop.Description;
-                var Date = Shop.CreatedDate;
+
 
                 db.SaveChanges();
                 return id;
@@ -134,6 +132,31 @@ namespace Model.DAO
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+        public bool DeleteListShopByIdUser(long id)
+        {
+            try
+            {
+                var data = db.Shops.Where(x => x.IdUser == id).ToList();
+                db.Shops.RemoveRange(data);
+                //foreach(var item in data)
+                //{
+                //    db.Shops.Remove(item);
+                //}
+                db.SaveChanges();
+                //if (data.Count == 0)
+                //{
+
+                //    return true;
+                //}
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                return false;
             }
         }
         public bool Update(Shop entity)

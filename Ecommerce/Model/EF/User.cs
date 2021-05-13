@@ -51,7 +51,7 @@ namespace Model.EF
         public string Address { get; set; }
 
         [DefaultValue("True")]
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         [StringLength(250)]
         public string CreatedBy { get; set; }

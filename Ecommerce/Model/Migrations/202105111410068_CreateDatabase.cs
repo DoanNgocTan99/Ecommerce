@@ -137,7 +137,7 @@ namespace Model.Migrations
                     IdUser = c.Long(nullable: true),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.User", t => t.IdUser)
+                .ForeignKey("dbo.User", t => t.IdUser,cascadeDelete:true)
                 .Index(t => t.IdUser);
 
             CreateTable(

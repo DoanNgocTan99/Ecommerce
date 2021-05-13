@@ -66,6 +66,8 @@ namespace Model.DAO
         {
             try
             {
+                var dao = new ProductDAO().DeleteProductByIdCategory(Id);
+
                 var category = db.Categories.Find(Id);
                 db.Categories.Remove(category);
                 db.SaveChanges();
