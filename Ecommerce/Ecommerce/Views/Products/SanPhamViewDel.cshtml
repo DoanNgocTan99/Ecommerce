@@ -1,0 +1,41 @@
+﻿@using PagedList.Mvc;
+@using Model.EF;
+@model PagedList.IPagedList<Model.EF.Product>
+@{
+    Product productid = ViewBag.productid;
+    Image image = ViewBag.image;
+}
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-lg-4 col-md-4 col-12" data-id="@item.Id">
+            <div class="single-product">
+                <div class="product-img">
+                    <a href="/products/xemchitiet/@item.Id">
+                        <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id  })" alt="#">
+                        <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
+                        <span class="price-dec">-@item.Discount%</span>
+                    </a>
+                    <div class="button-head">
+                        <div class="product-action">
+                            <a href="/shop/index/@item.IdShop"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                        </div>
+                        <div class="product-action-2">
+                            <a title="Add to cart" href="/Cart/AddCart/@item.Id">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3><a href="/products/xemchitiet/@item.Id">@item.Name</a></h3>
+                    <div class="product-price">
+                        <span>@item.DelPrice</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+

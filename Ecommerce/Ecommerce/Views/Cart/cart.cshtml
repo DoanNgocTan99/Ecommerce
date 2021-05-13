@@ -1,5 +1,4 @@
 ﻿
-
 @{
     ViewBag.Title = "cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -87,7 +86,7 @@
                                         <td colspan="7" class="aa-cart-view-bottom">
                                             @if (Session["Name"] != null)
                                             {
-                                                <a href="#" class="aa-cart-view-btn">Thanh toán</a>
+                                                <a href="/payment/index/@Session["IdUser"]" class="aa-cart-view-btn">Thanh toán</a>
                                             }
                                             else
                                             {
