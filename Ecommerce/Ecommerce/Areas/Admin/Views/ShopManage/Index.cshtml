@@ -1,0 +1,76 @@
+﻿
+@model PagedList.IPagedList<Model.EF.Shop>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header{
+    QUẢN LÝ SHOP
+}
+
+<div class="row">
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "ShopManage", FormMethod.Get))
+                {
+                    <div class="row form-group">
+                        <div class="col-md-4 form-group">
+                            <input type="text" value="@ViewBag.SearchString" class="form-control bg-light border-0 small" placeholder="Search for..." name="searchString" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <button class="btn btn-success" type="submit">
+                                Tìm kiếm
+                            </button>
+                            @*<a href="/Seller/Product/Create" class="btn btn-primary">
+                                    Thêm mới
+                                </a>*@
+                        </div>
+                    </div>
+                }
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Tên Shop</th>
+                                <th>Mô tả</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.Id">
+                                    <td>@item.Name</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Phone</td>
+                                    @*<td>
+                                            <a href="#" class="btn-active" data-id="@item.Id">@(item.IsActive ? "Kích hoạt" : "Khoá")</a>
+                                        </td>*@
+                                    <td>
+                                        <a href="/Admin/ShopManage/GetListProduct/@item.Id">Chi tiết</a>
+                                          |
+                                        @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
+                                  {
+                                      Confirm = "Bạn có muốn xoá bản ghi này?",
+                                      OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                      HttpMethod = "Delete"
+                                  })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

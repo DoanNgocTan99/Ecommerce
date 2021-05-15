@@ -3,18 +3,17 @@
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@section Title{
-    Admin
-}
+
 @section header{
-    Quản Lý Người Dùng
+    QUẢN LÝ DANH MỤC SẢN PHẨM
 }
-@*@section jsFooter{
-    <script src="~/Assets/Shop/js/controller/CategoryController.js"></script>   
-}*@
+@section jsFooter{
+    @*<script src="~/Assets/Shop/js/controller/CategoryController.js"></script>*@   
+    <script src="~/Assets/Admin/js/controller/CategoryController.js"></script>
+}
 <div class="row">
     <div class="container-fluid">
         <div class="card shadow mb-4">
@@ -29,7 +28,7 @@
                             <button class="btn btn-success" type="submit">
                                 Tìm kiếm
                             </button>
-                            <a href="Create" class="btn btn-primary">
+                            <a href="/Admin/Category/Create" class="btn btn-primary">
                                 Thêm mới
                             </a>
                         </div>
@@ -40,12 +39,10 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Tên Doanh Mục</th>
-                                <th>Mô tả</th>
-                                @*<th>Người Tạo</th>*@
-                                @*<th>Ngày Tạo</th>*@
-                                @*<th>Trạng thái</th>*@
-                                <th>Thao tác</th>
+                                <th class="table-success">Tên Danh Mục</th>
+                                <th class="table-success">Mô tả</th>
+                                <th class="table-success">Trạng thái</th>
+                                <th class="table-success">Thao tác</th>
                             </tr>
                         <tbody>
                             @foreach (var item in Model)
@@ -53,13 +50,9 @@
                             <tr id="row_@item.Id">
                                 <td>@item.Name</td>
                                 <td>@item.Description</td>
-                                @*<td>@item.CreatedBy</td>*@
-
-                                @*<td>@item.CreatedDate</td>*@
-
-                                @*<td>
-                                    <a href="#" class="btn-active" data-id="@item.Id">@(item.IsActive ? "Kích hoạt" : "Khoá")</a>
-                                </td>*@
+                                <td>
+                                    <a href="#" class="btn-active" data-id="@item.Id">@Html.Raw(item.IsActive ? "Kích hoạt" : "Khoá")</a>
+                                </td>
                                 <td>
                                     <a href="/Admin/Category/Edit/@item.Id">Sửa</a>
                                     |

@@ -1,10 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Model.EF
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+
 
     [Table("Transaction")]
     public partial class Transaction
@@ -19,8 +19,7 @@ namespace Model.EF
         [StringLength(250)]
         public string Address { get; set; }
 
-        [StringLength(250)]
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
 
         [StringLength(250)]
         public string CheckoutStatus { get; set; }

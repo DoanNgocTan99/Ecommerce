@@ -1,11 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+using System.Web;
 namespace Model.EF
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-    using System.Web;
+
 
     [Table("Shop")]
     public partial class Shop
@@ -14,27 +15,32 @@ namespace Model.EF
         {
             Orders = new HashSet<Order>();
             Products = new HashSet<Product>();
-            //Users = new HashSet<User>();
             Images = new HashSet<Image>();
         }
 
         [Key]
         public long Id { get; set; }
 
-        [Required]
+
+        
         [StringLength(250)]
+        [Display(Name = "Tên Shop")]
         public string Name { get; set; }
 
-        [Required]
+
         [StringLength(250)]
+        [Display(Name = "Mô tả")]
+
         public string Description { get; set; }
 
-        [Required]
         [StringLength(250)]
+        [Display(Name = "Địa chỉ")]
+
         public string Address { get; set; }
 
-        [Required]
         [StringLength(250)]
+        [Display(Name = "Số điện thoại")]
+
         public string Phone { get; set; }
 
         [StringLength(250)]
@@ -43,9 +49,9 @@ namespace Model.EF
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [Required]
         public long? IdUser { get; set; }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Common
 {
-    public class HasCredentialAttribute: AuthorizeAttribute
+    public class HasCredentialAttribute : AuthorizeAttribute
     {
         public string RoleID { set; get; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
@@ -19,7 +19,7 @@ namespace Ecommerce.Common
 
             List<string> privilegeLevels = this.GetCredentialByLoggedInUser(session.UserName); // Call another method to get rights of the user from DB
 
-            if (privilegeLevels.Contains(this.RoleID) || session.UserID == CommonConstants.ROLE_ADMIN)
+            if (privilegeLevels.Contains(this.RoleID) || session.IdRole == CommonConstants.ROLE_ADMIN)
             {
                 return true;
             }
@@ -30,14 +30,16 @@ namespace Ecommerce.Common
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
+
             filterContext.Result = new ViewResult
             {
-                ViewName = "~/Areas/Admin/Views/Shared/401.cshtml"
+                //ViewName = "~/Areas/Seller/Views/Shared/Error.cshtml"
+                ViewName = "~/Areas/Seller/Views/Login/Index.cshtml"
             };
         }
         private List<string> GetCredentialByLoggedInUser(string userName)
         {
-            var credentials = (List<string>)HttpContext.Current.Session[Common.CommonConstants.USER_SESSION];
+            var credentials = (List<string>)HttpContext.Current.Session[Common.CommonConstants.SESSION_CREDENTIALS];
             return credentials;
         }
     }

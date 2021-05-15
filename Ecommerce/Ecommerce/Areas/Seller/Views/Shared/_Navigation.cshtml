@@ -1,55 +1,80 @@
-﻿ <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-        <li>
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Seller/Home/Index">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Trang chủ</div>
-            </a>
+﻿@{
+    Layout = null;
+    var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0" />
+}
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <li>
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Seller/Home/Index">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Trang chủ</div>
+        </a>
 
-            <!-- Nav Item - Dashboard -->
-            @*
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Trang chủ</span>
-            </a>
-        </li>
-        *@
-        <li>
-            <hr class="sidebar-divider" />
-
-            <!-- Heading -->
-            <div class="sidebar-heading">Thông tin chung</div>
-        </li>
         <!-- Divider -->
-        <!-- Nav Item - Pages Collapse Menu data-toggle="collapse" data-target="#collapseTwo"-->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="/Seller/Home/Index" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fa fa-home fa-fw"></i>
-                <span>Trang chủ</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="/Seller/Product/Index" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fa fa-laptop-medical"></i>
-                <span>Quản lý sản phẩm</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="/Seller/Ordered/Index" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-luggage-cart"></i>
-                <span>Quản lý đơn hàng</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="/Seller/Shop/Index" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Dashboard -->
+        @*
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Trang chủ</span>
+                </a>
+            </li>
+        *@
+    <li>
+        <hr class="sidebar-divider" />
+
+        <!-- Heading -->
+        <div class="sidebar-heading">Thông tin chung</div>
+    </li>
+    <!-- Divider -->
+    <!-- Nav Item - Pages Collapse Menu data-toggle="collapse" data-target="#collapseTwo"-->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/Seller/Home/Index" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-home fa-fw"></i>
+            <span>Trang chủ</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/Seller/Product/Index" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fa fa-laptop-medical"></i>
+            <span>Quản lý sản phẩm</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/Seller/Order/Index" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-luggage-cart"></i>
+            <span>Quản lý đơn hàng</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/Seller/Shop/Index" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-store"></i>
+            <span>Quản lý shop</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Danh mục quản lý</h6>
+                <a class="collapse-item" href="/Seller/Shop/Edit/@session.IdShop">Hồ sơ Shop</a>
+                <a class="collapse-item" href="/Seller/Review/Index">Đánh giá Shop</a>
+            </div>
+        </div>
+    </li>
+    @*<li class="nav-item">
+        <a class="nav-link collapsed" href="/Admin/Home/Index" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-luggage-cart"></i>
+            <span>CHUYỂN TRANG (VÔ PHẬN SỰ CẤM VÀO)</span>
+        </a>
+    </li>*@
+    @*<li class="nav-item">
+            <a class="nav-link collapsed" href="/Admin/Shop/Index" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-store"></i>
                 <span>Quản lý shop</span>
             </a>
@@ -57,12 +82,11 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Danh mục quản lý</h6>
                     <a class="collapse-item" href="/Admin/Category/Index">Hồ sơ Shop</a>
-                    <a class="collapse-item" href="/Admin/Content/Index">Đánh giá Shop</a
-            >
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
+                    <a class="collapse-item" href="/Admin/Content/Index">Đánh giá Shop</a>
+                </div>
+            </div>
+        </li>*@
+    @*<li class="nav-item">
         <a
           class="nav-link collapsed"
           href="#"
@@ -92,10 +116,10 @@
                             <a class="collapse-item" href="/Admin/Footer/Index">Phản hồi</a>
                         </div>
                     </div>
-        </li>
+        </li>*@
 
-        <!-- Nav Item - Utilities Collapse Menu -->
-        @*
+    <!-- Nav Item - Utilities Collapse Menu -->
+    @*
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-wrench"></i>
@@ -112,18 +136,18 @@
                 </div>
             </div>
         </li>
-        *@
-        <!--<li>-->
-        <!-- Divider -->
-        <!--<hr class="sidebar-divider">-->
-        <!-- Heading -->
-        <!--<div class="sidebar-heading">
-                Addons
-            </div>
-    
-        </li>-->
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
+    *@
+    <!--<li>-->
+    <!-- Divider -->
+    <!--<hr class="sidebar-divider">-->
+    <!-- Heading -->
+    <!--<div class="sidebar-heading">
+            Addons
+        </div>
+
+    </li>-->
+    <!-- Nav Item - Pages Collapse Menu -->
+    @*<li class="nav-item active">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Pages</span>
@@ -141,27 +165,27 @@
                     <a class="collapse-item active" href="blank.html">Blank Page</a>
                 </div>
             </div>
-        </li>
-        <!-- Nav Item - Charts -->
-        <!--<li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span>
-            </a>
-        </li>-->
-        <!-- Nav Item - Tables -->
-        <!--<li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span>
-            </a>
-        </li>
-        <li>-->
-        <!-- Divider -->
-        <!--<hr class="sidebar-divider d-none d-md-block">-->
-        <!-- Sidebar Toggler (Sidebar) -->
-        <!--<div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        </li>-->
-    </ul>
+        </li>*@
+    <!-- Nav Item - Charts -->
+    <!--<li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span>
+        </a>
+    </li>-->
+    <!-- Nav Item - Tables -->
+    <!--<li class="nav-item">
+        <a class="nav-link" href="tables.html">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span>
+        </a>
+    </li>
+    <li>-->
+    <!-- Divider -->
+    <!--<hr class="sidebar-divider d-none d-md-block">-->
+    <!-- Sidebar Toggler (Sidebar) -->
+    <!--<div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    </li>-->
+</ul>

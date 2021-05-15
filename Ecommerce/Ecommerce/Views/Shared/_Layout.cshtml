@@ -1,42 +1,341 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="zxx">
+
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Electronic Shop</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="~/Assets/User/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Assets/User/js/jquery.simpleGallery.js"></script>
+    <script type="text/javascript" src="~/Assets/User/js/jquery.simpleLens.js"></script>
+
+    <script type="text/javascript" src="~/Assets/User/js/slick.js"></script>
+    <script type="text/javascript" src="~/Assets/User/js/nouislider.js"></script>
+    <script type="text/javascript" src="~/Assets/User/js/validate.js"></script>
+    <!-- <script type="text/javascript" src="~/Assets/User/js/custom.js"></script> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+
+    <link href="~/Assets/User/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="~/Assets/User/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="~/Assets/User/css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="~/Assets/User/css/jquery.simpleLens.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Assets/User/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="~/Assets/User/css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="~/Assets/User/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <!-- Top Slider CSS -->
+    <link href="~/Assets/User/css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+    <link href="~/Assets/User/css/style.css" rel="stylesheet">
+
+    <!--End of Tawk.to Script-->
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="icon" type="image/png" href="~/Assets/User/images/logo-index.png" />
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet" />
+
+    <!-- StyleSheet -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Assets/User/css2/bootstrap.css" />
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="~/Assets/User/css2/magnific-popup.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Assets/User/css2/font-awesome.css" />
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="~/Assets/User/css2/jquery.fancybox.min.css" />
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="~/Assets/User/css2/themify-icons.css" />
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="~/Assets/User/css2/niceselect.css" />
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.css" />
+    <!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="~/Assets/User/css2/flex-slider.min.css" />
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/Assets/User/css2/owl-carousel.css" />
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="~/Assets/User/css2/slicknav.min.css" />
+
+    <!-- Eshop StyleSheet -->
+    <link rel="stylesheet" href="~/Assets/User/css2/reset.css" />
+    <link rel="stylesheet" href="~/Assets/User/css2/style.css" />
+    <link rel="stylesheet" href="~/Assets/User/css2/responsive.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="~/Assets/User/css2/responsive.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="~/Assets/User/js2/jquery.min.js"></script>
+    <script src="~/Assets/User/js2/jquery-migrate-3.0.0.js"></script>
+    <script src="~/Assets/User/js2/jquery-ui.min.js"></script>
+    <!-- Popper JS -->
+    <script src="~/Assets/User/js2/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Assets/User/js2/bootstrap.min.js"></script>
+    <!-- Color JS -->
+    <script src="~/Assets/User/js2/colors.js"></script>
+    <!-- Slicknav JS -->
+    <script src="~/Assets/User/js2/slicknav.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="~/Assets/User/js2/owl-carousel.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="~/Assets/User/js2/magnific-popup.js"></script>
+    <!-- Waypoints JS -->
+    <script src="~/Assets/User/js2/waypoints.min.js"></script>
+    <!-- Countdown JS -->
+    <script src="~/Assets/User/js2/finalcountdown.min.js"></script>
+    <!-- Nice Select JS -->
+    <script src="~/Assets/User/js2/nicesellect.js"></script>
+    <!-- Flex Slider JS -->
+    <script src="~/Assets/User/js2/flex-slider.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="~/Assets/User/js2/scrollup.js"></script>
+    <!-- Onepage Nav JS -->
+    <script src="~/Assets/User/js2/onepage-nav.min.js"></script>
+    <!-- Easing JS -->
+    <script src="~/Assets/User/js2/easing.js"></script>
+    <!-- Active JS -->
+    <script src="~/Assets/User/js2/active.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM"></script>
+    <script src="~/Assets/User/js2/gmap.min.js"></script>
+    <script src="~/Assets/User/js2/map-script.js"></script>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    <header class="header shop">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-12">
+                        <!-- Top Left -->
+                        <div class="top-left">
+                            <ul class="list-main">
+                                <li><i class="fa fa-home"></i> <a href="/Seller/Home/Index" target="_blank">Kênh người bán</a></li>
+                                </li>
+                                <li><i class="fa fa-envelope-square"></i> <a href="https://www.google.com/intl/vi/gmail/about/#" target="_blank">electronicshop@gmail.com</a></li>
+                            </ul>
+                        </div>
+                        <!--/ End Top Left -->
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-12">
+                        <!-- Top Right -->
+                        <div class="right-content">
+                            @{ if (Session["Name"] != null)
+                                {
+                                    <ul class="list-main">
+                                        <li><i class="fa fa-user-circle"></i> <a href="/user/edit/@Session["IdUser"]">Hi! @Session["Name"]</a></li>
+                                        <li><i class="fa fa-sign-in-alt"></i><a href="/Login/Logout">Đăng xuất</a></li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="list-main">
+                                        <li><i class="fa fa-power-off"></i><a href="/Login/Index">Đăng nhập</a></li>
+                                        <li><i class="fas fa-user-plus"></i><a href="/Login/register">Đăng Ký</a></li>
+                                    </ul>
+
+                                }
+                            }
+                        </div>
+                        <!-- End Top Right -->
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <!-- End Topbar -->
+        <div class="middle-inner">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="/"><img src="~/Assets/User/images/logo-login-small.png" alt="logo img" width="100%"></a>
+                    </div>
+                    <!--/ End Logo -->
+                    <!-- Search Form -->
+                    <div class="search-bar-box">
+                        <form action="/products/search" method="GET" class="form-search">
+                            <input class="search_input" id="search-keyword" name="key" type="search" placeholder="Tìm kiếm sản phẩm...">
+                            <button href="/products/search" class="search_btn" type="submit"><span class="fas fa-search"></span></button>
+                        </form>
+                    </div>
+                    <div class="right-bar">
+                        <!-- Search Form -->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+                        <div class="sinlge-bar shopping">
+                            <a href="/cart/cart" class="single-icon">
+                                <span class="fas fa-cart-arrow-down"></span>
+                                <span class="aa-cart-title">GIỎ HÀNG</span>
+                                <span class="total-count">@Html.Action("cart_partial", "cart")</span>
+                            </a>
+                            <!-- Shopping Item -->
+                            @*<div class="shopping-item">
+                                    <div class="dropdown-cart-header">
+                                        <span>@Html.Action("cart_partial", "cart")  Sản phẩm</span>
+                                        <a href="/cart/cart">Xem giỏ hàng</a>
+                                    </div>
+                                    @Html.Action("LoadCart","Cart")
+                                </div>*@
+                            <!--/ End Shopping Item -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li class="active"><a href="/">Trang chủ</a></li>
+                                                <li><a href="/products/productlist">Sản phẩm</a></li>
+
+                                                </li>
+                                                <li>
+                                                    <a href="/products/productlist">Flash sale<span class="new">Hot</span></a>
+
+                                                </li>
+                                                <li>
+                                                    <a href="/home/security">Bảo mật</a>
+                                                </li>
+                                                <li><a href="/home/contact">Liên hệ</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--/ End Header -->
+    <main>
+        @RenderBody()
+    </main>
+    <!-- Start Footer Area -->
+    <footer class="footer">
+        <!-- Footer Top -->
+        <div class="footer-top section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer about">
+                            <div class="logo">
+                                <a href="index.html"><img src="images/logo2.png" alt="#"></a>
+                            </div>
+                            <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
+                            <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Customer Service</h4>
+                            <ul>
+                                <li><a href="#">Payment Methods</a></li>
+                                <li><a href="#">Money-back</a></li>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer social">
+                            <h4>Get In Tuch</h4>
+                            <!-- Single Widget -->
+                            <div class="contact">
+                                <ul>
+                                    <li>NO. 342 - London Oxford Street.</li>
+                                    <li>012 United Kingdom.</li>
+                                    <li>info@eshop.com</li>
+                                    <li>+032 3456 7890</li>
+                                </ul>
+                            </div>
+                            <!-- End Single Widget -->
+                            <ul>
+                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                <li><a href="#"><i class="ti-flickr"></i></a></li>
+                                <li><a href="#"><i class="ti-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Top -->
+        <div class="copyright">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="left">
+                                <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> - All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="right">
+                                <img src="~/Assets/User/User/images/payments.png" alt="#">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /End Footer Area -->
+
 </body>
+
 </html>

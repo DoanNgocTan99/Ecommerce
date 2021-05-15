@@ -1,10 +1,12 @@
-﻿namespace Model.EF
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+using System.Web;
+
+namespace Model.EF
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Product")]
     public partial class Product
@@ -13,9 +15,12 @@
         public Product()
         {
             Images = new HashSet<Image>();
-            ProductAdvertisings = new HashSet<ProductAdvertising>();
             Orders = new HashSet<Order>();
             Reviews = new HashSet<Review>();
+            IsActive = true;
+            FlaseSale = false;
+            Advertisement = false;
+
         }
 
         [Key]
@@ -47,24 +52,24 @@
         public string Origin { get; set; }
 
         [Display(Name = "Giá")]
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         [Display(Name = "Giá giảm")]
-        public decimal DelPrice { get; set; }
+        public int? DelPrice { get; set; }
 
 
-        public DateTime WarrantyDate { get; set; }
+        public DateTime? WarrantyDate { get; set; }
+        public int Warranty { get; set; }
 
-
-        public int Stock { get; set; }
+        public int? Stock { get; set; }
 
         [Display(Name = "Giá giảm của SHOP")]
-        public int Discount { get; set; }
+        public int? Discount { get; set; }
         [Display(Name = "Lượt xem")]
 
-        public int Views { get; set; }
+        public int? Views { get; set; }
 
-        public int Rate { get; set; }
+        public int? Rate { get; set; }
 
         [Display(Name = "Trạng thái")]
         public bool IsActive { get; set; }
@@ -79,9 +84,9 @@
         [Display(Name = "Người chỉnh sửa")]
         public string ModifiedBy { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [Display(Name = "Loại Doanh Mục")]
         public long IdCategory { get; set; }
@@ -93,12 +98,18 @@
         [ForeignKey("IdShop")]
         public virtual Shop Shop { get; set; }
 
+        public long? IdProgramme { get; set; }
+        [ForeignKey("IdProgramme")]
+        public virtual Programme Programme { get; set; }
 
         public virtual ICollection<Image> Images { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<ProductAdvertising> ProductAdvertisings { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageFile { get; set; }
+        public bool FlaseSale { get; set; }
+        public bool Advertisement { get; set; }
 
     }
 }
