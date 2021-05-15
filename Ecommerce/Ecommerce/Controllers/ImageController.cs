@@ -16,7 +16,7 @@ namespace Ecommerce.Controllers
             image = db.Images.Where(x => x.IdProduct == id).FirstOrDefault();
             if (image != null)
             {
-                return image.Path.Substring(49);
+                return image.Path;
             }
             return "";
         }
@@ -25,7 +25,7 @@ namespace Ecommerce.Controllers
             Image image = db.Images.Where(x => x.IdCategory == id).FirstOrDefault();
             if (image != null)
             {
-                return image.Path.Substring(49);
+                return image.Path;
             }
             return "";
         }
@@ -34,7 +34,7 @@ namespace Ecommerce.Controllers
             Image image = db.Images.Where(x => x.IdShop == id).FirstOrDefault();
             if (image != null)
             {
-                return image.Path.Substring(49);
+                return image.Path;
             }
             return "";
         }

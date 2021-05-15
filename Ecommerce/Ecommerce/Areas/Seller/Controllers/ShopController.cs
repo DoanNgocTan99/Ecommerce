@@ -38,8 +38,11 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                     //return file name 
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string temp = fileName;
                     //category.Path = "~/Image/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Image/Shop"), fileName);
+                    string filename = fileName.Substring(fileName.Length - (12 + temp.Length), (12 + temp.Length));
+
                     shop.ImageFile.SaveAs(fileName);
 
                     var result = dao.Update(shop);
@@ -53,7 +56,7 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                     Image image = new Image();
                     image.IdShop = shop.Id;
-                    image.Path = fileName;
+                    image.Path = filename;
 
 
                     bool ID = ImageDao.UpdateByIdShop(image);

@@ -19,6 +19,8 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             if (Session != null)
             {
+                var product = new ProductDAO().GetProducts();
+                ViewBag.Data = product;
                 return View();
             }
             else

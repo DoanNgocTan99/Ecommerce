@@ -58,8 +58,8 @@ namespace Model.EF
         public int? DelPrice { get; set; }
 
 
-        public DateTime WarrantyDate { get; set; }
-
+        public DateTime? WarrantyDate { get; set; }
+        public int Warranty { get; set; }
 
         public int? Stock { get; set; }
 

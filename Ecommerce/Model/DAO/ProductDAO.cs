@@ -150,5 +150,19 @@ namespace Model.DAO
             db.SaveChanges();
             return true;
         }
+        public IEnumerable<Product> GetProducts()
+        {
+            var temp = (from a in db.Products
+                       select new
+                       {
+                           Name = a.Name,
+                           Price = a.Price
+                       }).AsEnumerable().Select(x => new Product()
+                       {
+                           Name = x.Name,
+                           Price = x.Price
+                       });
+            return temp.ToList();
+        }
     }
 }

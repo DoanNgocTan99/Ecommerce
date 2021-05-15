@@ -50,8 +50,11 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                 //return file name 
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string temp = fileName;
                 //category.Path = "~/Image/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Image/Product"), fileName);
+                string filename = fileName.Substring(fileName.Length - (15 + temp.Length), (15 + temp.Length));
+
                 product.ImageFile.SaveAs(fileName);
 
                 //var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
@@ -66,7 +69,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                 Image image = new Image();
 
                 image.IdProduct = id;
-                image.Path = fileName;
+                image.Path = filename;
 
                 long ID = ImageDao.Insert(image);
 
@@ -114,8 +117,11 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                     //return file name 
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string temp = fileName;
                     //category.Path = "~/Image/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Image/Product"), fileName);
+                    string filename = fileName.Substring(fileName.Length - (15 + temp.Length), (15 + temp.Length));
+
                     product.ImageFile.SaveAs(fileName);
 
                     //var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
@@ -125,10 +131,16 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                     var result = dao.Update(product);
 
+                    if (!result)
+                    {
+                        SetAlert("Cập nhập sản phẩm không thành công, kiểm tra lại thông tin!!", "erro");
 
+                        return RedirectToAction("Index", "Product");
+
+                    }
                     Image image = new Image();
                     image.IdProduct = product.Id;
-                    image.Path = fileName;
+                    image.Path = filename;
                     var ID = ImageDao.UpdateByIdProduct(image);
                     if (ID)
                     {

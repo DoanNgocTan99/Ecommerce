@@ -36,10 +36,19 @@ namespace Ecommerce.Areas.Admin.Controllers
 
                     //return file name 
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string temp = fileName;
                     //category.Path = "~/Image/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Image/Shop"), fileName);
+                    string filename = fileName.Substring(fileName.Length - (12 + temp.Length), (12 + temp.Length));
+
                     user.ImageFile.SaveAs(fileName);
 
+                    if (!string.IsNullOrEmpty(user.Password))
+                    {
+                        var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
+                        user.Password = encryptedMd5Pas;
+
+                    }
                     var result = dao.Update(user);
                     if (!result)
                     {
@@ -51,7 +60,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 
                     Image image = new Image();
                     image.IdUser = user.Id;
-                    image.Path = fileName;
+                    image.Path = filename;
 
 
                     bool ID = ImageDao.UpdateByIdUser(image);
@@ -68,6 +77,12 @@ namespace Ecommerce.Areas.Admin.Controllers
                 }
                 else
                 {
+                    if (!string.IsNullOrEmpty(user.Password))
+                    {
+                        var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
+                        user.Password = encryptedMd5Pas;
+
+                    }
                     var result = dao.Update(user);
                     if (result)
                     {

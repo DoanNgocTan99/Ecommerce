@@ -36,7 +36,7 @@
     <div class="form-group">
         <div class="col-md-10">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -57,15 +57,15 @@
         </div>
     </div>
 
-    @*<div class="form-group">
+    <div class="form-group">
         <div class="col-md-10">
             <div class="checkbox">
                 @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.CheckBoxFor(model => model.Gender)
-                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                <label> @Html.RadioButtonFor(model => model.Gender, true, new { htmlAttributes = new { @checked = true, @class = "form-control", @style = "padding: 0 20px" } }) Nam</label>
+                <label>@Html.RadioButtonFor(model => model.Gender, false, new { htmlAttributes = new { @checked = false, @class = "form-control" } }) Nữ</label>
             </div>
         </div>
-    </div>*@
+    </div>
 
     <div class="form-group">
         <div class="col-md-10">
@@ -90,7 +90,7 @@
                 }
                 else
                 {
-                    <img src="@Url.Content(Model.Images.FirstOrDefault().Path.Substring(49))" width="200px" height="200px" />
+                    <img src="@Url.Content(Model.Images.FirstOrDefault().Path)" width="200px" height="200px" />
                 }
             }
         </div>

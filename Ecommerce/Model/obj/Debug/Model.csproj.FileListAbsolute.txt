@@ -98,3 +98,5 @@ F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.UpdateT
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.ChangerPrice.resources
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTableTrans.resources
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTableTransac.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.AddColTableProduct.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditColTableProduct.resources

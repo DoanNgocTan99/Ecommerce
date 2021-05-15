@@ -23,7 +23,7 @@ namespace Model.DAO
             {
                 model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderByDescending(x => x.Id).ToPagedList(page, pageSize);
 
         }
         public long Insert(Category entity)
@@ -93,7 +93,7 @@ namespace Model.DAO
             db.SaveChanges();
             return category.IsActive;
         }
-        public List<String> GetListNamByIdShop(long id)
+        public List<Category> GetListNamByIdShop(long id)
         {
             //var user = db.Users.Single(x => x.UserName == UserName);
             var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
@@ -111,7 +111,9 @@ namespace Model.DAO
                             Name = x.Name
                         });
 
-            return data.Select(x => x.Name).Distinct().ToList();
+            //return data.Select(x => x.Name).Distinct().ToList();
+            return data.ToList();
+
         }
     }
 }

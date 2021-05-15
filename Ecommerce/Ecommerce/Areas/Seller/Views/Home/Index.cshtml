@@ -1,11 +1,58 @@
-﻿
+﻿@model List<Model.EF.Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+    //var myChart = new Chart(width: 600, height: 400)
+    //    .AddTitle("Product Sales")
+    //    .DataBindCrossTable(dataSource: @ViewBag.Data, groupByField: "TESST", xField: "Name", yFields: "Price")
+    //    .Write();
 }
 
 
 @section header{
-    THỐNG KÊ THEO DANH THU  
+    THỐNG KÊ THEO DANH THU
 }
 
+
+@*@{
+    var myChart = new Chart(width: 600, height: 400)
+        .AddTitle("Product Sales")
+        //.DataBindCrossTable(dataSource: ViewBag.Data, groupByField: "TESST", xField: "Name", yFields: "Price")
+        .AddSeries("Default", chartType: "Bar", xValue: Model, xField: "Name",
+            yValues: Model, yFields: "Price")
+        .Write();
+}*@
+@*<!DOCTYPE HTML>
+    <html>
+    <head>
+        <script>
+    window.onload = function () {
+
+    var result = @Html.Raw(ViewBag.Data);
+    var dataPoints =[];
+    for(var i = 0; i < result.length; i++){
+        dataPoints.push({x:result[i].x, y:result[i].y});
+    }
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+            text: "ASP.NET MVC Column Chart from Database"
+        },
+        data: [
+        {
+            type: "column",
+            dataPoints: dataPoints,
+        }
+        ]
+    });
+    chart.render();
+
+    };
+        </script>
+    </head>
+    <body>
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </body>
+    </html>*@   
