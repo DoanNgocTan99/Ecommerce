@@ -15,12 +15,12 @@
                     <a href="/products/xemchitiet/@item.Id">
                         <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id  })" alt="#">
                         <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
-                        <span class="price-dec">-@item.Discount%</span>
                     </a>
                     <div class="button-head">
                         <div class="product-action">
                             <a href="/shop/index/@item.IdShop"><i class=" ti-eye"></i><span>Quick Shop</span></a>
                             <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
                         </div>
                         <div class="product-action-2">
                             <a title="Add to cart" href="/Cart/AddCart/@item.Id">Add to cart</a>

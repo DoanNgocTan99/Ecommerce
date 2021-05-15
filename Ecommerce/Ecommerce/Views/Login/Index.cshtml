@@ -33,6 +33,7 @@
                         @using (Html.BeginForm("Login", "Login", FormMethod.Post))
                         {
                             @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @autofocus = "autofocus", @placeholder = "Username*" })
@@ -41,6 +42,7 @@
                                 <label for="password">Password</label>
                                 @Html.PasswordFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Password*" })
                             </div>
+
                             <div class="form-group form-check">
                                 <label>
                                     @Html.CheckBoxFor(model => model.RememberMe)    Remember me!

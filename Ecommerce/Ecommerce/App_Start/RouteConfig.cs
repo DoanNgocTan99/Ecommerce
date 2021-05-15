@@ -17,7 +17,11 @@ namespace Ecommerce
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+<<<<<<< HEAD
                  namespaces: new[] { "Ecommerce.Controllers" }
+=======
+                namespaces: new[] { "Ecommerce.Controllers" }
+>>>>>>> 4c3faef7ec5451cb04612f6d7d6422e2cd54cec0
             );
         }
     }

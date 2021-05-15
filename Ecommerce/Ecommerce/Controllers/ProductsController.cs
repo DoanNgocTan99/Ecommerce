@@ -31,11 +31,9 @@ namespace Ecommerce.Controllers
                 products = db.Products.OrderBy(x => x.Name).ToList();
                 ViewBag.products = products;
             }
-
             return View(products.ToPagedList(pageNumber, pageSize));
 
         }
-
 
         // trang xem chi tiet
         public ActionResult XemChiTiet(int id)
@@ -48,9 +46,6 @@ namespace Ecommerce.Controllers
                 return View("ThongBaoLoi");
             }
             ViewBag.category = db.Categories.SingleOrDefault(x => x.Id == product.IdCategory);
-
-
-
             return View(product);
         }
         public ActionResult Flashsale(int? categoryid, List<Product> listProducts, int? page, int? pagenumber)
@@ -115,6 +110,7 @@ namespace Ecommerce.Controllers
 
 
             return PartialView(products.ToPagedList(pageNumber, pageSize));
+
         }
         public ActionResult SanPhamView(int? categoryid, List<Product> listProducts, int? page, int? pagenumber)
         {

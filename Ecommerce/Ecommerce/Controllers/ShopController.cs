@@ -25,7 +25,7 @@ namespace Ecommerce.Controllers
                 return View("ThongBaoLoi");
             }
             List<Product> productList = db.Products.Where(e => e.IdShop == id).ToList();
-            ViewBag.productList = productList;
+            ViewBag.productList = productList;   
             return View(shop);
         }
     }

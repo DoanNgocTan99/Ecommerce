@@ -202,6 +202,7 @@ img {
 }
 
 .aa-cart-view-btn {
+    background-color: #333;
     float: right;
     border: none;
     color: #fff;
@@ -220,7 +221,7 @@ img {
 }
 
 .aa-cart-view-btn:hover {
-    background-color: #000;
+    background-color: #F7941D;
     color: #fff;
 }
 
@@ -1093,10 +1094,12 @@ button.search_btn {
 }
 
 #aa-promo .aa-promo-area {
-    margin-bottom: 70px;
+    <<<<<<< HEAD
+    /* box-shadow: 1px 1px 20px 1px rgb(0 0 0 / 10%); */
+    =======>>>>>>>dfe0a2c97bb44a4579bd962ec1d7b462ee0bc7ee margin-bottom: 70px;
     display: inline;
     float: left;
-    padding: 30px 0;
+    padding: 30px 0px;
     width: 100%;
 }
 
@@ -1106,6 +1109,26 @@ button.search_btn {
     width: 100%;
     height: 400px;
     overflow: hidden;
+}
+
+#aa-promo .aa-promo-area .aa-promo-header .aa-promo-title {
+    float: left;
+    font-size: 30;
+    margin-bottom: 36px;
+    color: #ff3939;
+    clear: both;
+}
+
+#aa-promo .aa-promo-area .aa-promo-header .aa-promo-list {
+    float: right;
+    font-size: 18px;
+    margin-bottom: 36px;
+    padding-right: 30px;
+    color: #000000;
+}
+
+#aa-promo .aa-promo-area .aa-promo-header .clr {
+    clear: both;
 }
 
 #aa-promo .aa-promo-area .aa-promo-left .aa-prom-content {
@@ -1567,9 +1590,11 @@ a.aa-product-img img {
 
 .simpleLens-big-image-container .simpleLens-big-image-dropdown {
     position: absolute;
+    /* height: 130%; */
+    width: 120%;
     top: 0;
     left: 0;
-    opacity: 0;
+    opacity: 1;
 }
 
 .simpleLens-big-image-container:hover .simpleLens-big-image-dropdown {
@@ -2201,8 +2226,9 @@ a.aa-product-img img {
 }
 
 #aa-product-category {
-background: white;
-    display: inline;
+    <<<<<<< HEAD background: white;
+    =======background: white;
+    >>>>>>>dfe0a2c97bb44a4579bd962ec1d7b462ee0bc7ee display: inline;
     float: left;
     width: 100%;
 }
@@ -2574,6 +2600,7 @@ background: white;
 ====================*/
 
 #aa-product-details {
+    background-color: white;
     display: inline;
     float: left;
     width: 100%;
@@ -2588,7 +2615,6 @@ background: white;
 
 #aa-product-details .aa-product-details-area .aa-product-details-content {
     margin: 0 auto;
-    width: 80%;
 }
 
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-slider {
@@ -2681,6 +2707,10 @@ background: white;
     border-top: 1px solid #ccc;
 }
 
+#aa-product-details .aa-product-details-area .aa-product-details-bottom .tab-content {
+    margin-bottom: 100px;
+}
+
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs {
     text-align: center;
     padding-left: 450px;
@@ -2721,6 +2751,7 @@ background: white;
 }
 
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area {
+    margin-bottom: 100px;
     display: inline;
     float: left;
     padding: 20px 0;
@@ -2854,27 +2885,23 @@ background: white;
 }
 
 #cart-view .cart-view-area .cart-view-table .table thead tr th {
+    padding: 10px;
     border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    color: #555;
-    font-size: 18px;
-    padding: 20px 0;
-    text-align: center;
 }
 
 #cart-view .cart-view-area .cart-view-table .table tbody tr td {
     vertical-align: middle;
-    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
     text-align: center;
 }
 
 #cart-view .cart-view-area .cart-view-table .table tbody tr td .remove {
-    color: #ff0000;
+    color: #000000;
     padding: 5px;
 }
 
 #cart-view .cart-view-area .cart-view-table .table tbody tr td .remove:hover {
-    color: #555;
+    color: #f7241d;
 }
 
 #cart-view .cart-view-area .cart-view-table .table tbody tr td img {

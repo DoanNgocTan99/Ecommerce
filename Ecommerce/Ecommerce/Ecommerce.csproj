@@ -6720,6 +6720,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Security.cshtml" />
     <Content Include="Views\Cart\cart.cshtml" />
     <Content Include="Views\Cart\LoadCart.cshtml" />
     <Content Include="Views\Category\GetCategory.cshtml" />

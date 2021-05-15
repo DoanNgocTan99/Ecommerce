@@ -13,7 +13,6 @@ namespace Ecommerce.Controllers
         public ActionResult Index()
         {
             Product product = new Product();
-            //list sản phẩm giảm giá
             List<Product> sanPhamGiamGia = db.Products.Where(x => x.IdCategory == product.IdCategory && x.Discount > 10 == true).OrderBy(x => Guid.NewGuid()).Take(4).ToList();
             ViewBag.sanPhamGiamGia = sanPhamGiamGia;
             // hiển thị quảng cáo

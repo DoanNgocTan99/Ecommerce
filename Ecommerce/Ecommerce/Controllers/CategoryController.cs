@@ -36,8 +36,6 @@ namespace Ecommerce.Controllers
                 categoryList.Add(category);
             }
 
-            //.AsEnumerable().Select(x => new Category() { Id = x.idCategory }).ToList();
-
             return PartialView("GetCategoryShop", categoryList);
         }
 

@@ -53,7 +53,7 @@
                                     <div id="demo-1" class="simpleLens-gallery-container">
                                         <div class="simpleLens-container">
                                             <div class="simpleLens-big-image-container">
-                                                <a class="simpleLens-lens-image">
+                                                <a  class="simpleLens-lens-image">
                                                     <img src="@Html.Action("getImage","image", new { id = Model.Id})" class="simpleLens-big-image">
                                                 </a>
                                                 <img src="@Html.Action("getImage","image", new { id = Model.Id})" class="simpleLens-big-image-dropdown">
@@ -183,7 +183,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="owl-carousel popular-slider">
-                                            @Html.Action("SanPhamView", "Products", new { categoryid = categoryid })
+                                            @Html.Action("SanPhamView","Products", new { categoryid = categoryid })
                                         </div>
                                     </div>
                                 </div>
