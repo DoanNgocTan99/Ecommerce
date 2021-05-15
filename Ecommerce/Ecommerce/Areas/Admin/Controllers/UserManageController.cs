@@ -52,8 +52,11 @@ namespace Ecommerce.Areas.Admin.Controllers
 
                 //return file name 
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string temp = fileName;
                 //category.Path = "~/Image/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Image/User"), fileName);
+                string filename = fileName.Substring(fileName.Length - (12 + temp.Length), (12 + temp.Length));
+
                 user.ImageFile.SaveAs(fileName);
                 if (!string.IsNullOrEmpty(user.Password))
                 {
@@ -68,7 +71,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 Image image = new Image();
 
                 image.IdUser = id;
-                image.Path = fileName;
+                image.Path = filename;
 
                 long ID = ImageDao.Insert(image);
 

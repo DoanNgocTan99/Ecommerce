@@ -4,9 +4,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-@section Title{
-    Admim - Danh mục sản phẩm
-}
+
 @*<h2>Tạo Mới Doanh Mục</h2>*@
 @section header{
     CHỈNH SỬA DANH MỤC SẢN PHẨM
@@ -85,7 +83,7 @@
                 }
                 else
                 {
-                    <img src="@Url.Content(Model.Images.FirstOrDefault().Path.Substring(49))" width="200px" height="200px" />
+                    <img src="@Url.Content(Model.Images.FirstOrDefault().Path)" width="200px" height="200px" />
                 }
             }
         </div>

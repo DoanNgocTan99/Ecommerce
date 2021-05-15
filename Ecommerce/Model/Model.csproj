@@ -193,6 +193,22 @@
     <Compile Include="Migrations\202105130846579_ChangerPrice.Designer.cs">
       <DependentUpon>202105130846579_ChangerPrice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105131618007_EditTableTrans.cs" />
+    <Compile Include="Migrations\202105131618007_EditTableTrans.Designer.cs">
+      <DependentUpon>202105131618007_EditTableTrans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105131625520_EditTableTransac.cs" />
+    <Compile Include="Migrations\202105131625520_EditTableTransac.Designer.cs">
+      <DependentUpon>202105131625520_EditTableTransac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105141947553_AddColTableProduct.cs" />
+    <Compile Include="Migrations\202105141947553_AddColTableProduct.Designer.cs">
+      <DependentUpon>202105141947553_AddColTableProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105141951547_EditColTableProduct.cs" />
+    <Compile Include="Migrations\202105141951547_EditColTableProduct.Designer.cs">
+      <DependentUpon>202105141951547_EditColTableProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -224,6 +240,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105130846579_ChangerPrice.resx">
       <DependentUpon>202105130846579_ChangerPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105131618007_EditTableTrans.resx">
+      <DependentUpon>202105131618007_EditTableTrans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105131625520_EditTableTransac.resx">
+      <DependentUpon>202105131625520_EditTableTransac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105141947553_AddColTableProduct.resx">
+      <DependentUpon>202105141947553_AddColTableProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105141951547_EditColTableProduct.resx">
+      <DependentUpon>202105141951547_EditColTableProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

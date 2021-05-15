@@ -6741,6 +6741,7 @@
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Products\SendCategoryIdDel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

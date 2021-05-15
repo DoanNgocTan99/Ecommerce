@@ -36,6 +36,16 @@ namespace Ecommerce.Areas.Seller.Controllers
                     //return type file
                     string extension = Path.GetExtension(shop.ImageFile.FileName);
 
+<<<<<<< HEAD
+                    //return file name 
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string temp = fileName;
+                    //category.Path = "~/Image/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Image/Shop"), fileName);
+                    string filename = fileName.Substring(fileName.Length - (12 + temp.Length), (12 + temp.Length));
+
+                    shop.ImageFile.SaveAs(fileName);
+=======
 
                 //return file name 
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -43,6 +53,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                 fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
                 shop.ImageFile.SaveAs(fileName);
                 //var result = dao.Update(shop);
+>>>>>>> 4c3faef7ec5451cb04612f6d7d6422e2cd54cec0
 
                     var result = dao.Update(shop);
                     if (!result)
@@ -55,7 +66,7 @@ namespace Ecommerce.Areas.Seller.Controllers
 
                     Image image = new Image();
                     image.IdShop = shop.Id;
-                    image.Path = fileName;
+                    image.Path = filename;
 
 
                     bool ID = ImageDao.UpdateByIdShop(image);

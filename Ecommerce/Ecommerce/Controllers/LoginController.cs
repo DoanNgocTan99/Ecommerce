@@ -29,12 +29,27 @@ namespace Ecommerce.Controllers
                     UserSession.UserName = user.UserName;
                     UserSession.Id = user.Id;
                     UserSession.Name = user.Name;
+                    UserSession.IdRole = user.IdRole;
+                    UserSession.IdShop = dao.GetIdShopByIdUser(user.Id);
                     Session.Add(CommonConstants.USER_SESSION, UserSession);
+                    var listCredentials = dao.GetListCredential(model.UserName);
+                    Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
                     Response.Cookies["IdUser"].Value = user.Id.ToString();
                     Session["Name"] = user.Name;
                     Session["IdUser"] = user.Id;
                     //Session[""] = 
-                    return RedirectToAction("Index", "Home");
+                    if (UserSession.IdRole != 1)
+                    {
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return new ViewResult
+                        {
+                            ViewName = "~/Areas/Admin/Views/Home/Index.cshtml"
+                        };
+                    }
                 }
                 else if (result == 0)
                 {

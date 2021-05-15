@@ -48,17 +48,25 @@ namespace Ecommerce.Areas.Admin.Controllers
 
                         //return file name 
                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+
+                        var temp = fileName;
                         //category.Path = "~/Image/" + fileName;
                         fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
+
+                        string filename = fileName.Substring(fileName.Length - (16 + temp.Length), (16 + temp.Length));
+
                         category.ImageFile.SaveAs(fileName);
 
                         long id = dao.Insert(category);
+                        
+
 
                         var ImageDao = new ImageDAO();
 
                         Image image = new Image();
                         image.IdCategory = id;
-                        image.Path = fileName;
+                        image.Path = filename;
+
 
                         long ID = ImageDao.Insert(image);
                         //bool check = ImageDao.Insert(id, fileName);
@@ -123,17 +131,25 @@ namespace Ecommerce.Areas.Admin.Controllers
 
                     //return file name 
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    var temp = fileName;
                     //category.Path = "~/Image/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
+
+                    string filename = fileName.Substring(fileName.Length - (16 + temp.Length), (16 + temp.Length));
                     category.ImageFile.SaveAs(fileName);
 
                     var result = dao.Update(category);
+                    if (!result)
+                    {
+                        SetAlert("Câp nhập chưa thành công, kiểm tra lại thông tin.", "erro");
 
+                        return RedirectToAction("Index", "Category");
+                    }
                     var ImageDao = new ImageDAO();
 
                     Image image = new Image();
                     image.IdCategory = category.Id;
-                    image.Path = fileName;
+                    image.Path = filename;
 
                     bool ID = ImageDao.UpdateByIdCategory(image);
                     if (ID)
