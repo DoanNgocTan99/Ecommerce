@@ -86,18 +86,19 @@
 
                                         <p class="aa-product-avilability">
                                             Tình trạng: <span>
-                                                <c:choose>
+                                                @*<c:choose>
                                                     <c:when test="${detail_product.status == 1}">
                                                         <c:out value="Còn hàng" />
                                                     </c:when>
                                                     <c:otherwise>
                                                         <c:out value="Hết hàng" />
                                                     </c:otherwise>
-                                                </c:choose>
+                                                </c:choose>*@
+                                            Còn hàng
                                             </span>
                                         </p>
                                     </div>
-                                    <p>${detail_product.description}</p>
+                                    @*<p>${detail_product.description}</p>*@
                                     <div class="aa-prod-quantity">
 
                                         <p class="aa-prod-category">

@@ -17,5 +17,7 @@ namespace Ecommerce.Areas.Seller.Models
         public string DeliveryStatus { get; set; }
         public string NamePayment { get; set; }
         public decimal Price { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

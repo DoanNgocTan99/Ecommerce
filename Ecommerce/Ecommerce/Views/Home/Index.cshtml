@@ -147,9 +147,17 @@
                         <!-- Top Left -->
                         <div class="top-left">
                             <ul class="list-main">
-                                <li><i class="fa fa-home"></i> <a href="/Seller/Home/Index" target="_blank">Kênh người bán</a></li>
+                                @{ if (Session["Name"] != null)
+                                    {
 
-                                <li><i class="fa fa-envelope-square"></i> <a href="https://www.google.com/intl/vi/gmail/about/#" target="_blank">electronicshop@gmail.com</a></li>
+                                        <li><i class="fa fa-home"></i> <a href="/Seller/Home/Index" target="_blank">Kênh người bán</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><i class="fa fa-home"></i> <a href="/Seller/Login/Index" target="_blank">Kênh người bán</a></li>
+                                    } }
+
+                                <li><i class="fa fa-envelope-square"></i> <a href="https://www.facebook.com/profile.php?=" target="_blank">electronicshop@gmail.com</a></li>
                             </ul>
                         </div>
                         <!--/ End Top Left -->
@@ -168,7 +176,7 @@
                                 {
                                     <ul class="list-main">
                                         <li><i class="fa fa-power-off"></i><a href="/Login/Index">Đăng Nhập</a></li>
-                                        <li><i class="fas fa-user-plus"></i><a href="/Login/register">Đăng Ký</a></li>
+                                        <li><i class="fas fa-user-plus"></i><a href="/Seller/Login/Register">Đăng Ký</a></li>
                                     </ul>
                                 }
                             }
@@ -205,12 +213,12 @@
                             </a>
                             <!-- Shopping Item -->
                             @*<div class="shopping-item">
-                                <div class="dropdown-cart-header">
-                                    <span> Sản phẩm</span>
-                                    <a href="/cart/cart">Xem giỏ hàng</a>
-                                </div>
-                                @Html.Action("Cart_partial", "Cart")
-                            </div>*@
+                                    <div class="dropdown-cart-header">
+                                        <span> Sản phẩm</span>
+                                        <a href="/cart/cart">Xem giỏ hàng</a>
+                                    </div>
+                                    @Html.Action("Cart_partial", "Cart")
+                                </div>*@
                             <!--/ End Shopping Item -->
                         </div>
                     </div>
@@ -226,7 +234,7 @@
                             <div class="all-category">
                                 <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>Danh mục</h3>
                                 <ul class="main-category">
-                                    @Html.Action("GetCategory","Category")
+                                    @Html.Action("GetCategory", "Category")
                                 </ul>
                             </div>
                         </div>

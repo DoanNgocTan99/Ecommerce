@@ -151,6 +151,7 @@
     <Compile Include="Areas\Seller\Models\LinkProgramAndProduct.cs" />
     <Compile Include="Areas\Seller\Models\LoginModel.cs" />
     <Compile Include="Areas\Seller\Models\MyOrder.cs" />
+    <Compile Include="Areas\Seller\Models\ViewOrderByUser.cs" />
     <Compile Include="Areas\Seller\SellerAreaRegistration.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -6742,6 +6744,12 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Products\SendCategoryIdDel.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Products\ProductNew.cshtml" />
+    <Content Include="Views\Products\Flashsale.cshtml" />
+    <Content Include="Views\Products\ProductHot.cshtml" />
+    <Content Include="Views\Products\SanPhamViewDel.cshtml" />
+    <Content Include="Views\Products\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
