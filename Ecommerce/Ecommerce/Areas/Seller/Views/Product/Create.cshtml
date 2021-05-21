@@ -178,9 +178,7 @@
     </div>
 
     <div class="form-group">
-        @*<div class="col-md-4">
-                <img src="@Url.Action("Show","Imgae", new { id = Model.Id})" />
-            </div>*@
+        <label> *Chọn ảnh sản phẩm* </label>
         <div class="col-md-10">
             <input type="file" name="ImageFile" required>
         </div>
@@ -188,12 +186,12 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" class="btn btn-primary" />
+            <button class=" btn btn-warning">
+                @Html.ActionLink("Back to List", "Index")
+            </button>
         </div>
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

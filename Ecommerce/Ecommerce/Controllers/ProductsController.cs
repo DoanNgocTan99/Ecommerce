@@ -40,6 +40,8 @@ namespace Ecommerce.Controllers
         {
             Product product = new Product();
             product = db.Products.SingleOrDefault(x => x.Id == id);
+            List<Product> productLQ = db.Products.Where(x => x.IdCategory == product.IdCategory).ToList();
+            ViewBag.productLQ = productLQ;
             ViewBag.product = product;
             if (product == null)
             {

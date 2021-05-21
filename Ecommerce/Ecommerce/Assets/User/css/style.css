@@ -2751,10 +2751,9 @@ a.aa-product-img img {
 }
 
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .aa-product-review-area {
-    margin-bottom: 100px;
     display: inline;
     float: left;
-    padding: 20px 0;
+    padding: 10px 0;
     width: 100%;
 }
 
