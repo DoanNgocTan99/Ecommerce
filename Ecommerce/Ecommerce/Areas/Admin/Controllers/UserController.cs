@@ -101,5 +101,10 @@ namespace Ecommerce.Areas.Admin.Controllers
             }
             return View("Index");
         }
+        public ActionResult EditPassword(int id)
+        {
+            var user = new UserDAO().ViewDetail(id);
+            return View(user);
+        }
     }
 }

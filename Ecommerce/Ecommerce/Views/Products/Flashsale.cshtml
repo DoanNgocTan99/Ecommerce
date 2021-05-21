@@ -33,7 +33,7 @@
                 <div class="single-product ">
                     <div class="product-img ">
                         <a href="/products/xemchitiet/@item.Id">
-                            <img class="default-img" src="/Assets/User/images/logo-login-small.png" alt="#" width="100%" height="100%">
+                            <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id })" height="100%">
                             <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
                             <span class="out-of-stock ">Flash Sale</span>
                         </a>

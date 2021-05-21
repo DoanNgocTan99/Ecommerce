@@ -19,47 +19,64 @@
         categoryid = @ViewBag.categoryId;
     }
 }
-<div class="product-area section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <h2>Danh sách sản phẩm</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="product-info">
-                    <div class="nav-main">
-                        <!-- Tab Nav -->
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            @Html.Action("GetCategory", "Category")
+
+<body>
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <ul class="bread-list">
+                            <li><a href="/">Trang chủ<i class="ti-arrow-right"></i></a></li>
+                            <li class="active"><a href="/Products/ProductList">Danh sách sản phẩm</a></li>
                         </ul>
-                        <!--/ End Tab Nav -->
                     </div>
-                    <div class="tab-content" id="myTabContent">
-                        <!-- Start Single Tab -->
-                        @Html.Action("SendCategoryId", "Products", new { Id = categoryid })
-                        @*<div class="tab-pane fade show active" id="1" role="tabpanel">
-                            <div class="tab-single">
-                                <div class="row">
-                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 1 })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade show active" id="3" role="tabpanel">
-                            <div class="tab-single">
-                                <div class="row">
-                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 3 })
-                                </div>
-                            </div>
-                        </div>*@
-                    </div>
-                    <!--/ End Single Tab -->
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+    <div class="product-area section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>Danh sách sản phẩm</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-info">
+                        <div class="nav-main">
+                            <!-- Tab Nav -->
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                @Html.Action("GetCategory", "Category")
+                            </ul>
+                            <!--/ End Tab Nav -->
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <!-- Start Single Tab -->
+                            @Html.Action("SendCategoryId", "Products", new { Id = categoryid })
+                            @*<div class="tab-pane fade show active" id="1" role="tabpanel">
+                                    <div class="tab-single">
+                                        <div class="row">
+                                            @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 1 })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade show active" id="3" role="tabpanel">
+                                    <div class="tab-single">
+                                        <div class="row">
+                                            @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 3 })
+                                        </div>
+                                    </div>
+                                </div>*@
+                        </div>
+                        <!--/ End Single Tab -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -74,7 +74,7 @@
                                         <a href="#" class="btn-active" data-id="@item.Id">@(item.IsActive ? "Kích hoạt" : "Khoá")</a>
                                     </td>
                                     <td>
-                                        <a href="/Admin/User/Edit/@item.Id">Sửa</a>
+                                        <a  class="btn btn-danger" href="/Admin/User/Edit/@item.Id">Sửa</a>
                                         |
                                         @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
                                   {
