@@ -209,6 +209,14 @@
     <Compile Include="Migrations\202105141951547_EditColTableProduct.Designer.cs">
       <DependentUpon>202105141951547_EditColTableProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105191133585_EditTableTransactions.cs" />
+    <Compile Include="Migrations\202105191133585_EditTableTransactions.Designer.cs">
+      <DependentUpon>202105191133585_EditTableTransactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105191759029_AddColAmoutnInTableOrder.cs" />
+    <Compile Include="Migrations\202105191759029_AddColAmoutnInTableOrder.Designer.cs">
+      <DependentUpon>202105191759029_AddColAmoutnInTableOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -252,6 +260,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105141951547_EditColTableProduct.resx">
       <DependentUpon>202105141951547_EditColTableProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105191133585_EditTableTransactions.resx">
+      <DependentUpon>202105191133585_EditTableTransactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105191759029_AddColAmoutnInTableOrder.resx">
+      <DependentUpon>202105191759029_AddColAmoutnInTableOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

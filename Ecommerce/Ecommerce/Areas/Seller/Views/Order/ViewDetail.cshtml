@@ -2,19 +2,17 @@
 @{
     ViewBag.Title = "ViewDetail";
     Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+    decimal SumPrice = 0;
+    int i = 1;
+    Ecommerce.Areas.Seller.Models.MyOrder myOrder = Model.FirstOrDefault();
+    foreach (var item in Model)
+    {
+        SumPrice += item.Price * item.Amount;
+    }
 }
 
 @model PagedList.IPagedList<Ecommerce.Areas.Seller.Models.MyOrder>
 @using PagedList.Mvc;
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
-}
-
-
-
-
 
 @section header{
     Quản Lý Đơn Hàng
@@ -26,7 +24,7 @@
     <div class="container-fluid">
         <div class="card shadow mb-4">
             <div class="card-body">
-                @using (Html.BeginForm("Index", "Order", FormMethod.Get))
+                @using (Html.BeginForm("ViewDetail", "Order", FormMethod.Post))
                 {
                     <div class="row form-group">
                         <div class="col-md-4 form-group">
@@ -40,58 +38,96 @@
                     </div>
                 }
                 <hr />
+                <h5>CHI TIẾT SẢN PHẨM</h5>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Người mua</th>
-                                <th>Chi tiết</th>
-                            </tr>
-                        <tbody>
-                            @foreach (var item in Model.Distinct().ToList())
-                            {
-                                <tr id="row_@item.Id">
-                                    <td>@item.NameUser</td>
-                                    <td><a href="/Seller/Order/ViewDetail/@item.Id">Chi tiết</a></td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
+                                <th>STT</th>
                                 <th>Tên Sản Phẩm</th>
-                                <th>Người mua</th>
                                 <th>Số lượng</th>
-                                <th>Lời nhắn</th>
-                                <th>Trạng thái thanh toán</th>
-                                <th>Địa chỉ nhận hàng</th>
-                                <th>Trạng thái giao hàng</th>
-                                <th>Tổng tiền</th>
-                                <th>Chi tiết</th>
+                                <th>Giá</th>
                             </tr>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr id="row_@item.Id">
+                                    <td>@(i++)</td>
                                     <td>@item.NameProduct</td>
-                                    <td>@item.NameUser</td>
                                     <td>@item.Amount</td>
-                                    <td>@item.Message</td>
-                                    <td>@item.CheckoutStatus</td>
-                                    <td>@item.Address</td>
-                                    <td>@item.NamePayment</td>
                                     <td>@item.Price</td>
-                                    <td><a href="/Seller/Product/Edit/@item.Id">Sửa</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                    @Html.PagedListPager(Model, page => Url.Action("ViewDetail", new { page, @searchString = @ViewBag.SearchString }))
+                </div>
+                <hr />
+                <h5>THÔNG TIN KHÁCH HÀNG</h5>
+                <div class="container rounded bg-white mt-1 mb-1">
+                    <div class="row">
+                        <div class="col-md-5 border-success">
+                            <div class="p-3 py-5">
+                                <div class="row mt-5">
+                                    <div class="col-md-6">
+                                        <span class="label label-primary ">Mã đơn hàng:</span>
+                                        <span class="label label-primary ">@myOrder.Id</span>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <span class="label label-primary ">Người mua: </span>
+                                        <span class="label label-primary ">@myOrder.NameUser</span>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="label label-primary">Email:</label>
+                                        <label class="labels">@myOrder.Email</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="label label-primary">Số điện thoại:</label>
+                                        <label class="labels">@myOrder.PhoneNumber</label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="label label-primary">Ghi chú:</label>
+                                        <label class="labels">@myOrder.Message</label>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+
+                                    <div class="row mt-2">
+                                        <div class="col-md-12">
+                                            <label class="label label-primary">Tổng Tiền:</label>
+                                            <label class="labels">@SumPrice</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col-md-12">
+                                            <label class="label label-primary">Trạng thái thanh toán:</label>
+                                            <label class="labels">@myOrder.CheckoutStatus</label>
+                                        </div>
+                                        <div class="col-md-12 ">
+                                            <label class="label label-primary">Hình thức thanh toán:</label>
+                                            <label class="labels">@myOrder.NamePayment</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+
+                                    <div class="col-md-4">
+                                        <div class="col-md-12">
+                                            <label class="label label-primary">Trạng thái đơn hàng:</label>
+                                            <label class="labels">@myOrder.DeliveryStatus</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-
+        @*@Html.PagedListPager(Model, page => Url.Action("ViewDetail", new { page, @searchString = @ViewBag.SearchString }))*@
     </div>
 </div>
 

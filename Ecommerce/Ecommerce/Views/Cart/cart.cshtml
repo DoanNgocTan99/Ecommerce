@@ -64,13 +64,34 @@
                                                 <td><a class="aa-cart-title" href="/products/xemchitiet/@item._IdProduct">@item._ProductName</a></td>
                                                 <td>@(String.Format("{0:0,0 VNĐ}", item._DelPrice))</td>
                                                 <td>
-                                                    <div class="input-group mb-3" style="max-width: 60px;">
+                                                    <div class="input-group mb-3" style="max-width: 80px;">
                                                         <div class="input-group-prepend">
-                                                            <a class="btn btn-outline-primary js-btn-minus" href="/cart/UpdateAmount/?type=2&id=@(item._IdProduct)">−</a>
+                                                            <a class="btn btn-outline-primary js-btn-minus" href="/cart/UpdateAmount/?type=2&id=@(item._IdProduct)" style="
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+">−</a>
                                                         </div>
-                                                        <input type="text" class="form-control text-center" value="@item._Amount" style="font-size:15px;">
+                                                        <!--<input type="text"  class="form-control text-center"--> @*placeholder="@item._Amount"*@ <!--value="@item._Amount" style=" font-size: 15px; padding-top: 11px; padding-bottom: 11px; padding-right: 20px; padding-left: 20px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px;">-->
+                                                        <span>4</span>765
+                                                        <div class="input-group mb-3">
+                                                        </div>
                                                         <div class="input-group-append">
-                                                            <a class="btn btn-outline-primary js-btn-plus" href="/cart/UpdateAmount/?type=1&id=@(item._IdProduct)">+</a>
+                                                            <a class="btn btn-outline-primary js-btn-plus" href="/cart/UpdateAmount/?type=1&id=@(item._IdProduct)" style="
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+">+</a>
                                                         </div>
                                                     </div>
                                                 </td>

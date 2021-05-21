@@ -16,6 +16,7 @@ namespace Model.EF
             Orders = new HashSet<Order>();
             Products = new HashSet<Product>();
             Images = new HashSet<Image>();
+            Transactions = new HashSet<Transaction>();
         }
 
         [Key]
@@ -63,6 +64,7 @@ namespace Model.EF
         public virtual ICollection<Product> Products { get; set; }
         //public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
         [NotMapped]
         public HttpPostedFileBase ImageFile { get; set; }
     }

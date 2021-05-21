@@ -14,7 +14,7 @@ namespace Model.EF
 
         [Key]
         public long Id { get; set; }
-
+        public int Amount { get; set; }
         public long IdTransaction { get; set; }
         [ForeignKey("IdTransaction")]
         public virtual Transaction Transaction { get; set; }

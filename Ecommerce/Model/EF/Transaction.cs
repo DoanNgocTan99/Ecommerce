@@ -37,7 +37,9 @@ namespace Model.EF
         public long? IdUser { get; set; }
         [ForeignKey("IdUser")]
         public virtual User User { get; set; }
-
+        public long? IdShop { get; set; }
+        [ForeignKey("IdShop")]
+        public virtual Shop Shop { get; set; }
         public long IdDeliveryStatus { get; set; }
         [ForeignKey("IdDeliveryStatus")]
         public virtual DeliveryStatus DeliveryStatus { get; set; }

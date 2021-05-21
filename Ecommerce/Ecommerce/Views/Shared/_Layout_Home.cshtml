@@ -129,8 +129,15 @@
                         <!-- Top Left -->
                         <div class="top-left">
                             <ul class="list-main">
-                                <li><i class="fa fa-home"></i> <a href="#">Kênh người bán</a></li>
-                                </li>
+                                @{ if (Session["Name"] != null)
+                                    {
+
+                                        <li><i class="fa fa-home"></i> <a href="/Seller/Home/Index" target="_blank">Kênh người bán</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><i class="fa fa-home"></i> <a href="/Seller/Login/Index" target="_blank">Kênh người bán</a></li>
+                                    } }
                                 <li><i class="fa fa-envelope-square"></i> <a href="#">electronicshop@gmail.com</a></li>
                             </ul>
                         </div>
@@ -285,9 +292,9 @@
             </div>
         </div>
     </header>
-<main>
-    @RenderBody()
-</main>
+    <main>
+        @RenderBody()
+    </main>
     <footer class="footer">
         <!-- Footer Top -->
         <div class="footer-top section">
