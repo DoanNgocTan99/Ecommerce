@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 1;
 }
 
 
@@ -38,6 +39,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>STT</th>
                                 <th>Tên Người Dùng</th>
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
@@ -49,6 +51,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr id="row_@item.Id">
+                                    <td>@(i++)</td>
                                     <td>@item.Name</td>
                                     <td>@item.Email</td>
                                     <td>@item.Phone</td>

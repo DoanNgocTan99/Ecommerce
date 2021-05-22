@@ -26,7 +26,6 @@ namespace Model.DAO
                 model = model.Where(x => x.Name.Contains(searchString) && x.IdShop == session.IdShop || x.Name.Contains(searchString) && x.IdShop == session.IdShop);
             }
             return model.Where(x => x.IdShop == session.IdShop).OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
-
         }
         public IEnumerable<Product> ListAllPagingByAdmin(string searchString, int page, int pageSize)
         {
@@ -36,30 +35,26 @@ namespace Model.DAO
             {
                 model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToList();
-
+            return model.OrderByDescending(x => x.Id).ToPagedList(page, pageSize);
+        }
+        public IEnumerable<Product> ListProductByIdShopPaging(long idShop, string searchString, int page, int pageSize)
+        {
+            IQueryable<Product> model = db.Products;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.IdShop == idShop && x.Name.Contains(searchString));
+            }
+            return model.Where(x => x.IdShop == idShop).OrderByDescending(x => x.Id).ToList();
         }
         public long Insert(Product entity)
         {
             try
             {
                 UserDAO user = new UserDAO();
-                //var product = new Product();
-                //var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
-                //long id = session.Id;
-
                 var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
-
                 var id = user.GetIdShopByIdUser(session.Id);
                 entity.IdShop = id;
                 entity.CreatedDate = DateTime.Now;
-
-
-                //demo
-                var dao_ca = new CategoryDAO();
-                var IDDD = dao_ca.GetListNamByIdShop(id);
-
-
                 db.Products.Add(entity);
                 db.SaveChanges();
                 return entity.Id;
@@ -79,7 +74,6 @@ namespace Model.DAO
             {
                 var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
                 var product = db.Products.Find(entity.Id);
-
                 product.Name = entity.Name;
                 product.Description = entity.Description;
                 product.Brand = entity.Brand;
@@ -92,7 +86,6 @@ namespace Model.DAO
                 product.Discount = entity.Discount;
                 product.Rate = entity.Rate;
                 product.ModifiedBy = session.UserName;
-                product.CreatedBy = session.UserName;
                 product.IdCategory = entity.IdCategory;
                 product.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
@@ -163,6 +156,25 @@ namespace Model.DAO
                             Price = x.Price
                         });
             return temp.ToList();
+        }
+        public bool CheckProduct(string name)
+        {
+            try
+            {
+                var check = db.Products.Where(x => x.Name == name).FirstOrDefault();
+                if (check != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

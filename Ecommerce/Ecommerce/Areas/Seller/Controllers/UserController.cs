@@ -14,7 +14,6 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             var dao = new UserDAO();
             var model = dao.ListAllPaging(searchString, page, pageSize);
-            
             return View(model);
         }
     }

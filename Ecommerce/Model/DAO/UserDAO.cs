@@ -66,7 +66,6 @@ namespace Model.DAO
             try
             {
                 var dao = new ShopDAO().DeleteListShopByIdUser(Id);
-
                 var user = db.Users.Find(Id);
                 db.Users.Remove(user);
                 db.SaveChanges();

@@ -16,23 +16,23 @@ namespace Ecommerce.Areas.Admin.Controllers
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var dao = new ProductDAO();
-            var DAO = new ProgrammeDAO();
-            dynamic MyModel = new ExpandoObject();
 
-            var modelIndex = dao.ListAllPagingByAdmin(searchString, page, pageSize);
-            var modelFlaseSale = DAO.ListAllPagingFlaseSale(searchString, page, pageSize);
-            var modelAdvertisement = DAO.ListAllPagingAdvertisement(searchString, page, pageSize);
-
-            MyModel.Flas = modelFlaseSale;
-            MyModel.index = modelIndex;
-            MyModel.Adver = modelAdvertisement;
-
+            var model = dao.ListAllPagingByAdmin(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
-            return View(MyModel);
+            return View(model);
+            //dynamic MyModel = new ExpandoObject();
+            //var modelFlaseSale = DAO.ListAllPagingFlaseSale(searchString, page, pageSize);
+            //var modelAdvertisement = DAO.ListAllPagingAdvertisement(searchString, page, pageSize);
+
+            //MyModel.Flas = modelFlaseSale;
+            //MyModel.index = modelIndex;
+            //MyModel.Adver = modelAdvertisement;
+
         }
         #endregion
 
         #region Show Product FlaseSale
+        [HttpGet]
         [HasCredential(RoleID = "ADMIN")]
         public ActionResult ShowProductInFlaseSale(string searchString, int page = 1, int pageSize = 5)
         {
@@ -49,6 +49,17 @@ namespace Ecommerce.Areas.Admin.Controllers
         {
             var dao = new ProgrammeDAO();
             var model = dao.ListAllPagingAdvertisement(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
+            return View(model);
+        }
+        #endregion
+
+        #region Show All
+        [HasCredential(RoleID = "ADMIN")]
+        public ActionResult ShowAll(string searchString, int page = 1, int pageSize = 5)
+        {
+            var dao = new ProductDAO();
+            var model = dao.ListAllPagingByAdmin(searchString, page, pageSize);
             ViewBag.SearchString = searchString;
             return View(model);
         }

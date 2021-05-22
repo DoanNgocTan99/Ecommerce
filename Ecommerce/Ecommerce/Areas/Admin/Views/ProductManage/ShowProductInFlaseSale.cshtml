@@ -1,8 +1,7 @@
 ﻿@model PagedList.IPagedList<Model.EF.Product>
 @using PagedList.Mvc;
-@*@model dynamic*@
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShowProductInFlaseSale";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -34,7 +33,7 @@
                     </ul>
                 </div>
                 <hr />
-                @using (Html.BeginForm("Index", "ProductManage", FormMethod.Get))
+                @using (Html.BeginForm("ShowProductInFlaseSale", "ProductManage", FormMethod.Get))
                 {
                     <div class="row form-group">
                         <div class="col-md-4 form-group">
@@ -74,7 +73,7 @@
                                     <td>@item.Warranty (Tháng)</td>
                                     <td>@item.Views</td>
                                     <td>
-                                        <a href="#" class="btn-active" data-id="@item.Id">@(item.IsActive ? "Kích hoạt" : "Khoá")</a>
+                                        <a href="#" class="btn-flasesale" data-id="@item.Id">@(item.FlaseSale ? "Kích hoạt" : "Khoá")</a>
                                     </td>
                                     <td>
                                         @Ajax.ActionLink("Xoá", "Delete", new { @Id = item.Id }, new AjaxOptions
@@ -88,11 +87,9 @@
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
-
+                    @Html.PagedListPager(Model, page => Url.Action("ShowProductInFlaseSale", new { page, @searchString = @ViewBag.SearchString }))
                 </div>
             </div>
         </div>
-
     </div>
 </div>
