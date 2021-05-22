@@ -35,44 +35,33 @@ namespace Ecommerce.Areas.Seller.Controllers
 
         [HttpPost]
         [HasCredential(RoleID = "USER")]
-
         [ValidateInput(false)]
         public ActionResult Create(Product product)
         {
             if (ModelState.IsValid)
             {
                 var dao = new ProductDAO();
-                
-                //var UserDao = new UserDAO();
+                var check = dao.CheckProduct(product.Name);
+                if (check)
+                {
+                    SetAlert("Tên sản phẩm đã tồn tại", "erro");
+                    return RedirectToAction("Index", "Product");
+                }
                 string fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
-                //return type file
                 string extension = Path.GetExtension(product.ImageFile.FileName);
-
-                //return file name 
                 fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                 string temp = fileName;
-                //category.Path = "~/Image/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/Image/Product"), fileName);
                 string filename = fileName.Substring(fileName.Length - (15 + temp.Length), (15 + temp.Length));
-
                 product.ImageFile.SaveAs(fileName);
-
-                //var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
-
-                //var idShop = UserDao.GetIdShopByIdUser(session.Id);
-                //product.IdShop = idShop;
 
                 long id = dao.Insert(product);
 
                 var ImageDao = new ImageDAO();
-
                 Image image = new Image();
-
                 image.IdProduct = id;
                 image.Path = filename;
-
                 long ID = ImageDao.Insert(image);
-
                 if (ID > 0)
                 {
                     SetAlert("Thêm mới sản phẩm thành công!!", "success");
@@ -91,7 +80,6 @@ namespace Ecommerce.Areas.Seller.Controllers
         }
         [HttpGet]
         [HasCredential(RoleID = "USER")]
-
         public ActionResult Edit(int id)
         {
             var product = new ProductDAO().ViewDetail(id);
@@ -100,7 +88,6 @@ namespace Ecommerce.Areas.Seller.Controllers
         }
         [HttpPost]
         [HasCredential(RoleID = "USER")]
-
         [ValidateInput(false)]
         public ActionResult Edit(Product product)
         {
@@ -110,33 +97,26 @@ namespace Ecommerce.Areas.Seller.Controllers
                 var ImageDao = new ImageDAO();
                 if (product.ImageFile != null)
                 {
-                    //var UserDao = new UserDAO();
-                    string fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
-                    //return type file
-                    string extension = Path.GetExtension(product.ImageFile.FileName);
 
-                    //return file name 
+                    var check = dao.CheckProduct(product.Name);
+                    if (check)
+                    {
+                        SetAlert("Tên sản phẩm đã tồn tại", "erro");
+                        return RedirectToAction("Index", "Product");
+                    }
+                    string fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
+                    string extension = Path.GetExtension(product.ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                     string temp = fileName;
-                    //category.Path = "~/Image/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Image/Product"), fileName);
                     string filename = fileName.Substring(fileName.Length - (15 + temp.Length), (15 + temp.Length));
-
                     product.ImageFile.SaveAs(fileName);
 
-                    //var session = (UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
-
-                    //var idShop = UserDao.GetIdShopByIdUser(session.Id);
-                    //product.IdShop = idShop;
-
                     var result = dao.Update(product);
-
                     if (!result)
                     {
                         SetAlert("Cập nhập sản phẩm không thành công, kiểm tra lại thông tin!!", "erro");
-
                         return RedirectToAction("Index", "Product");
-
                     }
                     Image image = new Image();
                     image.IdProduct = product.Id;
@@ -145,9 +125,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                     if (ID)
                     {
                         SetAlert("Cập nhập sản phẩm thành công!!", "success");
-
                         return RedirectToAction("Index", "Product");
-
                     }
                     else
                     {
@@ -160,9 +138,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                     if (result)
                     {
                         SetAlert("Cập nhập sản phẩm thành công!!", "success");
-
                         return RedirectToAction("Index", "Product");
-
                     }
                     else
                     {
@@ -179,7 +155,6 @@ namespace Ecommerce.Areas.Seller.Controllers
         public ActionResult Delete(int Id)
         {
             new ProductDAO().Delete(Id);
-
             return RedirectToAction("Index");
         }
 
@@ -191,7 +166,6 @@ namespace Ecommerce.Areas.Seller.Controllers
             return Json(new
             {
                 status = result
-
             });
         }
         [HasCredential(RoleID = "USER")]
@@ -202,10 +176,6 @@ namespace Ecommerce.Areas.Seller.Controllers
             ViewBag.IdCategory = new SelectList(dao_Category.ListAll(), "Id", "Name", selectIdCategory);
             var dao_Programme = new ProgrammeDAO();
             ViewBag.IdProgramme = new SelectList(dao_Programme.ListAll(), "Id", "Name", selectIdProgramme);
-            
-            //var dao_Shop = new ShopDAO();
-            //ViewBag.IdShop = new SelectList(dao_Shop.ListAll(), "Id", "Name", selectIdShop);
-
         }
     }
 }

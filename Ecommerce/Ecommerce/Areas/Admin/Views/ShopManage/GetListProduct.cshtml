@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "GetListProduct";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 1, j = 1;
 }
 
 @using PagedList.Mvc;
@@ -25,6 +26,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>STT</th>
                                 <th>Tên Danh mục</th>
 
                             </tr>
@@ -36,6 +38,7 @@
 
                                     </tr>*@
                                 <tr>
+                                    <td>@(i++)</td>
                                     <td>@item</td>
                                 </tr>
 
@@ -64,6 +67,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>STT</th>
                                 <th>Tên Sản Phẩm</th>
                                 <th>Mô tả</th>
                                 <th>Nhãn hiệu</th>
@@ -78,6 +82,7 @@
                             @foreach (var item in Model.Product)
                             {
                                 <tr id="row_@item.Id">
+                                    <td>@(j++)</td>
                                     <td>@item.Name</td>
                                     <td>@item.Description</td>
                                     <td>@item.Brand</td>

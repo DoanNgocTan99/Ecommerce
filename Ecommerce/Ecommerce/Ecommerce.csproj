@@ -6695,6 +6695,9 @@
     <Content Include="Areas\Admin\Views\UserManage\Create.cshtml" />
     <Content Include="Areas\Admin\Views\UserManage\Edit.cshtml" />
     <Content Include="Areas\Seller\Views\Order\ViewDetail.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductManage\ShowProductInFlaseSale.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductManage\ShowProductInAdvertisement.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductManage\ShowAll.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
