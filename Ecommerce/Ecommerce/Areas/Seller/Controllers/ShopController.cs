@@ -13,7 +13,7 @@ namespace Ecommerce.Areas.Seller.Controllers
     public class ShopController : BaseController
     {
         // GET: Seller/Shop
-        
+
         [HttpGet]
         [HasCredential(RoleID = "USER")]
         public ActionResult Edit(int id)
@@ -28,9 +28,9 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var dao = new ShopDAO();
-                if(shop.ImageFile != null)
+                if (shop.ImageFile != null)
                 {
+                    var dao = new ShopDAO();
                     var temps = dao.CheckNameShop(shop.Name);
                     if (temps)
                     {
@@ -68,6 +68,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                 }
                 else
                 {
+                    var dao = new ShopDAO();
                     var temps = dao.CheckNameShop(shop.Name);
                     if (temps)
                     {
@@ -88,6 +89,6 @@ namespace Ecommerce.Areas.Seller.Controllers
             }
             return View("Index");
         }
-        
+
     }
 }

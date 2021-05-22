@@ -93,11 +93,11 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dao = new ProductDAO();
-                var ImageDao = new ImageDAO();
+               
                 if (product.ImageFile != null)
                 {
-
+                    var dao = new ProductDAO();
+                    var ImageDao = new ImageDAO();
                     var check = dao.CheckProduct(product.Name);
                     if (check)
                     {
@@ -134,6 +134,14 @@ namespace Ecommerce.Areas.Seller.Controllers
                 }
                 else
                 {
+                    var dao = new ProductDAO();
+                    var ImageDao = new ImageDAO();
+                    var check = dao.CheckProduct(product.Name);
+                    if (check)
+                    {
+                        SetAlert("Tên sản phẩm đã tồn tại", "erro");
+                        return RedirectToAction("Index", "Product");
+                    }
                     var result = dao.Update(product);
                     if (result)
                     {

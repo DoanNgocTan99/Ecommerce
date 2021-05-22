@@ -166,6 +166,9 @@ namespace Model.DAO
                     return true;
                 }
                 return false;
+            }catch (Exception ex)
+            {
+                throw ex;
             }
         }
         #endregion
