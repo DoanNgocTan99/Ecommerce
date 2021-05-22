@@ -24,6 +24,17 @@ namespace Ecommerce.Controllers
             {
                 return View("ThongBaoLoi");
             }
+            List<long> temp = (from a in db.Products
+                               join b in db.Categories on a.IdCategory equals b.Id
+                               where a.IdShop == id
+                               select a.IdCategory).Distinct().ToList();
+            List<Category> categoryList = new List<Category>();
+            foreach (long item in temp)
+            {
+                Category category = db.Categories.Where(x => x.Id == item).FirstOrDefault();
+                categoryList.Add(category);
+            }
+            ViewBag.categoryFirst = categoryList[0].Id;
             List<Product> productList = db.Products.Where(e => e.IdShop == id).ToList();
             ViewBag.productList = productList;   
             return View(shop);

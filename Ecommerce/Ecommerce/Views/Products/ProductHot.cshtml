@@ -50,8 +50,11 @@
                     <div class="product-content ">
                         <h3><a href="/products/xemchitiet/@item.Id">@item.Name</a></h3>
                         <div class="product-price ">
-                            <span class="old ">@item.DelPrice</span>
-                            <span>@item.Price</span>
+                            @{
+                                var delPrice = item.Price - item.Price * item.Discount / 100;
+                            }
+                            <span class="old">@item.Price</span>
+                            <span>@delPrice</span>
                         </div>
                     </div>
                 </div>

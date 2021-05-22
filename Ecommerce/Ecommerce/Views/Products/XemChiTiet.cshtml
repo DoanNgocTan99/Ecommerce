@@ -73,33 +73,27 @@
                                 <div class="aa-product-view-content">
                                     <h3>@product.Name</h3>
                                     <div class="aa-price-block">
-                                        <c:choose>
-                                            <c:when test="@Model.Discount == 0">
-                                                <span class="aa-product-price">@product.Price VNĐ</span><span class="aa-product-price"></span>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:forEach items="${productlist1}" var="product1">
-                                                    <c:if test="${product1.id == detail_product.id}">
-                                                        <span class="aa-product-price"><strong>@product.Price VNĐ</strong></span>
-                                                        <span class="aa-product-price"><del>@product.DelPrice VNĐ</del></span>
-                                                    </c:if>
-                                                </c:forEach>
-                                            </c:otherwise>
-                                        </c:choose>
+                                        @if (@product.Discount == 0)
+                                        {
+                                            <span class="aa-product-price">@product.Price VNĐ</span><span class="aa-product-price"></span>
+                                        }
+                                        else
+                                        {
+                                            
+                                            var delPrice = @product.Price - @product.Price * @product.Discount / 100;
+                                            
+                                            <span class="aa-product-price"><strong>@product.Price VNĐ</strong></span>
+                                            <span class="old"><strike>@delPrice VNĐ</strike></span>
+                                        }
 
                                         <p class="aa-product-avilability">
-                                            Tình trạng: <span>
-                                                @*<c:choose>
-                                        <c:when test="${detail_product.status == 1}">
-                                            <c:out value="Còn hàng" />
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value="Hết hàng" />
-                                        </c:otherwise>
-                                    </c:choose>*@
-                                                Còn hàng
-                                            </span>
-                                        </p>
+                                            Tình trạng: 
+                                            @if(product.Stock == 0){
+                                                <strong>Hết hàng</strong>
+                                            }else{
+                                                <span>Còn hàng</span>
+                                            }
+                                      </p>
                                     </div>
                                     @*<p>${detail_product.description}</p>*@
                                     <div class="aa-prod-quantity">
@@ -179,7 +173,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="section-title">
-                                        <h2>Sản phẩm mới</h2>
+                                        <h2>Sản phẩm tương tự</h2>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +192,7 @@
                                                     <a href="/products/xemchitiet/@item.Id">
                                                         <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id  })" alt="#" width="100%" height="100%">
                                                         <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
-                                                        <span class="new">New</span>
+                                                        <span class="price-dec">-@item.Discount%</span>
                                                     </a>
                                                     <div class="button-head ">
                                                         <div class="product-action ">
@@ -213,8 +207,11 @@
                                                 <div class="product-content ">
                                                     <h3><a href="/products/xemchitiet/@item.Id">@item.Name</a></h3>
                                                     <div class="product-price ">
-                                                        <span class="old ">@item.DelPrice</span>
-                                                        <span>@item.Price</span>
+                                                        @{
+                                                            var delPrice = item.Price - item.Price * item.Discount / 100;
+                                                        }
+                                                        <span class="old">@item.Price</span>
+                                                        <span>@delPrice</span>
                                                     </div>
                                                 </div>
                                             </div>
