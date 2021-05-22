@@ -38,5 +38,14 @@ namespace Ecommerce.Controllers
             }
             return "";
         }
+        public string getImgUser(int id)
+        {
+            Image image = db.Images.Where(x => x.IdUser == id).FirstOrDefault();
+            if (image != null)
+            {
+                return image.Path;
+            }
+            return "";
+        }
     }
 }

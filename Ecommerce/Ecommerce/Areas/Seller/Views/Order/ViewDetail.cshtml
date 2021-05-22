@@ -63,67 +63,131 @@
                     @Html.PagedListPager(Model, page => Url.Action("ViewDetail", new { page, @searchString = @ViewBag.SearchString }))
                 </div>
                 <hr />
-                <h5>THÔNG TIN KHÁCH HÀNG</h5>
+                <h3 class="checkout-form-title-ordered">Thông tin đơn hàng</h3>
                 <div class="container rounded bg-white mt-1 mb-1">
-                    <div class="row">
-                        <div class="col-md-5 border-success">
-                            <div class="p-3 py-5">
-                                <div class="row mt-5">
-                                    <div class="col-md-6">
-                                        <span class="label label-primary ">Mã đơn hàng:</span>
-                                        <span class="label label-primary ">@myOrder.Id</span>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <span class="label label-primary ">Người mua: </span>
-                                        <span class="label label-primary ">@myOrder.NameUser</span>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="label label-primary">Email:</label>
-                                        <label class="labels">@myOrder.Email</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="label label-primary">Số điện thoại:</label>
-                                        <label class="labels">@myOrder.PhoneNumber</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="label label-primary">Ghi chú:</label>
-                                        <label class="labels">@myOrder.Message</label>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
+                    <div class="row ">
+                        <div class="col-lg-12 col-12 ">
+                            <div class="checkout-form ">
 
-                                    <div class="row mt-2">
-                                        <div class="col-md-12">
-                                            <label class="label label-primary">Tổng Tiền:</label>
-                                            <label class="labels">@SumPrice</label>
+                                <!-- Form -->
+                                <form class="form " method="post " action="# ">
+                                    <div class="row ">
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label for="idOrder ">Mã đơn hàng<span>*</span></label>
+                                                <br />
+                                                <input type="text " name="idOrder " id="idOrder " placeholder=" " required="required " readonly="readonly " value="@myOrder.Id">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row mt-1">
-                                        <div class="col-md-12">
-                                            <label class="label label-primary">Trạng thái thanh toán:</label>
-                                            <label class="labels">@myOrder.CheckoutStatus</label>
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label for="name ">Tên khách hàng<span>*</span></label>
+                                                <br />
+                                                <input type="text " name="name " id="name " placeholder=" " required="required " readonly="readonly " value="@myOrder.NameUser">
+                                            </div>
                                         </div>
-                                        <div class="col-md-12 ">
-                                            <label class="label label-primary">Hình thức thanh toán:</label>
-                                            <label class="labels">@myOrder.NamePayment</label>
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label for="email ">Email<span>*</span></label>
+                                                <br />
+                                                <input type="email " name="email " id="email" placeholder=" " required="required " readonly value="@myOrder.Email">
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label class="phone ">Số điện thoại<span>*</span></label> <br />
+                                                <input type="phone " name="phone " id="phone " placeholder=" " required="required " readonly value="@myOrder.PhoneNumber">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label for="address ">Địa chỉ<span>*</span></label> <br />
+                                                <textarea type="text " name="address " id="address " placeholder=" " readonly required="required ">@myOrder.Address</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label class="amount ">Tổng tiền<span>*</span></label> <br />
+                                                <input type="text " name="amount " id="amount " placeholder=" " required="required " readonly value="@SumPrice VNĐ">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label for="message ">Ghi chú<span>*</span></label> <br />
+                                                <textarea name="message" id="message" readonly value="@myOrder.Message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label for="message ">Kiểu thanh toán<span>*</span></label> <br />
+                                                <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="@myOrder.NamePayment">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label class="checkoutStatus">Thanh toán<span>*</span></label><br />
+                                                <input type="text " name="checkoutStatus " id="checkoutStatus" placeholder=" " required="required " readonly value="@myOrder.CheckoutStatus">
 
-                                    <div class="col-md-4">
-                                        <div class="col-md-12">
-                                            <label class="label label-primary">Trạng thái đơn hàng:</label>
-                                            <label class="labels">@myOrder.DeliveryStatus</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lgcol-md-6 col-12 ">
+                                            <div class="form-group ">
+                                                <label class="deliveryStatus ">Trạng thái<span>*</span></label><br />
+
+                                                @if (myOrder.DeliveryStatus == "Đang xử lý")
+                                                {
+                                                    <select name="deliveryStatus">
+                                                        <option value="0" checked>Đang xử lí</option>
+                                                        <option value="1">Đang giao</option>
+                                                    </select>
+                                                }
+                                                else if (myOrder.DeliveryStatus == "Đang giao")
+                                                {
+                                                    <select name="deliveryStatus">
+                                                        <option value="1" checked>Đang giao</option>
+                                                        <option value="2">Đã giao</option>
+                                                    </select>
+                                                }
+                                                else if (myOrder.DeliveryStatus == "Đã giao")
+                                                {
+                                                    <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="Đã giao" />
+                                                }
+                                                else if (myOrder.DeliveryStatus == "Đã huỷ")
+                                                {
+                                                    <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="Đã huỷ" />
+                                                }
+                                                else if (myOrder.DeliveryStatus == "Đã trả hàng/Hoàn tiền")
+                                                {
+                                                    <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="Đã trả hàng/ Hoàn tiền" />
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="single-widget get-button">
+                                            <div class="content">
+                                                @if (myOrder.DeliveryStatus == "Đã giao" || myOrder.DeliveryStatus == "Đã huỷ" || myOrder.DeliveryStatus == "Đã tả hàng/Hoàn tiền")
+                                                {
+                                                    <button type=submit class="btn btn-primary" disabled>
+                                                        Cập nhật
+                                                    </button>
+
+                                                }
+                                                else
+                                                {
+                                                    <button type=submit class="btn btn-primary">
+                                                        Cập nhật
+                                                    </button>
+                                                }
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
+                            </form>
                         </div>
-
                     </div>
+
+
                 </div>
             </div>
         </div>
