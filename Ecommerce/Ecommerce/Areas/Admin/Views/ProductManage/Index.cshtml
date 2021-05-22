@@ -1,6 +1,7 @@
 ﻿
-@model PagedList.IPagedList<Model.EF.Product>
-@using PagedList.Mvc;
+@*@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;*@
+@model dynamic
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -49,7 +50,8 @@
                                 <th class="table-success">Thao tác</th>
                             </tr>
                         <tbody>
-                            @foreach (var item in Model.Where(x => x.IdProgramme == 1))
+                            @*@foreach (var item in Model.Where(x => x.IdProgramme == 1))*@
+                            @foreach(var item in Model.Flas)
                             {
                                 <tr id="row_@item.Id">
                                     <td>@item.Name</td>
@@ -57,7 +59,7 @@
                                     <td>@item.Brand</td>
                                     <td>@item.Origin</td>
                                     <td>@item.Price</td>
-                                    <td>@item.WarrantyDate</td>
+                                    <td>@item.Warranty (Tháng)</td>
                                     <td>@item.Views</td>
                                     <td>
                                         <a href="#" class="btn-flasesale" data-id="@item.Id">@(item.FlaseSale ? "Kích hoạt" : "Khoá")</a>
@@ -74,7 +76,6 @@
                             }
                         </tbody>
                     </table>
-                    @*@Html.PagedListPager(Model.Where(x => x.IdProgramme == 1).ToList() as PagedList.IPagedList , page => Url.Action("ShowProductInFlaseSale", new { page, @searchString = @ViewBag.SearchString }))*@
                 </div>
                 <h5>SẢN PHẨM QUẢNG CÁO</h5>
                 <div class="table-responsive">
@@ -92,7 +93,8 @@
                                 <th class="table-success">Thao tác</th>
                             </tr>
                         <tbody>
-                            @foreach (var item in Model.Where(x => x.IdProgramme == 2))
+                            @*@foreach (var item in Model.Where(x => x.IdProgramme == 2))*@
+                            @foreach(var item in Model.Adver)
                             {
                                 <tr id="row_@item.Id">
                                     <td>@item.Name</td>
@@ -100,7 +102,7 @@
                                     <td>@item.Brand</td>
                                     <td>@item.Origin</td>
                                     <td>@item.Price</td>
-                                    <td>@item.WarrantyDate</td>
+                                    <td>@item.Warranty (Tháng)</td>
                                     <td>@item.Views</td>
                                     <td>
                                         <a href="#" class="btn-advertisement" data-id="@item.Id">@(item.Advertisement ? "Kích hoạt" : "Khoá")</a>
@@ -117,7 +119,6 @@
                             }
                         </tbody>
                     </table>
-                    @*@Html.PagedListPager(Model.Where(x => x.IdProgramme == 2) as PagedList.IPagedList, page => Url.Action("ShowProductInAdvertisement", new { page, @searchString = @ViewBag.SearchString }))*@
                 </div>
                 <h5>TÂT CẢ SẢN PHẨM</h5>
                 <div class="table-responsive">
@@ -135,7 +136,7 @@
                                 <th class="table-success">Thao tác</th>
                             </tr>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.index)
                             {
                                 <tr id="row_@item.Id">
                                     <td>@item.Name</td>
@@ -143,7 +144,7 @@
                                     <td>@item.Brand</td>
                                     <td>@item.Origin</td>
                                     <td>@item.Price</td>
-                                    <td>@item.WarrantyDate</td>
+                                    <td>@item.Warranty (Tháng)</td>
                                     <td>@item.Views</td>
                                     <td>
                                         <a href="#" class="btn-active" data-id="@item.Id">@(item.IsActive ? "Kích hoạt" : "Khoá")</a>
@@ -160,10 +161,7 @@
                             }
                         </tbody>
                     </table>
-
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
                 </div>
-
             </div>
         </div>
 

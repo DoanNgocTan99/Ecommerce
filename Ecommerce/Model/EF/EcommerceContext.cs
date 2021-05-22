@@ -44,7 +44,7 @@ namespace Model.EF
             //Table Image
             modelBuilder.Entity<Image>()
                 .Property(e => e.Path)
-                .IsUnicode(false);
+                .IsUnicode(true);
             modelBuilder.Entity<Image>().Property(p => p.IdUser).IsOptional();
             modelBuilder.Entity<Image>().Property(p => p.IdShop).IsOptional();
             modelBuilder.Entity<Image>().Property(p => p.IdProduct).IsOptional();

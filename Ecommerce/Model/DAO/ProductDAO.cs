@@ -23,9 +23,9 @@ namespace Model.DAO
             IQueryable<Product> model = db.Products;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.Name.Contains(searchString) && x.IdShop == session.IdShop|| x.Name.Contains(searchString) && x.IdShop == session.IdShop);
+                model = model.Where(x => x.Name.Contains(searchString) && x.IdShop == session.IdShop || x.Name.Contains(searchString) && x.IdShop == session.IdShop);
             }
-            return model.Where(x => x.IdShop ==session.IdShop).OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.Where(x => x.IdShop == session.IdShop).OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
 
         }
         public IEnumerable<Product> ListAllPagingByAdmin(string searchString, int page, int pageSize)
@@ -34,9 +34,9 @@ namespace Model.DAO
             IQueryable<Product> model = db.Products;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.Name.Contains(searchString)|| x.Name.Contains(searchString));
+                model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.OrderByDescending(x => x.CreatedDate).ToList();
 
         }
         public long Insert(Product entity)
@@ -64,7 +64,7 @@ namespace Model.DAO
                 db.SaveChanges();
                 return entity.Id;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -98,7 +98,7 @@ namespace Model.DAO
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -153,15 +153,15 @@ namespace Model.DAO
         public IEnumerable<Product> GetProducts()
         {
             var temp = (from a in db.Products
-                       select new
-                       {
-                           Name = a.Name,
-                           Price = a.Price
-                       }).AsEnumerable().Select(x => new Product()
-                       {
-                           Name = x.Name,
-                           Price = x.Price
-                       });
+                        select new
+                        {
+                            Name = a.Name,
+                            Price = a.Price
+                        }).AsEnumerable().Select(x => new Product()
+                        {
+                            Name = x.Name,
+                            Price = x.Price
+                        });
             return temp.ToList();
         }
     }

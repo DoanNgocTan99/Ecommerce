@@ -85,8 +85,11 @@ namespace Model.EF
         public string ModifiedBy { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
-
+        public DateTime? ModifiedPriceDate { get; set; }
+        public int? PriceAfterChange { get; set; }
         public DateTime? CreatedDate { get; set; }
+        public DateTime? DateAddFlaseSale { get; set; }
+        public DateTime? DateAddAdvertisement { get; set; }
 
         [Display(Name = "Loại Doanh Mục")]
         public long IdCategory { get; set; }
