@@ -217,6 +217,18 @@
     <Compile Include="Migrations\202105191759029_AddColAmoutnInTableOrder.Designer.cs">
       <DependentUpon>202105191759029_AddColAmoutnInTableOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105211413328_UpdateTableProduct.cs" />
+    <Compile Include="Migrations\202105211413328_UpdateTableProduct.Designer.cs">
+      <DependentUpon>202105211413328_UpdateTableProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105211523536_UpdateTableProduct2.cs" />
+    <Compile Include="Migrations\202105211523536_UpdateTableProduct2.Designer.cs">
+      <DependentUpon>202105211523536_UpdateTableProduct2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105211559388_EditTablePrograme.cs" />
+    <Compile Include="Migrations\202105211559388_EditTablePrograme.Designer.cs">
+      <DependentUpon>202105211559388_EditTablePrograme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -266,6 +278,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105191759029_AddColAmoutnInTableOrder.resx">
       <DependentUpon>202105191759029_AddColAmoutnInTableOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105211413328_UpdateTableProduct.resx">
+      <DependentUpon>202105211413328_UpdateTableProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105211523536_UpdateTableProduct2.resx">
+      <DependentUpon>202105211523536_UpdateTableProduct2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105211559388_EditTablePrograme.resx">
+      <DependentUpon>202105211559388_EditTablePrograme.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

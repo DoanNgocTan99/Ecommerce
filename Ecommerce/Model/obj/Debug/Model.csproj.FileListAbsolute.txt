@@ -84,3 +84,6 @@ F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.pdb
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\bin\Debug\Ecommerce.dll
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTableTransactions.resources
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.AddColAmoutnInTableOrder.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.UpdateTableProduct.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.UpdateTableProduct2.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTablePrograme.resources

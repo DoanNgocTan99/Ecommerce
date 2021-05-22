@@ -21,7 +21,7 @@ namespace Model.EF
         public string Name { get; set; }
 
         public bool? IsActive { get; set; }
-        public DateTime DateEnd { get; set; }
+        public DateTime? DateEnd { get; set; }
         [StringLength(250)]
         public string CreatedBy { get; set; }
 

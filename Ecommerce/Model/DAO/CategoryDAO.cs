@@ -26,10 +26,29 @@ namespace Model.DAO
             return model.OrderByDescending(x => x.Id).ToPagedList(page, pageSize);
 
         }
+        public bool CheckCategory(string name)
+        {
+            try
+            {
+                var category = db.Categories.Where(c => c.Name == name).FirstOrDefault();
+                if (category != null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public long Insert(Category entity)
         {
             try
             {
+                var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+                entity.CreatedBy = session.UserName;
+                entity.CreatedDate = DateTime.Now;
                 db.Categories.Add(entity);
                 db.SaveChanges();
                 return entity.Id;
@@ -47,12 +66,13 @@ namespace Model.DAO
         {
             try
             {
-                var user = db.Categories.Find(entity.Id);
-
-                user.Name = entity.Name;
-                user.Description = entity.Description;
-                user.IsActive = true;
-                user.ModifiedDate = DateTime.Now;
+                var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+                var category = db.Categories.Find(entity.Id);
+                category.Name = entity.Name;
+                category.Description = entity.Description;
+                category.IsActive = true;
+                category.ModifiedDate = DateTime.Now;
+                category.ModifiedBy = session.UserName;
                 db.SaveChanges();
                 return true;
             }
@@ -67,7 +87,6 @@ namespace Model.DAO
             try
             {
                 var dao = new ProductDAO().DeleteProductByIdCategory(Id);
-
                 var category = db.Categories.Find(Id);
                 db.Categories.Remove(category);
                 db.SaveChanges();
@@ -82,10 +101,6 @@ namespace Model.DAO
         {
             return db.Categories.ToList();
         }
-        //public ProductCategory ViewDetail(long id)
-        //{
-        //    return db.ProductCategories.Find(id);
-        //}
         public bool ChangeStatus(long id)
         {
             var category = db.Categories.Find(id);

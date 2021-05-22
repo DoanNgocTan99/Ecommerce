@@ -13,15 +13,17 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class CategoryController : BaseController
     {
-        // GET: Seller/Category
+        #region Index
         [HasCredential(RoleID = "ADMIN")]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var dao = new CategoryDAO();
             var model = dao.ListAllPaging(searchString, page, pageSize);
-
             return View(model);
         }
+        #endregion
+
+        #region Create
         [HttpGet]
         [HasCredential(RoleID = "ADMIN")]
         public ActionResult Create()
@@ -41,72 +43,78 @@ namespace Ecommerce.Areas.Admin.Controllers
                     var dao = new CategoryDAO();
                     if (category.ImageFile != null)
                     {
-                        //return file name 
+                        #region Add Image
                         string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
                         //return type file 
                         string extension = Path.GetExtension(category.ImageFile.FileName);
-
                         //return file name 
                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-
                         var temp = fileName;
                         //category.Path = "~/Image/" + fileName;
                         fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
-
                         string filename = fileName.Substring(fileName.Length - (16 + temp.Length), (16 + temp.Length));
-
                         category.ImageFile.SaveAs(fileName);
-
-                        long id = dao.Insert(category);
-                        
-
-
-                        var ImageDao = new ImageDAO();
-
-                        Image image = new Image();
-                        image.IdCategory = id;
-                        image.Path = filename;
-
-
-                        long ID = ImageDao.Insert(image);
-                        //bool check = ImageDao.Insert(id, fileName);
-                        if (ID > 0)
+                        #endregion
+                        //return file name 
+                        bool check = dao.CheckCategory(category.Name);
+                        if (check)
                         {
-                            SetAlert("Thêm mới doanh mục thành công!!", "success");
-                            return RedirectToAction("Index", "Category");
+                            long id = dao.Insert(category);
+                            var ImageDao = new ImageDAO();
+                            Image image = new Image();
+                            image.IdCategory = id;
+                            image.Path = filename;
+                            long ID = ImageDao.Insert(image);
+                            //bool check = ImageDao.Insert(id, fileName);
+                            if (ID > 0)
+                            {
+                                SetAlert("Thêm mới doanh mục thành công!!", "success");
+                                return RedirectToAction("Index", "Category");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                            }
                         }
                         else
                         {
-
-                            ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                            SetAlert("Đã có loại danh mục trong Cơ sở dữ liệu!!", "erro");
+                            return RedirectToAction("Index", "Category");
                         }
                     }
                     else
                     {
-                        long id = dao.Insert(category);
-                        if (id > 0)
+                        bool check = dao.CheckCategory(category.Name);
+                        if (check)
                         {
-                            SetAlert("Thêm mới doanh mục thành công!!", "success");
-                            return RedirectToAction("Index", "Category");
+                            long id = dao.Insert(category);
+                            if (id > 0)
+                            {
+                                SetAlert("Thêm mới doanh mục thành công!!", "success");
+                                return RedirectToAction("Index", "Category");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                            }
                         }
                         else
                         {
-
-                            ModelState.AddModelError("", "Thêm doanh mục không thành công");
+                            SetAlert("Đã có loại danh mục trong Cơ sở dữ liệu!!", "erro");
+                            return RedirectToAction("Index", "Category");
                         }
                     }
-
-
                 }
                 catch (Exception ex)
                 {
                     return View("Index");
                 }
-
-
             }
             return View("Index");
         }
+        #endregion
+
+        #region Edit
         [HttpGet]
         [HasCredential(RoleID = "ADMIN")]
         public ActionResult Edit(int id)
@@ -128,60 +136,71 @@ namespace Ecommerce.Areas.Admin.Controllers
                     string fileName = Path.GetFileNameWithoutExtension(category.ImageFile.FileName);
                     //return type file
                     string extension = Path.GetExtension(category.ImageFile.FileName);
-
                     //return file name 
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                     var temp = fileName;
                     //category.Path = "~/Image/" + fileName;
                     fileName = Path.Combine(Server.MapPath("~/Image/Category"), fileName);
-
                     string filename = fileName.Substring(fileName.Length - (16 + temp.Length), (16 + temp.Length));
                     category.ImageFile.SaveAs(fileName);
-
-                    var result = dao.Update(category);
-                    if (!result)
+                    bool check = dao.CheckCategory(category.Name);
+                    if (check)
                     {
-                        SetAlert("Câp nhập chưa thành công, kiểm tra lại thông tin.", "erro");
-
-                        return RedirectToAction("Index", "Category");
-                    }
-                    var ImageDao = new ImageDAO();
-
-                    Image image = new Image();
-                    image.IdCategory = category.Id;
-                    image.Path = filename;
-
-                    bool ID = ImageDao.UpdateByIdCategory(image);
-                    if (ID)
-                    {
-                        SetAlert("Cập nhập doanh mục thành công!!", "success");
-
-                        return RedirectToAction("Index", "Category");
+                        var result = dao.Update(category);
+                        if (!result)
+                        {
+                            SetAlert("Câp nhập chưa thành công, kiểm tra lại thông tin.", "erro");
+                            return RedirectToAction("Index", "Category");
+                        }
+                        var ImageDao = new ImageDAO();
+                        Image image = new Image();
+                        image.IdCategory = category.Id;
+                        image.Path = filename;
+                        bool ID = ImageDao.UpdateByIdCategory(image);
+                        if (ID)
+                        {
+                            SetAlert("Cập nhập doanh mục thành công!!", "success");
+                            return RedirectToAction("Index", "Category");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                        SetAlert("Tên danh mục tồn tại trong Cơ sở dữ liệu!!", "erro");
+                        return RedirectToAction("Index", "Category");
                     }
                 }
                 else
                 {
-                    var result = dao.Update(category);
-                    if (result)
+                    bool check = dao.CheckCategory(category.Name);
+                    if (check)
                     {
-                        SetAlert("Cập nhập doanh mục thành công!!", "success");
-
-                        return RedirectToAction("Index", "Category");
+                        var result = dao.Update(category);
+                        if (result)
+                        {
+                            SetAlert("Cập nhập doanh mục thành công!!", "success");
+                            return RedirectToAction("Index", "Category");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Cập nhập Doanh mục không thành công");
+                        SetAlert("Tên danh mục tồn tại trong Cơ sở dữ liệu!!", "erro");
+                        return RedirectToAction("Index", "Category");
                     }
                 }
-
-
             }
             return View("Index");
         }
+        #endregion
+
+        #region Delete
         [HasCredential(RoleID = "ADMIN")]
         public ActionResult Delete(int Id)
         {
@@ -199,6 +218,9 @@ namespace Ecommerce.Areas.Admin.Controllers
                 };
             }
         }
+        #endregion
+
+        #region ChangeStatus
         [HttpPost]
         [HasCredential(RoleID = "ADMIN")]
         public JsonResult ChangeStatus(long id)
@@ -209,6 +231,9 @@ namespace Ecommerce.Areas.Admin.Controllers
                 status = result
             });
         }
+        #endregion
+
+        #region SerViewBag
         [HasCredential(RoleID = "ADMIN")]
         public void SetViewBag(long? selectIdCategory = null, long? selectIdProduct = null, long? selectIdUser = null)
         {
@@ -221,5 +246,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             var dao_Product = new ProductDAO();
             ViewBag.IdProduct = new SelectList(dao_Product.ListAll(), "Id", "Name", selectIdProduct);
         }
+        #endregion
+
     }
 }
