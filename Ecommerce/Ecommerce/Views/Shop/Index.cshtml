@@ -1,15 +1,16 @@
 
-s@using Model.EF
+@using Model.EF
 
 @model Model.EF.Shop
 @{
     ViewBag.Title = "ShopView";
     Shop shop = @ViewBag.shop;
+    long categoryFirst = ViewBag.categoryFirst;
     var productList = @ViewBag.productList;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
-    long categoryid = 1;
+    long categoryid = categoryFirst;
     if (ViewBag.categoryId != null)
     {
         categoryid = @ViewBag.categoryId;
@@ -21,102 +22,97 @@ s@using Model.EF
     }
 }
 
-<section>
-    <input id="shopid" type="hidden" value="@Model.Id "  />
-</section>
+    <section>
+        <input id="shopid" type="hidden" value="@Model.Id " />
+    </section>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-lg-4">
+                    <aside class="aa-sidebar-shop">
+                        <!-- single sidebar -->
+                        <div class="aa-sidebar-widget">
+                            <div class="aa-sidebar-account-shop">
+                                <a class="shop-image" href="#">
+                                    <img class="icon-shop" src="../assets/images/Shop/shop1.jpg " alt="avatar " />
+                                </a>
+                                <div class="shop-name">
+                                    <h2>@shop.Name</h2>
+                                    <span class="value">@shop.Address</span>
 
-<div class="content-wrapper">
-    <div class="container-fluid">
-        <div class="row mt-5">
-            <div class="col-lg-4">
-                <aside class="aa-sidebar-shop">
-                    <!-- single sidebar -->
-                    <div class="aa-sidebar-widget">
-                        <div class="aa-sidebar-account-shop">
-                            <a class="shop-image" href="#">
-                                <img class="icon-shop" src="../assets/images/Shop/shop1.jpg " alt="avatar " />
-                            </a>
-                            <div class="shop-name">
-                                <h2>@shop.Name</h2>
-                                <span class="value">@shop.Address</span>
-
+                                </div>
+                                <div class="clr"></div>
                             </div>
-                            <div class="clr"></div>
+
+
                         </div>
+                    </aside>
+                </div>
+                <div class="col-lg-3">
+                    <aside class="aa-sidebar-shop2">
+                        <!-- single sidebar -->
+                        <div class="aa-sidebar-widget">
+                            <div class="aa-sidebar-account-shop">
+                                <h3><a href="#"><i class="ti-bag">Product: </i></a><span class="value">@productList.Count<span></h3>
+                            </div>
+                            <div class="aa-sidebar-account-shop">
+                                <h3><i class="ti-star">Review:  <span class="value"></span></i></h3>
+                            </div>
 
-
-                    </div>
-                </aside>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-lg-3">
+                    <aside class="aa-sidebar-shop2">
+                        <!-- single sidebar -->
+                        <div class="aa-sidebar-widget">
+                            <div class="aa-sidebar-account-shop">
+                                <h3><i class="ti-comment-alt">Chat response rate:  <span class="value">10</span></i></h3>
+                            </div>
+                            <div class="aa-sidebar-account-shop">
+                                <h3><i class="ti-heart">Follow:  <span class="value">90%</span></i></h3>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <aside class="aa-sidebar-shop2">
-                    <!-- single sidebar -->
-                    <div class="aa-sidebar-widget">
-                        <div class="aa-sidebar-account-shop">
-                            <h3><a href="#"><i class="ti-bag">Sản phẩm: </i></a><span class="value">@productList.Count<span></h3>
-                        </div>
-                        <div class="aa-sidebar-account-shop">
-                            <h3><i class="ti-star">Đánh giá:  <span class="value"></span></i></h3>
-                        </div>
+            <div class="row mt-4">
+                <section id="aa-promo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="aa-promo-area">
+                                    <h1 class="aa-promo-area-shoptitle">
+                                        <i class="fas fa-clinic-medical"></i>Shop Information
+                                    </h1>
+                                    <br />
+                                    <div class="row">
 
-                    </div>
-                </aside>
-            </div>
-            <div class="col-lg-3">
-                <aside class="aa-sidebar-shop2">
-                    <!-- single sidebar -->
-                    <div class="aa-sidebar-widget">
-                        <div class="aa-sidebar-account-shop">
-                            <h3><i class="ti-comment-alt">Tỉ lệ phản hồi chat:  <span class="value">10</span></i></h3>
-                        </div>
-                        <div class="aa-sidebar-account-shop">
-                            <h3><i class="ti-heart">Người theo dõi:  <span class="value">10</span></i></h3>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <section id="aa-promo">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="aa-promo-area">
-                                <h1 class="aa-promo-area-shoptitle">
-                                    <i class="fas fa-clinic-medical"></i>Thông tin shop
-                                </h1>
-                                <div class="row">
+                                        <!-- promo left -->
+                                        <div class="col-md-5 no-padding">
+                                            <div class="aa-promo-left">
+                                                <a href="#">
+                                                    <div class="aa-promo-banner">
+                                                        <img src="@Html.Action("getimage", "image", new { id = @shop.Id  })" alt="Laptop Asus VivoBook X509MA" style="max-width: 100%; max-height: 100%;">
+                                                        <div class="aa-prom-content">
 
-                                    <!-- promo left -->
-                                    <div class="col-md-5 no-padding">
-                                        <div class="aa-promo-left">
-                                            <a href="#">
-                                                <div class="aa-promo-banner">
-                                                    <img src="@Html.Action("getimage", "image", new { id = @shop.Id  })" alt="Laptop Asus VivoBook X509MA" style="max-width: 100%; max-height: 100%;">
-                                                    <div class="aa-prom-content">
-
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- promo right -->
-                                    <div class="col-md-7 no-padding">
-                                        <div class="aa-promo-right">
+                                        <!-- promo right -->
+                                        <div class="col-md-7 no-padding">
+                                            <div class="aa-promo-right">
 
-                                            <div class="aa-single-promo-right">
-                                                <h4 class="shop-name-description">
-                                                    <a href="#"><i class="fab fa-shopify">@shop.Name</i></a>
-                                                </h4>
-                                            </div>
-                                            <div class="aa-single-promo-right">
-                                                <p>@shop.Description</p>
-                                            </div>
-                                            <div class="aa-single-promo-right">
-
-                                            </div>
-                                            <div class="aa-single-promo-right">
-
+                                                <div class="aa-single-promo-right">
+                                                    <h4 class="shop-name-description">
+                                                        <a href="#"><i class="fab fa-shopify">@shop.Name</i></a>
+                                                    </h4>
+                                                    <br />
+                                                    <br />
+                                                    <p>@shop.Description</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -124,69 +120,67 @@ s@using Model.EF
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
-        <div class="product-area section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-title">
-                            <h2>Danh sách sản phẩm</h2>
+                </section>
+            </div>
+            <div class="product-area section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title">
+                                <h2>PRODUCTS OF SHOP</h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product-info">
-                            <div class="nav-main">
-                                <!-- Tab Nav -->
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    @Html.Action("GetCategoryShop", "Category")
-                                </ul>
-                                <!--/ End Tab Nav -->
-                            </div>
-                            <div class="tab-content" id="myTabContent">
-                                <!-- Start Single Tab -->
-                                @Html.Action("SendCategoryIdShop", "Products", new { Id = categoryid, shopid = shopId })
-                                @*<div class="tab-pane fade show active" id="1" role="tabpanel">
-                                        <div class="tab-single">
-                                            <div class="row">
-                                                @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 1 })
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product-info">
+                                <div class="nav-main">
+                                    <!-- Tab Nav -->
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        @Html.Action("GetCategoryShop", "Category")
+                                    </ul>
+                                    <!--/ End Tab Nav -->
+                                </div>
+                                <div class="tab-content" id="myTabContent">
+                                    <!-- Start Single Tab -->
+                                    @Html.Action("SendCategoryIdShop", "Products", new { Id = categoryid, shopid = shopId })
+                                    @*<div class="tab-pane fade show active" id="1" role="tabpanel">
+                                            <div class="tab-single">
+                                                <div class="row">
+                                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 1 })
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade show active" id="3" role="tabpanel">
-                                        <div class="tab-single">
-                                            <div class="row">
-                                                @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 3 })
-                                            </div>
-                                        </div>sstop
-                                    </div>*@
+                                        <div class="tab-pane fade show active" id="3" role="tabpanel">
+                                            <div class="tab-single">
+                                                <div class="row">
+                                                    @Html.Action("SanPhamView", "Products", new { take = 8, categoryid = 3 })
+                                                </div>
+                                            </div>sstop
+                                        </div>*@
+                                </div>
+                                <!--/ End Single Tab -->
                             </div>
-                            <!--/ End Single Tab -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>
-        </div>
-<script>
-    function checkPass() {
-        if (document.getElementById('password').value == document
-            .getElementById('confirm_password').value) {
-            document.getElementById('message').style.color = 'green';
-            document.getElementById('message').innerHTML = 'matching';
-            document.getElementById('btnUpdate').disabled = false;
-        } else {
-            document.getElementById('message').style.color = 'red';
-            document.getElementById('message').innerHTML = 'not matching';
-            document.getElementById('btnUpdate').disabled = true;
+    <script>
+        function checkPass() {
+            if (document.getElementById('password').value == document
+                .getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'matching';
+                document.getElementById('btnUpdate').disabled = false;
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'not matching';
+                document.getElementById('btnUpdate').disabled = true;
+            }
         }
-    }
-</script>
+    </script>
 

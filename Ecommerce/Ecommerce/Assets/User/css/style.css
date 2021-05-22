@@ -2226,9 +2226,7 @@ a.aa-product-img img {
 }
 
 #aa-product-category {
-    <<<<<<< HEAD background: white;
-    =======background: white;
-    >>>>>>>dfe0a2c97bb44a4579bd962ec1d7b462ee0bc7ee display: inline;
+    background: white;
     float: left;
     width: 100%;
 }

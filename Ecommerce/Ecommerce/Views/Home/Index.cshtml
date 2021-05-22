@@ -398,6 +398,8 @@
                                         <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id  })" alt="#" width="100%" height="100%">
                                         <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
                                         <span class="out-of-stock ">Hot</span>
+                                       
+
                                     </a>
                                     <div class="button-head ">
                                         <div class="product-action ">
@@ -412,8 +414,11 @@
                                 <div class="product-content ">
                                     <h3><a href="/products/xemchitiet/@item.Id">@item.Name</a></h3>
                                     <div class="product-price ">
-                                        <span class="old ">@item.DelPrice</span>
-                                        <span>@item.Price</span>
+                                        @{
+                                            var delPrice = item.Price - item.Price * item.Discount / 100;
+                                        }
+                                        <span class="old">@item.Price</span>
+                                        <span>@delPrice</span>
                                     </div>
                                 </div>
                             </div>
@@ -461,8 +466,11 @@
                                     <div class="product-content ">
                                         <h3><a href="/products/xemchitiet/@item.Id">@item.Name</a></h3>
                                         <div class="product-price ">
-                                            <span class="old ">@item.DelPrice</span>
-                                            <span>@item.Price</span>
+                                            @{
+                                                var delPrice = item.Price - item.Price * item.Discount / 100;
+                                            }
+                                            <span class="old">@item.Price</span>
+                                            <span>@delPrice</span>
                                         </div>
                                     </div>
                                 </div>
@@ -479,64 +487,38 @@
         <div class="footer-top section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5 col-md-6 col-12">
+                    <div class="col-lg-8 col-md-6 col-12">
                         <!-- Single Widget -->
                         <div class="single-footer about">
                             <div class="logo">
-                                <a href="index.html"><img src="~/Assets/User/images/logo-login-small.png" alt="#"></a>
+                                @*<a href="index.html"><img src="images/logo2.png" alt="#"></a>*@
+                                <a href="/"><img src="~/Assets/User/images/logo-login-small.png" alt="#"></a>
                             </div>
-                            <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-                            <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+                            <p class="text"><i class="fas fa-tags"></i> Đây là trang thương mại điện tử chuyên về <a href="/" style="color: #f7941d" title="Trang chủ">THIẾT BỊ ĐIỆN TỬ</a> uy tín chất lượng hàng đầu Việt Nam.</p>
+                            <p class="text"> <i class="fas fa-tags"></i> Chúng tôi cam kết cung cấp các sản phẩm chính hãng và chất lượng nhất.</p>
+                            <p class="call">Liên hệ 24/7 <span><a href="tel:123456789">+0123 456 789</a></span></p>
                         </div>
                         <!-- End Single Widget -->
                     </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer links">
-                            <h4>Information</h4>
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Faq</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Help</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-2 col-md-6 col-12">
-                        <!-- Single Widget -->
-                        <div class="single-footer links">
-                            <h4>Customer Service</h4>
-                            <ul>
-                                <li><a href="#">Payment Methods</a></li>
-                                <li><a href="#">Money-back</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
+
+                    <div class="col-lg-4 col-md-6 col-12">
                         <!-- Single Widget -->
                         <div class="single-footer social">
-                            <h4>Get In Tuch</h4>
+                            <h4>LIÊN HỆ VỚI CHÚNG TÔI</h4>
                             <!-- Single Widget -->
                             <div class="contact">
                                 <ul>
-                                    <li>NO. 342 - London Oxford Street.</li>
-                                    <li>012 United Kingdom.</li>
+                                    <li>54 Nguyễn Lương Bằng, Hoà Khánh Bắc, Liên Chiểu, Đà Nẵng.</li>
                                     <li>info@eshop.com</li>
                                     <li>+032 3456 7890</li>
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
                             <ul>
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-flickr"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/"><i class="ti-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/?lang=vi"><i class="ti-twitter"></i></a></li>
+                                <li><a href="https://www.flickr.com/"><i class="ti-flickr"></i></a></li>
+                                <li><a href="https://www.instagram.com/"><i class="ti-instagram"></i></a></li>
                             </ul>
                         </div>
                         <!-- End Single Widget -->
@@ -551,11 +533,12 @@
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="left">
-                                <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> - All Rights Reserved.</p>
+                                <p>Copyright © 2021 <a href="http://www.wpthemesgrid.com" target="_blank">EcommerceShop</a> - All Rights Reserved.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
                             <div class="right">
+                                @*<img src="~/Assets/User/User/images/payments.png" alt="#">*@
                                 <img src="~/Assets/User/images/payments.png" alt="#">
                             </div>
                         </div>
