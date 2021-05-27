@@ -55,6 +55,7 @@ namespace Model.DAO
                 var id = user.GetIdShopByIdUser(session.Id);
                 entity.IdShop = id;
                 entity.CreatedDate = DateTime.Now;
+                entity.PriceAfterChange = entity.Price;
                 db.Products.Add(entity);
                 db.SaveChanges();
                 return entity.Id;
@@ -79,8 +80,8 @@ namespace Model.DAO
                 product.Brand = entity.Brand;
                 product.Material = entity.Material;
                 product.Origin = entity.Origin;
-                product.Price = entity.Price;
-                product.DelPrice = entity.DelPrice;
+                //product.Price = entity.Price;
+                //product.DelPrice = entity.DelPrice;
                 product.WarrantyDate = entity.WarrantyDate;
                 product.Stock = entity.Stock;
                 product.Discount = entity.Discount;
@@ -88,6 +89,34 @@ namespace Model.DAO
                 product.ModifiedBy = session.UserName;
                 product.IdCategory = entity.IdCategory;
                 product.ModifiedDate = DateTime.Now;
+
+                if (product.IdProgramme != entity.IdProgramme)
+                {
+                    if (entity.IdProgramme == 1)
+                    {
+                        product.IdProgramme = entity.IdProgramme;
+                        product.DateAddFlaseSale = DateTime.Now;
+                    }
+                    else if (entity.IdProgramme == 2)
+                    {
+                        product.IdProgramme = entity.IdProgramme;
+                        product.DateAddAdvertisement = DateTime.Now;
+                    }
+                }
+                //else
+                //{
+                //    product.IdProgramme = entity.IdProgramme;
+                //}
+                if (product.Price != entity.Price)
+                {
+                    product.PriceAfterChange = product.Price;
+                    product.Price = entity.Price;
+                    product.ModifiedPriceDate = DateTime.Now;
+                }
+                //else
+                //{
+                //    product.Price = entity.Price;
+                //}
                 db.SaveChanges();
                 return true;
             }

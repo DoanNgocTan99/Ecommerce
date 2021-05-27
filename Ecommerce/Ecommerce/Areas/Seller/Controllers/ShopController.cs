@@ -12,8 +12,6 @@ namespace Ecommerce.Areas.Seller.Controllers
 {
     public class ShopController : BaseController
     {
-        // GET: Seller/Shop
-
         [HttpGet]
         [HasCredential(RoleID = "USER")]
         public ActionResult Edit(int id)

@@ -66,14 +66,11 @@ namespace Ecommerce.Areas.Seller.Controllers
                 {
                     SetAlert("Thêm mới sản phẩm thành công!!", "success");
                     return RedirectToAction("Index", "Product");
-
                 }
                 else
                 {
-
                     ModelState.AddModelError("", "Thêm sản phẩm không thành công");
                 }
-
             }
             SetViewBag();
             return View("Index");
@@ -93,17 +90,16 @@ namespace Ecommerce.Areas.Seller.Controllers
         {
             if (ModelState.IsValid)
             {
-               
                 if (product.ImageFile != null)
                 {
                     var dao = new ProductDAO();
                     var ImageDao = new ImageDAO();
-                    var check = dao.CheckProduct(product.Name);
-                    if (check)
-                    {
-                        SetAlert("Tên sản phẩm đã tồn tại", "erro");
-                        return RedirectToAction("Index", "Product");
-                    }
+                    //var check = dao.CheckProduct(product.Name);
+                    //if (check)
+                    //{
+                    //    SetAlert("Tên sản phẩm đã tồn tại", "erro");
+                    //    return RedirectToAction("Index", "Product");
+                    //}
                     string fileName = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
                     string extension = Path.GetExtension(product.ImageFile.FileName);
                     fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -135,13 +131,13 @@ namespace Ecommerce.Areas.Seller.Controllers
                 else
                 {
                     var dao = new ProductDAO();
-                    var ImageDao = new ImageDAO();
-                    var check = dao.CheckProduct(product.Name);
-                    if (check)
-                    {
-                        SetAlert("Tên sản phẩm đã tồn tại", "erro");
-                        return RedirectToAction("Index", "Product");
-                    }
+                    //var ImageDao = new ImageDAO();
+                    //var check = dao.CheckProduct(product.Name);
+                    //if (check)
+                    //{
+                    //    SetAlert("Tên sản phẩm đã tồn tại", "erro");
+                    //    return RedirectToAction("Index", "Product");
+                    //}
                     var result = dao.Update(product);
                     if (result)
                     {
