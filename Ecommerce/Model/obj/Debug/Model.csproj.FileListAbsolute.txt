@@ -87,3 +87,6 @@ F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.AddColA
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.UpdateTableProduct.resources
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.UpdateTableProduct2.resources
 F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.EditTablePrograme.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.AddColPriceInOrder.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.Update.resources
+F:\Workspace\ASP.NET\DoAnCNPM\Ecommerce\Model\obj\Debug\Model.Migrations.UpdateDb.resources

@@ -38,6 +38,7 @@ namespace Ecommerce.Controllers
 
             return PartialView("GetCategoryShop", categoryList);
         }
+        
 
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model.DAO;
 
 namespace Ecommerce.Controllers
 {
@@ -106,7 +107,7 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("cart", "cart");
             }
         }
-        public decimal Total()
+        public string Total()
         {
             decimal _Total = 0;
             List<CartItem> lstCart = Session["Cart"] as List<CartItem>;
@@ -114,7 +115,22 @@ namespace Ecommerce.Controllers
             {
                 _Total = lstCart.Sum(n => n._Total);
             }
-            return _Total;
+            var t = String.Format("{0:0,0 VNĐ}", _Total);
+            //return _Total;
+            return t;
+        }
+        public string Total_Ship()
+        {
+            decimal _Total = 0;
+            List<CartItem> lstCart = Session["Cart"] as List<CartItem>;
+            if (lstCart != null)
+            {
+                _Total = lstCart.Sum(n => n._Total);
+            }
+            var temp = _Total + 30000;
+            var t = String.Format("{0:0,0 VNĐ}", temp);
+            //return _Total;
+            return t;
         }
         public ActionResult UpdateAmount(int id, int type)
         {
@@ -140,9 +156,19 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("cart", "cart");
             }
         }
+        //[HttpGet]
+        //public ActionResult Transaction(string status = "")
+        //{
+        //    List<CartItem> lstCart = GetCart();
+        //    ViewBag.total = Total();
+        //    return View(lstCart);
+        //}
         [HttpPost]
-        public ActionResult Transaction()
+        public ActionResult Transaction(string Mess, string Address)
         {
+            var OrderDao = new OrderDAO();
+            var user = OrderDao.GetUserBySession();
+
             if ((Session["IdUser"] == null) || (Session["IdUser"].ToString() == ""))
             {
                 return RedirectToAction("login", "login", new { alert = "Bạn cần đăng nhập khi đặt hàng !" });
@@ -151,29 +177,46 @@ namespace Ecommerce.Controllers
             {
                 RedirectToAction("cart", "cart");
             }
+
             Transaction trans = new Transaction();
             List<CartItem> cart = GetCart();
-            //User user = (User)Session["IdUser"];
-            trans.IdUser = (int)Session["IdUser"];
-            trans.Amount = Total();
-//<<<<<<< HEAD
-//=======
-//            trans.Amount = Convert.ToInt32(Total());
-
-//>>>>>>> 4c3faef7ec5451cb04612f6d7d6422e2cd54cec0
+            if (Address == null)
+            {
+                trans.Address = user.Address;
+            }
+            else
+            {
+                trans.Address = Address;
+            }
             trans.CheckoutStatus = "Chua thanh toan";
-            trans.CreatedBy = (string)Session["Name"];
+            trans.CreatedBy = user.Name;
+            trans.ModifiedBy = user.Name;
+            trans.IdDeliveryStatus = 7;
+            trans.ModifiedDate = DateTime.Now;
             trans.CreatedDate = DateTime.Now;
+
+            //trans.CreatedDate = Convert.ToDateTime(DateTime.Now) ;
+            trans.IdUser = Convert.ToInt32(Session["IdUser"]);
+            trans.Amount = cart.Count();
             db.Transactions.Add(trans);
+
             db.SaveChanges();
+
             foreach (var item in cart)
             {
                 Order order = new Order();
                 order.IdTransaction = trans.Id;
                 order.IdProduct = item._IdProduct;
                 order.IdShop = item._IdShop;
-                order.CreatedDate = DateTime.Now;
+                trans.IdShop = item._IdShop;
+                order.IdPayment = 1;
+                order.Message = Mess;
+                order.Amount = item._Amount;
+                order.CreatedBy = user.Name;
+                order.ModifiedBy = user.Name;
                 order.ModifiedDate = DateTime.Now;
+                order.CreatedDate = DateTime.Now;
+                order.Price = Convert.ToInt32(item._Price);
                 db.Orders.Add(order);
             }
             db.SaveChanges();

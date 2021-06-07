@@ -10,6 +10,8 @@ namespace Ecommerce.Models
     {
         EcommerceContext db = new EcommerceContext();
         public int _IdProduct { get; set; }
+        public string _Address { get; set; }
+        public string _Mes { get; set; }
         public string _ProductName { get; set; }
         public string _Image { get; set; }
         public decimal? _Price { get; set; }
@@ -23,7 +25,7 @@ namespace Ecommerce.Models
         public decimal _Total
         {
             //get { return _Amount * _DelPrice.GetValueOrDefault(0); }
-            get { return _Amount * (decimal)(_Price - _Price * _Discount); }
+            get { return _Amount * (decimal)(_Price - _Price * _Discount / 100); }
         }
         public CartItem(int __idproduct)
         {
@@ -38,16 +40,11 @@ namespace Ecommerce.Models
             _IdProduct = __idproduct;
             Product sp = db.Products.Single(n => n.Id == __idproduct);
             _ModifiedPriceDate = sp.ModifiedPriceDate;
-            _CreateDate = temp.CreatedDate;
-            var check = DateTime.Compare((DateTime)_ModifiedPriceDate,(DateTime)_CreateDate);
-            if(check < 0)
-            {
-                _Price = sp.Price;
-            }
-            else if( check > 0)
-            {
-                _Price = sp.PriceAfterChange;
-            }
+            //_CreateDate = temp.CreatedDate;
+            _CreateDate = DateTime.Now;
+
+            _Price = sp.Price;
+
             _ProductName = sp.Name;
             Image img = new Image();
             img = db.Images.Where(x => x.IdProduct == __idproduct).FirstOrDefault();

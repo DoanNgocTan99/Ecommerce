@@ -35,6 +35,7 @@ namespace Model.EF
 
         [StringLength(250)]
         public string CreatedBy { get; set; }
+        public decimal Price { get; set; }
 
         //[Required]
         [StringLength(250)]
