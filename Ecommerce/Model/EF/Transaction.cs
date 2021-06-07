@@ -30,9 +30,9 @@ namespace Model.EF
         [StringLength(250)]
         public string ModifiedBy { get; set; }
 
-        public DateTime ModifiedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public long? IdUser { get; set; }
         [ForeignKey("IdUser")]
@@ -40,7 +40,7 @@ namespace Model.EF
         public long? IdShop { get; set; }
         [ForeignKey("IdShop")]
         public virtual Shop Shop { get; set; }
-        public long IdDeliveryStatus { get; set; }
+        public long? IdDeliveryStatus { get; set; }
         [ForeignKey("IdDeliveryStatus")]
         public virtual DeliveryStatus DeliveryStatus { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

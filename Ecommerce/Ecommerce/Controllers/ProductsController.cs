@@ -206,6 +206,7 @@ namespace Ecommerce.Controllers
             List<Category> cats = db.Categories.ToList();
             return PartialView("SendCategoryId", cats);
         }
+       
         public PartialViewResult SendCategoryIdDel(int Id)
         {
             ViewBag.categoryId = Id;

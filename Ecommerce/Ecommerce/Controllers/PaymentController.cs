@@ -1,4 +1,5 @@
-﻿using Model.EF;
+﻿using Ecommerce.Models;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,16 +17,41 @@ namespace Ecommerce.Controllers
         public ActionResult Index(int? id)
         {
 
-            if (id == null)
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //User user = db.Users.Find(id);
+            //if (user == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(user);
+            List<CartItem> lstCart = GetCart();
+            ViewBag.total = Total();
+            return View(lstCart);
+        }
+        public string Total()
+        {
+            decimal _Total = 0;
+            List<CartItem> lstCart = Session["Cart"] as List<CartItem>;
+            if (lstCart != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                _Total = lstCart.Sum(n => n._Total);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            var t = String.Format("{0:0,0 VNĐ}", _Total);
+            //return _Total;
+            return t;
+        }
+        public List<CartItem> GetCart()
+        {
+            List<CartItem> lstCart = Session["Cart"] as List<CartItem>;
+            if (lstCart == null)
             {
-                return HttpNotFound();
+                lstCart = new List<CartItem>();
+                Session["Cart"] = lstCart;
             }
-            return View(user);
+            return lstCart;
         }
         //public ActionResult Index(int? id)
         //{

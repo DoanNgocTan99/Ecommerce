@@ -7,7 +7,7 @@
     Ecommerce.Areas.Seller.Models.MyOrder myOrder = Model.FirstOrDefault();
     foreach (var item in Model)
     {
-        SumPrice += item.Price * item.Amount;
+        SumPrice += (item.Price - ((item.Price * Convert.ToInt32(item.Discount))/100)) * item.AmountProduct;
     }
 }
 
@@ -46,6 +46,7 @@
                                 <th>STT</th>
                                 <th>Tên Sản Phẩm</th>
                                 <th>Số lượng</th>
+                                <th>Giảm giá</th>
                                 <th>Giá</th>
                             </tr>
                         <tbody>
@@ -54,8 +55,9 @@
                                 <tr id="row_@item.Id">
                                     <td>@(i++)</td>
                                     <td>@item.NameProduct</td>
-                                    <td>@item.Amount</td>
-                                    <td>@item.Price</td>
+                                    <td>@item.AmountProduct</td>
+                                    <td>@item.Discount %</td>
+                                    <td>@item.Price (VNĐ)</td>
                                 </tr>
                             }
                         </tbody>
@@ -114,7 +116,8 @@
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label for="message ">Ghi chú<span>*</span></label> <br />
-                                                <textarea name="message" id="message" readonly value="@myOrder.Message"></textarea>
+                                                @*<textarea type="text " name="message" id="message" readonly value="@myOrder.Message"></textarea>*@
+                                                <input name="message" id="message" readonly value="@myOrder.Message" />
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">

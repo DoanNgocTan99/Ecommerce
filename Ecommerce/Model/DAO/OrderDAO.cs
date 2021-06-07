@@ -58,7 +58,7 @@ namespace Model.DAO
             {
                 return model.Where(x => x.NameUser.Contains(searchString)).ToPagedList(page, pageSize);
             }
-            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+            return model.ToPagedList(page, pageSize);
         }
         public List<Order> ViewDetail(long Id)
         {
@@ -91,15 +91,17 @@ namespace Model.DAO
                              Id = a.Id,
                              NameProduct = d.Name,
                              NameUser = e.Name,
-                             Amount =a.Amount,
+                             Amount =b.Amount,
                              Message = a.Message,
                              CheckoutStatus = b.CheckoutStatus,
                              Address = b.Address,
                              DeliveryStatus = c.Status,
                              NamePayment = f.Name,
-                             Price = d.Price,
+                             Price = a.Price,
                              Email = e.Email,
-                             PhoneNumber = e.Phone
+                             PhoneNumber = e.Phone,
+                             AmountProduct = a.Amount,
+                             Discount = d.Discount
                          }).AsEnumerable().Select(x => new MyOrder()
                          {
                              Id = x.Id,
@@ -113,15 +115,32 @@ namespace Model.DAO
                              NamePayment = x.NamePayment,
                              Price = x.Price,
                              Email = x.Email,
-                             PhoneNumber  = x.PhoneNumber
-
+                             PhoneNumber  = x.PhoneNumber,
+                             AmountProduct = x.AmountProduct,
+                             Discount = x.Discount
                          });
             if (!string.IsNullOrEmpty(searchString))
             {
                 return model.Where(x => x.NameProduct.Contains(searchString)).ToPagedList(page, pageSize);
             }
-            return model.OrderByDescending(x => x.Amount).ToPagedList(page, pageSize);
+            return model.ToPagedList(page, pageSize);
             //return model.ToList();
+        }
+        public Shop GetShopByIdPoduct(long idproduct)
+        {
+            var temp = db.Products.Where(x => x.Id == idproduct).Select(x => x.IdShop).FirstOrDefault();
+            var result = db.Shops.Find(temp);
+            return result;
+        }
+        public User GetUserBySession()
+        {
+            var session = (Ecommerce.Common.UserLogin)HttpContext.Current.Session[Ecommerce.Common.CommonConstants.USER_SESSION];
+            return db.Users.Find(session.Id);
+        }
+        public Transaction GetTransaction (long id)
+        {
+            var temp = db.Orders.Where(x => x.Id == id).Select(x => x.IdTransaction).FirstOrDefault();
+            return db.Transactions.Find(id);
         }
     }
 }

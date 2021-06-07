@@ -11,6 +11,8 @@ namespace Ecommerce.Areas.Seller.Models
         public string NameProduct { get; set; }
         public string NameUser { get; set; }
         public decimal Amount { get; set; }
+        public int AmountProduct { get; set; }
+        public int? Discount { get; set; }
         public string Message { get; set; }
         public string CheckoutStatus { get; set; }
         public string Address { get; set; }

@@ -229,6 +229,18 @@
     <Compile Include="Migrations\202105211559388_EditTablePrograme.Designer.cs">
       <DependentUpon>202105211559388_EditTablePrograme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106050915251_AddColPriceInOrder.cs" />
+    <Compile Include="Migrations\202106050915251_AddColPriceInOrder.Designer.cs">
+      <DependentUpon>202106050915251_AddColPriceInOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106060307283_Update.cs" />
+    <Compile Include="Migrations\202106060307283_Update.Designer.cs">
+      <DependentUpon>202106060307283_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106060314394_UpdateDb.cs" />
+    <Compile Include="Migrations\202106060314394_UpdateDb.Designer.cs">
+      <DependentUpon>202106060314394_UpdateDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -287,6 +299,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105211559388_EditTablePrograme.resx">
       <DependentUpon>202105211559388_EditTablePrograme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106050915251_AddColPriceInOrder.resx">
+      <DependentUpon>202106050915251_AddColPriceInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106060307283_Update.resx">
+      <DependentUpon>202106060307283_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106060314394_UpdateDb.resx">
+      <DependentUpon>202106060314394_UpdateDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
