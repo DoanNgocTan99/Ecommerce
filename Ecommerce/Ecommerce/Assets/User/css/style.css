@@ -1590,6 +1590,7 @@ a.aa-product-img img {
 
 .simpleLens-big-image-container .simpleLens-big-image-dropdown {
     position: absolute;
+    height:100%;
     /* height: 130%; */
     width: 120%;
     top: 0;

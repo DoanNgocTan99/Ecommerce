@@ -2252,7 +2252,7 @@ h2.checkout-form-title {
 }
 
 .single-product .product-img a img {
-    height: 70%;
+    height: 200px;
     width: 100%;
     object-fit: cover;
 }
