@@ -72,7 +72,14 @@ namespace Model.DAO
                 Shop.Address = user.Address;
                 Shop.Description = "Mua bán các loại thiết bị điện tử";
                 Shop.CreatedDate = DateTime.Now;
-                Shop.CreatedBy = session.UserName;
+                if (session == null)
+                {
+                    Shop.CreatedBy = user.Name;
+                }
+                else
+                {
+                    Shop.CreatedBy = session.UserName;
+                }
                 Shop.Phone = user.Phone;
                 var id = db.Shops.Add(Shop).Id;
                 db.SaveChanges();
@@ -161,12 +168,13 @@ namespace Model.DAO
             try
             {
                 var check = db.Shops.Where(x => x.Name == Name).FirstOrDefault();
-                if(check != null)
+                if (check != null)
                 {
                     return true;
                 }
                 return false;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
             }

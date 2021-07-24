@@ -15,7 +15,12 @@
                     <a href="/products/xemchitiet/@item.Id">
                         <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
                         <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
-                        <span class="price-dec ">-@item.Discount% </span>
+                        @{
+                            if (item.Discount != 0)
+                            {
+                                <span class="price-dec ">-@item.Discount% </span>
+                            }
+                        }
                     </a>
                     <div class="button-head">
                         <div class="product-action">
@@ -33,9 +38,17 @@
                     <div class="product-price">
                         @{
                             var delPrice = item.Price - item.Price * item.Discount / 100;
+                            if (delPrice != item.Price)
+                            {
+                                <span class="old">@item.Price</span>
+                                <span>@delPrice</span>
+                            }
+                            else
+                            {
+                                <span>@item.Price</span>
+
+                            }
                         }
-                        <span class="old">@item.Price</span>
-                        <span>@delPrice</span>
 
                     </div>
                 </div>
