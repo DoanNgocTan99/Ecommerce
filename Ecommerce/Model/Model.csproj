@@ -169,77 +169,9 @@
     <Compile Include="EF\Shop.cs" />
     <Compile Include="EF\Transaction.cs" />
     <Compile Include="EF\User.cs" />
-    <Compile Include="Migrations\202105111410068_CreateDatabase.cs" />
-    <Compile Include="Migrations\202105111410068_CreateDatabase.Designer.cs">
-      <DependentUpon>202105111410068_CreateDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105111601498_EditTableProgramme.cs" />
-    <Compile Include="Migrations\202105111601498_EditTableProgramme.Designer.cs">
-      <DependentUpon>202105111601498_EditTableProgramme.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105111605066_EditTableProgrammes.cs" />
-    <Compile Include="Migrations\202105111605066_EditTableProgrammes.Designer.cs">
-      <DependentUpon>202105111605066_EditTableProgrammes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105111737395_EditTableProduct.cs" />
-    <Compile Include="Migrations\202105111737395_EditTableProduct.Designer.cs">
-      <DependentUpon>202105111737395_EditTableProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105130047577_UpdateTableUser.cs" />
-    <Compile Include="Migrations\202105130047577_UpdateTableUser.Designer.cs">
-      <DependentUpon>202105130047577_UpdateTableUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105130846579_ChangerPrice.cs" />
-    <Compile Include="Migrations\202105130846579_ChangerPrice.Designer.cs">
-      <DependentUpon>202105130846579_ChangerPrice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105131618007_EditTableTrans.cs" />
-    <Compile Include="Migrations\202105131618007_EditTableTrans.Designer.cs">
-      <DependentUpon>202105131618007_EditTableTrans.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105131625520_EditTableTransac.cs" />
-    <Compile Include="Migrations\202105131625520_EditTableTransac.Designer.cs">
-      <DependentUpon>202105131625520_EditTableTransac.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105141947553_AddColTableProduct.cs" />
-    <Compile Include="Migrations\202105141947553_AddColTableProduct.Designer.cs">
-      <DependentUpon>202105141947553_AddColTableProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105141951547_EditColTableProduct.cs" />
-    <Compile Include="Migrations\202105141951547_EditColTableProduct.Designer.cs">
-      <DependentUpon>202105141951547_EditColTableProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105191133585_EditTableTransactions.cs" />
-    <Compile Include="Migrations\202105191133585_EditTableTransactions.Designer.cs">
-      <DependentUpon>202105191133585_EditTableTransactions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105191759029_AddColAmoutnInTableOrder.cs" />
-    <Compile Include="Migrations\202105191759029_AddColAmoutnInTableOrder.Designer.cs">
-      <DependentUpon>202105191759029_AddColAmoutnInTableOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105211413328_UpdateTableProduct.cs" />
-    <Compile Include="Migrations\202105211413328_UpdateTableProduct.Designer.cs">
-      <DependentUpon>202105211413328_UpdateTableProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105211523536_UpdateTableProduct2.cs" />
-    <Compile Include="Migrations\202105211523536_UpdateTableProduct2.Designer.cs">
-      <DependentUpon>202105211523536_UpdateTableProduct2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105211559388_EditTablePrograme.cs" />
-    <Compile Include="Migrations\202105211559388_EditTablePrograme.Designer.cs">
-      <DependentUpon>202105211559388_EditTablePrograme.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106050915251_AddColPriceInOrder.cs" />
-    <Compile Include="Migrations\202106050915251_AddColPriceInOrder.Designer.cs">
-      <DependentUpon>202106050915251_AddColPriceInOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106060307283_Update.cs" />
-    <Compile Include="Migrations\202106060307283_Update.Designer.cs">
-      <DependentUpon>202106060307283_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106060314394_UpdateDb.cs" />
-    <Compile Include="Migrations\202106060314394_UpdateDb.Designer.cs">
-      <DependentUpon>202106060314394_UpdateDb.cs</DependentUpon>
+    <Compile Include="Migrations\202107241649346_createdb.cs" />
+    <Compile Include="Migrations\202107241649346_createdb.Designer.cs">
+      <DependentUpon>202107241649346_createdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -255,59 +187,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202105111410068_CreateDatabase.resx">
-      <DependentUpon>202105111410068_CreateDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105111601498_EditTableProgramme.resx">
-      <DependentUpon>202105111601498_EditTableProgramme.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105111605066_EditTableProgrammes.resx">
-      <DependentUpon>202105111605066_EditTableProgrammes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105111737395_EditTableProduct.resx">
-      <DependentUpon>202105111737395_EditTableProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105130047577_UpdateTableUser.resx">
-      <DependentUpon>202105130047577_UpdateTableUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105130846579_ChangerPrice.resx">
-      <DependentUpon>202105130846579_ChangerPrice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105131618007_EditTableTrans.resx">
-      <DependentUpon>202105131618007_EditTableTrans.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105131625520_EditTableTransac.resx">
-      <DependentUpon>202105131625520_EditTableTransac.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105141947553_AddColTableProduct.resx">
-      <DependentUpon>202105141947553_AddColTableProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105141951547_EditColTableProduct.resx">
-      <DependentUpon>202105141951547_EditColTableProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105191133585_EditTableTransactions.resx">
-      <DependentUpon>202105191133585_EditTableTransactions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105191759029_AddColAmoutnInTableOrder.resx">
-      <DependentUpon>202105191759029_AddColAmoutnInTableOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105211413328_UpdateTableProduct.resx">
-      <DependentUpon>202105211413328_UpdateTableProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105211523536_UpdateTableProduct2.resx">
-      <DependentUpon>202105211523536_UpdateTableProduct2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105211559388_EditTablePrograme.resx">
-      <DependentUpon>202105211559388_EditTablePrograme.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106050915251_AddColPriceInOrder.resx">
-      <DependentUpon>202106050915251_AddColPriceInOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106060307283_Update.resx">
-      <DependentUpon>202106060307283_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106060314394_UpdateDb.resx">
-      <DependentUpon>202106060314394_UpdateDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107241649346_createdb.resx">
+      <DependentUpon>202107241649346_createdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
