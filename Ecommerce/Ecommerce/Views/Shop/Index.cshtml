@@ -34,7 +34,7 @@
                         <div class="aa-sidebar-widget">
                             <div class="aa-sidebar-account-shop">
                                 <a class="shop-image" href="#">
-                                    <img class="icon-shop" src="../assets/images/Shop/shop1.jpg " alt="avatar " />
+                                    <img class="icon-shop" src="@Html.Action("getImgShop","image", new { id = shop.Id}) " alt="avatar " />
                                 </a>
                                 <div class="shop-name">
                                     <h2>@shop.Name</h2>
@@ -93,7 +93,7 @@
                                             <div class="aa-promo-left">
                                                 <a href="#">
                                                     <div class="aa-promo-banner">
-                                                        <img src="@Html.Action("getimage", "image", new { id = @shop.Id  })" alt="Laptop Asus VivoBook X509MA" style="max-width: 100%; max-height: 100%;">
+                                                        <img src="@Html.Action("getImageOnShop", "image", new { id = @shop.Id  })" alt="" style="max-width: 100%; max-height: 100%;">
                                                         <div class="aa-prom-content">
 
                                                         </div>
