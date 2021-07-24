@@ -7,7 +7,7 @@
     Ecommerce.Areas.Seller.Models.MyOrder myOrder = Model.FirstOrDefault();
     foreach (var item in Model)
     {
-        SumPrice += (item.Price - ((item.Price * Convert.ToInt32(item.Discount))/100)) * item.AmountProduct;
+        SumPrice += (item.Price - ((item.Price * Convert.ToInt32(item.Discount)) / 100)) * item.AmountProduct;
     }
 }
 
@@ -69,48 +69,48 @@
                 <div class="container rounded bg-white mt-1 mb-1">
                     <div class="row ">
                         <div class="col-lg-12 col-12 ">
-                            <div class="checkout-form ">
+                            <form class="form " method="post" action="# ">
+                                <div class="checkout-form ">
 
-                                <!-- Form -->
-                                <form class="form " method="post " action="# ">
+                                    <!-- Form -->
                                     <div class="row ">
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label for="idOrder ">Mã đơn hàng<span>*</span></label>
                                                 <br />
-                                                <input type="text " name="idOrder " id="idOrder " placeholder=" " required="required " readonly="readonly " value="@myOrder.Id">
+                                                <input type="text" name="idOrder " id="idOrder " placeholder=" " required="required" readonly="readonly" value="@myOrder.Id">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label for="name ">Tên khách hàng<span>*</span></label>
                                                 <br />
-                                                <input type="text " name="name " id="name " placeholder=" " required="required " readonly="readonly " value="@myOrder.NameUser">
+                                                <input type="text" name="name " id="name " placeholder=" " required="required" readonly="readonly" value="@myOrder.NameUser">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label for="email ">Email<span>*</span></label>
                                                 <br />
-                                                <input type="email " name="email " id="email" placeholder=" " required="required " readonly value="@myOrder.Email">
+                                                <input type="email" name="email " id="email" placeholder=" " required="required" readonly value="@myOrder.Email">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label class="phone ">Số điện thoại<span>*</span></label> <br />
-                                                <input type="phone " name="phone " id="phone " placeholder=" " required="required " readonly value="@myOrder.PhoneNumber">
+                                                <input type="number" name="phone" id="phone" placeholder=" " required="required" readonly value="@myOrder.PhoneNumber">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label for="address ">Địa chỉ<span>*</span></label> <br />
-                                                <textarea type="text " name="address " id="address " placeholder=" " readonly required="required ">@myOrder.Address</textarea>
+                                                <textarea type="text" name="address" id="address" placeholder=" " readonly required="required">@myOrder.Address</textarea>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label class="amount ">Tổng tiền<span>*</span></label> <br />
-                                                <input type="text " name="amount " id="amount " placeholder=" " required="required " readonly value="@SumPrice VNĐ">
+                                                <input type="text" name="amount" id="amount" placeholder=" " required="required" readonly value="@SumPrice VNĐ">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">
@@ -123,13 +123,13 @@
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label for="message ">Kiểu thanh toán<span>*</span></label> <br />
-                                                <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="@myOrder.NamePayment">
+                                                <input type="text" name="payment " id="payment" placeholder=" " required="required" readonly value="@myOrder.NamePayment">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-12 ">
                                             <div class="form-group ">
                                                 <label class="checkoutStatus">Thanh toán<span>*</span></label><br />
-                                                <input type="text " name="checkoutStatus " id="checkoutStatus" placeholder=" " required="required " readonly value="@myOrder.CheckoutStatus">
+                                                <input type="text" name="checkoutStatus " id="checkoutStatus" placeholder=" " required="required" readonly value="@myOrder.CheckoutStatus">
 
                                             </div>
                                         </div>
@@ -153,15 +153,15 @@
                                                 }
                                                 else if (myOrder.DeliveryStatus == "Đã giao")
                                                 {
-                                                    <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="Đã giao" />
+                                                    <input type="text" name="payment " id="payment" placeholder=" " required="required" readonly value="Đã giao" />
                                                 }
                                                 else if (myOrder.DeliveryStatus == "Đã huỷ")
                                                 {
-                                                    <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="Đã huỷ" />
+                                                    <input type="text" name="payment " id="payment" placeholder=" " required="required" readonly value="Đã huỷ" />
                                                 }
                                                 else if (myOrder.DeliveryStatus == "Đã trả hàng/Hoàn tiền")
                                                 {
-                                                    <input type="text " name="payment " id="payment" placeholder=" " required="required " readonly value="Đã trả hàng/ Hoàn tiền" />
+                                                    <input type="text" name="payment " id="payment" placeholder=" " required="required" readonly value="Đã trả hàng/ Hoàn tiền" />
                                                 }
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@
                                             </div>
                                         </div>
                                     </div>
-                            </div>
+                                </div>
                             </form>
                         </div>
                     </div>
