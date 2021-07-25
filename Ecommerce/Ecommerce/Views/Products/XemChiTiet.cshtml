@@ -100,7 +100,7 @@
 
                                         <p class="aa-prod-category">
                                             <c:forEach items="${name_cate_of_product}" var="name_cate">
-                                                <strong>Danh mục:</strong> <a href="product.jsp">@Model.Category.Name</a>
+                                                <strong>Danh mục:</strong> <a href="/Products/ProductList">@Model.Category.Name</a>
                                             </c:forEach>
                                         </p>
                                     </div>
@@ -197,10 +197,9 @@
                                                     <div class="button-head ">
                                                         <div class="product-action ">
                                                             <a href="/shop/index/@item.IdShop"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                                         </div>
                                                         <div class="product-action-2 ">
-                                                            <a title="Add to cart " href="# ">Add to cart</a>
+                                                            <a title="Add to cart " href="/Cart/AddCart/@item.Id">Add to cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
