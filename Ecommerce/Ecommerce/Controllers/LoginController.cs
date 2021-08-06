@@ -138,63 +138,63 @@ namespace Ecommerce.Controllers
 
             return RedirectToAction("index", "home");
         }
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Register(User user)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    var dao = new UserDAO();
-                    var entity = dao.SearchByUser(user);
-                    if (entity)
-                    {
-                        ModelState.AddModelError("", "Người dùng đã tồn tại");
-                        return View("Index");
+        //[HttpPost]
+        //[ValidateInput(false)]
+        //public ActionResult Register(User user)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            var dao = new UserDAO();
+        //            var entity = dao.SearchByUser(user);
+        //            if (entity)
+        //            {
+        //                ModelState.AddModelError("", "Người dùng đã tồn tại");
+        //                return View("Index");
 
-                    }
-                    if (!string.IsNullOrEmpty(user.Password))
-                    {
-                        var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
-                        user.Password = encryptedMd5Pas;
+        //            }
+        //            if (!string.IsNullOrEmpty(user.Password))
+        //            {
+        //                var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
+        //                user.Password = encryptedMd5Pas;
 
-                    }
-                    var Id = dao.Insert(user);
+        //            }
+        //            var Id = dao.Insert(user);
 
-                    var shop = new ShopDAO();
+        //            var shop = new ShopDAO();
 
-                    var IdShop = shop.InsertByRegister(Id);
+        //            var IdShop = shop.InsertByRegister(Id);
 
-                    if (IdShop != 0)
-                    {
-                        ModelState.AddModelError("", "Xin lỗi!!! Bạn cần kiểm tra lại thông tin");
-                        return View("Index");
+        //            if (IdShop != 0)
+        //            {
+        //                ModelState.AddModelError("", "Xin lỗi!!! Bạn cần kiểm tra lại thông tin");
+        //                return View("Index");
 
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :>");
-                        return View("Index");
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :>");
+        //                return View("Index");
 
-                    }
+        //            }
 
 
-                }
+        //        }
 
-                return View("Index");
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+        //        return View("Index");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
 
-        }
+        //}
     }
 }

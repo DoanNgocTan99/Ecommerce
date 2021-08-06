@@ -34,10 +34,11 @@ namespace Model.DAO
                 user.Address = entity.Address;
                 user.ModifiedBy = session.Name;
                 user.ModifiedDate = DateTime.Now;
+                session.Name = entity.Name;
                 db.SaveChanges();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
