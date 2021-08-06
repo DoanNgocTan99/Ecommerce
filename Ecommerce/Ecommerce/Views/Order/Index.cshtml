@@ -1,0 +1,117 @@
+﻿﻿@using Model.EF
+
+@model Model.EF.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+
+
+@{
+    EcommerceContext db = new EcommerceContext();
+    int id = int.Parse(Request.Cookies["IdUser"].Value);
+    var acc = from e in db.Users
+              where e.Id == id
+              select e;
+    var listtrans = from e in db.Transactions where e.IdUser == id select e;
+}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-lg-2">
+                <aside class="aa-sidebar">
+                    <!-- single sidebar -->
+                    <div class="aa-sidebar-widget">
+                        <div class="aa-sidebar-account">
+                            @{
+                                if (acc.FirstOrDefault().Images.FirstOrDefault() == null)
+                                {
+                                    <img class="icon-user" src="~/Assets/User/images/Avatar/thangngo.png" alt="avatar " />
+                                }
+                                else
+                                {
+                                    <img class="icon-user" name="ImageFile" src="@Html.Action("getImgUser", "image", new { id = acc.FirstOrDefault().Id })" alt="avatar " />
+                                }
+                            }
+                            <div class="user-name">
+                                <h2>
+                                    <a href="/customer/edit">@acc.FirstOrDefault().Name</a>
+                                </h2>
+
+                            </div>
+                        </div>
+                        <ul class="aa-catg-nav ">
+                            <li>
+                                <a href="/user/edit/@acc.FirstOrDefault().Id "> <img src="~/Assets/User/images/user.png " alt="avatar " />Quản lí tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="/order/index"><img src="~/Assets/User/images/list.png " alt="avatar " />Quản lí đơn hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <div class="shopping-cart section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Shopping Summery -->
+                            <table class="table shopping-summery">
+                                <thead>
+                                    <tr class="main-hading">
+                                        <th>#</th>
+                                        <th class="text-center">Trạng thái</th>
+                                        <th class="text-center">Shop</th>
+                                        <th class="text-center">Tổng tiền</th>
+                                        <th class="text-center">Vận chuyển</th>
+                                        <th class="text-center">Ngày tạo</th>
+                                        <th class="text-center">
+                                            <i class="fas fa-info-circle">Chi tiết</i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (var item in listtrans)
+                                        {
+                                            <tr onclick="getOrder(@item.Id)" style="cursor:pointer;">
+                                                <td class="image" data-title="No">
+                                                    @Html.HiddenFor(modelItem => item.Id)
+                                                </td>
+                                                <td class="product-des" data-title="Trạng thái">
+                                                    @item.CheckoutStatus
+                                                </td>
+                                                <td class="product-des" data-title="Shop">
+                                                    @item.Shop.Name
+                                                </td>
+                                                <td class="total-amount" data-title="Price">
+                                                    @item.Amount
+                                                </td>
+                                                <td class="total-amount" data-title="Vận chuyển">
+                                                    @item.DeliveryStatus.Status
+                                                </td>
+                                                <td class="product-des" data-title="Ngày tạo">
+                                                    @Html.Label(@item.CreatedDate.Value.ToString("dd - M - yy"))
+                                                </td>
+                                                <td class="action" data-title="Chi tiết">
+                                                    <a href="/Order/Detail/@item.Id" title="Xem chi tiết"><i class="ti-info-alt"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                            <!--/ End Shopping Summery -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!--/ End Total Amount -->
+    </div>
+</div>

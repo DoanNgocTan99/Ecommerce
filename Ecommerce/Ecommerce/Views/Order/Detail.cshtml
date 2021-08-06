@@ -1,0 +1,240 @@
+﻿﻿@using Model.EF
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = null;
+}
+
+
+@{
+    EcommerceContext db = new EcommerceContext();
+    int iduser = int.Parse(Request.Cookies["IdUser"].Value);
+    var listtrans = from e in db.Transactions where e.IdUser == iduser select e;
+    var acc = from e in db.Users
+              where e.Id == iduser
+              select e;
+    int idtrans = 1;
+    if (ViewBag.Idtrans != null)
+    {
+        idtrans = ViewBag.Idtrans;
+    }
+    var listorder = from e in db.Orders where e.IdTransaction == idtrans select e;
+    var infoitem = listorder.FirstOrDefault();
+}
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-lg-2">
+                <aside class="aa-sidebar">
+                    <!-- single sidebar -->
+                    <div class="aa-sidebar-widget">
+                        <div class="aa-sidebar-account">
+                            @{
+                                if (acc.FirstOrDefault().Images.FirstOrDefault() == null)
+                                {
+                                    <img class="icon-user" src="~/Assets/User/images/Avatar/thangngo.png" alt="avatar " />
+                                }
+                                else
+                                {
+                                    <img class="icon-user" name="ImageFile" src="@Html.Action("getImgUser", "image", new { id = acc.FirstOrDefault().Id })" alt="avatar " />
+                                }
+                            }
+                            <div class="user-name">
+                                <h2>
+                                    <a href="/customer/edit">@acc.FirstOrDefault().Name</a>
+                                </h2>
+
+                            </div>
+                        </div>
+                        <ul class="aa-catg-nav ">
+                            <li>
+                                <a href="/user/edit/@acc.FirstOrDefault().Id "> <img src="~/Assets/User/images/user.png " alt="avatar " />Quản lí tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="/order/index"><img src="~/Assets/User/images/list.png " alt="avatar " />Quản lí đơn hàng</a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <div class="shopping-cart section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="checkout-form-title-ordered">Danh sách sản phẩm</h2>
+                            <!-- Shopping Summery -->
+                            <table class="table shopping-summery">
+                                <thead>
+                                    <tr class="main-hading">
+                                        <th>#</th>
+                                        <th>Sản phẩm</th>
+                                        <th class="text-center">Tên</th>
+                                        <th class="text-center">Số lượng</th>
+                                        <th class="text-center">Giá</th>
+                                        <th class="text-center">
+                                            <i class="fab fa-shopware">Hành động</i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        foreach (var item in listorder)
+                                        {
+                                            <tr>
+                                                <td class="image" data-title="No">
+                                                    @Html.HiddenFor(modelItem => item.Id)
+                                                </td>
+                                                <td class="image" data-title="Sản phẩm" style="text-align:center">
+                                                    <img src="@Html.Action("getimage", "image", new { id = item.Product.Id })" alt="product" />
+                                                </td>
+                                                <td class="product-des" data-title="Tên" style="text-align:center">
+                                                    @item.Product.Name
+                                                </td>
+                                                <td class="product-des" data-title="Số lượng" style="text-align:center">
+                                                    @item.Amount
+                                                </td>
+                                                <td class="product-des" data-title="Giá" style="text-align:center">
+                                                    @item.Price
+                                                </td>
+                                                <td class="qty" data-title="Hành động" style="text-align:center">
+                                                    <button type="button" class="btn-info"><a class="action" href="/Cart/AddCart/@item.Product.Id">Mua lần nữa</a></button>
+                                                </td>
+
+
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                            <!--/ End Shopping Summery -->
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <section class="shop checkout section ">
+                            <div class="container ">
+                                <div class="row ">
+                                    <div class="col-lg-12 col-12 ">
+                                        <div class="checkout-form ">
+                                            <h1 class="checkout-form-title-ordered">Thông tin đơn hàng</h1>
+                                            <!-- Form -->
+                                            @{
+
+                                                <form class="form " method="post" action="# ">
+                                                    <div class="row ">
+                                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label for="idOrder ">Mã đơn hàng<span>*</span></label><br />
+                                                                @*<input type="text" name="idOrder " id="idOrder " placeholder=" " required="" readonly="readonly">*@
+                                                                <span>@infoitem.Transaction.Id</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label for="name ">Tên khách hàng<span>*</span></label><br />
+                                                                @*<input type="text" name="name " id="name " placeholder=" " required="" readonly="readonly">*@
+                                                                <span>@infoitem.Transaction.User.Name</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label for="email ">Email<span>*</span></label><br />
+                                                                @*<input type="email" name="email " id="email" placeholder=" " required="" readonly>*@
+                                                                <span>@infoitem.Transaction.User.Email</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label class="phone ">Số điện thoại<span>*</span></label><br />
+                                                                @*<input type="text" name="phone " id="phone " placeholder=" " required="" readonly>*@
+                                                                <span>@infoitem.Transaction.User.Phone</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label for="address ">Địa chỉ<span>*</span></label><br />
+                                                                @*<input type="text" name="address " id="address " placeholder=" " required="">*@
+                                                                <span>@infoitem.Transaction.User.Address</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label for="message ">Ghi chú<span>*</span></label>
+                                                                <textarea name="message" id="message" readonly>@infoitem.Message</textarea>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label class="amount ">Tổng tiền<span>*</span></label><br />
+                                                                @*<input type="text" name="amount " id="amount " placeholder=" " required="" readonly>*@
+                                                                <span>@infoitem.Transaction.Amount</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label class="deliveryStatus ">Trạng thái<span>*</span></label><br />
+                                                                @*<select name="deliveryStatus">
+                                                                        <option value="0">Đang xử lí</option>
+                                                                        <option value="1">Đang giao</option>
+                                                                        <option value="2">Đã giao</option>
+                                                                        <option value="3">Đã huỷ</option>
+                                                                    </select>*@
+                                                                <span>@infoitem.Transaction.DeliveryStatus.Status</span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label class="payment">Phương thức thanh toán<span>*</span></label><br />
+                                                                @*<select name="payment">
+                                                                        <option value="0">COD</option>
+                                                                        <option value="1">Ví điện tử</option>
+                                                                    </select>*@
+                                                                <span> @infoitem.Payment.Name</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-12 ">
+                                                            <div class="form-group ">
+                                                                <label class="checkoutStatus">Thanh toán<span>*</span></label><br />
+                                                                @*<select name="checkoutStatus">
+                                                                        <option value="Chưa thanh toán">Chưa thanh toán</option>
+                                                                        <option value="Đã thanh toán">Đã thanh toán</option>
+                                                                    </select>*@
+                                                                <span>@infoitem.Transaction.CheckoutStatus</span>
+                                                            </div>
+                                                        </div>
+                                                        @*<div class="single-widget get-button">
+                                                                <div class="content">
+                                                                    <button type=submit class="button">
+                                                                        <a href="#" class="btn">Cập nhật</a>
+                                                                    </button>
+                                                                </div>
+                                                            </div>*@
+
+                                                    </div>
+                                                </form>
+
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!--/ End Button Widget -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

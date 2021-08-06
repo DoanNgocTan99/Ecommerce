@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Models;
 using Ecommerce.Common;
 using Model.DAO;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +72,64 @@ namespace Ecommerce.Controllers
 
             }
             return View("Index");
+        }
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Register(User user)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var dao = new UserDAO();
+                    var entity = dao.SearchByUser(user);
+                    if (entity)
+                    {
+                        ModelState.AddModelError("", "Người dùng đã tồn tại");
+                        return View("Index");
+
+                    }
+                    if (!string.IsNullOrEmpty(user.Password))
+                    {
+                        var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
+                        user.Password = encryptedMd5Pas;
+
+                    }
+                    var Id = dao.Insert(user);
+
+                    var shop = new ShopDAO();
+
+                    var IdShop = shop.InsertByRegister(Id);
+
+                    if (IdShop != 0)
+                    {
+                        ModelState.AddModelError("", "Xin lỗi!!! Bạn cần kiểm tra lại thông tin");
+                        return View("Index");
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Chúc mừng!! Bạn đã tạo thành công tài khoản :>");
+                        return View("Index");
+
+                    }
+
+
+                }
+
+                return View("Index");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
         public ActionResult Logout()
         {
