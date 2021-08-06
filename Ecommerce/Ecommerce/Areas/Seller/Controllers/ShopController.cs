@@ -29,7 +29,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                 if (shop.ImageFile != null)
                 {
                     var dao = new ShopDAO();
-                    var temps = dao.CheckNameShop(shop.Name);
+                    var temps = dao.CheckNameShop(shop.Name, shop.Id);
                     if (temps)
                     {
                         SetAlert("Tên Shop đã tồn tại!!", "erro");
@@ -67,7 +67,7 @@ namespace Ecommerce.Areas.Seller.Controllers
                 else
                 {
                     var dao = new ShopDAO();
-                    var temps = dao.CheckNameShop(shop.Name);
+                    var temps = dao.CheckNameShop(shop.Name, shop.Id);
                     if (temps)
                     {
                         SetAlert("Tên Shop đã tồn tại!!", "erro");

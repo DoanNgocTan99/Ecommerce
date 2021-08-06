@@ -163,12 +163,16 @@ namespace Model.DAO
         }
         #endregion
         #region Check Name Shop
-        public bool CheckNameShop(string Name)
+        public bool CheckNameShop(string Name, long id)
         {
             try
             {
                 var check = db.Shops.Where(x => x.Name == Name).FirstOrDefault();
-                if (check != null)
+                if (check != null && check.Id == id)
+                {
+                    return false;
+                }
+                else if (check != null && check.Id != id)
                 {
                     return true;
                 }
