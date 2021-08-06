@@ -23,6 +23,11 @@ namespace Ecommerce.Controllers
             List<Category> cats = db.Categories.ToList();
             return PartialView("GetCategory", cats);
         }
+        public PartialViewResult GetCategory_Home()
+        {
+            List<Category> cats = db.Categories.ToList();
+            return PartialView("GetCategory_Home", cats);
+        }
         public PartialViewResult GetCategoryShop(int id)
         {
             List<long> temp = (from a in db.Products
