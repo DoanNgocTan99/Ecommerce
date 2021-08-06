@@ -1,4 +1,5 @@
 ﻿@using Model.EF;
+
 @{
     List<Product> advertising = ViewBag.advertising;
     List<Product> flashsale = ViewBag.flashsale;
@@ -176,7 +177,7 @@
                                 {
                                     <ul class="list-main">
                                         <li><i class="fa fa-power-off"></i><a href="/Login/Index">Đăng Nhập</a></li>
-                                        <li><i class="fas fa-user-plus"></i><a href="/Seller/Login/Register">Đăng Ký</a></li>
+                                        <li><i class="fas fa-user-plus"></i><a href="/Login/Register">Đăng Ký</a></li>
                                     </ul>
                                 }
                             }
@@ -234,7 +235,7 @@
                             <div class="all-category">
                                 <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>Danh mục</h3>
                                 <ul class="main-category">
-                                    @Html.Action("GetCategory", "Category")
+                                    @Html.Action("GetCategory_Home", "Category")
                                 </ul>
                             </div>
                         </div>
@@ -398,16 +399,16 @@
                                         <img class="default-img" src="@Html.Action("getimage", "image", new { id = item.Id  })" alt="#" width="100%" height="100%">
                                         <img class="hover-img" src="@Html.Action("getimage", "image", new { id = item.Id })" alt="#">
                                         <span class="out-of-stock ">Hot</span>
-                                       
+
 
                                     </a>
                                     <div class="button-head ">
                                         <div class="product-action ">
                                             <a href="/shop/index/@item.IdShop"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+
                                         </div>
                                         <div class="product-action-2 ">
-                                            <a title="Add to cart " href="# ">Add to cart</a>
+                                            <a title="Add to cart " href="/Cart/AddCart/@item.Id">Add to cart</a>
                                         </div>
                                     </div>
                                 </div>
@@ -456,10 +457,9 @@
                                         <div class="button-head ">
                                             <div class="product-action ">
                                                 <a href="/shop/index/@item.IdShop"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
                                             </div>
                                             <div class="product-action-2 ">
-                                                <a title="Add to cart " href="# ">Add to cart</a>
+                                                <a title="Add to cart " href="/Cart/AddCart/@item.Id">Add to cart</a>
                                             </div>
                                         </div>
                                     </div>

@@ -20,6 +20,16 @@ namespace Ecommerce.Controllers
             }
             return "";
         }
+        public string getImageOnShop(int id)
+        {
+            Image image = new Image();
+            image = db.Images.Where(x => x.IdShop == id).FirstOrDefault();
+            if (image != null)
+            {
+                return image.Path;
+            }
+            return "";
+        }
         public string getImgCat(int id)
         {
             Image image = db.Images.Where(x => x.IdCategory == id).FirstOrDefault();
